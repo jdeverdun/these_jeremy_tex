@@ -1,0 +1,19 @@
+\select@language {french}
+\gdef \the@ipfilectr {@-1}
+\addvspace {10\p@ }
+\contentsline {xchapter}{Introduction}{2}{chapter.1}
+\gdef \the@ipfilectr {}
+\gdef \the@ipfilectr {@-2}
+\addvspace {10\p@ }
+\contentsline {xchapter}{Imagerie morphologique de la circulation intracr\^anienne}{5}{chapter.2}
+\gdef \the@ipfilectr {}
+\gdef \the@ipfilectr {@-3}
+\addvspace {10\p@ }
+\contentsline {xchapter}{Impl\IeC {\'e}mentation de la reconstruction morphologique}{24}{chapter.3}
+\gdef \the@ipfilectr {}
+\gdef \the@ipfilectr {@-4}
+\gdef \the@ipfilectr {}
+\gdef \the@ipfilectr {@-5}
+\addvspace {10\p@ }
+\contentsline {xchapter}{Annexes}{I}{appendix.A}
+\gdef \the@ipfilectr {}

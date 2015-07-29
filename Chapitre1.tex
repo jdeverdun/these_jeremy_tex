@@ -1,0 +1,68 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%									Chapitre 1											%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Introduction}
+	
+\minitoc
+	
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+% Début du chapitre
+
+\section{Introduction}
+		
+		La recherche de biomarqueurs originaux issues de l’Imagerie par Résonance Magnétique (IRM) multimodale est un enjeu médical majeur du fait du caractère non-invasif et relativement peu 
+couteux de cette technique. L'imagerie par résonnance magnétique nucléaire est en effet un outil d'une grande versatilité qui permet de fournir plusieurs « points de vue » aussi bien concernant 
+la structure que la dynamique cérébrale. L’étude de la rhéologie du système vasculaire encéphalique en IRM peut recourir à divers outils non invasifs tels que l’imagerie de perfusion par marquage 
+des protons artériels du sang (Arterial Spin Labeling ou ASL -~\cite{Alsop2014}), l’imagerie en contraste de phase ou l’imagerie de susceptibilité (Susceptibility Weighted Imaging, SWI). Ces mesures permettent 
+l’estimation de différents paramètres de la rhéologie intracrânienne. On peut alors espérer, dans un contexte pathologique particulier, découvrir dans une des différentes modalités d'imagerie le 
+marqueur spécifique qui permettra d'identifier et de suivre la pathologie.\\
+Néanmoins, malgré les succès de cette stratégie, il apparaît naturel de passer aujourd'hui de marqueurs construits à partir d'une seule modalité d'imagerie à des marqueurs multimodaux combinant 
+les riches informations issues de plusieurs imageries dynamiques. Cette combinaison peut être recherchée dans une perspective de pure corrélation, à travers des stratégies de type « data mining » (\cite{Lin2012}). 
+Cependant, d'un point de vue plus « mécanistique », les différents systèmes circulants cérébraux (liquide cérébro-spinal et système vasculaire) étant fortement couplés, il paraît naturel de tenter une 
+modélisation biophysique des écoulements regroupant les différentes informations jusque-là séparées. Sur cette base, les relations entre débit, pression, perfusion, perméabilité, à différentes échelles 
+dans le cerveau, pourront être précisées sur des bases physiques bien établies, une telle description cohérente semble être une condition nécessaire à la découverte de nouveaux biomarqueurs robustes et 
+bien validés.\\
+Plusieurs groupes ont proposé des modélisations globales des écoulements intracrâniens sous forme de systèmes dynamiques d'équations différentielles non-linéaires (\cite{Sorek1988}). Les écoulements sont décrits par 
+un formalisme de compartiments (veines, capillaires, artérioles, artères), dont les caractéristiques géométriques (volume, rayon moyen, longueur moyenne entre deux branchements) sont calculées sur la 
+base des données d'imagerie, ou déduites du modèle lui-même. Au sein de ces compartiments, des variables dynamiques couplées (pression, flux) peuvent être calculées, pour des conditions aux limites 
+données.\\
+Les échelles spatiales et temporelles de description auxquelles se placent ces modèles en font de très bons candidats pour les applications cliniques et la comparaison détaillée aux données d'imagerie. 
+De plus, la relative facilité de mise en oeuvre de ces modèles basés sur des équations différentielles\\
+ordinaires devrait rendre possible un aller-retour rapide entre données d'imagerie et simulations afin de converger vers les paramètres significatifs que nous recherchons.
+Nous nous sommes donc proposé dans ce travail de tenter l'intégration la plus complète possible compte tenu de l'état de l'art des informations concernant la rhéologie intracrânienne au sein 
+d'un modèle biophysique réaliste des écoulements. Nous nous sommes fixés comme but de construire ce modèle de façon sujet-spécifique, afin de rendre compte de la variabilité des structures 
+impliquées.\\
+Deux conditions doivent être réunies pour rendre possible la réalisation de ce programme. Tout d'abord la maîtrise détaillée des modalités d'imagerie IRM qui peuvent nourrir cette modélisation, 
+de leurs possibilités et de leurs limites actuelles. Cette connaissance fixera le degré de détail de la modélisation, aussi bien en termes de résolution (spatiale et temporelle) que de variables 
+dynamiques et de caractéristiques structurales accessibles. Elle aboutira à définir un protocole expérimental standard d'imagerie qui regroupe pour un sujet ou un patient donné toutes les informations 
+qui seront nécessaires au modèle.\\
+La seconde condition est de choisir la stratégie de modélisation la plus adaptée au type de données disponibles. Une revue de la littérature orientée par cette question est donc importante.
+En vue d’aboutir à un modèle sujet-spécifique le plus correct possible il sera essentiel de décrire la structure de la vascularisation cérébrale et du système ventriculaire. Cela fera ainsi l’objet 
+d’un chapitre dédié au sein duquel nous chercherons en premier lieu à comprendre comment l’arborescence vasculaire, des artères aux veines en passant par les capillaires, se met en place afin d’assurer 
+un apport suffisant en sang aux cellules et quelles en sont les éléments clefs. Nous ferons de même pour le système ventriculaire assurant la circulation du liquide cérébro-spinal. Par la suite, 
+nous évoquerons les outils d’imagerie par résonnance magnétique à notre disposition pouvant fournir une information précise sur les structures du système circulatoire pour un sujet donné pour terminer 
+par la définition d’un protocole d’acquisition morphologique en accord avec les séquences disponibles dans le service.\\
+Le passage de plusieurs images à une structure 3D complète de l’arbre vasculaire est non trivial (\cite{Luboz2005}). Il requiert l’identification des éléments d’intérêt dans l’image. Chaque imagerie fournira ainsi 
+une partie du puzzle permettant d’appréhender l’ensemble de l’architecture. Nous évoquerons cette problématique dans un second chapitre dédié aux algorithmes de reconstructions nous ayant permis tout 
+d’abord d’identifier les artères et les veines indépendamment et d’en extraire une représentation 3D sous forme de segments, d’appréhender ensuite les compartiments artériolaires, capillaires, et
+veinulaires en vue de faire la jonction entre artères et veines, et enfin de caractériser le système ventriculaire des ventricules latéraux à l’espace sous arachnoïdien.\\
+L’information anatomique fournit la base structurelle au modèle. Pour être complet il doit se nourrir de données de la dynamique des flux intracrâniens, d’une part afin de définir les conditions 
+limites et d’autre part afin de valider et interpréter les résultats de la simulation. Le troisième chapitre se focalisera sur l’imagerie dynamique de la circulation intracrânienne où, après quelques 
+rappels sur les flux vasculaires et ventriculaires, seront brièvement présentées les principales séquences IRM que nous allons utiliser pour caractériser les flux et le protocole mis en place.
+Sur la base de ces données nous pouvons établir un modèle de la circulation intracrânienne. Pour ce faire nous décrirons dans un quatrième chapitre brièvement les modèles à compartiments existants, 
+les essais d’intégration des données structurales, et enfin notre modèle, avec les équations qui le composent et les résultats qu’il fournit. Nous tenterons dans ce cadre de les comparer à des travaux 
+antérieurs d’autres équipes.\\
+Parmi les séquences utilisées deux d’entre elles sont encore en pleine évolution car relativement récentes. La technique de marquage des protons artériels du sang (Arterial Spin Labeling) et l’imagerie 
+quantitative de susceptibilité magnétique (QSM). Ces deux techniques sont plus compliquées à mettre en place et ont nécessité une attention toute particulière en vue d’obtenir des résultats de qualité. 
+Il semble important de détailler dans des chapitres indépendants notre travail de développement et de validation de ces deux méthodes. Nous commencerons ainsi par l’Arterial Spin Labeling en décrivant 
+les séquences existantes, les méthodes de quantifications de la perfusion cérébrale, les limitations, et une application sur un protocole de recherche. Nous continuerons ensuite par l’imagerie de 
+susceptibilité magnétique (QSM) avec des bases théoriques, l’implémentation que nous avons réalisé et la validation de la mesure.
+Nous terminerons par les perspectives d’optimisation du modèle et ses applications.\\
+
+		
+\bibliography{jeremythesebib}{}
+\bibliographystyle{francaissc}

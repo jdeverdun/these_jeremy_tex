@@ -1,0 +1,57 @@
+\begin{thebibliography}{4}
+\ProvideTextCommand{\guillemotleft}{OT1}{%
+  \leavevmode\raise .27ex\hbox{$\scriptscriptstyle\ll$}}
+\ProvideTextCommand{\guillemotright}{OT1}{%
+  \leavevmode\raise .27ex\hbox{$\scriptscriptstyle\gg$}}
+\newcommand{\enquote}[1]{\guillemotleft#1\guillemotright}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\urlprefix}{URL }
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi:\discretionary{}{}{}#1}\else
+  \providecommand{\doi}{doi:\discretionary{}{}{}\begingroup
+  \urlstyle{rm}\Url}\fi
+\providecommand{\selectlanguage}[1]{\relax}
+\input{francaisbst.tex}
+\newcommand{\Capitalize}[1]{\uppercase{#1}}
+\newcommand{\capitalize}[1]{\expandafter\Capitalize#1}
+
+\bibitem[{\textsc{Alsop} \bbletal{}(2014)\textsc{Alsop}, \textsc{Detre},
+  \textsc{Golay}, \textsc{G\"{u}nther}, \textsc{Hendrikse},
+  \textsc{Hernandez-Garcia}, \textsc{Lu}, \textsc{Macintosh}, \textsc{Parkes},
+  \textsc{Smits}, \textsc{van Osch}, \textsc{Wang}, \textsc{Wong} \bbland{}
+  \textsc{Zaharchuk}}]{Alsop2014}
+\textsc{Alsop, D.~C.}, \textsc{J.~A. Detre}, \textsc{X.~Golay},
+  \textsc{M.~G\"{u}nther}, \textsc{J.~Hendrikse}, \textsc{L.~Hernandez-Garcia},
+  \textsc{H.~Lu}, \textsc{B.~J. Macintosh}, \textsc{L.~M. Parkes},
+  \textsc{M.~Smits}, \textsc{M.~J.~P. van Osch}, \textsc{D.~J.~J. Wang},
+  \textsc{E.~C. Wong} \bbland{} \textsc{G.~Zaharchuk}. 2014,
+  \enquote{{Recommended implementation of arterial spin-labeled perfusion MRI
+  for clinical applications: A consensus of the ISMRM perfusion study group and
+  the european consortium for ASL in dementia}}, \doi{10.1002/mrm.25197}.
+
+\bibitem[{\textsc{Lin} \bbletal{}(2012)\textsc{Lin}, \textsc{Laird},
+  \textsc{Fox} \bbland{} \textsc{Gao}}]{Lin2012}
+\textsc{Lin, A.~L.}, \textsc{A.~R. Laird}, \textsc{P.~T. Fox} \bbland{}
+  \textsc{J.~H. Gao}. 2012, \enquote{{Multimodal MRI neuroimaging biomarkers
+  for cognitive normal adults, amnestic mild cognitive impairment, and
+  Alzheimer's disease}}, \doi{10.1155/2012/907409}.
+
+\bibitem[{\textsc{Luboz} \bbletal{}(2005)\textsc{Luboz}, \textsc{Wu},
+  \textsc{Krissian}, \textsc{Westin}, \textsc{Kikinis}, \textsc{Cotin}
+  \bbland{} \textsc{Dawson}}]{Luboz2005}
+\textsc{Luboz, V.}, \textsc{X.~Wu}, \textsc{K.~Krissian}, \textsc{C.~F.
+  Westin}, \textsc{R.~Kikinis}, \textsc{S.~Cotin} \bbland{} \textsc{S.~Dawson}.
+  2005, \enquote{{A segmentation and reconstruction technique for 3D vascular
+  structures}}, \bblin{} \emph{Lect. Notes Comput. Sci. (including Subser.
+  Lect. Notes Artif. Intell. Lect. Notes Bioinformatics)}, \bblvol{} 3749 LNCS,
+  ISBN 3540293272, ISSN 03029743, \bblpp{} 43--50, \doi{10.1007/11566465\_6}.
+
+\bibitem[{\textsc{Sorek} \bbletal{}(1988)\textsc{Sorek}, \textsc{Bear}
+  \bbland{} \textsc{Karni}}]{Sorek1988}
+\textsc{Sorek, S.}, \textsc{J.~Bear} \bbland{} \textsc{Z.~Karni}. 1988,
+  \enquote{{A non-steady compartmental flow model of the cerebrovascular
+  system.}}, \emph{J. Biomech.}, \bblvol{}~21, \bblno{}~9,
+  \doi{10.1016/0021-9290(88)90279-5}, \bblpp{} 695--704, ISSN 00219290.
+
+\end{thebibliography}

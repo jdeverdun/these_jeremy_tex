@@ -1,0 +1,33 @@
+\begin{thebibliography}{1}
+\ProvideTextCommand{\guillemotleft}{OT1}{%
+  \leavevmode\raise .27ex\hbox{$\scriptscriptstyle\ll$}}
+\ProvideTextCommand{\guillemotright}{OT1}{%
+  \leavevmode\raise .27ex\hbox{$\scriptscriptstyle\gg$}}
+\newcommand{\enquote}[1]{\guillemotleft#1\guillemotright}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\urlprefix}{URL }
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi:\discretionary{}{}{}#1}\else
+  \providecommand{\doi}{doi:\discretionary{}{}{}\begingroup
+  \urlstyle{rm}\Url}\fi
+\providecommand{\selectlanguage}[1]{\relax}
+\input{francaisbst.tex}
+\newcommand{\Capitalize}[1]{\uppercase{#1}}
+\newcommand{\capitalize}[1]{\expandafter\Capitalize#1}
+
+\bibitem[{\textsc{Alsop} \bbletal{}(2014)\textsc{Alsop}, \textsc{Detre},
+  \textsc{Golay}, \textsc{G\"{u}nther}, \textsc{Hendrikse},
+  \textsc{Hernandez-Garcia}, \textsc{Lu}, \textsc{Macintosh}, \textsc{Parkes},
+  \textsc{Smits}, \textsc{van Osch}, \textsc{Wang}, \textsc{Wong} \bbland{}
+  \textsc{Zaharchuk}}]{Alsop2014}
+\textsc{Alsop, D.~C.}, \textsc{J.~A. Detre}, \textsc{X.~Golay},
+  \textsc{M.~G\"{u}nther}, \textsc{J.~Hendrikse}, \textsc{L.~Hernandez-Garcia},
+  \textsc{H.~Lu}, \textsc{B.~J. Macintosh}, \textsc{L.~M. Parkes},
+  \textsc{M.~Smits}, \textsc{M.~J.~P. van Osch}, \textsc{D.~J.~J. Wang},
+  \textsc{E.~C. Wong} \bbland{} \textsc{G.~Zaharchuk}. 2014,
+  \enquote{{Recommended implementation of arterial spin-labeled perfusion MRI
+  for clinical applications: A consensus of the ISMRM perfusion study group and
+  the european consortium for ASL in dementia}}, \doi{10.1002/mrm.25197}.
+
+\end{thebibliography}

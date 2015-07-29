@@ -1,0 +1,231 @@
+\begin{thebibliography}{25}
+\ProvideTextCommand{\guillemotleft}{OT1}{%
+  \leavevmode\raise .27ex\hbox{$\scriptscriptstyle\ll$}}
+\ProvideTextCommand{\guillemotright}{OT1}{%
+  \leavevmode\raise .27ex\hbox{$\scriptscriptstyle\gg$}}
+\newcommand{\enquote}[1]{\guillemotleft#1\guillemotright}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\urlprefix}{URL }
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi:\discretionary{}{}{}#1}\else
+  \providecommand{\doi}{doi:\discretionary{}{}{}\begingroup
+  \urlstyle{rm}\Url}\fi
+\providecommand{\selectlanguage}[1]{\relax}
+\input{francaisbst.tex}
+\newcommand{\Capitalize}[1]{\uppercase{#1}}
+\newcommand{\capitalize}[1]{\expandafter\Capitalize#1}
+
+\bibitem[{\textsc{Alastruey} \bbletal{}(2007)\textsc{Alastruey},
+  \textsc{Parker}, \textsc{Peir\'{o}}, \textsc{Byrd} \bbland{}
+  \textsc{Sherwin}}]{Alastruey2007}
+\textsc{Alastruey, J.}, \textsc{K.~H. Parker}, \textsc{J.~Peir\'{o}},
+  \textsc{S.~M. Byrd} \bbland{} \textsc{S.~J. Sherwin}. 2007,
+  \enquote{{Modelling the circle of Willis to assess the effects of anatomical
+  variations and occlusions on cerebral flows}}, \emph{J. Biomech.},
+  \bblvol{}~40, \bblno{}~8, \doi{10.1016/j.jbiomech.2006.07.008}, \bblpp{}
+  1794--1805, ISSN 00219290.
+
+\bibitem[{\textsc{Aydin} \bbletal{}(1997)\textsc{Aydin},
+  \textsc{T\"{u}z\"{u}n}, \textsc{Tak\c{c}i}, \textsc{Kadioğlu},
+  \textsc{Kayaoğlu} \bbland{} \textsc{Barlas}}]{Aydin1997}
+\textsc{Aydin, I.~H.}, \textsc{Y.~T\"{u}z\"{u}n}, \textsc{E.~Tak\c{c}i},
+  \textsc{H.~H. Kadioğlu}, \textsc{C.~R. Kayaoğlu} \bbland{}
+  \textsc{E.~Barlas}. 1997, \enquote{{The anatomical variations of sylvian
+  veins and cisterns.}}, \emph{Minim. Invasive Neurosurg.}, \bblvol{}~40,
+  \bblno{}~2, \doi{10.1055/s-2008-1053419}, \bblpp{} 68--73, ISSN 0946-7211.
+
+\bibitem[{\textsc{Bilgic} \bbletal{}(2013)\textsc{Bilgic}, \textsc{Fan},
+  \textsc{Polimeni}, \textsc{Cauley}, \textsc{Bianciardi},
+  \textsc{Adalsteinsson}, \textsc{Wald} \bbland{}
+  \textsc{Setsompop}}]{Bilgic2013}
+\textsc{Bilgic, B.}, \textsc{A.~P. Fan}, \textsc{J.~R. Polimeni}, \textsc{S.~F.
+  Cauley}, \textsc{M.~Bianciardi}, \textsc{E.~Adalsteinsson}, \textsc{L.~L.
+  Wald} \bbland{} \textsc{K.~Setsompop}. 2013, \enquote{{Fast quantitative
+  susceptibility mapping with L1-regularization and automatic parameter
+  selection}}, \doi{10.1002/mrm.25029}.
+
+\bibitem[{\textsc{Brett} \bbletal{}(2002)\textsc{Brett}, \textsc{Johnsrude}
+  \bbland{} \textsc{Owen}}]{Brett2002}
+\textsc{Brett, M.}, \textsc{I.~S. Johnsrude} \bbland{} \textsc{A.~M. Owen}.
+  2002, \enquote{{The problem of functional localization in the human brain.}},
+  \emph{Nat. Rev. Neurosci.}, \bblvol{}~3, \bblno{}~3, \doi{10.1038/nrn756},
+  \bblpp{} 243--249, ISSN 1471-003X.
+
+\bibitem[{\textsc{Chung} \bbletal{}(1996)\textsc{Chung}, \textsc{Hwang},
+  \textsc{Yeung} \bbland{} \textsc{Wehrli}}]{Chung1996}
+\textsc{Chung, H.~W.}, \textsc{S.~N. Hwang}, \textsc{H.~N. Yeung} \bbland{}
+  \textsc{F.~W. Wehrli}. 1996, \enquote{{Mapping of the magnetic-field
+  distribution in cancellous bone.}}, \emph{J. Magn. Reson. B}, \bblvol{} 113,
+  \bblpp{} 172--176.
+
+\bibitem[{\textsc{Deistung} \bbletal{}(2013)\textsc{Deistung},
+  \textsc{Sch\"{a}fer}, \textsc{Schweser}, \textsc{Biedermann}, \textsc{Turner}
+  \bbland{} \textsc{Reichenbach}}]{Deistung2013}
+\textsc{Deistung, A.}, \textsc{A.~Sch\"{a}fer}, \textsc{F.~Schweser},
+  \textsc{U.~Biedermann}, \textsc{R.~Turner} \bbland{} \textsc{J.~R.
+  Reichenbach}. 2013, \enquote{{Toward in vivo histology: A comparison of
+  quantitative susceptibility mapping (QSM) with magnitude-, phase-, and R2
+  *-imaging at ultra-high magnetic field strength}}, \emph{Neuroimage},
+  \bblvol{}~65, \doi{10.1016/j.neuroimage.2012.09.055}, \bblpp{} 299--314, ISSN
+  10538119.
+
+\bibitem[{\textsc{Fan} \bbletal{}(2014)\textsc{Fan}, \textsc{Bilgic},
+  \textsc{Gagnon}, \textsc{Witzel}, \textsc{Bhat}, \textsc{Rosen} \bbland{}
+  \textsc{Adalsteinsson}}]{Fan2014}
+\textsc{Fan, A.~P.}, \textsc{B.~Bilgic}, \textsc{L.~Gagnon},
+  \textsc{T.~Witzel}, \textsc{H.~Bhat}, \textsc{B.~R. Rosen} \bbland{}
+  \textsc{E.~Adalsteinsson}. 2014, \enquote{{Quantitative oxygenation
+  venography from MRI phase}}, \emph{Magn. Reson. Med.}, \bblvol{}~72,
+  \bblno{}~1, \doi{10.1002/mrm.24918}, \bblpp{} 149--159, ISSN 15222594.
+
+\bibitem[{\textsc{Haacke} \bbletal{}(2005)\textsc{Haacke}, \textsc{Cheng},
+  \textsc{House}, \textsc{Liu}, \textsc{Neelavalli}, \textsc{Ogg},
+  \textsc{Khan}, \textsc{Ayaz}, \textsc{Kirsch} \bbland{}
+  \textsc{Obenaus}}]{Haacke2005}
+\textsc{Haacke, E.~M.}, \textsc{N.~Y. Cheng}, \textsc{M.~J. House},
+  \textsc{Q.~Liu}, \textsc{J.~Neelavalli}, \textsc{R.~J. Ogg},
+  \textsc{A.~Khan}, \textsc{M.~Ayaz}, \textsc{W.~Kirsch} \bbland{}
+  \textsc{A.~Obenaus}. 2005, \enquote{{Imaging iron stores in the brain using
+  magnetic resonance imaging}}, \emph{Magn. Reson. Imaging}, \bblvol{}~23,
+  \bblno{}~1, \doi{10.1016/j.mri.2004.10.001}, \bblpp{} 1--25, ISSN 0730-725X.
+  \urlprefix\url{papers://4b497daf-11fc-4b77-bfc5-b5ecbecc5200/Paper/p1060}.
+
+\bibitem[{\textsc{Henderson} \bbletal{}(2000)\textsc{Henderson},
+  \textsc{Eliasziw}, \textsc{Fox}, \textsc{Rothwell} \bbland{}
+  \textsc{Barnett}}]{Henderson2000}
+\textsc{Henderson, R.~D.}, \textsc{M.~Eliasziw}, \textsc{A.~J. Fox},
+  \textsc{P.~M. Rothwell} \bbland{} \textsc{H.~J. Barnett}. 2000,
+  \enquote{{Angiographically defined collateral circulation and risk of stroke
+  in patients with severe carotid artery stenosis. North American Symptomatic
+  Carotid Endarterectomy Trial (NASCET) Group.}}, \bbltechrep{}~1,
+  \doi{10.1161/01.STR.31.1.128}.
+
+\bibitem[{\textsc{Kozi\'{c}} \bbletal{}(2009)\textsc{Kozi\'{c}},
+  \textsc{Todorovic-Djilas}, \textsc{Semnic}, \textsc{Miucin-Vukadinovic}
+  \bbland{} \textsc{Lucic}}]{Kozic2009}
+\textsc{Kozi\'{c}, D.}, \textsc{L.~Todorovic-Djilas}, \textsc{R.~Semnic},
+  \textsc{I.~Miucin-Vukadinovic} \bbland{} \textsc{M.~Lucic}. 2009,
+  \enquote{{MR imaging - An unreliable and potentially misleading diagnostic
+  modality in patients with intracerebral calcium depositions}},
+  \emph{Neuroendocrinol. Lett.}, \bblvol{}~30, \bblno{}~5, \doi{NEL300509A02
+  [pii] ET - 2009/12/26}, \bblpp{} 553--557, ISSN 0172780X.
+
+\bibitem[{\textsc{Lauwers} \bbletal{}(2008)\textsc{Lauwers}, \textsc{Cassot},
+  \textsc{Lauwers-Cances}, \textsc{Puwanarajah} \bbland{}
+  \textsc{Duvernoy}}]{Lauwers2008}
+\textsc{Lauwers, F.}, \textsc{F.~Cassot}, \textsc{V.~Lauwers-Cances},
+  \textsc{P.~Puwanarajah} \bbland{} \textsc{H.~Duvernoy}. 2008,
+  \enquote{{Morphometry of the human cerebral cortex microcirculation: General
+  characteristics and space-related profiles}}, \emph{Neuroimage},
+  \bblvol{}~39, \bblno{}~3, \doi{10.1016/j.neuroimage.2007.09.024}, \bblpp{}
+  936--948, ISSN 10538119.
+
+\bibitem[{\textsc{Lippert} \bbland{} \textsc{Pabst}(1985)}]{LippertPabst1985}
+\textsc{Lippert, H.} \bbland{} \textsc{R.~Pabst}. 1985, \emph{Arterial
+  variation in man - Classification and frequency}, Springer.
+
+\bibitem[{\textsc{Liu} \bbletal{}(2011)\textsc{Liu}, \textsc{Li},
+  \textsc{Johnson} \bbland{} \textsc{Wu}}]{Liu2011}
+\textsc{Liu, C.}, \textsc{W.~Li}, \textsc{G.~A. Johnson} \bbland{}
+  \textsc{B.~Wu}. 2011, \enquote{{High-field (9.4 T) MRI of brain
+  dysmyelination by quantitative mapping of magnetic susceptibility}},
+  \emph{NeuroImage}, \bblvol{}~56, \bblpp{} 930–--938.
+
+\bibitem[{\textsc{Lustig} \bbletal{}(2007)\textsc{Lustig}, \textsc{Donoho}
+  \bbland{} \textsc{Pauly}}]{Lustig2007}
+\textsc{Lustig, M.}, \textsc{D.~Donoho} \bbland{} \textsc{J.~M. Pauly}. 2007,
+  \enquote{{Sparse MRI: The application of compressed sensing for rapid MR
+  imaging}}, \emph{Magn. Reson. Med.}, \bblvol{}~58, \bblno{}~6,
+  \doi{10.1002/mrm.21391}, \bblpp{} 1182--1195, ISSN 07403194.
+
+\bibitem[{\textsc{Manniesing} \bbletal{}(2006)\textsc{Manniesing},
+  \textsc{Viergever} \bbland{} \textsc{Niessen}}]{Manniesing2006}
+\textsc{Manniesing, R.}, \textsc{M.~A. Viergever} \bbland{} \textsc{W.~J.
+  Niessen}. 2006, \enquote{{Vessel enhancing diffusion. A scale space
+  representation of vessel structures}}, \emph{Med. Image Anal.}, \bblvol{}~10,
+  \bblno{}~6, \doi{10.1016/j.media.2006.06.003}, \bblpp{} 815--825, ISSN
+  13618415.
+
+\bibitem[{\textsc{mriquestions.com}(2015)}]{timeflighteffects}
+\textsc{mriquestions.com}. 2015, \enquote{Time of flight effects - qustions and
+  answers}, mriquestions.com.
+
+\bibitem[{\textsc{Oh} \bbletal{}(2013)\textsc{Oh}, \textsc{Oh}, \textsc{Nam},
+  \textsc{Han}, \textsc{Stafford}, \textsc{Hwang}, \textsc{Kim}, \textsc{Park}
+  \bbland{} \textsc{Lee}}]{Oh2013}
+\textsc{Oh, S.~S.}, \textsc{S.-H. Oh}, \textsc{Y.~Nam}, \textsc{D.~Han},
+  \textsc{R.~B. Stafford}, \textsc{J.~Hwang}, \textsc{D.-H. Kim},
+  \textsc{H.~Park} \bbland{} \textsc{J.~Lee}. 2013, \enquote{{Improved
+  susceptibility weighted imaging method using multi-echo acquisition.}},
+  \emph{Magn. Reson. Med.}, \bblvol{}~00, \doi{10.1002/mrm.24940}, \bblpp{}
+  1--7, ISSN 1522-2594.
+  \urlprefix\url{http://www.ncbi.nlm.nih.gov/pubmed/24105838}.
+
+\bibitem[{\textsc{Radioanatomie.com}(2015)}]{radioanatDrainage}
+\textsc{Radioanatomie.com}. 2015, \enquote{Le drainage veineux de
+  l'encépahle}, Radioanatomie.com.
+
+\bibitem[{\textsc{Reichenbach} \bbland{}
+  \textsc{Haacke}(2001)}]{Reichenbach2001}
+\textsc{Reichenbach, J.~R.} \bbland{} \textsc{E.~M. Haacke}. 2001,
+  \enquote{{High-resolution BOLD venographic imaging: A window into brain
+  function}}, \emph{NMR Biomed.}, \bblvol{}~14, \bblno{} 7-8,
+  \doi{10.1002/nbm.722}, \bblpp{} 453--467, ISSN 09523480.
+
+\bibitem[{\textsc{Risser} \bbletal{}(2007)\textsc{Risser},
+  \textsc{Plourabou\'{e}}, \textsc{Steyer}, \textsc{Cloetens}, \textsc{{Le
+  Duc}} \bbland{} \textsc{Fonta}}]{Risser2007}
+\textsc{Risser, L.}, \textsc{F.~Plourabou\'{e}}, \textsc{A.~Steyer},
+  \textsc{P.~Cloetens}, \textsc{G.~{Le Duc}} \bbland{} \textsc{C.~Fonta}. 2007,
+  \enquote{{From homogeneous to fractal normal and tumorous microvascular
+  networks in the brain.}}, \emph{J. Cereb. Blood Flow Metab.}, \bblvol{}~27,
+  \bblno{}~2, \doi{10.1038/sj.jcbfm.9600332}, \bblpp{} 293--303, ISSN
+  0271-678X.
+
+\bibitem[{\textsc{Schaller}(2004)}]{Schaller2004}
+\textsc{Schaller, B.} 2004, \enquote{{Physiology of cerebral venous blood flow:
+  from experimental data in animals to normal function in humans.}},
+  \emph{Brain Res. Brain Res. Rev.}, \bblvol{}~46, \bblno{}~3,
+  \doi{10.1016/j.brainresrev.2004.04.005}, \bblpp{} 243--260.
+
+\bibitem[{\textsc{Shmueli} \bbletal{}(2009)\textsc{Shmueli}, \textsc{Shmueli},
+  \textsc{de~Zwart}, \textsc{de~Zwart}, \textsc{van Gelderen}, \textsc{van
+  Gelderen}, \textsc{Li}, \textsc{Li}, \textsc{Dodd}, \textsc{Dodd},
+  \textsc{Duyn} \bbland{} \textsc{Duyn}}]{Shmueli2009}
+\textsc{Shmueli, K.}, \textsc{K.~Shmueli}, \textsc{J.~a. de~Zwart},
+  \textsc{J.~a. de~Zwart}, \textsc{P.~van Gelderen}, \textsc{P.~van Gelderen},
+  \textsc{T.-Q. Li}, \textsc{T.-Q. Li}, \textsc{S.~J. Dodd}, \textsc{S.~J.
+  Dodd}, \textsc{J.~H. Duyn} \bbland{} \textsc{J.~H. Duyn}. 2009,
+  \enquote{{Magnetic susceptibility mapping of brain tissue in vivo using MRI
+  phase data.}}, \emph{Magn. Reson. Med.}, \bblvol{} 000,
+  \doi{10.1002/mrm.22135}, \bblpp{} 1--13, ISSN 1522-2594.
+  \urlprefix\url{http://www.ncbi.nlm.nih.gov/pubmed/19859937}.
+
+\bibitem[{\textsc{Wang} \bbland{} \textsc{Liu}(2014)}]{Wang_Liu_2014}
+\textsc{Wang, Y.} \bbland{} \textsc{T.~Liu}. 2014, \enquote{Quantitative
+  susceptibility mapping (qsm): Decoding mri data for a tissue magnetic
+  biomarker.}, \emph{Magnetic resonance in medicine : official journal of the
+  Society of Magnetic Resonance in Medicine / Society of Magnetic Resonance in
+  Medicine}, \bblvol{}~00, \doi{10.1002/mrm.25358}, \bblp{} n/a–n/a, ISSN
+  1522-2594.
+
+\bibitem[{\textsc{Young} \bbletal{}(1987)\textsc{Young}, \textsc{Khenia},
+  \textsc{Thomas}, \textsc{Davis}, \textsc{Gadian}, \textsc{Cox}, \textsc{Ross}
+  \bbland{} \textsc{Bydder}}]{Young1987}
+\textsc{Young, I.~R.}, \textsc{S.~Khenia}, \textsc{D.~G. Thomas}, \textsc{C.~H.
+  Davis}, \textsc{D.~G. Gadian}, \textsc{I.~J. Cox}, \textsc{B.~D. Ross}
+  \bbland{} \textsc{G.~M. Bydder}. 1987, \enquote{{Clinical Magnetic
+  Susceptibility Mapping of the Brain.}}, \emph{J. Comput. Assist. Tomogr.},
+  \bblvol{}~11, \bblno{}~1, \bblpp{} 2--6.
+
+\bibitem[{\textsc{Zhang} \bbletal{}(2014)\textsc{Zhang}, \textsc{Liu},
+  \textsc{Gupta}, \textsc{Spincemaille}, \textsc{Nguyen} \bbland{}
+  \textsc{Wang}}]{Zhang2014}
+\textsc{Zhang, J.}, \textsc{T.~Liu}, \textsc{A.~Gupta},
+  \textsc{P.~Spincemaille}, \textsc{T.~D. Nguyen} \bbland{} \textsc{Y.~Wang}.
+  2014, \enquote{{Quantitative mapping of cerebral metabolic rate of oxygen
+  (CMRO2) using quantitative susceptibility mapping (QSM)}}, \emph{Magn. Reson.
+  Med.}, \bblpp{} n/a--n/a.
+
+\end{thebibliography}

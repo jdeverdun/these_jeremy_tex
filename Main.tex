@@ -1,0 +1,104 @@
+%% Copyright (C) 2014 Dorian Depriester
+%% http://blog.dorian-depriester.fr
+%%
+%% This file may be distributed and/or modified under the conditions
+%% of the LaTeX Project Public License, either version 1.3c of this
+%% license or (at your option) any later version. The latest version
+%% of this license is in:
+%%
+%%    http://www.latex-project.org/lppl.txt
+%%
+%% and version 1.3c or later is part of all distributions of LaTeX
+%% version 2006/05/20 or later.
+%%
+%% This work has the LPPL maintenance status `maintained'.
+%%
+%% The Current Maintainer of this work is Dorian Depriester
+%% <contact [at] dorian [-] depriester [dot] fr>.
+%%
+%% This is main.tex for French PhD Thesis.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%           Fichier maitre				%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[a4paper, 12pt, twoside]{report}
+\input{Preambule}		% Liste des packages et de leurs options
+\input{CommandesPerso}	% Commandes et environnements perso
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%   			Liste des fichiers à compiler					%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\includeonly{Chapitre1,Chapitre2,Chapitre3,Annexes}
+
+
+
+% Infos de la page de garde
+\author{Jeremy \scshape{Deverdun}}
+\title{A la recherche de biomarqueurs vasculaires issues de l’IRM multimodale : mise en place d’un protocole expérimental et d’outils de modélisations associés}
+\specialite{Informatique}
+\encadrant{Alain \scshape{Bonafé},Stéphane \scshape{Chemouny}}
+\directeur{François \scshape{Molino}}
+\date{14 septembre 2015}
+\juryc{Mme Emmanuelle Le Bars}{IR, INM}{Jury}
+\juryd{M. Mokhtar Zagzoule}{Professeur IMFT}{Jury}
+\jurya{M. Alexandre Krainik}{PU-PH, CHU Grenoble}{Rapporteur}
+\juryb{M. Emmanuel Barbier}{DR Inserm, GIN}{Rapporteur}
+\jurye{M. Christophe Goze-Bac}{DR CNRS, L2C}{Représentant de l'ED}
+\juryf{Mme. Agnès Malgouyres }{Responsable AM, Siemens}{Invitée}
+\juryg{M. Patrice Mollard}{DR CNRS, IGF}{Invité}
+\jurye{M. Nicolas Menjot de Champfleur}{MCU-PH, INM}{Invité}
+\ecole{Université de Montpellier}
+
+% Méta-données du PDF
+\hypersetup{
+    pdfauthor={Jeremy Deverdun},
+    pdfsubject={Manuscrit de thèse de doctorat},
+    pdftitle={ biomarqueurs vasculaires issues de l’IRM multimodale},
+    pdfkeywords={ biomarqueurs vasculaires,IRM multimodale}
+}
+
+
+
+\begin{document}
+% Préambule
+	\pagedegarde
+	\dominitoc						% Génération des mini-toc
+	\pagenumbering{roman}
+		% Table des matières
+			\setcounter{tocdepth}{1}	% Pas besoin de trop détailler le sommaire ici (chapitres/sections)
+			\tableofcontents
+		% Liste des figures
+			\renewcommand*\listfigurename{Liste des figures}
+			\listoffigures
+		% Liste des tableaux
+		\listoftables
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%		
+% 		Contenu du document			%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\pagenumbering{arabic}
+
+	\includefrom{Chapitre1/}{Chapitre1}	
+	\includefrom{Chapitre2/}{Chapitre2} 		
+	\includefrom{Chapitre3/}{Chapitre3}	
+	\includefrom{Chapitre4/}{Chapitre4}	
+	
+	
+	% Annexes
+	\begin{appendix}
+		\pagenumbering{Roman}
+			\includefrom{Annexes/}{Annexes}				% Figures en annexe
+			
+		% Liste des acronymes, glossaire et liste des symboles (dans l'ordre)		
+		\printglossary[type=\acronymtype , title={Liste des acronymes}, toctitle={Liste des acronymes}]
+		\printglossary[title=Glossaire,toctitle=Glossaire]
+		\printglossary[type=notation,title={Liste des symboles}, toctitle={Liste des symboles}]
+	
+	\end{appendix}
+
+
+
+\end{document}
