@@ -146,7 +146,7 @@ Du fait du principe de l’imagerie TOF, la qualité de l’image récupérée v
 \begin{figure}[!t]
 \centering
 \includegraphics[width=11cm]{1_8_IRM_temps_de_vol}
-\caption{Exemple d'image d'IRM par temps de vol. Le sang entrant dans le volume à imager apparait en hyper signal. A gauche l’image brute, à droite une projection des intensités maximales. La projection est obenue en identifiant le long de l'axe Z en chaque pixel(x,y) l'intensité maximale, le tout étant donc représenté dans une vue 2D. Séquence en temps de vol 3D obtenue à 3T (antenne 32 canaux) avec les paramètres : TE/TR = 3.43/21 ms, angle de bascule = 18°, taille du voxel = 0.26 x 0.26 x 0.6 mm, 220 coupes.
+\caption{Exemple d'image d'IRM par temps de vol. Le sang entrant dans le volume à imager apparait en hyper signal. A gauche l’image brute, à droite une projection des intensités maximales. La projection est obenue en identifiant le long de l'axe Z en chaque pixel(x,y) l'intensité maximale, le tout étant donc représenté dans une vue 2D. Séquence en temps de vol 3D obtenue à 3T (antenne 32 canaux) avec les paramètres : TE/TR = 3.43/21 ms, angle de bascule = 18°, taille du voxel = 0.26 x 0.26 x 0.6 mm, 220 coupes.}
 \label{fig:1_8_IRM_temps_de_vol}	
 \end{figure}
 En fonction du contexte, l’acquisition peut être 2D ou 3D. Lors d’une acquisition 2D un ensemble de coupes fines est effectué pour aboutir à un pseudo-volume 3D. Les coupes fines autorisent une meilleure sensibilité aux flux lents du fait du temps plus court passé dans la coupe. En effet les flux lents subissent l'effet de saturation de façon similaire au tissu stationnaire, l'utilisation de fines coupes permet permet de limiter cet effet, le sang ayant le temps de traverser ce petit volume. En contrepartie, la résolution spatiale dans l’axe de la pile de coupe est limitée. Les acquisitions 3D autorisent elles l’obtention d’une bonne résolution spatiale dans les 3 directions, ainsi qu’un meilleur rapport signal sur bruit. En revanche les flux lents risquent d’être peu voir non visibles.\\
@@ -177,6 +177,7 @@ Les images obtenues permettent de visualiser l’ensemble des vaisseaux (Figure~
 %%%
 %%%
 \subsection{Système veineux : Imagerie de susceptibilité magnétique}
+\label{sec:QSM_chap_2}
 Une autre technique mettant en relief de nouveaux contrastes plus fins a été développée plus récemment: l’{\em imagerie de susceptibilité}. Définissons la susceptibilité $\chi_m$ : la plupart des matériaux placés dans un champ magnétique possèdent la capacité de s’aimanter sous l’action de ce  champ. 
 \begin{equation}
 \bold{M}\,=\,\chi_m\,\bold{B}_0.
