@@ -189,6 +189,69 @@ Les rayons moyens des différents compartiments peuvent être visualisés (Figur
 \label{fig:2_13_profil_rayons}	
 \end{figure}	
 \textcolor{red}{Petite remarque : il y a dans le manuscrit original une figure 25 qui n'est pas referencee dans le texte!}
+%%%
+%%%
+%%%
+\section{Le système ventriculaire}
+A ce stade, nous possédons une architecture complète allant des entrées artérielles aux veines. Il manque cependant les informations relatives à la circulation du liquide cérébro-spinal. Ce dernier peut être segmenté facilement via l’outil SPM (voir Appendice 1.2.4)\textcolor{red}{revoir cette ref}. Cependant, cet outil ne fournit aucun moyen d’identification directe des différents ventricules. Une toolbox SPM nommée ALVIN pour « Automatic Lateral Ventricle delIneatioN » propose d’identifier sur la base d’une imagerie T1, et de sa segmentation de données a-priori, les ventricules latéraux (\cite{Kempton2011}). Cependant afin de reproduire un système cohérent, nous souhaitons intégrer les ventricules latéraux, mais aussi les troisième et quatrième ventricules à notre description. Des outils plus ou moins sophistiqués existent par utilisation de modèles du système ventriculaires et d’algorithmes de croissance de région [47][48] (\cite{Liu2009},\cite{Schnack2001}) mais peu sont disponibles gratuitement pour la communauté. Or les ventricules peuvent être facilement segmentés manuellement en 4 clics via des outils de traçage semi-automatique de roi 3D basés sur les intensités. Un exemple est le « 3D painting tool » proposé par MRIcron (\cite{Rorden2007}). En effet, les ventricules apparaissent en hyposignaux clairement délimitable des autres tissus. MRIcron permet de sélectionner automatiquement tous les voxels dans un rayon donné ayant un faible écart en termes d’intensité à un voxel de référence. Des cycles successifs d’érosions/dilatations limite les risques que la ROI « bave » dans des régions non désirées. Cette méthodologie est simple à mettre en place, et efficace (figure ~\ref{fig:2_14_ventricules_segmentes}). \\
+%%%
+\begin{figure}[!t]
+\centering
+\includegraphics[width=14cm]{2_14_ventricules_segmentation}
+\caption{Segmentation semi-automatique des ventricules par MRIcron sur une image T1. Chaque ventricule est identifié
+par une couleur différente.}
+\label{fig:2_14_ventricules_segmentes}	
+\end{figure}	
+Le choix se pose donc entre une approche automatique ayant un coût conséquent en termes
+d’implémentation et une approche semi-automatique rapide. La deuxième solution, bien que
+nécessitant une intervention de l’utilisateur a été privilégiée. En effet, bien que les algorithmes à
+croissance de région puissent fournir des résultats intéressants, ils ne sont pas infaillibles. Or, la
+manipulation réalisée sous MRIcron est simple, rapide, et assure une bonne qualité des résultats grâce
+au contrôle utilisateur.\\
+La description des volumes correspondant par des géométries cylindriques est imposée par la
+logique de la construction de notre modèle, elle est peu conforme à la réalité structurale. Du point de
+vue de l’élastance, en choisissant une longueur conventionnelle issue de la littérature (\cite{Linninger2009}), on peut
+reporter de façon plausible les variations de volumes sur les variations de sections. Par contre le calcul
+d’une résistance hydrodynamique entre ces longueurs (par une loi de poiseuille) n’est certainement
+pas correct. Il est d’ailleurs vraisemblable qu’une partie importante de la résistance de ce système se
+situe non pas dans les compartiments eux-mêmes, mais dans les conduits qui les relient. Néanmoins,
+ce modèle simplifié maintient une description hydrodynamique semblable à celle des vaisseaux.
+L’article de Linninger et al. (\cite{Linninger2009}) montre une bonne capacité de cette technique à reproduire des
+phénomènes spécifiques à la circulation céphalo-rachidienne (hydrocéphalie).\\
+On peut se réserver un paramètre d’ajustement de la résistance hydrodynamique des
+compartiments du LCS qui multiplient la simple loi de Poiseuille et dont on pourra rechercher la valeur
+la plus adéquate.
+%%%
+%%%
+%%%
+\section{Finalisation}
+Le système est alors complet, chaque compartiment est représenté et décrit à travers son volume,
+son rayon, et sa longueur. Dans la perspective d’une modélisation par un système d’équations
+différentielles ordinaires, la structure peut s’avérer complexe à appréhender. En effet, nous allons
+avoir des centaines de segments à modéliser, et les équations correspondantes devront être générées
+automatiquement à partir de la description structurale. De ce fait, les situations telles que les
+convergences de plus de trois vaisseaux peuvent complexifier l’implémentation d’un algorithme
+générique de définition des équations. Une dernière étape de finalisation vise donc à :
+%%%
+\begin{figure}[!t]
+\centering
+\includegraphics[width=14cm]{2_15_conversion_y}
+\caption{Illustration de la conversion des vaisseaux à connexions multiples en connexions en Y. Les tubes représentent des
+segments de vaisseaux, ils sont identifiés par un numéro. La conversion en connexions 2 vers 1 ou 1 vers 2 est réalisée par
+l’insertion d’un nouveau tube (en bleu) de très faible longueur et de rayon identique au tube parent.
+}
+\label{fig:2_15_conversion_y}	
+\end{figure}	
+\begin{itemize}
+\item Réduire les connexions entre les tubes à des connexions en Y (deux tubes vers un ou
+l’inverse) : détails en Figure ~\ref{fig:2_15_conversion_y};
+\item éliminer les boucles qu’il peut rester (hors polygone de Willis): en parcourant l’arborescence
+et en ne conservant que les chemins les plus courts (ou le chemin suivant les vaisseaux les
+plus gros de façon à maximiser les volumes) amenant d’une entrée aux branches terminales
+des artères, ou d’une veine à la sortie.
+\end{itemize}
+Comme on le verra l’architecture ainsi finalisée pourra être importée dans le modèle et implémentée.
+
 
 \bibliography{jeremythesebib}{}
 \bibliographystyle{francaissc}
