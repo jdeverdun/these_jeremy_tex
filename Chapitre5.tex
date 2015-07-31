@@ -1,0 +1,481 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%									Chapitre 4												%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Modélisation des écoulements intracrâniens}
+	\minitoc
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+La dynamique des fluides intracrâniens est d'une très grande complexité. D'un point de vue
+mécanique, elle inclut (1) des systèmes circulants à la géométrie ramifiée et complexe (vaisseaux,
+liquide cérébro-spinal), traversés par (2) un fluide non-newtonien (sang), le tout au sein (3) d'un milieu
+viscoélastique hétérogène (matière grise, matière blanche), et enfin en présence (4) de contraintes
+globales fortes (constance du volume intracrânien). De plus, peu de choses dans cette mécanique
+peuvent être bien représentées par de simples modèles linéaires. Une des raisons principales en est la
+présence de phénomènes actifs d'autorégulation, essentiels au bon fonctionnement physiologique du
+cerveau, et qui couplent des échelles extrêmement différentes. Des variations globales de pression ont
+des effets jusqu'à l'échelle intracellulaire et moléculaire, via l'activation de certaines voies de
+signalisation sur des cellules musculaires lisses par exemple. Le cerveau représente le défi le plus
+significatif pour l'approche intégrée de type « biologie des systèmes » aujourd'hui en pleine expansion,
+et qui a pour ambition de réaliser in silico de grandes reconstructions multi-échelle d'organes ou
+d'organismes. En l'état, toute modélisation de la dynamique des fluides dans le cerveau propose une
+simplification radicale de la situation physiologique.\\
+En dépit de ces difficultés, l'intérêt de disposer de simulations dynamiques reproduisant même
+une partie de ces phénomènes est grand, et une tradition importante de modélisation s'est
+développée. Du point de vue clinique, il existe en effet nombreuses conditions pathologiques
+directement reliées à la dynamique des fluides intracrâniens, telles que l'hydrocéphalie, les différentes
+formes de vascularite, les hémorragies sous-arachnoïdiennes, ou les anomalies de la pression
+intracrânienne. Par ailleurs, le lien entre activité neuronale et circulation sanguine est à la base de la
+technique même de l'IRM fonctionnelle. Il est donc important de comprendre les phénomènes
+dynamiques propres à la circulation, pour ensuite éclaircir leur implication neurologique.\\
+Comme dans toute modélisation d'un système complexe, il existe dans toutes les approches
+disponibles un arbitrage entre exactitude et simplicité. Cette dernière est nécessaire pour rendre les
+modèles utilisables, en particulier pour les recherches visant un contexte clinique. Si par exemple une
+modélisation a l'ambition d'être assez pertinente cliniquement pour aider un neurochirurgien à faire
+des choix, souvent dans des délais très courts, le temps de calcul associé au modèle se doit de ne pas
+être trop long, et ses paramètres aisément compréhensibles. D'un autre côté, une simplification
+excessive empêchera de prendre en compte la variabilité détaillée des structures et des dynamiques
+cérébrales entre patients, dont on sait de plus en plus combien elle est importante. Quelle finesse de
+description choisir ? L'exemple de la variabilité structurale est éclairant : prendre cette variabilité en
+compte dans un modèle demande en contrepartie de disposer de données qui quantifient de façon
+fiable le détail des structures à l'échelle ou cette variabilité se manifeste. Comme dans d'autres
+domaines de la biophysique, il semble superflu de modéliser avec une précision plus grande que celle des données quantitatives disponibles, structurales ou dynamiques, et ce sont ces dernières qui
+fournissent sans doute la « bonne échelle » de complexité des modèles.\\
+En conséquence de ces deux observations concernant le temps de calcul et les données
+quantitatives pertinentes, la complexité des modèles de la mécanique intracrânienne s'est développée
+au rythme de l'évolution d' outils d'imagerie et de calcul permettant (1) de fournir aux modèles des
+données quantitatives de plus en plus détaillées (2) de rendre l'exécution de la simulation assez rapide
+pour un potentiel usage clinique.\\
+Dans ce cadre, la perspective de notre travail de modélisation est la suivante. Nous ne nous
+sommes pas donnés la contrainte de temps de calcul liée à d'un usage clinique de type interventionnel,
+mais nous nous sommes proposé la construction d'un outil qui permette d'intégrer les informations
+quantitatives morphologiques et dynamiques issues de l'état de l'art de l'imagerie. Notre modèle peut
+s'adapter au degré de précision de ces données telles qu’elles sont disponibles pour un patient. En
+pratique, nous souhaitions cependant que le temps de calcul reste compatible avec une infrastructure
+informatique relativement légère, excluant l'emploi de supercalculateurs. A l'échelle de tout le crâne,
+cela est incompatible avec les modèles basés sur des équations aux dérivées partielles proposant une
+morphologie fine en 3D des vaisseaux et des tissus individuels. Expérimentalement, une description
+aussi détaillée n'est d'ailleurs pas disponible au cours du temps, sinon très localement, et les modèles
+qui les utilisent ne peuvent pas être validés en termes de distributions des vitesses ou de dynamique
+des parois à l'échelle du cerveau entier. Nous avons donc choisi, dans la lignée de la plupart des
+modèles de la littérature, une formulation en compartiments, qui conduit à des systèmes d'équations
+algébro-différentielles aujourd'hui solubles par des algorithmes efficaces sur une station de calcul
+individuelle. La structure des compartiments utilisés sera celle qui est fournie par la combinaison des
+informations de segmentation des différentes techniques d'imagerie morphologique, résultats
+présentés au chapitre~\ref{chap:morpho}. Enfin, en l'état, les dynamiques de rétroaction qui constituent une part
+importante des travaux antérieurs de modélisation seront ici passées sous silence : nous nous
+intéressons dans la cadre de ce travail à la construction préliminaire d'un modèle « passif » de la
+circulation, modèle auquel des mécanismes de rétrocontrôle régulateurs pourront ensuite être
+rajoutés, comme nous l'esquisserons dans les perspectives.\\
+Nous allons d'abord passer en revue les principaux modèles à compartiments de la littérature,
+avant d'évoquer les travaux qui utilisent les données d'imagerie pour informer une modélisation plus
+détaillée et spécifique à un patient. Comme dit précédemment, on se contentera ici d'exposer la partie
+« physique » hydrodynamique de ces modèles, sans rendre compte des mécanismes de rétrocontrôle
+qu'ils proposent pour comprendre l'autorégulation du système. Enfin, nous présenterons en détail notre propre modèle dynamique, qui intègre les deux approches « compartiment » et « modélisation
+spécifique », et exposerons ses résultats provisoires, avant de parler des perspectives de
+développement à court terme de ce modèle.
+%%%
+%%%
+%%%
+\section{Les modèles à compartiments de la dynamique des fluides intracrâniens}
+\label{sec:modeles_compartiments}
+Le principe de tous les modèles à compartiments est simple. L'ensemble du système des fluides
+intracrâniens est décomposé en compartiments, chacun caractérisé par une seule valeur de la
+pression. Des équations de transfert entre compartiments et des équations bilans des entrées/sorties
+dans chaque compartiment complètent la dynamique.\\
+Les articles fondateurs de Monro  (\cite{Monro2010}) et Kellie (\cite{Kellie1824}) sont les exemples historiques les plus
+simples, considérant le cerveau comme respectivement bi-compartimental (sang et fluide cérébral) et
+tri-compartimental (artères, veines, fluides cérébraux). Les principales évolutions sont récentes et ont
+constitué surtout dans la subdivision plus fine des compartiments circulants (artères, capillaires,
+veines, liquide céphalo rachidien), et dans certains cas l'introduction de propriétés mécaniques
+viscoélastiques pour le parenchyme cérébral (\cite{Sorek1988}).\\
+Le modèle de Ursino et al. (\cite{Ursino1988},~\cite{Ursino1991}), dans sa version simplifiée (\cite{Ursino1997}), est le plus minimal. Il est
+basé sur cinq compartiments (parenchyme, artères, capillaires, veines, sinus veineux), et schématisé
+en Figure~\ref{fig:4_1_ursino}. 
+%%%
+\begin{figure}[!t]
+\centering
+\includegraphics[width=12cm]{4_1_ursino}
+\caption{Schéma du modèle d'Ursino (\cite{Ursino1997}).}
+\label{fig:4_1_ursino}	
+\end{figure}
+Ce modèle permet de bien voir l'analogie électrique sur laquelle se base la partie linéaire de la
+modélisation en compartiments. Les flux d'un compartiment à un autre sont reliés aux différences de
+pression par des résistances hydrodynamiques :
+\begin{equation}
+F\,=\,R\,\Delta P.
+\end{equation}
+Les résistances elles-mêmes sont des paramètres du modèle, sans qu'une hypothèse de type poiseuille
+par exemple les associe à des caractéristiques structurales des vaisseaux. De plus le caractère flexible
+des parois, pouvant conduire à une accumulation de liquide dans un compartiment, est représenté par
+une capacité C, elle non plus non reliée pour l'instant à un paramètre structural mesurable. Le volume
+de chaque compartiment varie à la fois du fait du bilan des entrées et sorties de fluide, mais dépend
+aussi des différences de pression entre sa pression intérieure et la pression intracrânienne
+\begin{equation}
+V\,=\,C\,(P-P_{inc }).
+\end{equation}
+On aboutit à un ensemble clôt d'équation différentielles soluble. Les paramètres sont alors estimés à
+partir de valeurs moyennes venues de mesures disponibles dans la littérature, et en reproduisant des
+données dynamiques typiques, telles qu'un flux hémodynamique moyen de 12.5 ml/s.\\
+Le modèle de Sorek et al. (\cite{Sorek1988}) est plus complet: 7 compartiments (jugulaires et LCS en plus),
+mais basé sur les mêmes hypothèses linéaires, et des équations semblables (figure ~\ref{fig:4_2_sorek}). 
+%%%
+\begin{figure}[!t]
+\centering
+\includegraphics[width=12cm]{4_2_sorek}
+\caption{Schéma du modèle de Sorek (\cite{Sorek1988}).}
+\label{fig:4_2_sorek}	
+\end{figure}
+Les paramètres de
+résistance et de compliance sont estimés à l'aide d'une procédure d'inversion linéaire à partir d'un jeu
+de données de pression d'entrée en fonction du temps. Ils ne sont comme précédemment pas reliés à
+des caractéristiques structurales.\\
+Le modèle de Zagzoule et Marc-Vergnes (\cite{Zagzoule1986}) constitue la première approche basée sur des
+données structurales mesurées (ou estimées), et de surcroît n'est plus linéaire. 
+%%%
+\begin{figure}[!t]
+\centering
+\includegraphics[width=12cm]{4_3_zagzoule}
+\caption{Schéma du modèle de Zagzoule et Marc-Vergnes (\cite{Zagzoule1986}).}
+\label{fig:4_3_zagzoule}	
+\end{figure}
+Le modèle n'est pas
+stricto sensu compartimental, mais est présenté ici comme base du modèle de Linninger et al(\cite{Linninger2009}) , qui
+reprend les mêmes idées dans une logique compartimentale. L'ensemble de la circulation
+intracrânienne est représentée par une série de compartiments en parallèle et en série, selon un
+schéma inspiré de la physiologie moyenne des artères, des veines, et des niveaux de microcirculation
+intermédiaire. Le liquide cérébro-spinal et le parenchyme sont absents du modèle, si bien que rien ne
+vient imposer la constance du volume intracrânien. Chaque compartiment est représenté par un tube,
+et les paramètres du modèle sont les sections et les vitesses moyennes calculées en des points
+discrétisés le long de chaque tube, la longueur du tube étant prise comme constante. Les équations de l'hydrodynamique sont transformées en ces points en équations aux différences finies (voir figure~\ref{fig:4_3_zagzoule}). Le système
+d'équation est
+\begin{eqnarray}
+ \mbox{Continuité\hspace{1cm}}&&\frac{\partial A}{\partial t}\,+\,\frac{\partial A U}{\partial x}\,=\,0,\\
+\mbox{Mouvement\hspace{1cm}}&&\frac{\partial U}{\partial t}\,+\,\frac{\partial}{\partial x} \biggl(\frac{U^2}{2}\,+\,\frac{P}{\rho}\biggr)\,=\,-F,\\
+\mbox{\'Elasticité  des tubes\hspace{1cm}}&&E_L\biggl(\frac{A}{A_0}\,-\,1\biggr)\,=\,P,
+\end{eqnarray}
+où $E_L=\frac{E}{2}\frac{h}{R_0}$. Ceci constitue un système hyperbolique du premier ordre complet. Une équation constitutive
+supplémentaire relie la friction et les vitesses, selon une loi de Poiseuille :
+\begin{equation}
+\label{eq:poiseuille}
+F\,=\,N\biggl(\frac{8\,\pi\,\mu}{\rho}\frac{U}{S}\biggr).
+\end{equation}
+Cette loi de Poiseuille permet d'associer au modèle les paramètres structuraux des vaisseaux, soit tirés
+de la littérature, soit estimés. Par exemple, les paramètres de diamètre et de nombre des capillaires
+dans la partie microcirculatoire sont estimés sur la base d'une progression géométrique en l'absence
+de données. L'ensemble fournit des valeurs de pression et de flux dans le système circulant
+comparables aux valeurs mesurées, et précède une étude simplifiée de mécanismes possibles
+d'autorégulation.\\
+Présentons pour finir le modèle de Linninger et al. (\cite{Linninger2009}), qui est le plus proche dans l'esprit du
+nôtre. L'objectif clinique de ce modèle est la modélisation de pathologies du liquide cérébro-spinal,
+telles que l'hydrocéphalie. Dans ce but, il propose une description plus détaillée de la circulation du
+LCS. Les quatre ventricules sont séparés en compartiments distincts. Cette logique le conduit alors à
+une latéralisation de la description du système sanguin, afin d'associer chaque ventricule latéral à son
+propre système artériolaire (lieu de la production du LCS). Enfin, il incorpore un comportement
+parenchymateux également latéral. Le tout est englobé dans un compartiment sous-arachnoïdien
+commun, qui se déverse dans le canal de la moelle épinière (voir Figure~\ref{fig:4_4_linninger}). 
+%%%
+\begin{figure}[!t]
+\centering
+\includegraphics[width=12cm]{4_4_linninger}
+\caption{Schéma du modèle de Linninger (\cite{Linninger2009}).}
+\label{fig:4_4_linninger}	
+\end{figure}
+Dans la description de
+chaque compartiment, il reprend les variables géométriques du modèle précédent : aire et flux
+entrants et sortants, mais sans discrétiser le long des tubes une équation aux dérivées partielles, ce
+qui n'aurait guère de sens pour les compartiments du LCS, pour lesquels cette géométrie est peu
+physiologique de toute façon. On revient à des équations bilan pour la quantité de mouvement et la
+masse. Notons toutefois qu'ici la résistance hydrodynamique n'est plus modélisée entre les
+compartiments, mais à l'intérieur de ceux-ci, via une loi de Poiseuille globale le long des tubes. Par
+ailleurs la capacité des compartiments à jouer leur rôle « capacitif » est représentée par une équation
+de distensibilité
+\begin{equation}
+P\,-\,P_{Brain}\,=\,E\biggl(\frac{A}{A_0}\,-\,1\biggr).
+\end{equation}
+On complète le système par des équations assurant la continuité des flux d'un compartiment à
+l'autre. La contrainte de Monro-Kellie est implémentée, contrairement au modèle de Zagzoule. Les
+données fournies au modèle pour l'intégrer sont le décours temporel de la pression en entrée (artère
+carotide) et en sortie (veine jugulaire). Le modèle permet alors de calculer tous les flux et les pressions
+au cours du temps dans tous les compartiments. Il reproduit de façon assez détaillée des données
+pathologique dynamiques sur l'hydrocéphalie.\\
+Ce modèle constitue un intéressant compromis entre d'une part la logique de compartiments,
+et d'autre part l'introduction de paramètres structuraux et physiologiques mesurables
+indépendamment du modèle. Néanmoins, malgré la relative complexité du modèle (86 équations
+algébro-différentielles non-linéaires couplées pour 22 compartiments), il correspond encore à une
+modélisation « moyenne » des écoulements, et ne s'adapte pas à des données obtenues sur un
+individu particulier.\\
+Notre démarche a été donc de s'inspirer de l'approche de Zagzoule et Linninger, mais en allant
+beaucoup plus loin dans l'introduction de paramètres anatomiques issus de l'imagerie d'un patient
+donné. En effet, indépendamment de l'approche en compartiments développée dans cette partie,
+plusieurs travaux ont commencé à proposer des approches de modélisation patient-spécifique.
+Exposons-les brièvement.
+%%%
+%%%
+%%%
+\section{Intégration de données structurales}
+La variabilité de la structure vasculaire cérébrale, en particulier des anastomoses artérielles et
+veineuses, l'importance pathologique de cette variabilité, ont conduit à la nécessité de proposer des
+approches de modélisation permettant de comprendre la portée physiologique de ces variantes
+structurales. C'est la structure artérielle, en particulier le polygone de Willis, qui a fait l'objet des
+recherches les plus nombreuses. On suivra ici le bilan de ces travaux donné dans (\cite{David2008}).\\
+L'article de Cebral et al. (\cite{Cebral2003}) utilise des données d'imagerie par temps de vol du cercle de Willis
+et des principales artères pour générer une structure 3D détaillée, considérée comme un système de
+parois rigides, et maillée spatialement. Les données dynamiques d'entrée sont fournies par une
+mesure des flux en contraste de phase. Une résistance effective à la sortie du système est proposée
+par différentes techniques de modélisation de la perfusion aval, permettant de calculer une pression
+de sortie, et de rendre ainsi le modèle soluble en 3D plus temps. La solution met en évidence des
+écoulements non stationnaires, et se concentre en particulier sur le problème du rôle régulateur du
+cercle de Willis lors de l'occlusion d'une carotide.\\
+Le travail de Kim et al. (\cite{Kim2006}) ajoute à cette approche l'extensibilité des parois du système
+artériel, et se base sur le même type de données structurales issues de l'imagerie par temps de vol.
+Les conditions aux limites en entrée sont ici les pressions afférentes et non les flux. Les pressions en
+sortie sont à nouveau calculées sur la base de modèles de résistances idéalisées du réseau perfusant
+en aval. Noter qu'un modèle simple d'autorégulation est proposé. Le modèle se concentre sur la
+prédiction de la réponse des anastomoses du cercle de Willis lors d'un épisode de réduction abrupte
+de la pression dans une artère d'entrée.\\
+Enfin Moore et al. (\cite{Moore2006}) ont suivi pour l'essentiel les mêmes stratégies, se distinguant par une
+modélisation différente du réseau aval. Il est à noter en effet que la description simplifiée de
+l'architecture aval constitue la partie la moins solide de ces modélisations, en contraste avec la vision
+très détaillée du système artériel. Notre approche de ce point de vue cherche à combiner une
+description globale issue des données les plus avancées disponibles, y compris sur la géométrie du
+cercle de Willis, avec la vision la plus simple possible des compartiments individuels. Nous pourrons
+ainsi, comme nous l'exposions dans l'introduction, adapter le plus étroitement la finesse de description
+du modèle avec celle des données, pour l'ensemble de la circulation cérébrale.
+%%%
+%%%
+%%%
+\section{Vers un modèle complet sujet-spécifique}
+%%%
+%%%
+\subsection{Exposition du modèle}
+L’anatomie vasculaire du cerveau est complexe. Un grand nombre de vaisseaux assurent
+l’apport du sang dans les différentes régions cérébrales. Il est difficile d’accéder aux caractéristiques de l’ensemble du système, et de le modéliser directement. Beaucoup de travaux se focalisent alors sur
+des structures locales précises comme le polygone de Willis ou tentent de simplifier le problème en
+regroupant les vaisseaux par type afin de travailler avec moins de compartiments (voir~\ref{sec:modeles_compartiments}). Jusqu’à
+présent, la plupart des modèles vasculaires intégrant des données d’imagerie se contentaient du
+versant artériel de la circulation en des données de contraste de phase et/ou d’une imagerie par temps
+de vol. L’avancée des séquences IRM permet à présent d’accéder à un grand nombre d’informations
+sur les flux intracrâniens, tant au niveau anatomique, que dynamique et physiologique. En parallèle,
+les outils informatiques autorisent la simulation de problèmes complexes intégrant de nombreux
+compartiments.\\
+Dans ce contexte la modélisation d’un système complet des flux dans le cerveau avec
+architecture réaliste et adaptée au sujet devient envisageable. Notre objectif, comme nous l’avons
+déjà dit, est de développer une méthodologie permettant pour un sujet donné, d’extraire son
+arborescence vasculaire ainsi qu’un maximum d’informations permettant de caractériser les flux
+intracrânien afin de nourrir le modèle. C’est ce qui a été réalisé dans les chapitres précédents.\\
+Le modèle tel que nous le proposons maintenant se base sur les mêmes principes que les
+travaux de Zagzoule et Marc-Vergnes (\cite{Zagzoule1986}) , puis de Linninger et al. (\cite{Linninger2005},~\cite{Linninger2007},~\cite{Linninger2009}) qui intègrent comme
+nous l’avons vu les compartiments vasculaires et céphalo-rachidien sous forme de tubes. Dans une
+logique de simplification, leur modèle ne considère qu’une entrée, fusion des différentes carotides
+internes et de l’artère basilaire, puis un système de tubes simples allant des artères aux veines (1 par
+type et par hémisphère), enfin une sortie pour le sang, fusion des veines jugulaires, et une voie de
+sortie pour le liquide céphalo rachidien, la moelle épinière.\\
+Lors du chapitre 3 nous avons mis au point une chaine de traitement qui aboutit à une
+architecture complète partant des carotides internes et de l’artère basilaire, et allant jusqu’aux veines
+jugulaires. Comme tous les travaux de modélisation antérieurs, nous n’avons pas accès aux
+compartiments artériolaires, capillaires et veinulaires ; nous avons donc des « super tubes »
+regroupant en réalité un grand nombre de vaisseaux. La différence de notre travail avec celui par
+exemple de Linninger, réside dans le nombre de de ces structures. Pour chaque artère terminale que
+nous pouvons identifier, nous retrouverons un ensemble artériole, capillaire, veinule définissant un
+territoire.\\
+Du côté de la sortie, le système veineux se termine par les sinus puis les veines jugulaires.
+Quelques simplifications sont également possibles à ce niveau. L’une des caractéristiques distinguant
+certains sinus est en effet leur capacité à réabsorber une partie du liquide céphalo rachidien via les
+villosités arachnoïdiennes. Ce transport est prépondérant dans le sinus sagittal supérieur (voir~\ref{sec:syst_ventr}). Afin de limiter la complexité du modèle, nous faisons le choix de regrouper les sinus veineux autres
+que le sinus sagittal supérieur en un « super sinus » représentant la sortie de notre système. On peut
+alors représenter la nouvelle architecture comme suit (Figure~\ref{fig:4_5_schema_modele}):
+%%%
+\begin{figure}[!t]
+\centering
+\includegraphics[width=12cm]{4_5_schema_modele}
+\caption{Illustration de la circulation sanguine pour le modèle développé. Dans cet exemple, afin d’améliorer la lisibilité,
+nous considérons un système circulatoire sans artères cérébrales moyennes et avec très peu de ramifications. A gauche est
+représenté la structure sous forme de tubes. Avec $B$ pour artère basilaire, $Car$ pour carotide interne, $A$ pour artère, $A_l $pour
+artériole, $C$ pour capillaire, $V_l $pour veinule, $V$ pour veine, et $Sinus_{sag}$ pour sinus sagittal supérieur. Les flèches en pointillés
+orange indiquent la présence de liens entre ces artères (communicantes). Le schéma de droite illustre la structure
+anatomique correspondant au graphe de gauche, les numéros font le lien entre les segments du schéma et le tubes du
+graphe.
+}
+\label{fig:4_5_schema_modele}	
+\end{figure}
+Cette structure est à mettre en relation avec le modèle de Linninger (Figure~\ref{fig:4_4_linninger}). Nous n’avons
+cependant ici représenté que le système sanguin, le système céphalo-rachidien étant identique aux
+travaux de ce dernier (Figure~\ref{fig:4_4_linninger}) à la subtilité près que les interactions LCS – Parenchyme – Sang sont
+réparties sur un ensemble de tubes (plusieurs artérioles et capillaires).\\
+e sang est modélisé comme un fluide visqueux et incompressible évoluant des artères aux veines
+(Figure~\ref{fig:4_5_schema_modele}). Le système céphalo-rachidien intègre les ventricules latéraux, les troisième et quatrième
+ventricules et l’espace sous arachnoïdien (cérébral et de la moelle), le tout étant interconnecté (Figure~\ref{fig:4_6_LCR_modele}). A partir de l’espace sous arachnoïdien cérébral, on admet que le LCS est réabsorbé dans le sinus
+veineux par l’intermédiaire des villosités arachnoïdiennes (\cite{Segal2001}). Le parenchyme est considéré comme
+un milieu déformable et incompressible séparé en deux hémisphères et composé de deux phases : le
+fluide extracellulaire (30\% du parenchyme, similaire au liquide cérébro-spinal) et la matrice cellulaire
+solide (70\% du parenchyme) représentant les neurones, les cellules gliales et les fibres axonales. De
+tous les compartiments, seule la moelle épinière n’est pas contenue dans le crâne. Enfin, il existe des
+entrées additionnelles au modèle, autre que les trois artères principales, à savoir : la production constante de liquide cérébro-spinal depuis les artérioles vers les ventricules latéraux par les plexus
+choroïdes et la production diffuse des capillaires vers le parenchyme cérébral puis les ventricules.\\
+%%%
+\begin{figure}[!t]
+\centering
+\includegraphics[width=12cm]{4_6_LCR_modele}
+\caption{Système cérébro-spinal dans notre modèle en prenant une référence partant d’une artériole. En rouge sont
+indiqués les flux sanguin, en bleu les flux du LCS. Les flèches en pointillés indiquent la production de LCS (constante), tandis
+que les flèches pleines représentent les échanges de liquide liés à la pression. $L_v$ représente les ventricules latéraux, $3V$ le
+troisième ventricule, $4V$ le quatrième ventricule, $SAS$ l’espace sous arachnoïdien, $VSinus$ le sinus veineux. L’image de droite
+illustre l’évolution du liquide cérébro-spinal (ligne en pointillé), les points représentant les compartiments.}
+\label{fig:4_6_LCR_modele}	
+\end{figure}
+La doctrine de Monroe-Kellie est rigoureusement implémentée dans le modèle. Cependant le
+liquide cérébro-spinal peut s’écouler dans l’espace sous arachnoïdien de la moelle qui n’est pas confiné
+dans crâne.\\
+Le flux sanguin et cérébro-spinal est décrit dans ce modèle par les équations bilans fondamentales
+de l’hydrodynamique : conservation de la masse, conservation de la quantité de mouvement. Pour
+tenir compte de l’adaptation du diamètre des vaisseaux aux pressions on introduit pour chaque
+compartiment un paramètre d’élasticité de la paroi et une équation correspondante. Le modèle
+contient trois type de variables pour chaque compartiment : la pression au centre $p$, le flux entrant fin
+et sortant $f_{out}$ et l’aire du tube $A$. Le principe est d’avoir un système d’équations générique pour un
+tube que l’on peut ensuite reproduire pour un nombre indéfini de tubes, à condition de s’assurer de
+règles de continuité adéquate entre compartiments.\\
+Notons que, contrairement à Linninger, nous représentons les pressions au centre du tube et non
+en fin de tube (Figure~\ref{fig:4_7_milieu_tubes}).\\
+%%%
+\begin{figure}[!t]
+\centering
+\includegraphics[width=12cm]{4_7_milieu_tubes}
+\caption{Différence entre la définition des pressions sur le modèle de Linninger, et sur le nôtre. Les triangles bleus
+indiquent les pressions selon notre modèle et les losanges verts selon Linninger.}
+\label{fig:4_7_milieu_tubes}	
+\end{figure}
+La conservation de la masse assure qu’aucun volume de fluide n’est gagné ni perdu,
+conformément à l’hypothèse d’incompressibilité du sang et du LCS. On peut ainsi écrire cette équation
+sous la forme :
+\begin{equation}
+l\,\biggr(\frac{\partial A}{\partial t}\biggr)\,=\,f_{in}\,-\,f_{out}\,+\,S_{I\rightarrow II}.
+\end{equation}
+avec $l$ la longueur hydraulique du compartiment, $\frac{\partial A}{\partial t}$
+le changement de l’aire de la section du tube en
+fonction du temps, et $f_{in}$ et $f_{out}$ les débits en entrée et en sortie. $S_{I \rightarrow II}$ est dans ce bilan un terme de
+source reflétant le transfert (constant ou non) d’un compartiment à un autre. Ce terme ne sera
+pertinent que pour les compartiments disposant de parois perméables autorisant le transfert avec une autre phase. Pour commencer, la production du LCS est principalement lié à un transfert constant
+entre le compartiment artériolaire et les ventricules latéraux $S_{Al\rightarrow Vl}$. Cependant, une seconde
+production existe à travers les capillaires qui produisent de façon constante du LCS passant dans
+l’espace extracellulaire du parenchyme ce qui conduit à un terme $S^{const}_{Cp\rightarrow cerv}$. Cette production peut
+ensuite rentrer dans les ventricules du fait de la différence de pression via une résistance
+hydrodynamique :
+\begin{equation}
+P_{Lv}\,-\,P_{cerv}\,=\,\alpha\,S_{cerv\rightarrow Lv},
+\end{equation}
+à laquelle s’ajoutera un transfert constant $S^{const}_{cerv\rightarrow cLv}$. Enfin il peut exister une fuite du lit capillaire
+vers le parenchyme dans les deux sens $S_{Cp\rightarrow cerv}$ , du fait de la différence de pression entre les capillaires
+et le cerveau environnant (\cite{Starling1896}). La résorption du LCS par le sinus veineux est principalement réalisée
+au niveau des villosités arachnoïdiennes. Cette résorption est elle aussi modélisée comme fonction de
+la différence de pression entre l’espace sous arachnoïdien et le sinus veineux et d’une constante $k$, on
+définit ainsi $f_{reabsorption}$ :
+\begin{equation}
+f_{reabsorption}\,=\,k\,(P_{SAS}\,-\,P_{sinusV}),
+\end{equation}
+avec $P_{SAS}$ la pression dans l’espace sous arachnoïdien, $P_{sinusV}$ la pression dans le sinus veineux, et $k$
+le coefficient de réabsorption.
+L’équation de conservation de la quantité de mouvement permet de relier la chute de pression
+$\Delta P$ au débit sanguin $f_{in}$ . Nous utilisons une équation similaire à la loi d’Hagen-Poiseuille :
+\begin{equation}
+\label{eq:flux}
+P_{in}\,-\,P\,=\,\Delta P\,=\,\biggl(\frac{a_{in}}{2}\,+\,,\frac{a}{2}\biggr)\,f_{in},
+\end{equation}
+où $P_{in}$ in est la pression du compartiment précédent, et $P$ la pression dans le compartiment courant. Le
+terme $a=\frac{8\pi \mu l}{A^2}$ est un terme de résistance à l’écoulement qui tient compte de la chute de pression le long du
+compartiment du fait des forces visqueuses ; il dépend de la viscosité dynamique du fluide, $\mu$, de la
+longueur hydraulique du compartiment, $l$, et inversement du carré de l’aire de la section du compartiment. Pour un
+vaisseau plus étroit la résistance augmente et une chute de pression plus importante sera nécessaire
+afin de maintenir le même flux. Cette approche est similaire à l’Équation~\ref{eq:poiseuille}. Dans notre modèle, a
+peut être calculé directement depuis les données morphologiques recueillies (voir chapitre 0) pour
+certains compartiments mais doit être estimé sur la base de la littérature pour les artérioles, les
+capillaires et les veinules. Comme vu dans la partie~\ref{sec:finalisation} nous avons contraint le système pour n’avoir
+que des jointures en Y entre les tubes (deux tubes vers un ou l’inverse).\\
+Dans ces situations la formule doit légèrement s’adapter :
+\begin{equation}
+\frac{a_{in_1}}{2}\,(P\,-\,P_{in_2})\,+\,\frac{a_{in_2}}{2}\,(P\,-\,P_{in_1})\,=\,\biggl(\frac{a_{in_1}}{2}\,\frac{a_{in_2}}{2}+\frac{a_{in_1}}{2}\,\frac{a}{2}+\frac{a_{in_2}}{2}\,\frac{a}{2}\biggr)\,f_{in},
+\end{equation}
+avec $a_{in_1}$ , $a_{in_2}$ , $P_{in_1}$ et $P_{in_2}$ les paramètres des deux parents du tube courant (voir Figure~\ref{fig:4_8_param_tubes} et Annexe
+1.1\textcolor{red}{refaire cette ref}).\\
+%%
+\begin{figure}[!t]
+\centering
+\includegraphics[width=12cm]{4_8_param_tubes}
+\caption{Illustration des différents paramètres des tubes et de leur positionnement lorsque deux tubes se suivent.}
+\label{fig:4_8_param_tubes}	
+\end{figure}
+
+Des équations additionnelles connectant les compartiments ont ensuite été définies selon :
+\begin{equation}
+P \,-\,P_{next}\,=\,\Delta\,P\,=\,\biggl(\frac{a}{2}\,+\,\frac{a_{next}}{2}\biggr)\,f_{out},
+\end{equation}
+avec $P_{next}$ la pression dans le tube fils et $a_{next}$ la résistance de ce tube. $f_{out}$ est le flux sortant du
+tube. Dans le cas d’une connexion en Y, l’équation devient :
+\begin{equation}
+\frac{a_{next_1}}{2}\,(P\,-\,P_{next_2})\,+\,\frac{a_{next_2}}{2}\,(P\,-\,P_{next_1})\,=\,\biggl(\frac{a_{next_1}}{2}\,\frac{a_{next_2}}{2}+\frac{a_{next_1}}{2}\,\frac{a}{2}+\frac{a_{next_2}}{2}\,\frac{a}{2}\biggr)\,f_{out}.
+\end{equation}
+On garantit implicitement grâce à cette équation et l’Équation~\ref{eq:flux}, que le fluide n’est jamais perdu
+entre la sortie d’un vaisseau et l’entrée du vaisseau suivant ($f_{out}^{parent}\, = \, f_{in}^{fils}$ ).\\
+Comme on l’a dit on doit par ailleurs décrire l’élasticité de chaque compartiment par une
+équation associée. Les compartiments ont en effet différents degrés d’élasticité. Les artères qui
+entourent le cerveau sont moins rigides que les vaisseaux profondément intégrés dans le tissu
+cérébral. Il s’agit d’un rôle de type « capacitif » pour les compartiments, dans l’analogie d’un circuit
+électrique, qui leur permet de stocker temporairement un volume sanguin. On le représente par une
+équation passive classique dans la littérature  (\cite{Zagzoule1986},~\cite{Linninger2009}) qui ne prend pas en compte à ce stade les
+phénomènes d’autorégulation (\cite{Paulson1990}) :
+\begin{equation}
+P_{lumen}\,-\,P_{cerv}\,=\,E\,\biggl(\frac{A}{A_0}\,-\,1\biggr).
+\end{equation}
+L’écart à la section de repos du vaisseau $A-A_0 $est gouverné par l’élastance du vaisseau $E$ et la
+différence de pression entre la lumière du vaisseau et le parenchyme $P_{lumen}\,-\,P_{cerv}$ . $A_0$
+représente l’aire de la section à une pression transmurale nulle. Ainsi, plus la pression transmurale
+sera grande, plus le vaisseaux se contractera ou se dilatera. De même, lorsque la pression sanguine
+dépasse la pression intracrânienne du tissu cérébral environnant, le vaisseau se dilate, et inversement
+lorsque la pression est plus faible. Cette approche permet de coupler les équations de flux sanguines
+et cérébro-spinales avec la pression du parenchyme en prenant en compte l’élasticité du vaisseau.\\
+Un système de 4 équations génériques pour le système sanguin et cérébro-spinal est donc
+défini et pourra être généré automatiquement pour l’ensemble de l’architecture.\\
+Afin de garantir la constance du volume de la doctrine de Monro-Kellie une équation doit être
+rajoutée pour laquelle nous suivons Linninger (\cite{Linninger2009}):
+\begin{equation}
+V_{TotalCervHem}\,=\,\sum_b V_b\,+\,\sum_{LCR} V_{LCR}\,+\, V_{CervHem}\,=\,constante,
+\end{equation}
+ou encore :
+\begin{equation}
+\bigl(V_{Ar}^{L,R}\,+\,V_{Al}^{L,R}\,+\,V_{Cp}^{L,R}\,+\,V_{Vl}^{L,R}\,+\,V_{V}^{L,R}\,+\,V_{sSin}^{L,R}\bigr)\,+\,\bigl(V_{Lv}^{L,R}\,+\,0.5\,V_{3V}\,+\,0.5\,V_{4V}\,+\,V_{SAS}\bigr)\,=\,constante
+\end{equation}
+où on a :
+\begin{equation}
+V_{CervHem}\,=\,V_{exfCerv}^{L,R}\,+\,V_{solidCerv}^{L,R}\,=\,A_{exfCerv}^{L,R} l_{exfCerv}^{L,R}\,+\,A_{solidCerv}^{L,R} l_{solidCerv}^{L,R},
+\end{equation}
+et {\em exfCerv} correspond au fluide extracellulaire dans les deux hémisphères, {\em solidCerv} à la matrice
+cellulaire solide, $V$ la somme des volumes pour chaque compartiment.
+%%%
+%%%
+\subsection{Implémentation}
+Les données morphologiques fournissent une structure sous forme de graphe contenant
+l’ensemble des caractéristiques de l’arborescence. Ce graphe est construit sous MATLAB. Pour
+implémenter sur la base de ce graphe le modèle décrit plus haut, nous avons fait le choix d’utiliser Java
+et de proposer une interface graphique qui permet une meilleure fluidité et simplicité pour l’utilisateur
+final. L’interface doit charger le graphe, proposer à l’utilisateur la possibilité d’ajuster les paramètres
+tube par tube, rajouter ou supprimer des tubes. Une fois ces choix fait, on pourra générer le système
+d’équations différentielles ordinaires à résoudre, au format MATLAB, et lancer la simulation, avant de
+rapatrier les résultats (Figure~\ref{ig:4_9_implem}) et de les visualiser toujours dans la même interface.\\
+%%%
+\begin{figure}[!t]
+\centering
+\includegraphics[width=12cm]{4_9_implem}
+\caption{Diagramme de séquence général de la chaine de traitement du modèle. Dans une première partie les données
+morphologiques permettent de générer le graphe sous MATLAB, ce graphe est sauvegardé en vue d’être chargé par
+l’utilisateur dans un logiciel Java qui permettra de générer le système d’équations correspondant, lancer le terminal MATLAB
+et le modèle pour enfin récupérer les résultats.}
+\label{fig:4_9_implem}	
+\end{figure}
+Lors de la segmentation, le code MATLAB permettant de générer le graphe a produit un fichier texte
+de format fixe contenant la définition de toutes les structures et les liens existants entre elles. Le fichier
+prend une forme générique. Une première section définit les tubes, leur type (artère, veines etc.) et
+leur caractéristiques morphologiques (aire, longueur etc.), tandis qu’une seconde informe sur la
+structure de liens existants entre ces tubes.\\
+\verbatiminput{code_def_tubes.txt}
+\bibliography{jeremythesebib}{}
+\bibliographystyle{francaissc}
