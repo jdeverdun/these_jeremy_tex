@@ -1,0 +1,146 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\citation{Lesage2009}
+\citation{Tschirren2005}
+\citation{Koller1995}
+\citation{Wilkinson2001}
+\citation{Frangi1998}
+\citation{Lesage2009}
+\citation{Boskamp2004}
+\citation{McInerney1996}
+\citation{Aylward2002}
+\citation{Frangi1998}
+\citation{Manniesing2006}
+\citation{Frangi1998}
+\citation{Frangi1998}
+\@writefile{toc}{\contentsline {chapter}{\numberline {3}Impl\IeC {\'e}mentation de la reconstruction morphologique}{23}{chapter.3}}
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{lof}{\contentsline {xchapter}{Impl\IeC {\'e}mentation de la reconstruction morphologique}{23}{chapter.3}}
+\@writefile{lot}{\contentsline {xchapter}{Impl\IeC {\'e}mentation de la reconstruction morphologique}{23}{chapter.3}}
+\newlabel{chap:morpho}{{3}{23}{Implémentation de la reconstruction morphologique}{chapter.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.1}Reconstruction du r\IeC {\'e}seau des art\IeC {\`e}res et des veines}{23}{section.3.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.1}Segmentation}{23}{subsection.3.1.1}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces Illustration de la segmentation des art\IeC {\`e}res \IeC {\`a} partir d\IeC {\textquoteright }une image de temps de vol. A) Image ToF brute, B) Image seuill\IeC {\'e}e manuellement, C) Image filtr\IeC {\'e}e par le filtre de Frangi, D) Image filtr\IeC {\'e}e seuill\IeC {\'e}e.\relax }}{24}{figure.caption.19}}
+\newlabel{fig:2_1_segmentation_arteres}{{3.1}{24}{Illustration de la segmentation des artères à partir d’une image de temps de vol. A) Image ToF brute, B) Image seuillée manuellement, C) Image filtrée par le filtre de Frangi, D) Image filtrée seuillée.\relax }{figure.caption.19}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces Sch\IeC {\'e}ma possible en 3D selon la valeur de la valeur propre $\bgroup \oldlambda \egroup _k$ (H=\IeC {\'e}lev\IeC {\'e}, L=faible, N = bruit\IeC {\'e}, +/- indique le signe de la valeur propre). Les valeurs propres sont ordonn\IeC {\'e}es selon ($|\bgroup \oldlambda \egroup _1|\leqslant |\bgroup \oldlambda \egroup _2|\leqslant |\bgroup \oldlambda \egroup _3|$ (\cite  {Frangi1998}).\relax }}{25}{figure.caption.20}}
+\newlabel{fig:2_2_tableau_hessienne}{{3.2}{25}{Schéma possible en 3D selon la valeur de la valeur propre $\lambda _k$ (H=élevé, L=faible, N = bruité, +/- indique le signe de la valeur propre). Les valeurs propres sont ordonnées selon ($|\lambda _1|\leqslant |\lambda _2|\leqslant |\lambda _3|$ (\cite {Frangi1998}).\relax }{figure.caption.20}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.3}{\ignorespaces Comparaison entre une projection des intensit\IeC {\'e}s maximales sur une image en temps de vol brute \IeC {\`a} gauche, et l'image filtr\IeC {\'e}e par le filtre de Frangi \IeC {\`a} droite. L'image filtr\IeC {\'e}e est moins bruit\IeC {\'e}e et met en \IeC {\'e}vidence les vaisseaux d'int\IeC {\'e}r\IeC {\^e}t.\relax }}{26}{figure.caption.21}}
+\newlabel{fig:2_3_filtre_frangi}{{3.3}{26}{Comparaison entre une projection des intensités maximales sur une image en temps de vol brute à gauche, et l'image filtrée par le filtre de Frangi à droite. L'image filtrée est moins bruitée et met en évidence les vaisseaux d'intérêt.\relax }{figure.caption.21}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.4}{\ignorespaces Segmentations 3D obtenues \IeC {\`a} partir du contraste de phase (veines, bleu) et du ToF (art\IeC {\`e}res, rouge).\relax }}{26}{figure.caption.22}}
+\newlabel{fig:2_4_segemtation_cont_phase_tof}{{3.4}{26}{Segmentations 3D obtenues à partir du contraste de phase (veines, bleu) et du ToF (artères, rouge).\relax }{figure.caption.22}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.2}Extraction du squelette}{26}{subsection.3.1.2}}
+\citation{Palagyi2002}
+\citation{Jonker2000}
+\citation{Lee1994}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.5}{\ignorespaces Illustration de l'apport de l'information de la QSM dans la d\IeC {\'e}finition de l'arborescence veineuse. En bleu les veines identifi\IeC {\'e}es en contraste de phase et en rouges celles issues de la QSM.\relax }}{27}{figure.caption.23}}
+\newlabel{fig:2_5_segmentation_apport_QSM}{{3.5}{27}{Illustration de l'apport de l'information de la QSM dans la définition de l'arborescence veineuse. En bleu les veines identifiées en contraste de phase et en rouges celles issues de la QSM.\relax }{figure.caption.23}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.6}{\ignorespaces Cr\IeC {\'e}ation du squelette d'un rectangle par utilisation de la carte des distances. De gauche \IeC {\`a} droite, le rectangle brut, la carte de distance, et le squelette.\relax }}{27}{figure.caption.24}}
+\newlabel{fig:2_6_squelettisation}{{3.6}{27}{Création du squelette d'un rectangle par utilisation de la carte des distances. De gauche à droite, le rectangle brut, la carte de distance, et le squelette.\relax }{figure.caption.24}{}}
+\citation{Lee1994}
+\citation{Lee1994}
+\citation{Lee1994}
+\citation{Kerschnitzki2013}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.7}{\ignorespaces Exemple de g\IeC {\'e}n\IeC {\'e}ration de squelette \IeC {\`a} partir d'un objet avec diff\IeC {\'e}rentes m\IeC {\'e}thodes. A) Objet brut, B) Squelette par amincissement it\IeC {\'e}ratif, C) squelette par carte des distances et D) squelette par carte de champ potentiels. Figure g\IeC {\'e}n\IeC {\'e}r\IeC {\'e}e par utilisation de la toolbox {\tt  Volume Skeleton Matlab Toolbox} (Liu, Rutgers University).\relax }}{28}{figure.caption.25}}
+\newlabel{fig:2_7_skeleton_matlab_toolbox}{{3.7}{28}{Exemple de génération de squelette à partir d'un objet avec différentes méthodes. A) Objet brut, B) Squelette par amincissement itératif, C) squelette par carte des distances et D) squelette par carte de champ potentiels. Figure générée par utilisation de la toolbox {\tt Volume Skeleton Matlab Toolbox} (Liu, Rutgers University).\relax }{figure.caption.25}{}}
+\citation{Kerschnitzki2013}
+\citation{Kerschnitzki2013}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.8}{\ignorespaces Application de la m\IeC {\'e}thode d'amincissement it\IeC {\'e}ratif \IeC {\`a} une segmentation art\IeC {\'e}rielle. A gauche la segmentation et \IeC {\`a} droite le squelette r\IeC {\'e}sultant. Le r\IeC {\'e}sultat est similaire avec les veines.\relax }}{29}{figure.caption.26}}
+\newlabel{fig:2_8_structure_extraite}{{3.8}{29}{Application de la méthode d'amincissement itératif à une segmentation artérielle. A gauche la segmentation et à droite le squelette résultant. Le résultat est similaire avec les veines.\relax }{figure.caption.26}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.9}{\ignorespaces Illustration d'un graphe, les cercles repr\IeC {\'e}sentent les n\IeC {\oe }uds.\relax }}{29}{figure.caption.27}}
+\newlabel{fig:2_9_branches_noeuds}{{3.9}{29}{Illustration d'un graphe, les cercles représentent les nœuds.\relax }{figure.caption.27}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.3}Cr\IeC {\'e}ation du graphe}{29}{subsection.3.1.3}}
+\newlabel{sect:graph_creation}{{3.1.3}{29}{Création du graphe}{subsection.3.1.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.10}{\ignorespaces Illustration de l'\IeC {\'e}limination automatique des erreurs mis en place. De haut en bas l\IeC {\textquoteright }\IeC {\'e}volution du graphe, avec \IeC {\'e}limination des doubles liens directs, des n\IeC {\oe }uds en s\IeC {\'e}rie, puis des segments courts.\relax }}{30}{figure.caption.28}}
+\newlabel{fig:2_10_boucles}{{3.10}{30}{Illustration de l'élimination automatique des erreurs mis en place. De haut en bas l’évolution du graphe, avec élimination des doubles liens directs, des nœuds en série, puis des segments courts.\relax }{figure.caption.28}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.11}{\ignorespaces Exemple de nettoyage automatique d'un graphe art\IeC {\'e}riel. En haut le graphe brut, en bas le graphe nettoy\IeC {\'e}.\relax }}{31}{figure.caption.29}}
+\newlabel{fig:2_11_nettoyage_graphe}{{3.11}{31}{Exemple de nettoyage automatique d'un graphe artériel. En haut le graphe brut, en bas le graphe nettoyé.\relax }{figure.caption.29}{}}
+\newlabel{eq:rayons}{{3.1}{31}{Création du graphe}{equation.3.1.1}{}}
+\citation{Reiner2013}
+\citation{Zagzoule1986}
+\citation{Linninger2009}
+\citation{Moody2004}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.12}{\ignorespaces Illustration des liens effectu\IeC {\'e}s entre les art\IeC {\`e}res et les veines. Les cercles bleus repr\IeC {\'e}sentent les extr\IeC {\'e}mit\IeC {\'e}s des branches et les lignes bleues fines les liaisons.\relax }}{32}{figure.caption.30}}
+\newlabel{fig:2_12_liens_arteres_veines}{{3.12}{32}{Illustration des liens effectués entre les artères et les veines. Les cercles bleus représentent les extrémités des branches et les lignes bleues fines les liaisons.\relax }{figure.caption.30}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.2}Art\IeC {\'e}rioles \IeC {\textendash } capillaires - veinules}{32}{section.3.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.1}Quelle art\IeC {\`e}re avec quelle veine ? }{32}{subsection.3.2.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.2}Estimation des param\IeC {\`e}tres des tubes}{32}{subsection.3.2.2}}
+\citation{Moody2004}
+\citation{Zagzoule1986}
+\newlabel{eq:volumesac}{{3.2}{33}{Estimation des paramètres des tubes}{equation.3.2.2}{}}
+\citation{Kempton2011}
+\citation{Liu2009}
+\citation{Schnack2001}
+\citation{Rorden2007}
+\citation{Linninger2009}
+\citation{Linninger2009}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.13}{\ignorespaces Illustration des rayons moyens dans les diff\IeC {\'e}rents compartiments du syst\IeC {\`e}me.\relax }}{34}{figure.caption.31}}
+\newlabel{fig:2_13_profil_rayons}{{3.13}{34}{Illustration des rayons moyens dans les différents compartiments du système.\relax }{figure.caption.31}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.3}Le syst\IeC {\`e}me ventriculaire}{34}{section.3.3}}
+\newlabel{sec:syst_ventr}{{3.3}{34}{Le système ventriculaire}{section.3.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.14}{\ignorespaces Segmentation semi-automatique des ventricules par MRIcron sur une image T1. Chaque ventricule est identifi\IeC {\'e} par une couleur diff\IeC {\'e}rente.\relax }}{35}{figure.caption.32}}
+\newlabel{fig:2_14_ventricules_segmentes}{{3.14}{35}{Segmentation semi-automatique des ventricules par MRIcron sur une image T1. Chaque ventricule est identifié par une couleur différente.\relax }{figure.caption.32}{}}
+\bibdata{jeremythesebib}
+\bibstyle{francaissc}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.15}{\ignorespaces Illustration de la conversion des vaisseaux \IeC {\`a} connexions multiples en connexions en Y. Les tubes repr\IeC {\'e}sentent des segments de vaisseaux, ils sont identifi\IeC {\'e}s par un num\IeC {\'e}ro. La conversion en connexions 2 vers 1 ou 1 vers 2 est r\IeC {\'e}alis\IeC {\'e}e par l\IeC {\textquoteright }insertion d\IeC {\textquoteright }un nouveau tube (en bleu) de tr\IeC {\`e}s faible longueur et de rayon identique au tube parent. \relax }}{36}{figure.caption.33}}
+\newlabel{fig:2_15_conversion_y}{{3.15}{36}{Illustration de la conversion des vaisseaux à connexions multiples en connexions en Y. Les tubes représentent des segments de vaisseaux, ils sont identifiés par un numéro. La conversion en connexions 2 vers 1 ou 1 vers 2 est réalisée par l’insertion d’un nouveau tube (en bleu) de très faible longueur et de rayon identique au tube parent. \relax }{figure.caption.33}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.4}Finalisation}{36}{section.3.4}}
+\newlabel{sec:finalisation}{{3.4}{36}{Finalisation}{section.3.4}{}}
+\@setckpt{Chapitre3}{
+\setcounter{page}{37}
+\setcounter{equation}{3}
+\setcounter{enumi}{0}
+\setcounter{enumii}{0}
+\setcounter{enumiii}{0}
+\setcounter{enumiv}{0}
+\setcounter{footnote}{0}
+\setcounter{mpfootnote}{0}
+\setcounter{part}{0}
+\setcounter{chapter}{3}
+\setcounter{section}{4}
+\setcounter{subsection}{0}
+\setcounter{subsubsection}{0}
+\setcounter{paragraph}{0}
+\setcounter{subparagraph}{0}
+\setcounter{figure}{15}
+\setcounter{table}{0}
+\setcounter{blindtext}{1}
+\setcounter{Blindtext}{5}
+\setcounter{blind@countparstart}{0}
+\setcounter{blindlist}{0}
+\setcounter{blindlistlevel}{0}
+\setcounter{blindlist@level}{0}
+\setcounter{blind@listcount}{0}
+\setcounter{blind@levelcount}{0}
+\setcounter{blind@randomcount}{0}
+\setcounter{blind@randommax}{0}
+\setcounter{blind@pangramcount}{0}
+\setcounter{blind@pangrammax}{0}
+\setcounter{NAT@ctr}{0}
+\setcounter{ContinuedFloat}{0}
+\setcounter{mtc}{3}
+\setcounter{minitocdepth}{2}
+\setcounter{ptc}{0}
+\setcounter{parttocdepth}{2}
+\setcounter{parentequation}{0}
+\setcounter{subfigure}{0}
+\setcounter{subtable}{0}
+\setcounter{AM@survey}{0}
+\setcounter{r@tfl@t}{0}
+\setcounter{Item}{0}
+\setcounter{Hfootnote}{1}
+\setcounter{bookmark@seq@number}{10}
+\setcounter{compd}{0}
+\setcounter{deriv}{0}
+\setcounter{nprt@mantissa@digitsbefore}{0}
+\setcounter{nprt@mantissa@digitsafter}{0}
+\setcounter{nprt@exponent@digitsbefore}{0}
+\setcounter{nprt@exponent@digitsafter}{0}
+\setcounter{nprt@digitsfirstblock}{0}
+\setcounter{nprt@blockcnt}{0}
+\setcounter{nprt@cntprint}{0}
+\setcounter{su@anzahl}{0}
+\setcounter{LT@tables}{0}
+\setcounter{LT@chunks}{0}
+\setcounter{section@level}{1}
+}
