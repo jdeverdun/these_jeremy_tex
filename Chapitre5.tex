@@ -460,7 +460,7 @@ et de proposer une interface graphique qui permet une meilleure fluidité et sim
 final. L’interface doit charger le graphe, proposer à l’utilisateur la possibilité d’ajuster les paramètres
 tube par tube, rajouter ou supprimer des tubes. Une fois ces choix fait, on pourra générer le système
 d’équations différentielles ordinaires à résoudre, au format MATLAB, et lancer la simulation, avant de
-rapatrier les résultats (Figure~\ref{ig:4_9_implem}) et de les visualiser toujours dans la même interface.\\
+rapatrier les résultats (Figure~\ref{fig:4_9_implem}) et de les visualiser toujours dans la même interface.\\
 %%%
 \begin{figure}[!t]
 \centering
@@ -475,7 +475,311 @@ Lors de la segmentation, le code MATLAB permettant de générer le graphe a prod
 de format fixe contenant la définition de toutes les structures et les liens existants entre elles. Le fichier
 prend une forme générique. Une première section définit les tubes, leur type (artère, veines etc.) et
 leur caractéristiques morphologiques (aire, longueur etc.), tandis qu’une seconde informe sur la
-structure de liens existants entre ces tubes.\\
-\verbatiminput{code_def_tubes.txt}
+structure de liens existants entre ces tubes. Ci-dessous un exemple de structur de fichier généré après la reconstruction du graphe. Notons que pour les débits, pressions et aire elles
+servent de valeurs initiales.
+
+\vspace{0.4cm}
+{\tt \$TUBES \textcolor{green}{\% définitions des tubes}}
+
+{\tt \textcolor{green}{\% [TypeTube\_ID]==TypeTube\_longueurID\_ID:valeur@@TypeTube\_alphaID\_ID:formule
+@@TypeTube\_elastanceID\_ID:valeur@@TypeTube\_AireID\_ID:valeur@@TypeTu
+be\_DebitEntrantID\_ID:valeur@@TypeTube\_DebitSortantID\_ID:valeur@@TypeTube\_Pr
+essionID\_ID:valeur}}
+
+{\tt \$LINKS \textcolor{green}{\% définition des liens A vers B donne A --> B}}
+
+{\tt \textcolor{green}{\% [TypeTube\_ID]—-> [TypeTube\_ID]}}
+
+{\tt [TI\_1]--> [R\_T0\_20]}
+
+{\tt [R\_T0\_20]--> [R\_T0\_3]}
+
+\vspace{0.4cm}
+Ce fichier est celui qui sera chargé dans l’interface Java de façon à générer une représentation
+graphique sous forme de blocs modulaires et modifiables. Cet outil peut être aussi utilisé pour définir
+des architectures complètement arbitraires (Figure~\ref{fig:4_10_interface_java}). La structure de liens et les caractéristiques des
+tubes peuvent à ce stade être modifiées par l’utilisateur.\\
+%%%
+\begin{figure}[!t]
+\centering
+\includegraphics[width=12cm]{4_10_interface_java}
+\caption{Exemple de structure affichée dans l'interface Java pour une architecture arbitraire. La structure arbitraire prise
+en référence est indiquée par le schéma à droite.}
+\label{fig:4_10_interface_java}	
+\end{figure}
+Une fois la structure validée, l’utilisateur lance la simulation. Le programme valide alors
+l’architecture afin de s’assurer qu’il n’y ait pas d’incohérences (par exemple un tube à la fois parent et
+fils d’un autre), et créé le système d’équations qu’il écrit dans trois fichiers MATLAB. Le premier
+contient le programme principal avec définition des variables initiales (pressions d’entrées etc.) et la
+boucle d’itérations du modèle au cours du temps. Les deux autres fichiers contiennent les équations à
+résoudre sous une forme discrétisées par une méthode d’Euler explicite. Le logiciel lance ensuite un
+terminal MATLAB dans lequel s’exécute le code principal. L’interaction en cours d’exécution avec Java
+s’effectue par l’intermédiaire d’un Socket pour évaluer l’avancement de la simulation et récupérer le
+résultat. A la fin de l’exécution, les courbes des paramètres de chaque tube sont visualisables dans
+l’interface Java en sélectionnant le compartiment correspondant.\\
+%%%
+%%%
+\subsection{Résultats}
+Sur un sujet donné (âge = 29 ans, non-fumeur) nous avons réalisé le protocole complet en
+choisissant la séquence pCASL 3D (\cite{Wu2007}) comme décrit précédemment (voir~\ref{sec:protocole}), le sujet étant sain et
+jeune.\\
+L’architecture observée chez ce sujet à partir des imageries anatomiques est illustrée dans la
+Figure 47. Le polygone de Willis est composé de l’artère communicante antérieure et postérieure
+gauche. On compte ainsi un total de 376 segments dans le modèle toutes structures confondues. C’est
+donc un système à 1504 équations qu’il faut résoudre !
+%%%
+\begin{figure}[!t]
+\centering
+\includegraphics[width=12cm]{4_11_structure_sujet}
+\caption{Architecture de référence utilisée pour évaluer la viabilité du modèle. A) L'arbre artériel, où chaque couleur
+représente un segment, B) l'arbre veineux, chaque couleur représente là aussi un segment, C) la combinaison des deux, en
+dégradé bleu les veines, et en rouge les artères. A noter que seuls les segments utilisés dans la simulation sont illustrés, le
+« super-sinus » n’apparait pas dans cette vue. Enfin le diamètre de chaque tube est illustré par le diamètre des segments.}
+\label{fig:4_11_structure_sujet}	
+\end{figure}
+Afin de simuler correctement le système, il est important de définir les pressions en entrée. A
+partir des images en contraste de phase dynamique, nous mesurons les vitesses dans l’artère basilaire,
+et les carotides internes. Ces données sont ajustées par une combinaison de fonctions trigonométrique
+(Fourier, voir Figure~\ref{fig:4_12_fourier}	). On obtient ainsi 17 coefficients des séries de Fourier discrètes. Pour finir on
+convertit cette cinétique en pression en plaçant le premier coefficient à une valeur de 100. Cette valeur
+étant ajustée au vue des débits afin de faire correspondre les débits les plus élevés aux pressions les
+plus grandes. On obtient ainsi des pressions moyennes en entrée proches de 100 mmHg. Chaque
+entrée disposant d’une cinétique propre avec des pressions relatives concordantes avec les débits.\\
+%%%
+\begin{figure}[!t]
+\centering
+\includegraphics[width=15cm]{4_12_fourier}
+\caption{Courbe ajustée des vitesses au cours du temps pour la carotide interne gauche. Ajustement par des séries de
+Fourier (17 coefficients).}
+\label{fig:4_12_fourier}	
+\end{figure}
+Les compartiments artériolaires, capillaires et veineux restent des boites noires en termes de
+caractéristiques physiologiques (résistances hydrodynamiques, élastance etc.). La définition de la
+résistance de ces tubes passe donc par des estimations. En vue de se rapprocher au mieux de la réalité
+nous avons choisi d’utiliser les résistances utilisées par Linninger et al. (\cite{Linninger2009}) en les ajustant au vue des cartes
+de perfusions ASL. Pour chaque territoire perfusionnel obtenu à partir des segmentations
+morphologiques, la valeur moyenne du débit est extraite (Figure~\ref{fig:4_13_perf_ASL}, colonnes 1 et 3). Sur la base des
+différences relatives entre les régions, les valeurs des résistances des artérioles, capillaires et veinules
+dans chaque territoire sont ajustées (Tableau~\ref{fig:4_13_perf_ASL}). Pour les autres compartiments, les résistances sont
+directement estimées à partir des informations morphologiques disponibles pour chaque segment. Les
+valeurs d’élastances utilisées sont décrites dans la littérature (\cite{Zagzoule1986},~\cite{Linninger2009},~\cite{Smillie2004}) et rapportées dans le
+Tableau~\ref{fig:4_13_perf_ASL}. Les flux constants $S^{const}_{Cp\rightarrow cerv}$ et $S{const}_{cerv\rightarrow Lv}$ sont fixés à 0.0005 ml/s tandis que la
+production de LCS $S_{Al\rightarrow Lv}$ est de 0.003 ml/s (\cite{Linninger2009}). Enfin la résistance utilisée pour traduire la résorptiondu LCS par le sinus veineux est de 7 $\frac{mmHg}{ ml/min}$ (valeur moyenne normale identifiée dans la littérature) (\cite{Ekstedt1978}). La viscosité du sang est établie à $\mu_{sang}$ = 0.004 $\frac{kg}{ m}$ par sec (\cite{Pedley1980}).\\
+%%%
+\begin{figure}[!t]
+\centering
+\includegraphics[width=15cm]{4_13_perf_ASL}
+\caption{Perfusion cérébrale en ASL, valeurs brutes et rapportées aux différents territoires. La première colonne illustre la
+carte de débit brute, la deuxième colonne la valeur relative du débit estimé par le modèle pour chaque région, et la troisième
+la valeur moyenne sur la base des données ASL.}
+\label{fig:4_13_perf_ASL}	
+\end{figure}
+%%%
+\begin{figure}[!t]
+\centering
+\includegraphics[width=15cm]{4_14_elastances_resistances}
+\caption{Détails des élastances et résistances utilisées dans le modèle. Les résistances renseignées par un « * » sont
+ajustées au vu des données ASL.}
+\label{fig:4_14_elastances_resistances}	
+\end{figure}
+Le système peut ainsi être simulé. Pour des raisons évidentes de clarté il est difficile de
+représenter les résultats pour l’ensemble des compartiments sur une même figure. Nous décrirons
+donc les valeurs moyennes dans chaque type de compartiments, sauf dans quelques cas précis où nous
+exposerons la cinétique dans un tube particulier.\\
+La pression intracrânienne identifiée par le modèle est de 9 mmHg, ce qui se situe dans la
+gamme des valeurs normales chez le sujet sain (\cite{Steiner2006},~\cite{Pattinson2005}). Nous n’avons cependant pas pu la comparer
+à la valeur réelle. La cascade de chute de pression des entrées aux sorties est un bon élément pour
+évaluer la consistance du modèle. La pression moyenne dans les artères est de 82 mmHg, puis 49
+mmHg dans les artérioles, 28 mmHg dans les capillaires et 22 et 18 mmHg respectivement dans les
+veinules et veines. La comparaison de nos résultats avec les travaux précédents (Figure~\ref{fig:4_15_evolution_pression}), met en
+évidence une bonne similitude entres les données de Zagzoule et Marc-Vergnes (\cite{Zagzoule1986}) à et de Linninger
+et al. (\cite{Linninger2009}) . La différence majeure apparait au niveau des artérioles où notre modèle présente une chute
+plus importante de la pression.\\
+%%%
+\begin{figure}[!t]
+\centering
+\includegraphics[width=15cm]{4_15_evolution_pression}
+\caption{Evolution des pressions d'un type de compartiment à l'autre et comparaison avec les modèles similaires. Les
+barres sont positionnées au vue de l’emplacement des mesures de pressions dans les différents modèles.}
+\label{fig:4_15_evolution_pression}	
+\end{figure}
+Le détail des cinétiques de pressions au sein des différents types de compartiments (Figure~\ref{fig:4_16_decours_pression})
+met en évidence la chute de pression moyenne, avec atténuation de l’amplitude au fur et à mesure
+que l’on avance dans le réseau vasculaire ou ventriculaire. Les pressions moyennes dans les ventricules
+évoluent elles aussi dans les gammes attendues de 7 à 10.5 mmHg (\cite{Agamanolis2011}) (Figure~\ref{fig:4_16_decours_pression} droite) avec des
+cinétiques cohérentes. Le modèle prédit une pression pulsatile de 3.5 mmHg en accord avec les
+données connues (3 – 5 mmHg) (\cite{Czosnyka2005}).\\
+%%%
+\begin{figure}[!t]
+\centering
+\includegraphics[width=15cm]{4_16_decours_pression}
+\caption{Evolution des pressions moyennes de chaque type de compartiment. A gauche les vaisseaux, à droite les
+ventricules.}
+\label{fig:4_16_decours_pression}	
+\end{figure}
+Le débit moyen observé en entrée dans le système est de 2.45, 5.67 et 4.15 mL/sec pour
+l’artère basilaire, et les carotides internes gauche et droites, soit un débit total de 12.27 mL/sec.
+L’acquisition en contraste de phase dynamique nous montre que le débit est en réalité de 3, 4.49 et
+4.2 mL/sec respectivement pour l’artère basilaire, la carotide interne gauche et la carotide interne
+droite pour un total de 11.69 mL/sec. Malgré de faibles écarts entre les valeurs simulées et les valeurs
+réelles, les données semblent cohérentes. Il est néanmoins à observer que la carotide interne gauche
+présente dans le modèle un débit 20\% plus important que dans la réalité. Ce décalage devrait être
+corrigé dans une version en cours de développement du modèle où les flux serviront de conditions
+limites.\\
+La Figure~\ref{fig:4_17_decours_debit} met en évidence les cinétiques observées dans les différents compartiments ; on
+peut observer le décalage des cinétiques au cours de l’évolution à travers les compartiments. Le délai
+artério-veineux (« phase-lag ») identifié dans le modèle est de 18 \% du cycle cardiaque, ce qui est plus
+élevé que les valeurs trouvées dans la littérature (13 \%) (\cite{Linninger2009},~\cite{Kim2007}). Cette différence peut s’expliquer par
+le fait que nous ne disposons pas, malgré tous nos efforts, du même niveau de détails pour les artères
+et pour les veines. Les débits moyens que nous récupérons dans les compartiments artériels et veineux
+reflètent en partie cette différence puisque les moyennes ne sont pas effectuées sur des niveaux
+exactement comparables de l’arborescence. Les moyennes effectuées sur les veines incorporent
+proportionnellement moins de petits vaisseaux que la moyenne sur les artères. L’analyse du débit
+moyen dans les capillaires (Figure~\ref{fig:4_13_perf_ASL} deuxième colonne) met en évidence des différences relatives
+entre les territoires en grande partie similaires aux résultats obtenus en ASL (Figure~\ref{fig:4_13_perf_ASL} troisième
+colonne). Néanmoins de fortes différences existent pour certaines régions pouvant être liées à des
+mauvaises associations artères – veines dans la définition structurelle du modèle.\\
+%%%
+\begin{figure}[!t]
+\centering
+\includegraphics[width=15cm]{4_17_decours_debit}
+\caption{Evolution des débits moyens dans les compartiments vasculaires. Sur l’image de droite, en pointillés noir, est
+renseigné le délai artério-veineux $\phi$.}
+\label{fig:4_17_decours_debit}	
+\end{figure}
+Les débits dans les compartiments ventriculaires sont illustrés dans la Figure~\ref{fig:4_19_debit_ventriculaire}. Les mesures
+réalisées en contraste de phase au niveau de l’aqueduc estiment le débit à 0.011 mL/sec avec une
+amplitude de 0.32 mL/sec. Notre modèle prévoit dans cette zone un débit moyen de 0.009 mL/sec
+avec une amplitude de 0.33 mL/sec. Le modèle est donc en bon accord avec les données disponibles.
+Enfin l’évolution de l’aire est elle aussi gérée par le modèle et est cohérente avec l’évolution des
+pressions (Figure~\ref{fig:4_20_aire_artere}), quoi que plus difficile à valider expérimentalement compte tenu de la résolution.\\
+%%%
+\begin{figure}[!t]
+\centering
+\includegraphics[width=15cm]{4_19_debit_ventriculaire}
+\caption{Estimation par le modèle des débits dans les compartiments ventriculaires.}
+\label{fig:4_19_debit_ventriculaire}	
+\end{figure}
+%%%
+\begin{figure}[!t]
+\centering
+\includegraphics[width=15cm]{4_20_aire_artere}
+\caption{Evolution de l'aire d'une artère donnée au cours du temps estimée par le modèle.}
+\label{fig:4_20_aire_artere}	
+\end{figure}
+En vue d’exploiter plus en détail notre modèle complet sujet-spécifique, nous avons réalisé des
+simulations en augmentant artificiellement la résistance d’une artère afin d’évaluer l’évolution des flux
+dans les artères en aval et d’observer ainsi la compensation offerte par les artères communicantes. En
+l’absence de cette occlusion, notre modèle prédit logiquement des débits plus importants au niveau
+des entrées puis une chute jusqu’aux capillaires. Les veines récupèrent ensuite le sang et l’acheminent
+vers le sinus veineux ce qui se traduit par une augmentation du débit. Les artères communicantes
+(postérieure gauche et antérieure) présentent des débits très faible (violet foncé) (Figure\ref{fig:4_21_debit_moyen}).\\
+%%%
+\begin{figure}[!t]
+\centering
+\includegraphics[width=15cm]{4_21_debit_moyen}
+\caption{Débits moyens dans les différentes artères et veines du modèle. A gauche la répartition pour le modèle initial du
+sujet, à droite la répartition après avoir augmenté artificiellement la résistance d’un segment de l’artère cérébrale
+antérieure (flèche rouge). La flèche verte indique l’emplacement de l’artère communicante antérieure (ACoA). Une échelle
+de couleur logarithmique est utilisée.}
+\label{fig:4_21_debit_moyen}	
+\end{figure}
+Si l’on augmente alors fortement la résistance d’un tube (début de l’artère cérébrale
+antérieure) de manière à simuler une occlusion (Figure\ref{fig:4_21_debit_moyen} flèche rouge), on peut observer l’utilisation
+de la voie de compensation que représente l’artère communicante antérieure (ACoA) (flèche verte).
+Le détail de cette compensation est illustré en Figure~\ref{fig:4_22_flux_ACA} A. Comme on peut le voir, chez ce sujet l’ACoA
+est efficace puisqu’elle permet d’assurer un apport quasi-normal en sang dans l’ACA même lorsque sa
+partie amont est occluse. Ce sujet présente une ACoA de bon diamètre (2.3 mm) pouvant être définie
+comme « normale » selon Tulleken (\cite{Tulleken1978}). Des études ont montrés que le diamètre moyen de cette
+artère se situait entre 1.5 (\cite{Perlmutter1976}) et 1.92±0.86 mm (\cite{Hillen1986}). Cassot et al. (\cite{Cassot1995}) ont évalué l’effet du diamètre
+de l’ACoA lors de sténoses carotidiennes. Via un modèle dédié au polygone de Willis, ils ont pu simuler
+l’évolution des flux et des pressions en fonction du degré de sténose et du diamètre de l’ACoA. Leurs
+résultats montrent tout d’abord une augmentation du débit dans la carotide controlatérale à l’artère
+occluse de 73.7 \% avec 47.3 \% du débit total de l’artère dédiée à l’ACoA. Dans notre simulation, la
+carotide interne n’est pas bouchée, c’est le premier segment de l’ACA qui l’est. Nous ne mettons en
+évidence qu’une augmentation de 26 \% avec 25 \% du débit total de la carotide controlatérale dédiée
+à l’ACoA. Si nous simulons des conditions similaires à celles de Cassot et al. nous mettons en évidence
+une augmentation de 65 \% avec 43 \% dédiée à l’ACoA, les résultats semblent donc concordants malgré
+une augmentation plus faible du débit pouvant être expliquée par l’absence (chez notre sujet) d’artère
+communicante postérieure droite.\\
+%%%
+\begin{figure}[!t]
+\centering
+\includegraphics[width=15cm]{4_22_flux_ACA}
+\caption{ Flux dans l'artère cérébrale antérieure (ACA) droite après augmentation de la résistance de sa partie amont. A)
+flux dans le modèle initial, avec artère communicante antérieure (ACoA) de diamètre 2.3 mm (valeur réelle). B) En réduisant
+artificiellement le diamètre de l’ACoA à 1.15 (facteur 2). L’ACoA assure un maintien suffisant du débit dans l’ACoA dans la
+version initiale, ce maintien diminue avec la réduction du calibre de l’ACoA. L’indice « norm » indique la situation normale, et
+« bouché » la situation lorsque le premier segment de l’ACA est occlus.}
+\label{fig:4_22_flux_ACA}	
+\end{figure}
+Dans notre simulation le premier segment de l’ACA droite du sujet est occlus. Pour évaluer la
+capacité de compensation de l’ACoA sur le flux dans ces conditions nous avons fait varier son diamètre
+de façon similaire aux travaux de Cassot et al. (\cite{Cassot1995}). La compensation de l’ACoA est analysée en faisant
+le rapport entre le débit dans le segment en aval de l’ACoA après occlusion et avant l’occlusion,
+donnant un indice en pourcentage. Les résultats illustrés en Figure~\ref{fig:4_23_compensation_ACoA} montrent aux vue de l’intervalle
+de variation de la sigmoïde1, une évolution importante de la compensation dans la gamme de diamètre
+allant de 0.37 à 1.17 mm. Les valeurs inférieures ne permettent pas une compensation efficace, et les
+valeurs plus élevées permettent d’assurer près de 90\% du débit de l’artère occluse. La limite supérieure
+de cette zone est plus faible que celle rapportée précédemment (0.4 à 1.6 mm,~\cite{Cassot1995}). Néanmoins, il est
+important de rappeler que notre modèle est spécifiquement adapté à un sujet donné ce qui peut
+expliquer les écarts de ce type.\\
+%%%
+\begin{figure}[!t]
+\centering
+\includegraphics[width=15cm]{4_23_compensation_ACoA}
+\caption{ Degré de compensation de l'ACoA lors de l'occlusion du premier segment de l'ACA droite en fonction du diamètre
+de l'ACoA. La compensation est représentée comme le rapport entre le débit dans le segment en aval de l’ACoA après
+occlusion et avant l’occlusion. Les lignes en pointillées orange indiquent l’intervalle de variation de la sigmoïde
+respectivement 0.37 et 1.17 mm. Cette zone correspond aux plus fortes variations de compensation en fonction du diamètre
+de l’ACoA.}
+\label{fig:4_23_compensation_ACoA}	
+\end{figure}
+L’avantage de notre méthodologie est qu’elle intègre l’ensemble des flux intracrâniens, y
+compris le liquide cérébro-spinal. Il est donc possible de mettre en évidence l’impact de l’occlusion sur
+ces compartiments. La Figure~\ref{fig:4_19_debit_ventriculaire} dédiée aux ventricules latéraux, montre une chute des débits entrant
+dans les deux hémisphères lorsque le diamètre de l’ACoA diminue. La chute dans le ventricule
+controlatéral à l’occlusion peut être vu comme un reflet de la chute globale du débit dans l’ensemble
+du système. Du côté ipsilatéral, la diminution est plus marquée du fait de la diminution de l’apport
+sanguin dans certains territoires et donc des flux capillaires/parenchyme puis parenchyme/ventricules.
+De la même façon l’aire augmente de façon plus importante du côté ipsilatéral sans doute par réaction
+mécanique. Notons que malgré des évolutions faibles (moins de 2 \%), le modèle est suffisamment
+sensible pour les mettre en évidence.\\
+%%%
+\begin{figure}[!t]
+\centering
+\includegraphics[width=15cm]{4_24_ventricules_occlusion}
+\caption{ Evolution des débits entrants et des aires des ventricules en réponse à une occlusion de l'ACA droite. Les données
+sont représentées en fonction du diamètre de l'ACoA. A gauche l’évolution du débit entrant (en \%). On remarque en rouge
+une chute du débit entrant dans le ventricule droit en fonction de la diminution de diamètre de l’ACoA (3.3 \%). Il s’agit du
+reflet de l’effet global sur les débits de l’occlusion. La chute est plus marquée dans le ventricule droit ipsilatéral à l’occlusion
+(5.75 \%). Le graphique de droite illustre l’évolution relative de l’aire des ventricules en fonction du diamètre de l’ACoA.
+Comme pour les débits on observe un effet plus important du côté ipsilatéral à l’occlusion, malgré tout l’évolution reste très
+faible (1.7 \%).\textcolor{red} {Cette figure ne parait pas referencee dans le texte}}
+\label{fig:4_24_occlusion_ventricule}	
+\end{figure}
+Par ailleurs, le modèle offre l’opportunité de localiser les effets au niveau capillaire au vu des
+territoires définis (Figure~\ref{fig:4_13_perf_ASL} et Figure~\ref{fig:4_25_impact_occlusion}). En plus d’une chute globale relativement faible du débit
+dans l’ensemble des territoires, on observe à partir d’un diamètre de l’ACoA divisé par deux une chute
+marquée du débit dans les territoires de l’ACA, avec la présence d’inhomogénéités dans cette zone
+traduisant des effets différents selon la région.\\
+%%%
+\begin{figure}[!t]
+\centering
+\includegraphics[width=15cm]{4_25_impact_occlusion}
+\caption{ Impact de l'occlusion du premier segment de l'ACA droite selon différents diamètres de l'ACoA. La première ligne
+illustre les territoires définis, les seconde, troisième et quatrième lignes illustrent le degré de réduction du débit (de 0 à 1)
+dans ces territoires avec le diamètre original de l’ACoA (facteur = 1, 2.3 mm), divisé par deux (facteur = 2, 1.15 mm), et divisé
+par 3 (facteur = 3, 0.77 mm).}
+\label{fig:4_25_impact_occlusion}	
+\end{figure}
+Pour conclure cette partie, on peut donc dire que 1) notre modèle montre ainsi sa cohérence
+avec les modèles existants dédiés à certaines structures (\cite{Cebral2003},~\cite{Cassot1995}), ou représentant l’ensemble du
+système en simplifiant le problème (\cite{Zagzoule1986},~\cite{Linninger2009},~\cite{Kim2007}). Par ailleurs 2) il est également compatible avec les
+données disponibles mesurées en IRM. Du fait de son caractère sujet-spécifique, il autorise de plus
+l’investigation de nombreuses problématiques supplémentaires, ce qui sera l’objet des travaux
+ultérieurs.
+
+
 \bibliography{jeremythesebib}{}
 \bibliographystyle{francaissc}

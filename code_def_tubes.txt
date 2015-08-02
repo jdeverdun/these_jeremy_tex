@@ -1,0 +1,8 @@
+$TUBES % définitions des tubes
+% [TypeTube_ID]==TypeTube_longueurID_ID:valeur@@TypeTube_alphaID_ID:formule @@TypeTube_elastanceID_ID:valeur@@TypeTube_AireInitialeID_ID:valeur@@TypeTube_DebitEntrantID_ID:valeur@@TypeTube_DebitSortantID_ID:valeur@@TypeTube_PressionID_ID:valeur
+ [TI_1]==TI_l0_1:8.0474@@TI_alfa_1:8*pi*(0.004*(1e-6)/133.32)*(TI_l0_1/100)/((TI_A_1_PREV/10000)^2)@@TI_E_1:800@@TI_A_1:0.21932@@TI_A0_1:0.21932@@TI_fi_1:13@@TI_fo_1:13@@TI_P_1:99.9999%%20:20
+…
+$LINKS % définition des liens A vers B donne A --> B
+% [TypeTube_ID]—-> [TypeTube_ID]
+ [TI_1]--> [R_T0_20]
+ [R_T0_20]--> [R_T0_3]

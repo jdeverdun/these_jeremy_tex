@@ -1,0 +1,9 @@
+# Windows image file caches
+*
+!*.tex
+!*.bib
+!*.jpg
+!*.JPG
+!*.png
+!*.PNG
+!/rep_*
