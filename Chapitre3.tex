@@ -166,7 +166,16 @@ En l’état de l’imagerie nous avons sélectionné une approche simple consis
 %%%
 \subsection{Estimation des paramètres des tubes}
 La distance euclidienne entre artère et veine permet de proposer une longueur totale approchée, qui correspondra à la somme des artérioles, capillaires et veinules.  Nous n’avons aucun moyen d’accéder directement aux informations morphologiques de ces compartiments. Pour limiter le nombre d’hypothèses à réaliser sur le nombre de vaisseaux, il semble plus logique de ne considérer pour chaque couple artère-veine qu’une « super-artériole », qu’un « super-capillaire », et qu’une « super-veinule » regroupant un ensemble N de vaisseaux. Bien que ces compartiments soient difficilement accessible (voir~\ref{sect:microcirculation}), la littérature nous fournit quelques informations sur les rapports de ces différents compartiments via des volumes moyens (\cite{Zagzoule1986}), \cite{Linninger2009}). Parmi celles-ci on retrouve des rapports de longueurs et de volumes. Par ailleurs~\cite{Moody2004} ont estimé la fraction de volume que représentent les artérioles et les capillaires dans la matière grise et blanche par marquage à la phosphatase alcaline. A partir de ces informations et des données issues de la segmentation, il devient possible d’estimer des volumes plausibles pour nos compartiments.\\	
-Dans une première étape, nous réalisons une segmentation sur la base de l’imagerie T1 (voir Appendice 1.2.4) \textcolor{red}{revoir cette ref} . Les volumes matière grise et blanche sont ainsi extraits et un masque de ces tissus créé (probabilité matière grise + blanche > 0.9). En associant à chaque voxel de ce masque le label correspondant au couple artère-veine le plus proche (voir fin du paragraphe~\ref{sect:graph_creation}), on reconstruit les territoires. \\
+%%%
+\begin{figure}[!t]
+\centering
+\includegraphics[width=14cm]{2_13_territoire_arteres_veines}
+\caption{Illustration des territoires définit sur la base des couples artère-veine.}
+\label{fig:2_13_territoire_arteres_veines}	
+\end{figure}	
+%%%
+%%%
+Dans une première étape, nous réalisons une segmentation sur la base de l’imagerie T1 (voir Appendice 1.2.4) \textcolor{red}{revoir cette ref} . Les volumes matière grise et blanche sont ainsi extraits et un masque de ces tissus créé (probabilité matière grise + blanche > 0.9). En associant à chaque voxel de ce masque le label correspondant au couple artère-veine le plus proche (voir fin du paragraphe~\ref{sect:graph_creation}), on reconstruit les territoires (Figure~\ref{fig:2_13_territoire_arteres_veines}). \\
 Les volumes de ces territoires permettent grâces aux rapports issues de littérature d’estimer les volumes des compartiments : 
 \begin{equation}
 \label{eq:volumesac}
@@ -177,18 +186,45 @@ Pour les veinules, nous n’avons pas l’information de densité. Le volume est
 \begin{equation}
 \frac{V_{v}}{V_v\,+\,V_a\,+\,V_c}\,=\,\frac{V_{ref_{v}}}{V_{ref_{v}}\,+\,V_{ref_{a}}\,+\,V_{ref_{c}}},
 \end{equation}
-avec $V_a$ et $V_c$ les solutions de~\ref{eq:volumesac}, et les volmues de référence toujours donnés par la littérature.\\
+avec $V_a$ et $V_c$ les solutions de~\ref{eq:volumesac}, et les volumes de référence toujours donnés par la littérature.\\
 De même la longueur totale entre artères et veines est subdivisée en trois longueurs (artérioles, capillaires, veinules) sur la base des proportions fournit par la littérature (\cite{Zagzoule1986}). En l’état, faute d’informations structurales complémentaires, nous n’utilisons pas de facteurs géométriques correctifs supplémentaires (de type dimensions fractales), pour tenir compte du caractère ramifié de cette partie de la structure. \\
 A partir des volumes et des longueurs de chaque compartiment, les rayons sont déterminés simplement (Équation~\ref{eq:rayons}). \\
-Les rayons moyens des différents compartiments peuvent être visualisés (Figure~\ref{fig:2_13_profil_rayons}) et leur différences relatives mis en comparaisons aux données de la littérature (Figure 39) \textcolor{red}{pour comparer avec Zagzoule faut faire une table}. On voit ainsi que des artères aux veines, les proportions des rayons des différents tubes semblent comparable.\\
+Les rayons moyens des différents compartiments peuvent être visualisés (Figure~\ref{fig:2_13_profil_rayons}) et leur différences relatives mis en comparaisons aux données de la littérature (Figure 39) \textcolor{red}{lien vers la fig}. Par ailleurs, les données quantitative illustrées dans le Tableau~\ref{table:tab_profil_rayons} montrent des longueurs du même ordre de grandeur (bien que souvent plus élevés dans le modèle de Zagzoule et al.). On voit ainsi que des artères aux veines, les proportions des caractéristiques des différents tubes sont comparables. En revanche l'écart est important en terme de nombres d'artères et de veines est important, ce qui s'explique par d'une part : le niveau de détails de notre segmentation et d'autres part le fait les données de Zagzoule et al. ne sont pas issues directement de données terrain, mais des estimations.\\
+BraVa, pour {\em The Brain Vasculature}, fournit une base donnée de l'architecture artérielle dans le cerveau \textcolor{green}{Susan N. Wright, Peter Kochunov, Fernando Mut Maurizio Bergamino, Kerry M. Brown, John C. Mazziotta, Arthur W. Toga, Juan R. Cebral, Giorgio A. Ascoli. Digital reconstruction and morphometric analysis of human brain arterial vasculature from magnetic resonance angiography. NeuroImage, 82, 170-181, (2013). http://dx.doi.org/10.1016/j.neuroimage.2013.05.089}. Pour construire cette base, 61 patients (âge 31.16 \textcolor{red}{+/-}10.03) ont subit une imagerie IRM par temps de vol (résolution 0.6 x 0.6 x 0.6mm\^3) . Pour chaque sujet, une identification manuelle des artères a été réalisée via ImageJ et le plugin Neuron\_Morpho {\em http://www.personal.soton.ac.uk/dales/morpho/}. Ainsi une identification fine du nombre de segments et de leurs caractéristiques (longueur, tortuosité etc.) est disponible et mis à disposition en ligne. La comparaison de nos mesures aux données de BraVa permet d'évaluer l'écart de notre modèle à des données similaires. Le résultat met en évidence un nombre inférieur de moitié en terme de branches de notre méthode en rapport de BraVa. Au vue de l'approche manuelle privilégié par ce dernier ce résultat est cohérent. La longueur moyenne des segments en revanche est cohérente, bien que des écarts peuvent exister du fait de l'écart précédement décrit. On notera par ailleurs que les longueurs sont plus faibles que celles initialement utilisées par Zagzoule et al.. Les informations sur les calibres des vaisseaux ne sont cependant pas disponibles. \\
+
+%%%
+
+\begin{tabular}[!t]{llll}
+\centering
+      & Zagzoule & BraVa & Notre modèle  \\
+   Artères : aire (mm²) & 3.41(cm²!) (5.6 \%)& NA  & 5.43  (0.8 \%)\\
+   Artères : longueur (mm) & 83 & 27 - 43 (34.18) & 29 \\
+   Artères : nombre & 3950 & 208.56 & 115 \\
+   Artérioles : aire (mm²) & 4.74 (cm²)  (7.7 \%)& NA & 60.5  (8.7 \%)\\
+   Artérioles : longueur (mm) & 35 & NA & 23.4 \\
+   Artérioles : nombre & 35000 & NA & 45 \\
+   Capillaires : aire (mm²) & 38 (cm²)  (62.3 \%)& NA & 484  (69.9 \%)\\
+   Capillaires : longueur (mm) & 5.236 & NA & 3.34 \\
+   Capillaires : nombre & 202000 & NA & 45 \\
+   Veinules : aire (mm²) & 9.49 (cm²)  (15.5 \%)& NA & 121  (17.5 \%)\\
+   Veinules : longueur (mm) & 35 & NA & 23 \\
+   Veinules : nombre & 72000 & NA & 45 \\
+   Veines : aire (mm²) & 5.34 (cm²)  (8.76 \%)& NA & 21.6  (3.12 \%)\\
+   Veines : longueur (mm) & 78.5 & NA & 26.5 \\
+   Veines : nombre & 3896 & NA & 24 \\
+\label{table:tab_profil_rayons}	
+%\caption{Caractéristiques de l'architecture selon différents modèles. Les aires doivent certainement être multipliées par le nombre de vaisseaux pour correspondre aux données de zagzoule. Le nombre d'artérioles, capillaires et veinules de notre modèle regroupe un ensemble de vaisseaux d'un territoire.}
+\end{tabular}
+
+%%%
 %%%
 \begin{figure}[!t]
 \centering
-\includegraphics[width=14cm]{2_13_profil_rayons}
+\includegraphics[width=10cm]{2_13_profil_rayons}
 \caption{Illustration des rayons moyens dans les différents compartiments du système.}
 \label{fig:2_13_profil_rayons}	
 \end{figure}	
-\textcolor{red}{Petite remarque : il y a dans le manuscrit original une figure 25 qui n'est pas referencee dans le texte!}
+
 %%%
 %%%
 %%%
@@ -198,7 +234,7 @@ A ce stade, nous possédons une architecture complète allant des entrées arté
 %%%
 \begin{figure}[!t]
 \centering
-\includegraphics[width=14cm]{2_14_ventricules_segmentation}
+\includegraphics[width=10cm]{2_14_ventricules_segmentation}
 \caption{Segmentation semi-automatique des ventricules par MRIcron sur une image T1. Chaque ventricule est identifié
 par une couleur différente.}
 \label{fig:2_14_ventricules_segmentes}	
