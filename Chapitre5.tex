@@ -105,10 +105,11 @@ pression par des résistances hydrodynamiques :
 \begin{equation}
 F\,=\,R\,\Delta P.
 \end{equation}
+où $F$ est le flux en ml/min, $R$ la résistance en mmHg min/ml et $\Delta P$ la différence de pression en mmHg.
 Les résistances elles-mêmes sont des paramètres du modèle, sans qu'une hypothèse de type poiseuille
 par exemple les associe à des caractéristiques structurales des vaisseaux. De plus le caractère flexible
 des parois, pouvant conduire à une accumulation de liquide dans un compartiment, est représenté par
-une capacité C, elle non plus non reliée pour l'instant à un paramètre structural mesurable. Le volume
+une capacité C (en cm\^3/mmHg), elle non plus non reliée pour l'instant à un paramètre structural mesurable. Le volume
 de chaque compartiment varie à la fois du fait du bilan des entrées et sorties de fluide, mais dépend
 aussi des différences de pression entre sa pression intérieure et la pression intracrânienne
 \begin{equation}
@@ -154,13 +155,14 @@ d'équation est
 \mbox{Mouvement\hspace{1cm}}&&\frac{\partial U}{\partial t}\,+\,\frac{\partial}{\partial x} \biggl(\frac{U^2}{2}\,+\,\frac{P}{\rho}\biggr)\,=\,-F,\\
 \mbox{\'Elasticité  des tubes\hspace{1cm}}&&E_L\biggl(\frac{A}{A_0}\,-\,1\biggr)\,=\,P,
 \end{eqnarray}
-où $E_L=\frac{E}{2}\frac{h}{R_0}$. Ceci constitue un système hyperbolique du premier ordre complet. Une équation constitutive
+où $U$ est la vitesse moyenne du flux sur l'aire $A$, $P$ la pression transmurale, $\rho$ la densité du fluide, $F$ le terme de friction, $E_L=\frac{E}{2}\frac{h}{R_0}$ avec $E$ le module Young, $h$ l'épaisseur de la paroie, $R_0$ et $A_0$ l'aire respectivement le rayon de la paroie et l'aire à une pression transmurale nulle.
+ Ceci constitue un système hyperbolique du premier ordre complet. Une équation constitutive
 supplémentaire relie la friction et les vitesses, selon une loi de Poiseuille :
 \begin{equation}
 \label{eq:poiseuille}
 F\,=\,N\biggl(\frac{8\,\pi\,\mu}{\rho}\frac{U}{S}\biggr).
 \end{equation}
-Cette loi de Poiseuille permet d'associer au modèle les paramètres structuraux des vaisseaux, soit tirés
+où $\mu$ est le coefficient de viscosité dynamique, $S$ l'aire totale ($S = NA$, $N$ étant le nombre de vaisseaux). Cette loi de Poiseuille permet d'associer au modèle les paramètres structuraux des vaisseaux, soit tirés
 de la littérature, soit estimés. Par exemple, les paramètres de diamètre et de nombre des capillaires
 dans la partie microcirculatoire sont estimés sur la base d'une progression géométrique en l'absence
 de données. L'ensemble fournit des valeurs de pression et de flux dans le système circulant
@@ -193,7 +195,7 @@ de distensibilité
 \begin{equation}
 P\,-\,P_{Brain}\,=\,E\biggl(\frac{A}{A_0}\,-\,1\biggr).
 \end{equation}
-On complète le système par des équations assurant la continuité des flux d'un compartiment à
+où $P_{brain}$ est la pression dans le parenchyme. et $E$ l'élastance. On complète le système par des équations assurant la continuité des flux d'un compartiment à
 l'autre. La contrainte de Monro-Kellie est implémentée, contrairement au modèle de Zagzoule. Les
 données fournies au modèle pour l'intégrer sont le décours temporel de la pression en entrée (artère
 carotide) et en sortie (veine jugulaire). Le modèle permet alors de calculer tous les flux et les pressions
