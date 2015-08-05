@@ -451,7 +451,31 @@ où on a :
 V_{CervHem}\,=\,V_{exfCerv}^{L,R}\,+\,V_{solidCerv}^{L,R}\,=\,A_{exfCerv}^{L,R} l_{exfCerv}^{L,R}\,+\,A_{solidCerv}^{L,R} l_{solidCerv}^{L,R},
 \end{equation}
 et {\em exfCerv} correspond au fluide extracellulaire dans les deux hémisphères, {\em solidCerv} à la matrice
-cellulaire solide, $V$ la somme des volumes pour chaque compartiment.
+cellulaire solide, $V$ la somme des volumes pour chaque compartiment.\\
+\begin{tabular}{ | l | l | l | l | l | l | l | l | l | }
+%\caption{Comparaison des différents modèles en terme de compartiments.}
+
+	 & Ursino et al. & Sorek et al. & Cebral et al. & Kim et al. & Moore et al. & Zagzoule et al. & Linninger et al. & Notre modèle \\
+	Parenchyme & Oui & Oui & Non & Non & Non & Oui  & Oui & Oui  \\ 
+	Artères & Oui & Oui & Oui & Oui & Oui & Oui & Oui & Oui \\ 
+	Artérioles & Non & Non & Non & Non & Non & Oui  & Oui  & Oui  \\ 
+	Capillaires & Oui & Oui & Non & Non & Non & Oui  & Oui  & Oui  \\ 
+	Veinules & Non & Non & Non & Non & Non & Oui  & Oui  & Oui  \\ 
+	Veines & Oui & Oui & Non & Non & Non & Oui  & Oui  & Oui  \\ 
+	Sinus & Oui & Oui & Non & Non & Non & Oui  & Oui  & Oui \\ 
+	LCS & Non & Oui & Non & Non & Non & Non  & Oui  & Oui  \\ 
+	Données structurales & Théoriques & Théoriques & Mesurées & Mesurées & Mesurées & Théoriques & Théoriques + Pression en entrée mesurées & Mesurées et estimées \\ 
+	Particularité & - & - & Architecture détaillée du polygone de Willis & Extensibilité des parois & Se termine par un bloc poreux & Intègre le polygone de Willis & Intègre le LCS et sépare le système en deux hémisphères & Se base sur les données structurales \\ 
+\label{table:tab_bilans_modeles}	
+\end{tabular}
+
+Le résumé des différents modèles est illustré dans le Tableau~\ref{table:tab_bilans_modeles}. Chaque modèle dispose de ces caractéristiques et prend en compte plus ou moins de compartiment. Nous tentons à travers notre modèle, de fournir la description la plus complète possible au vue des données d'imagerie IRM.
+
+
+
+
+
+
 %%%
 %%%
 \subsection{Implémentation}
