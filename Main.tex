@@ -31,7 +31,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%   			Liste des fichiers à compiler					%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	\includeonly{Chapitre1,Chapitre2,Chapitre3,Chapitre4,Chapitre5,Chapitre6,Annexes}
+	\includeonly{Abstract,Remerciements,Chapitre1,Chapitre2,Chapitre3,Chapitre4,Chapitre5,Chapitre6,Chapitre7,Chapitre8,Annexes}
  
 
 
@@ -81,18 +81,23 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\pagenumbering{arabic}
 
+	\include{Remerciements}
+	\include{Abstract}
 	\includefrom{rep_Chapitre1/}{Chapitre1}	
 	\includefrom{rep_Chapitre2/}{Chapitre2} 		
 	\includefrom{rep_Chapitre3/}{Chapitre3}	
 	\includefrom{rep_Chapitre4/}{Chapitre4}
 	\includefrom{rep_Chapitre5/}{Chapitre5}	
-	\includefrom{rep_Chapitre6/}{Chapitre6}	
+	\includefrom{rep_Chapitre6/}{Chapitre6}
+	\includefrom{rep_Chapitre7/}{Chapitre7}
+	\includefrom{rep_Chapitre8/}{Chapitre8}
+		
 	
 	% Annexes
 	\begin{appendix}
 		\pagenumbering{Roman}
-			\includefrom{Annexes/}{Annexes}				% Figures en annexe
-			
+			%\includefrom{Annexes/}{Annexes}				% Figures en annexe
+			\includefrom{rep_Annexes/}{Annexes}
 		% Liste des acronymes, glossaire et liste des symboles (dans l'ordre)		
 		\printglossary[type=\acronymtype , title={Liste des acronymes}, toctitle={Liste des acronymes}]
 		\printglossary[title=Glossaire,toctitle=Glossaire]

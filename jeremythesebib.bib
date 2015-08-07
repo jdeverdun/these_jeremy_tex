@@ -2014,15 +2014,703 @@ volume = {29},
 year = {2010}
 }
 
+@article{Schweser2012,
+abstract = {Quantitative susceptibility mapping (QSM) is a novel magnetic resonance-based technique that determines tissue magnetic susceptibility from measurements of the magnetic field perturbation. Due to the ill-posed nature of this problem, regularization strategies are generally required to reduce streaking artifacts on the computed maps. The present study introduces a new algorithm for calculating the susceptibility distribution utilizing a priori information on its regional homogeneity derived from gradient echo phase images and analyzes the impact of erroneous a priori information on susceptibility map fidelity. The algorithm, Homogeneity Enabled Incremental Dipole Inversion (HEIDI), was investigated with a special focus on the reconstruction of subtle susceptibility variations in a numerical model and in volunteer data and was compared with two recently published approaches, Thresholded K-space Division (TKD) and Morphology Enabled Dipole Inversion (MEDI). HEIDI resulted in susceptibility maps without streaking artifacts and excellent depiction of subtle susceptibility variations in most regions. By investigating HEIDI susceptibility maps acquired with the volunteers' heads in different orientations, it was demonstrated that the apparent magnetic susceptibility distribution of human brain tissue considerably depends on the direction of the main magnetic field. © 2012 Elsevier Inc.},
+author = {Schweser, Ferdinand and Sommer, Karsten and Deistung, Andreas and Reichenbach, J\"{u}rgen Rainer},
+doi = {10.1016/j.neuroimage.2012.05.067},
+isbn = {1095-9572 (Electronic)$\backslash$n1053-8119 (Linking)},
+issn = {10538119},
+journal = {NeuroImage},
+keywords = {COSMOS,Homogeneity Enabled Incremental Dipole Inversion,Magnetic susceptibility mapping,Phase imaging,Tissue susceptibility},
+number = {3},
+pages = {2083--2100},
+pmid = {22659482},
+title = {{Quantitative susceptibility mapping for investigating subtle susceptibility variations in the human brain}},
+volume = {62},
+year = {2012}
+}
+
+
+@article{Walsh2000,
+abstract = {An adaptive implementation of the spatial matched filter and its application to the reconstruction of phased array MR imagery is described. Locally relevant array correlation statistics for the NMR signal and noise processes are derived directly from the set of complex individual coil images, in the form of sample correlation matrices. Eigen-analysis yields an optimal filter vector for the estimated signal and noise array correlation statistics. The technique enables near-optimal reconstruction of multicoil MR imagery without a-priori knowledge of the individual coil field maps or noise correlation structure. Experimental results indicate SNR performance approaching that of the optimal matched filter. Compared to the sum-of-squares technique, the RMS noise level in dark image regions is reduced by as much as the square root of N, where N is the number of coils in the array. The technique is also effective in suppressing localized motion and flow artifacts.},
+author = {Walsh, David O. and Gmitro, Arthur F. and Marcellin, Michael W.},
+doi = {10.1002/(SICI)1522-2594(200005)43:5<682::AID-MRM10>3.0.CO;2-G},
+isbn = {0740-3194 (Print)$\backslash$r0740-3194 (Linking)},
+issn = {07403194},
+journal = {Magnetic Resonance in Medicine},
+keywords = {Image reconstruction,Motion artifacts,Noise reduction,Phased array MRI},
+number = {5},
+pages = {682--690},
+pmid = {10800033},
+title = {{Adaptive reconstruction of phased array MR imagery}},
+volume = {43},
+year = {2000}
+}
+
+
+@article{Robinson2011,
+abstract = {A method is presented for the combination of phase images from multi-channel RF coils in the absence of a volume reference coil. It is based on the subtraction of 3D phase offset maps from the phase data from each coil. Phase offset maps are weighted combinations of phase measurements at two echo times. Multi-Channel Phase Combination using measured 3D phase offsets (MCPC-3D) offers a conceptually and computationally simple solution to the calculation of combined phase images. The dual-echo data required for the phase maps can be intrinsic to the high-resolution gradient-echo scan to be reconstructed (MCPC-3D-I). Alternatively, a separate, fast, low-resolution dual-echo scan can be used (MCPC-3D-II). Both variants are shown to give near perfect phase matching, yielding images with high SNR throughout and high GM-WM contrast. MCPC-3D is compared with other reference-free phase image combination methods; high-pass phase filtering, phase difference imaging, and matching using constant offsets (MCPC-C). Multi-Channel Phase Combination using measured 3D phase offsets method does not need an overlap between the signals from individual coils and can be used with parallel imaging, making it ideally suited to multi-channel coils with a large number of elements, and to high and ultra-high field systems.},
+author = {Robinson, Simon and Grabner, G\"{u}nther and Witoszynskyj, Stephan and Trattnig, Siegfried},
+doi = {10.1002/mrm.22753},
+isbn = {0740-3194},
+issn = {07403194},
+journal = {Magnetic Resonance in Medicine},
+keywords = {MCPC-3D,multi-channel coils,phase imaging,phase offsets},
+number = {6},
+pages = {1638--1648},
+pmid = {21254207},
+title = {{Combining phase images from multi-channel RF coils using 3D phase offset maps derived from a dual-echo scan}},
+volume = {65},
+year = {2011}
+}
+
+
+@article{Ros2009,
+author = {Ros, C. and Witoszynskyj, S. and  Herrmann, K.-H. and  Reichenbach, J. R.},
+journal = {4th European Conference of the International Federation for Medical and Biological Engineering},
+pages = {803--806},
+title = {{Reconstruction of phase images for GRAPPA accelerated Magnetic Resonance Imaging}},
+publisher = {Springer},
+year = {2009}
+}
+
+@article{Jenkinson2003,
+abstract = {This work investigates the general problem of phase unwrapping for arbitrary N-dimensional phase maps. A cost function-based approach is outlined that leads to an integer programming problem. To solve this problem, a best-pair-first region merging approach is adopted as the optimization method. The algorithm was implemented and tested with 3D MRI medical data for venogram studies, as well as for fMRI applications in EPI unwarping and rapid, automated shimming.},
+author = {Jenkinson, Mark},
+doi = {10.1002/mrm.10354},
+isbn = {0740-3194 (Print)$\backslash$n0740-3194 (Linking)},
+issn = {07403194},
+journal = {Magnetic Resonance in Medicine},
+keywords = {Automated shimming,Echo planar imaging (EPI),Field mapping,Phase unwrapping,Venogram},
+number = {1},
+pages = {193--197},
+pmid = {12509838},
+title = {{Fast, automated, N-dimensional phase-unwrapping algorithm}},
+volume = {49},
+year = {2003}
+}
+
+
+@article{Abdul-Rahman2007,
+abstract = {What we believe to be a novel three-dimensional (3D) phase unwrapping algorithm is proposed to unwrap 3D wrapped-phase volumes. It depends on a quality map to unwrap the most reliable voxels first and the least reliable voxels last. The technique follows a discrete unwrapping path to perform the unwrapping process. The performance of this technique was tested on both simulated and real wrapped-phase maps. And it is found to be robust and fast compared with other 3D phase unwrapping algorithms.},
+author = {Abdul-Rahman, Hussein S and Gdeisat, Munther A and Burton, David R and Lalor, Michael J and Lilley, Francis and Moore, Christopher J},
+doi = {10.1364/AO.46.006623},
+isbn = {0003-6935 (Print) 0003-6935 (Linking)},
+issn = {0003-6935},
+journal = {Applied optics},
+number = {26},
+pages = {6623--6635},
+pmid = {17846656},
+title = {{Fast and robust three-dimensional best path phase unwrapping algorithm.}},
+volume = {46},
+year = {2007}
+}
+
+
+@article{Li2004,
+abstract = {Magnetic susceptibility, as a physical property of materials, plays important roles in many physical, chemical, engineering, and medical applications. Its quantification becomes of significant interest when MRI becomes a commonly used technique in biomedical applications. A general method is presented here for quantifying arbitrary magnetic susceptibility distributions in a localized region on the basis of first principles of magnetic induction field distributions in space. A proof of the concept was demonstrated by computer simulations. The study establishes the methodological basis for quantitative magnetic susceptibility imaging with MR.},
+author = {Li, Lin and Leigh, John S.},
+doi = {10.1002/mrm.20054},
+isbn = {0740-3194 (Print)$\backslash$r0740-3194 (Linking)},
+issn = {07403194},
+journal = {Magnetic Resonance in Medicine},
+keywords = {Inverse problem,Magnetic resonance,Magnetic susceptibility,Quantitative susceptibility imaging,Spherical mean value},
+number = {5},
+pages = {1077--1082},
+pmid = {15122694},
+title = {{Quantifying Arbitrary Magnetic Susceptibility Distributions with MR}},
+volume = {51},
+year = {2004}
+}
+
+@article{Schweser2011,
+abstract = {Quantitative susceptibility mapping (QSM) based on gradient echo (GRE) magnetic resonance phase data is a novel technique for non-invasive assessment of magnetic tissue susceptibility differences. The method is expected to be an important means to determine iron distributions in vivo and may, thus, be instrumental for elucidating the physiological role of iron and disease-related iron concentration changes associated with various neurological and psychiatric disorders. This study introduces a framework for QSM and demonstrates calculation of reproducible and orientation-independent susceptibility maps from GRE data acquired at 3T. The potential of these susceptibility maps to perform anatomical imaging is investigated, as well as the ability to measure the venous blood oxygen saturation level in large vessels, and to assess the local tissue iron concentration. In order to take into account diamagnetic susceptibility contributions induced by myelin, a correction scheme for susceptibility based iron estimation is demonstrated. The findings suggest that susceptibility contrast, and therewith also phase contrast, are not only linked to the storage iron concentration but are also significantly influenced by other sources such as myelin. After myelin correction the linear dependence between magnetic susceptibilities and previously published iron concentrations from post mortem studies was significantly improved. Finally, a comparison between susceptibility maps and processed phase images indicated that caution should be exercised when drawing conclusions about iron concentrations when directly assessing processed phase information. © 2010 Elsevier Inc.},
+author = {Schweser, Ferdinand and Deistung, Andreas and Lehr, Berengar Wendel and Reichenbach, J\"{u}rgen Rainer},
+doi = {10.1016/j.neuroimage.2010.10.070},
+isbn = {1095-9572 (Electronic)$\backslash$r1053-8119 (Linking)},
+issn = {10538119},
+journal = {NeuroImage},
+keywords = {Brain iron,MR phase,Myelin,SHARP,Susceptibility mapping},
+number = {4},
+pages = {2789--2807},
+pmid = {21040794},
+title = {{Quantitative imaging of intrinsic magnetic tissue properties using MRI signal phase: An approach to in vivo brain iron metabolism?}},
+volume = {54},
+year = {2011}
+}
+
+
+@article{Schenck1996,
+abstract = {The concept of magnetic susceptibility is central to many current research and development activities in magnetic resonance imaging (MRI); for example, the development of MR-guided surgery has created a need for surgical instruments and other devices with susceptibility tailored to the MR environment; susceptibility effects can lead to position errors of up to several millimeters in MR-guided stereotactic surgery; and the variation of magnetic susceptibility on a microscopic scale within tissues contributes to MR contrast and is the basis of functional MRI. The magnetic aspects of MR compatibility are discussed in terms of two levels of acceptability: Materials with the first kind of magnetic field compatibility are such that magnetic forces and torques do not interfere significantly when the materials are used within the magnetic field of the scanner; materials with the second kind of magnetic field compatibility meet the more demanding requirement that they produce only negligible artifacts within the MR image and their effect on the positional accuracy of features within the image is negligible or can readily be corrected. Several materials exhibiting magnetic field compatibility of the second kind have been studied and a group of materials that produce essentially no image distortion, even when located directly within the imaging field of view, is identified. Because of demagnetizing effects, the shape and orientation, as well as the susceptibility, of objects within and adjacent to the imaging region is important in MRI. The quantitative use of susceptibility data is important to MRI, but the use of literature values for the susceptibility of materials is often difficult because of inconsistent traditions in the definitions and units used for magnetic parameters-particularly susceptibility. The uniform use of SI units for magnetic susceptibility and related quantities would help to achieve consistency and avoid confusion in MRI.},
+author = {Schenck, J F},
+doi = {10.1118/1.597854},
+isbn = {0094-2405 (Print)$\backslash$n0094-2405 (Linking)},
+issn = {00942405},
+journal = {Medical physics},
+number = {6},
+pages = {815--850},
+pmid = {8798169},
+title = {{The role of magnetic susceptibility in magnetic resonance imaging: MRI magnetic compatibility of the first and second kinds.}},
+volume = {23},
+year = {1996}
+}
+
+
+@article{Duyn2007,
+abstract = {The ability to detect brain anatomy and pathophysiology with MRI is limited by the contrast-to-noise ratio (CNR), which depends on the contrast mechanism used and the spatial resolution. In this work, we show that in MRI of the human brain, large improvements in contrast to noise in high-resolution images are possible by exploiting the MRI signal phase at high magnetic field strength. Using gradient-echo MRI at 7.0 tesla and a multichannel detector, a nominal voxel size of 0.24 x 0.24 x 1.0 mm3 (58 nl) was achieved. At this resolution, a strong phase contrast was observed both between as well as within gray matter (GM) and white matter (WM). In gradient-echo phase images obtained on normal volunteers at this high resolution, the CNR between GM and WM ranged from 3:1 to 20:1 over the cortex. This CNR is an almost 10-fold improvement over conventional MRI techniques that do not use image phase, and it is an approximately 100-fold improvement when including the gains in resolution from high-field and multichannel detection. Within WM, phase contrast appeared to be associated with the major fiber bundles, whereas contrast within GM was suggestive of the underlying layer structure. The observed phase contrast is attributed to local variations in magnetic susceptibility, which, at least in part, appeared to originate from iron stores. The ability to detect cortical substructure from MRI phase contrast at high field is expected to greatly enhance the study of human brain anatomy in vivo.},
+author = {Duyn, Jeff H and van Gelderen, Peter and Li, Tie-Qiang and de Zwart, Jacco A and Koretsky, Alan P and Fukunaga, Masaki},
+doi = {10.1073/pnas.0610821104},
+isbn = {0027-8424 (Print)$\backslash$n0027-8424 (Linking)},
+issn = {0027-8424},
+journal = {Proceedings of the National Academy of Sciences of the United States of America},
+number = {28},
+pages = {11796--11801},
+pmid = {17586684},
+title = {{High-field MRI of brain cortical substructure based on signal phase.}},
+volume = {104},
+year = {2007}
+}
+
+@article{Neelavalli2009,
+abstract = {PURPOSE: To estimate magnetic field variations induced from air-tissue interface geometry and remove their effects from susceptibility-weighted imaging (SWI) data. MATERIALS AND METHODS: A Fourier transform-based field estimation method is used to calculate the field deviation arising from air-tissue interface geometry. This is accomplished by manually drawing or automatically detecting the sinuses, the mastoid cavity, and the head geometry. The difference in susceptibility, Deltachi, between brain tissue and air spaces is then calculated using a residual-phase minimization approach. SWI data are corrected by subtracting the predicted phase from the original phase images. Resultant phase images are then used to perform the SWI postprocessing. RESULTS: Significant improvement in the postprocessed SWI data is demonstrated, most notably in the frontal and midbrain regions and to a lesser extent at the boundary of the brain. Specifically, there is much less dropout of signal after phase correction near air-tissue interfaces, making it possible to see vessels and structures that were often incorrectly removed by the conventional SWI postprocessing. CONCLUSION: The Fourier transform-based field estimation method is a powerful 3D background phase removal method for improving SWI images, providing clearer images of the forebrain and the midbrain regions.},
+author = {Neelavalli, Jaladhar and Cheng, Yu Chung N and Jiang, Jing and Haacke, E. Mark},
+doi = {10.1002/jmri.21693},
+isbn = {1053-1807 (Print)$\backslash$r1053-1807 (Linking)},
+issn = {10531807},
+journal = {Journal of Magnetic Resonance Imaging},
+keywords = {Air-tissue interface,Fourier transform,Magnetic field calculation,Phase aliasing,Susceptibility distribution,Susceptibility-weighted imaging},
+number = {4},
+pages = {937--948},
+pmid = {19306433},
+title = {{Removing background phase variations in susceptibility-weighted imaging using a fast, forward-field calculation}},
+volume = {29},
+year = {2009}
+}
+
+
+@article{Liu2011b,
+abstract = {For optimal image quality in susceptibility-weighted imaging and accurate quantification of susceptibility, it is necessary to isolate the local field generated by local magnetic sources (such as iron) from the background field that arises from imperfect shimming and variations in magnetic susceptibility of surrounding tissues (including air). Previous background removal techniques have limited effectiveness depending on the accuracy of model assumptions or information input. In this article, we report an observation that the magnetic field for a dipole outside a given region of interest (ROI) is approximately orthogonal to the magnetic field of a dipole inside the ROI. Accordingly, we propose a nonparametric background field removal technique based on projection onto dipole fields (PDF). In this PDF technique, the background field inside an ROI is decomposed into a field originating from dipoles outside the ROI using the projection theorem in Hilbert space. This novel PDF background removal technique was validated on a numerical simulation and a phantom experiment and was applied in human brain imaging, demonstrating substantial improvement in background field removal compared with the commonly used high-pass filtering method.},
+author = {Liu, Tian and Khalidov, Ildar and de Rochefort, Ludovic and Spincemaille, Pascal and Liu, Jing and Tsiouris, A. John and Wang, Yi},
+doi = {10.1002/nbm.1670},
+isbn = {1099-1492 (Electronic)$\backslash$r0952-3480 (Linking)},
+issn = {09523480},
+journal = {NMR in Biomedicine},
+keywords = {Background removal,Dipole field,Projection,Susceptibility},
+number = {9},
+pages = {1129--1136},
+pmid = {21387445},
+title = {{A novel background field removal method for MRI using projection onto dipole fields (PDF)}},
+volume = {24},
+year = {2011}
+}
+
+
+@article{Bertero2006,
+abstract = {Imaging techniques are a powerful tool for the analysis of human organs and biological systems and they range from different kinds of tomography to different kinds of microscopy. Their common feature is that they require mathematical modeling of the acquisition process and numerical methods for the solution of the equations relating the data to the unknown object. These problems are usually named inverse problems and their main feature is that they are ill-posed in the sense of Hadamard, so that their solutions require special care. In this chapter we sketch the main issues which must be considered when treating inverse problems of interest in biomedical imaging.},
+author = {Bertero, M and Piana, M.},
+doi = {10.1007/88-470-0396-2\_1},
+isbn = {8847003946},
+journal = {Complex Systems in Biomedicine},
+keywords = {image deconvolution,inverse problems,iterative reconstruction methods,regularization and statistical methods,tomography},
+pages = {1--33},
+title = {{Inverse problems in biomedical imaging: modeling and methods of solution}},
+url = {http://www.springerlink.com/index/t7800t77716t8573.pdf},
+year = {2006}
+}
+
+
+@article{Sun2014,
+abstract = {PURPOSE: To introduce a new method for removing background artifacts in field maps and apply it to enhance the accuracy of susceptibility mapping. METHODS: A field artifact removal method is introduced that is based on the sophisticated harmonic artifact reduction for phase data (SHARP) method exploiting the harmonic mean value property. The new method uses Tikhonov regularization at the deconvolution stage and is referred to as regularization enabled SHARP (RESHARP). RESHARP was compared with SHARP in a field-forward susceptibility simulation and in human brain experiments, considering effects on both field maps and the resulting susceptibility maps. RESULTS: From the simulation, RESHARP was able to reduce error in the field map by 17.4\% as compared with SHARP, resulting in a more accurate single-angle susceptibility map with 6.5\% relative error (compared with 48.5\% using SHARP). Using RESHARP in vivo, field and susceptibility maps of the brain displayed fewer artifacts particularly at the brain boundaries, and susceptibility measurements of iron-rich deep gray matter were also more consistent than SHARP across healthy subjects of similar age. CONCLUSION: Compared with SHARP, RESHARP removes background field artifact more effectively, leading to more accurate susceptibility measurements in iron-rich deep gray matter. Magn Reson Med, 2013. © 2013 Wiley Periodicals, Inc.},
+author = {Sun, Hongfu and Wilman, Alan H.},
+doi = {10.1002/mrm.24765},
+issn = {07403194},
+journal = {Magnetic Resonance in Medicine},
+keywords = {SHARP,Tikhonov regularization,background artifact,brain iron,phase imaging,susceptibility mapping},
+number = {3},
+pages = {1151--1157},
+pmid = {23666788},
+title = {{Background field removal using spherical mean value filtering and Tikhonov regularization}},
+volume = {71},
+year = {2014}
+}
+
+
+@article{Wu2012,
+abstract = {The derivation of susceptibility from image phase is hampered by the ill-conditioned filter inversion in certain k-space regions. In this article, compressed sensing is used to compensate for the k-space regions where direct filter inversion is unstable. A significantly lower level of streaking artifacts is produced in the resulting susceptibility maps for both simulated and in vivo data sets compared to outcomes obtained using the direct threshold method. It is also demonstrated that the compressed sensing based method outperforms regularization based methods. The key difference between the regularized inversions and compressed sensing compensated inversions is that, in the former case, the entire k-space spectrum estimation is affected by the ill-conditioned filter inversion in certain k-space regions, whereas in the compressed sensing based method only the ill-conditioned k-space regions are estimated. In the susceptibility map calculated from the phase measurement obtained using a 3T scanner, not only are the iron-rich regions well depicted, but good contrast between white and gray matter interfaces that feature a low level of susceptibility variations are also obtained. The correlation between the iron content and the susceptibility levels in iron-rich deep nucleus regions is studied, and strong linear relationships are observed which agree with previous findings. Magn Reson Med, 2011. (C) 2011 Wiley-Liss, Inc.},
+author = {Wu, B and Li, W and Guidon, A and Liu, C L},
+doi = {Doi 10.1002/Mrm.23000},
+isbn = {0740-3194},
+issn = {1522-2594},
+journal = {Magnetic Resonance in Medicine},
+keywords = {basal ganglia,compressed sensing,field inhomogeneity,iron,iron content,magnetic-susceptibility,mri,myelin,parkinsons-disease,phase data,phase imaging,reconstruction,spatial variation,susceptibility mapping,tissue},
+number = {1},
+pages = {137--147},
+pmid = {21671269},
+title = {{Whole brain susceptibility mapping using compressed sensing}},
+url = {<Go to ISI>://000298482800016$\backslash$nhttp://onlinelibrary.wiley.com/store/10.1002/mrm.23000/asset/23000\_ftp.pdf?v=1\&t=hawzbtqz\&s=5231ea37c6a406f08f248733668f5f4df51b1ecc},
+volume = {67},
+year = {2012}
+}
+
+
+@article{Liu2009b,
+abstract = {Magnetic susceptibility differs among tissues based on their contents of iron, calcium, contrast agent, and other molecular compositions. Susceptibility modifies the magnetic field detected in the MR signal phase. The determination of an arbitrary susceptibility distribution from the induced field shifts is a challenging, ill-posed inverse problem. A method called "calculation of susceptibility through multiple orientation sampling" (COSMOS) is proposed to stabilize this inverse problem. The field created by the susceptibility distribution is sampled at multiple orientations with respect to the polarization field, B(0), and the susceptibility map is reconstructed by weighted linear least squares to account for field noise and the signal void region. Numerical simulations and phantom and in vitro imaging validations demonstrated that COSMOS is a stable and precise approach to quantify a susceptibility distribution using MRI.},
+author = {Liu, Tian and Spincemaille, Pascal and {De Rochefort}, Ludovic and Kressler, Bryan and Wang, Yi},
+doi = {10.1002/mrm.21828},
+isbn = {1522-2594 (Electronic)$\backslash$n0740-3194 (Linking)},
+issn = {07403194},
+journal = {Magnetic Resonance in Medicine},
+keywords = {COSMOS,MRI,Multiple orientations,Quantification,Susceptibility},
+number = {1},
+pages = {196--204},
+pmid = {19097205},
+title = {{Calculation of susceptibility through multiple orientation sampling (COSMOS): A method for conditioning the inverse problem from measured magnetic field map to susceptibility source image in MRI}},
+volume = {61},
+year = {2009}
+}
+
+
+@article{DeRochefort2010,
+abstract = {The diagnosis of many neurologic diseases benefits from the ability to quantitatively assess iron in the brain. Paramagnetic iron modifies the magnetic susceptibility causing magnetic field inhomogeneity in MRI. The local field can be mapped using the MR signal phase, which is discarded in a typical image reconstruction. The calculation of the susceptibility from the measured magnetic field is an ill-posed inverse problem. In this work, a bayesian regularization approach that adds spatial priors from the MR magnitude image is formulated for susceptibility imaging. Priors include background regions of known zero susceptibility and edge information from the magnitude image. Simulation and phantom validation experiments demonstrated accurate susceptibility maps free of artifacts. The ability to characterize iron content in brain hemorrhage was demonstrated on patients with cavernous hemangioma. Additionally, multiple structures within the brain can be clearly visualized and characterized. The technique introduces a new quantitative contrast in MRI that is directly linked to iron in the brain.},
+author = {{De Rochefort}, Ludovic and Liu, Tian and Kressler, Bryan and Liu, Jing and Spincemaille, Pascal and Lebon, Vincent and Wu, Jianlin and Wang, Yi},
+doi = {10.1002/mrm.22187},
+isbn = {1522-2594 (Electronic)$\backslash$n0740-3194 (Linking)},
+issn = {07403194},
+journal = {Magnetic Resonance in Medicine},
+keywords = {Brain iron,Inverse problem,Magnetic field,Regularization,Susceptibility quantification},
+number = {1},
+pages = {194--206},
+pmid = {19953507},
+title = {{Quantitative susceptibility map reconstruction from MR phase data using bayesian regularization: Validation and application to brain imaging}},
+volume = {63},
+year = {2010}
+}
+
+
+@article{Li2011,
+abstract = {Image phase from gradient echo MRI provides a unique contrast that reflects brain tissue composition variations, such as iron and myelin distribution. Phase imaging is emerging as a powerful tool for the investigation of functional brain anatomy and disease diagnosis. However, the quantitative value of phase is compromised by its nonlocal and orientation dependent properties. There is an increasing need for reliable quantification of magnetic susceptibility, the intrinsic property of tissue. In this study, we developed a novel and accurate susceptibility mapping method that is also phase-wrap insensitive. The proposed susceptibility mapping method utilized two complementary equations: (1) the Fourier relationship of phase and magnetic susceptibility; and (2) the first-order partial derivative of the first equation in the spatial frequency domain. In numerical simulation, this method reconstructed the susceptibility map almost free of streaking artifact. Further, the iterative implementation of this method allowed for high quality reconstruction of susceptibility maps of human brain in vivo. The reconstructed susceptibility map provided excellent contrast of iron-rich deep nuclei and white matter bundles from surrounding tissues. Further, it also revealed anisotropic magnetic susceptibility in brain white matter. Hence, the proposed susceptibility mapping method may provide a powerful tool for the study of brain physiology and pathophysiology. Further elucidation of anisotropic magnetic susceptibility in vivo may allow us to gain more insight into the white matter micro-architectures. © 2011 Elsevier Inc.},
+author = {Li, Wei and Wu, Bing and Liu, Chunlei},
+doi = {10.1016/j.neuroimage.2010.11.088},
+isbn = {1095-9572 (Electronic)$\backslash$n1053-8119 (Linking)},
+issn = {10538119},
+journal = {NeuroImage},
+keywords = {Anisotropic magnetic susceptibility,Iron,Myelin,Phase imaging,Susceptibility mapping},
+number = {4},
+pages = {1645--1656},
+pmid = {21224002},
+title = {{Quantitative susceptibility mapping of human brain reflects spatial variation in tissue composition}},
+volume = {55},
+year = {2011}
+}
+
+@article{Liu2011c,
+abstract = {Magnetic susceptibility varies among brain structures and provides insights into the chemical and molecular composition of brain tissues. However, the determination of an arbitrary susceptibility distribution from the measured MR signal phase is a challenging, ill-conditioned inverse problem. Although a previous method named calculation of susceptibility through multiple orientation sampling (COSMOS) has solved this inverse problem both theoretically and experimentally using multiple angle acquisitions, it is often impractical to carry out on human subjects. Recently, the feasibility of calculating the brain susceptibility distribution from a single-angle acquisition was demonstrated using morphology enabled dipole inversion (MEDI). In this study, we further improved the original MEDI method by sparsifying the edges in the quantitative susceptibility map that do not have a corresponding edge in the magnitude image. Quantitative susceptibility maps generated by the improved MEDI were compared qualitatively and quantitatively with those generated by calculation of susceptibility through multiple orientation sampling. The results show a high degree of agreement between MEDI and calculation of susceptibility through multiple orientation sampling, and the practicality of MEDI allows many potential clinical applications. Magn Reson Med, 2011. © 2011 Wiley-Liss, Inc.},
+author = {Liu, Tian and Liu, Jing and {De Rochefort}, Ludovic and Spincemaille, Pascal and Khalidov, Ildar and Ledoux, James Robert and Wang, Yi},
+doi = {10.1002/mrm.22816},
+isbn = {1522-2594 (Electronic)$\backslash$r0740-3194 (Linking)},
+issn = {07403194},
+journal = {Magnetic Resonance in Medicine},
+keywords = {COSMOS,MRI,morphology-enabled dipole inversion,susceptibility},
+number = {3},
+pages = {777--783},
+pmid = {21465541},
+title = {{Morphology enabled dipole inversion (MEDI) from a single-angle acquisition: Comparison with COSMOS in human brain imaging}},
+volume = {66},
+year = {2011}
+}
+
+@article{Hoult2000,
+abstract = {Confusion exists over the application of the Principle of Reciprocity to NMR signal strength calculations when wavelength in a sample is comparable to the latter's size. A simple and easily reproduced bench experiment that validates the principle is therefore described. Building on the experimental results, elementary mathematics are employed to derive simple equations for the B1 fields in both the negatively and the positively rotating frames. Using these equations, the reader is then guided through the steps needed to deduce correctly the signal received in an NMR experiment. The article should serve as a resource for those attempting signal strength calculations. © 2000 John Wiley \& Sons, Inc. Concepts Magn Reson 12: 173–187, 2000},
+author = {Hoult, D. I.},
+doi = {10.1002/1099-0534(2000)12:4<173::AID-CMR1>3.0.CO;2-Q},
+isbn = {1043-7347},
+issn = {1099-0534},
+journal = {Concepts in Magnetic Resonance},
+number = {4},
+pages = {173--187},
+title = {{The principle of reciprocity in signal strength calculations—A mathematical guide}},
+url = {http://onlinelibrary.wiley.com/doi/10.1002/1099-0534(2000)12:4<173::AID-CMR1>3.0.CO;2-Q/abstract$\backslash$nhttp://onlinelibrary.wiley.com/store/10.1002/1099-0534(2000)12:4<173::AID-CMR1>3.0.CO;2-Q/asset/1\_ftp.pdf?v=1\&t=hx2yuzxb\&s=2e76bc8fea13335eb8360a25b5f8c62c7bf328f1},
+volume = {12},
+year = {2000}
+}
+
+
+@article{Smith2002,
+abstract = {An automated method for segmenting magnetic resonance head images into brain and non-brain has been developed. It is very robust and accurate and has been tested on thousands of data sets from a wide variety of scanners and taken with a wide variety of MR sequences. The method, Brain Extraction Tool (BET), uses a deformable model that evolves to fit the brain's surface by the application of a set of locally adaptive model forces. The method is very fast and requires no preregistration or other pre-processing before being applied. We describe the new method and give examples of results and the results of extensive quantitative testing against "gold-standard" hand segmentations, and two other popular automated methods.},
+author = {Smith, Stephen M.},
+doi = {10.1002/hbm.10062},
+isbn = {1065-9471 (Print) 1065-9471 (Linking)},
+issn = {10659471},
+journal = {Human Brain Mapping},
+keywords = {Brain segmentation,Cortical surface modeling},
+number = {3},
+pages = {143--155},
+pmid = {12391568},
+title = {{Fast robust automated brain extraction}},
+volume = {17},
+year = {2002}
+}
+
+
+@article{Tan2014,
+abstract = {OBJECTIVES: The aims of this study were to investigate and validate quantitative susceptibility mapping (QSM) for lesional iron quantification in cerebral cavernous malformations (CCMs).$\backslash$n$\backslash$nMATERIALS AND METHODS: Magnetic resonance imaging studies were performed in phantoms and 16 patients on a 3-T scanner. Susceptibility weighted imaging, QSM, and R2* maps were reconstructed from in vivo data acquired with a 3-dimensional, multi-echo, and T2*-weighted gradient echo sequence. Magnetic susceptibility measurements were correlated to susceptibility weighted imaging and R2* results. In addition, iron concentrations from surgically excised CCM lesion specimens were determined using inductively coupled plasma mass spectrometry and correlated with QSM measurements.$\backslash$n$\backslash$nRESULTS: The QSM images demonstrated excellent image quality for depicting CCM lesions in both sporadic and familial cases. Susceptibility measurements revealed a positive linear correlation with R2* values (R = 0.99 for total, R = 0.69 for mean; P < 0.01). Quantitative susceptibility mapping values of known iron-rich brain regions matched closely with those of previous studies and in interobserver consistency. A strong correlation was found between QSM and the concentration of iron phantoms (0.925; P < 0.01), as well as between QSM and mass spectroscopy estimation of iron deposition (0.999 for total iron, 0.86 for iron concentration; P < 0.01) in 18 fragments of 4 excised human CCM lesion specimens.$\backslash$n$\backslash$nCONCLUSIONS: The ability of QSM to evaluate iron deposition in CCM lesions was illustrated via phantom, in vivo, and ex vivo validation studies. Quantitative susceptibility mapping may be a potential biomarker for monitoring CCM disease activity and response to treatments.},
+author = {Tan, Huan and Liu, Tian and Wu, Ying and Thacker, Jon and Shenkar, Robert and Mikati, Abdul Ghani and Shi, Changbin and Dykstra, Conner and Wang, Yi and Prasad, Pottumarthi V and Edelman, Robert R and Awad, Issam a},
+doi = {10.1097/RLI.0000000000000043},
+issn = {1536-0210},
+journal = {Investigative radiology},
+keywords = {00,00 y 00,2013,5,after,and accepted for publication,brain iron,cerebral cavernous malformation,imaging biomarker,invest radiol 2014,quantitative susceptibility mapping,received for publication november},
+number = {00},
+pages = {1--7},
+pmid = {24619210},
+title = {{Evaluation of Iron Content in Human Cerebral Cavernous Malformation Using Quantitative Susceptibility Mapping.}},
+url = {http://www.ncbi.nlm.nih.gov/pubmed/24619210},
+volume = {00},
+year = {2014}
+}
+
+@inproceedings{Gutierrez2005,
+abstract = {Magnetic and structural analyses have been performed on an iron sucrose complex used as a haematinic agent. The system contains two-line ferrihydrite particles of about 5 nm that are superparamagnetic above approximately 50 K. The observed low-temperature magnetic dynamics of this compound is closer to simple models than in the case of other iron-containing drugs for intravenous use like iron dextran. © 2005 Published by Elsevier B.V.},
+author = {Guti\'{e}rrez, Luc\'{\i}a and {Del Puerto Morales}, Mar\'{\i}a and {Jos\'{e} L\'{a}zaro}, Francisco},
+booktitle = {Journal of Magnetism and Magnetic Materials},
+doi = {10.1016/j.jmmm.2005.01.045},
+issn = {03048853},
+keywords = {AC susceptibility,Antiferromagnetic particles,Intravenous iron,Iron sucrose,Superparamagnetism},
+number = {1},
+pages = {69--74},
+title = {{Magnetostructural study of iron sucrose}},
+volume = {293},
+year = {2005}
+}
+
+
+@article{Lin1989,
+abstract = {A new reproducibility index is developed and studied. This index is the correlation between the two readings that fall on the 45 degree line through the origin. It is simple to use and possesses desirable properties. The statistical properties of this estimate can be satisfactorily evaluated using an inverse hyperbolic tangent transformation. A Monte Carlo experiment with 5,000 runs was performed to confirm the estimate's validity. An application using actual data is given.},
+author = {Lin, L I},
+doi = {10.2307/2532051},
+isbn = {0006341X},
+issn = {0006-341X},
+journal = {Biometrics},
+number = {1},
+pages = {255--268},
+pmid = {2720055},
+title = {{A concordance correlation coefficient to evaluate reproducibility.}},
+volume = {45},
+year = {1989}
+}
+
+@article{Mcbride2005,
+author = {McBride, G.B.},
+doi = {10.2307/2532051},
+journal = {NIWA Client Rep. HAM2005-062},
+title = {{A proposal for strength-of-agreement criteria for Lin’s Concordance Correlation Coefficient}},
+year = {2005}
+}
+
+@article{Dunet2015,
+author = {Dunet,V. and  Deverdun,J. and  Charroud, C. and  Geny, C. and  Molino, F. and  Menjot de Champfleur, S. and  Maury,F. and   Charif, M. and  Labauge, P. and  Ayrignac,X. and   Castelnovo, G. and Pinna, F.  and  Bonafé, A. and Leboucq, N.  and  Le Bars, E. and  Menjot de Champfleur, N.},
+journal = {Submitted to Brain},
+title = {{Quantitative susceptibility mapping  in patients with parkinsonism: comparison to diffusion tensor imaging}},
+year = {2015}
+}
+
+@article{Balasse2015,
+author = {Balasse,M.-H. and  Deverdun, J. and  Dunet, V. and  Molino, F. and Le Bars, E. and  Menjot de Champfleur, N.},
+journal = {In preparation},
+title = {{Longitudinal Evaluation Of Quantitative Susceptibility Maps In Cerebral Cavernous Malformations}},
+year = {2015}
+}
+
+@article{Carra2015,
+author = { Carra-Dalliere, C. and   de Champfleur, N. and  Ayrignac, X. and  Deverdun, J. and  Labauge, P.},
+journal = {Neurology},
+title = {{Quantitative susceptibility mapping suggests a paramagnetic effect in PML}},
+volume = {84},
+number = {14},
+pages = {1501--1502},
+year = {2015}
+}
+
+@article{Weisskoff1992,
+abstract = {We present a novel NMR imaging technique that allows absolute determination of the magnetic susceptibility constant, chi, of a solution. By comparing the phase difference of MR images produced with an instant (echo planar) "offset" spin-echo sequence, we obtain a direct measure of the magnetic field perturbations caused by the solution. We demonstrate this method with Gd(DTPA), Dy(DTPA), human red blood cells, and superparamagnetic iron oxide particles.},
+author = {Weisskoff, R M and Kiihne, S},
+doi = {10.1002/mrm.1910240219},
+isbn = {0740-3194},
+issn = {1522-2594},
+journal = {Magnetic resonance in medicine : official journal of the Society of Magnetic Resonance in Medicine / Society of Magnetic Resonance in Medicine},
+number = {2},
+pages = {375--383},
+pmid = {1569876},
+title = {{MRI susceptometry: image-based measurement of absolute susceptibility of MR contrast agents and human blood.}},
+volume = {24},
+year = {1992}
+}
+
+
+@article{Spees2001,
+abstract = {Accurate knowledge of the magnetic properties of human blood is required for the precise modeling of functional and vascular flow-related MRI. Herein are reported determinations of the relaxation parameters of blood, employing in vitro samples that are well representative of human blood in situ. The envelope of the blood (1)H(2)O free-induction decay signal magnitude during the first 100 msec following a spin echo at time TE is well- described empirically by an expression of the form, S(t) = S(o). exp[-R(*)(2). (t - TE) - AR*. (t - TE)(2)]. The relaxation parameters AR* and R(*)(2) increase as a function of the square of the susceptibility difference between red blood cell and plasma and depend on the spin-echo time. The Gaussian component, AR*, should be recognized in accurate modeling of MRI phenomena that depend upon the magnetic state of blood. The magnetic susceptibility difference between fully deoxygenated and fully oxygenated red blood cells at 37 degrees C is 0.27 ppm, as determined independently by MR and superconducting quantum interference device (SQUID) measurements. This value agrees well with the 1936 report of Pauling and Coryell (Proc Natl Acad Sci USA 1936;22:210-216), but is substantially larger than that frequently used in MRI literature. Magn Reson Med 45:533-542, 2001.},
+author = {Spees, William M. and Yablonskiy, Dmitriy A. and Oswood, Mark C. and Ackerman, Joseph J H},
+doi = {10.1002/mrm.1072},
+isbn = {0740-3194},
+issn = {07403194},
+journal = {Magnetic Resonance in Medicine},
+keywords = {BOLD effect,Blood,Functional MRI,Magnetic susceptibility,Relaxation},
+number = {4},
+pages = {533--542},
+pmid = {11283978},
+title = {{Water proton MR properties of human blood at 1.5 Tesla: Magnetic susceptibility, T1, T2*, T2, and non-Lorentzian signal behavior}},
+volume = {45},
+year = {2001}
+}
+
+
+@article{Schwen2012,
+abstract = {A proper geometric model of the vascular systems in the liver is crucial for modeling blood flow, the connection between the organ and the rest of the organism. In vivo imaging does not provide sufficient details, so an algorithmic concept for extending measured vascular tree data is needed such that geometrically realistic structures can be generated. We develop a quantification of similarity in terms of different geometric features. This involves topological Strahler ordering of the vascular trees, statistical testing, and averaging. Invariant features are identified in human clinical in vivo CT scans. Results of the existing "Constrained Constructive Optimization" algorithm are compared to real vascular tree data. To improve bifurcation angles in the algorithmic results, we implement a postprocessing step calibrated to the measured features. This framework is finally applied to generate realistic additional details in a patient-specific hepatic vascular tree data set.},
+author = {Schwen, Lars Ole and Preusser, Tobias},
+doi = {10.1155/2012/357687},
+file = {::},
+issn = {2090-3456},
+journal = {International journal of hepatology},
+pages = {357687},
+pmid = {23056953},
+title = {{Analysis and algorithmic generation of hepatic vascular systems.}},
+url = {http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=3463918\&tool=pmcentrez\&rendertype=abstract},
+volume = {2012},
+year = {2012}
+}
+
+
+@article{Schreiner1993,
+abstract = {Arterial branchings closely fulfill several "bifurcation rules" which are deemed to optimize blood flow. The question is whether these local criteria in conjunction with a general optimization principle can explain the overall structure of an arterial tree. We present a model of an arterial vascular tree which is grown on the computer by successively adding terminal vessel segments. Each new terminal segment is connected to the optimum site within the preexisting tree, and the new bifurcation is optimized geometrically. After each step of adding and optimizing, the whole tree is rescaled to meet invariant boundary conditions of pressure and flow at each terminal site. Thus, local geometric optimization is used to induce simultaneously an optimized global structure. The comparison between the model and real coronary arterial trees shows good agreement regarding structural appearance, morphometric parameters, and pressure profiles.},
+author = {Schreiner, W. and Buxbaum, P. F.},
+doi = {10.1109/10.243413},
+issn = {00189294},
+journal = {IEEE Transactions on Biomedical Engineering},
+number = {5},
+pages = {482--491},
+pmid = {8225337},
+title = {{Computer-optimization of vascular trees}},
+volume = {40},
+year = {1993}
+}
+
+
+@article{Karch1998,
+abstract = {The computational method of CCO (Constrained Constructive Optimization) is extended to grow arterial model trees within a three-dimensional perfusion volume. It is demonstrated that computer-generated CCO trees closely resemble—on a visual basis—corrosion casts of real arterial trees. Refining the process of step-wise optimization by additional “post-optimization” steps improves the degree of global optimality for the generated trees. Images: p1028-a:},
+author = {Karch, R. and Schreiner, W. and Neumann, F. and Neumann, M.},
+journal = {Proceedings of the AMIA Symposium},
+pages = {1028},
+title = {{Three-Dimensional Growth and Optimization of Arterial Tree Models}},
+year = {1998}
+}
 
 
 
 
+@misc{Georg2010,
+author = {Georg, M. and Preusser, T? and Hahn, H. K.},
+booktitle = {Washington University, Technical Report},
+title = {{Global Constructive Optimization of Vascular Systems}},
+year = {2010}
+}
 
 
 
 
+@misc{Hahn2003,
+abstract = {The scaling properties of the portal vein and the hepatic vein are examined, based on three-dimensional computed tomography images of casts of human livers. In particular, a quantitative analysis of the branching ratio based on the Strahler ordering scheme as well as the diameter and length ratios are performed. To quantify the segment anatomy of the liver, the volume of supplied liver parenchyma is measured and related to the corresponding vessel radius. The implications of these findings for segment-oriented liver surgery are discussed. We also investigate the 3D interdependence of the intertwined portal and hepatic veins based on a concept of tree distance that will be introduced.},
+author = {HAHN, HORST K. and EVERTSZ, CARL J. G. and PEITGEN, HEINZ-OTTO and FASEL, JEAN H. D.},
+booktitle = {Fractals},
+doi = {10.1142/S0218348X03001422},
+issn = {0218-348X},
+number = {01},
+pages = {53--62},
+title = {{FRACTAL PROPERTIES, SEGMENT ANATOMY, AND INTERDEPENDENCE OF THE HUMAN PORTAL VEIN AND THE HEPATIC VEIN IN 3D}},
+volume = {11},
+year = {2003}
+}
 
+
+@article{Ashburner1997,
+abstract = {This paper presents a method for the coregistration and partitioning (i.e., tissue segmentation) of brain images that have been acquired in different modalities. The basic idea is that instead of matching two images directly, one performs intermediate within-modality registrations to two template images that are already in register. One can use a least-squares minimization to determine the affine transformations that map between the templates and the images. By incorporating suitable constraints, a rigid body transformation which directly maps between the images can be extracted from these more general affine transformations. A further refinement capitalizes on the implicit normalization of both images into a standard space. This facilitates segmentation or partitioning of both original images into homologous tissue classifications. Once partitioned, the partitions can be jointly matched, further increasing the accuracy of the coregistration. In short, these techniques reduce the between-modality problem to a series of simpler within-modality problems. These methods are relatively robust, address a number of problems in image transformations, and require no manual intervention.},
+author = {Ashburner, J and Friston, K},
+doi = {10.1006/nimg.1997.0290},
+isbn = {1053-8119 (Print)},
+issn = {1053-8119},
+journal = {NeuroImage},
+number = {3},
+pages = {209--217},
+pmid = {9344825},
+title = {{Multimodal image coregistration and partitioning--a unified framework.}},
+volume = {6},
+year = {1997}
+}
+
+
+
+@article{Collignon1995,
+abstract = {We prop ose an information theoretic approach to the rigid b o dy registration of 3D multi-mo dality medical image data. The "mutual infor- mation" of grey-value pairs is prop osed as a new matching criterion. The new voxel similarity based (VB) registration algorithm is applied to real world images of the human head (CT, MR, and PET volumes), and com- pared to stereotactic and 2 other voxel based registration solutions. Our results show that subvoxel accuracy can b e obtained completely automati- cally and without any pre-segmentation.},
+author = {Collignon, A and Maes, F and Delaere, D and Vandermeulen, D and Suetens, P and Marchal, G},
+doi = {10.1007/11784012\_16},
+journal = {Information processing in medical imaging},
+number = {6},
+pages = {263--274},
+title = {{Automated multi-modality image registration based on information theory}},
+url = {https://mirc.uzleuven.be/download/public/MIC/publications/929/paper.pdf},
+volume = {3},
+year = {1995}
+}
+
+
+
+
+@misc{Mechelli2005,
+abstract = {In recent years, a whole-brain unbiased objective technique, known as voxel-based morphometry (VBM), has been developed to characterise brain differences in vivo using structural magnetic resonance images. The present review provides a brief description of VBM and then focuses on exemplar applications in healthy and diseased subjects. The procedure involves normalising high-resolution structural magnetic resonance images to a standard template in stereotactic space. Normalised images are then segmented into gray and white matter and smoothed using an isotropic Gaussian kernel. Finally, a series of voxel-wise comparisons of gray and white matter in different groups of subjects are performed, using Random Field theory to correct for multiple comparisons. VBM has been useful in characterizing subtle changes in brain structure in a variety of diseases associated with neurological and psychiatric dysfunction. These include schizophrenia, developmental and congenital disorders, temporal lobe epilepsy and even cluster headache. In addition, VBM has been successful in identifying gross structural abnormalities, such as those observed in herpes simplex encephalitis, multiple sclerosis and Alzheimer’s disease. Studies of normal subjects, on the other hand, have focussed on the impact of learning and practice on brain structure. These studies have led to the finding that environmental demands may be associated with changes in gray and white matter. For instance, it has been reported that the structure of the brain alters when human beings learn to navigate, read music, speak a second language and even perform a complex motor task such as juggling. We conclude the present review by discussing the potential limitations of the technique.},
+author = {Mechelli, Andrea and Price, Cathy J. and Friston, Karl J. and Ashburner, John},
+booktitle = {Current Medical Imaging Reviews},
+doi = {10.2174/1573405054038726},
+issn = {15734056},
+number = {2},
+pages = {105--113},
+title = {{Voxel-Based Morphometry of the Human Brain: Methods and Applications}},
+volume = {1},
+year = {2005}
+}
+
+
+@book{Talairach1988,
+abstract = {Modern neurosurgical concepts call for not only "seeing" but also for "localizing" structures in three-dimensional space in relationship to each other. Hence there is a need for a reference system. This book aims to put this notion into practice by means of anatomical and MRI sections with the same stereotaxic orientation. The purpose is to display the fundamental distribution of structures in three-dimensional space and their spatial evolution within the brain as a whole, while facilitating their identification; to make comparative studies of cortico-subcortical lesions possible on a basis of an equivalent reference system; to exploit the anatomo-functional data such as those furnished by SEEG in epilepsy and to enable the localization of special regions such as the SMA in three-dimensional space; and to apply the anatomical correlations of this reference system to neurophysiological investigations lacking sufficient anatomical back-up (including PET scan).},
+author = {Talairach, J and Tournoux, P},
+booktitle = {Neuropsychologia},
+doi = {10.1111/mono.12083},
+isbn = {0865772932},
+issn = {16000447},
+pages = {145},
+pmid = {280},
+title = {{Co-planar stereotaxic atlas of the human brain: 3-dimensional proportional system: an approach to cerebral imaging}},
+volume = {39},
+year = {1988}
+}
+
+@incollection{Ashburner2003,
+abstract = {Spatial normalization is the procedure of wrapping images from a number of individuals into roughly the same standard space to allow signal averaging across subjects. This chapter discusses the steps involved in registering images of different subjects into the same coordinate system. It involves determining the optimum 12-parameter affine transformation. The next is nonlinear registration for correcting gross differences in head shapes that cannot be accounted for by the affine normalization alone. A fast algorithm is described that utilizes Taylor's theorem. Most of the nonlinear spatial variability between images can be automatically corrected within minutes. The last part describes a variety of possible models for intensity transforms. In addition to spatial transformations, it is sometimes desirable to include intensity transforms in the registration model, because one image may not look exactly like a spatially transformed version of the other. The registration scheme described in this chapter is constrained to describe warps with a few hundred parameters. Knowledge of major white matter tracts should provide structural information more directly related to connectivity and implicit function, possibly leading to improved registration of functionally specialized areas. © 2004 Elsevier Inc. All rights reserved.},
+author = {Ashburner, John and Friston, Karl},
+booktitle = {Human Brain Function: Second Edition},
+doi = {10.1016/B978-012264841-0/50035-4},
+isbn = {9780122648410},
+pages = {655--672},
+title = {{Spatial Normalisation Using Basis Functions}},
+year = {2003}
+}
+
+
+@article{Buckner2004,
+abstract = {... Graves et al., 1996 and Schofield et al., 1997), and MRI -based measurement ... is that these measures serve as proxy variables for the premorbid (unatrophied) brain volume. Normalization by head  size increases the robustness of expected mophometric effects, for example, gray ...},
+author = {Buckner, R L and Head, D and Parker, J and Fotenos\ldots, A F},
+issn = {10538119},
+journal = {Neuroimage},
+title = {\ldots for morphometric and functional data analysis in young, old, and demented adults using automated atlas-based head size normalization: reliability and validation \ldots},
+url = {http://www.sciencedirect.com/science/article/pii/S1053811904003271$\backslash$npapers://84ad8ee7-04da-4f17-be04-5ac17122ed48/Paper/p19288},
+year = {2004}
+}
+
+
+@article{Collins1995,
+abstract = {3-D - . DL COLLINS, CJ HOLMES, TM PETERS, AC EVANS Human brain mapping 3:33, 190-208, Wiley-Liss, 1995.},
+author = {Collins, D and Holmes, C and Peters, T and Evans, a},
+doi = {10.1002/hbm.460030304},
+isbn = {1097-0193},
+issn = {10659471},
+journal = {Hum. Brain Mapp.},
+keywords = {human brain,model-based segmentation,mri,non-linear deformation},
+number = {1995},
+pages = {190--208},
+pmid = {1368057777515184670},
+title = {{Automatic 3-D model-based neuroanatomical segmentation}},
+url = {http://cat.inist.fr/?aModele=afficheN\&cpsidt=3010117},
+volume = {208},
+year = {1995}
+}
+
+
+@article{Ashburner2007,
+abstract = {This paper describes DARTEL, which is an algorithm for diffeomorphic image registration. It is implemented for both 2D and 3D image registration and has been formulated to include an option for estimating inverse consistent deformations. Nonlinear registration is considered as a local optimisation problem, which is solved using a Levenberg-Marquardt strategy. The necessary matrix solutions are obtained in reasonable time using a multigrid method. A constant Eulerian velocity framework is used, which allows a rapid scaling and squaring method to be used in the computations. DARTEL has been applied to intersubject registration of 471 whole brain images, and the resulting deformations were evaluated in terms of how well they encode the shape information necessary to separate male and female subjects and to predict the ages of the subjects. ?? 2007 Elsevier Inc. All rights reserved.},
+author = {Ashburner, John},
+doi = {10.1016/j.neuroimage.2007.07.007},
+isbn = {1053-8119 (Print)$\backslash$n1053-8119 (Linking)},
+issn = {10538119},
+journal = {NeuroImage},
+number = {1},
+pages = {95--113},
+pmid = {17761438},
+title = {{A fast diffeomorphic image registration algorithm}},
+volume = {38},
+year = {2007}
+}
+
+
+@article{Klein2009,
+abstract = {All fields of neuroscience that employ brain imaging need to communicate their results with reference to anatomical regions. In particular, comparative morphometry and group analysis of functional and physiological data require coregistration of brains to establish correspondences across brain structures. It is well established that linear registration of one brain to another is inadequate for aligning brain structures, so numerous algorithms have emerged to nonlinearly register brains to one another. This study is the largest evaluation of nonlinear deformation algorithms applied to brain image registration ever conducted. Fourteen algorithms from laboratories around the world are evaluated using 8 different error measures. More than 45,000 registrations between 80 manually labeled brains were performed by algorithms including: AIR, ANIMAL, ART, Diffeomorphic Demons, FNIRT, IRTK, JRD-fluid, ROMEO, SICLE, SyN, and four different SPM5 algorithms ("SPM2-type" and regular Normalization, Unified Segmentation, and the DARTEL Toolbox). All of these registrations were preceded by linear registration between the same image pairs using FLIRT. One of the most significant findings of this study is that the relative performances of the registration methods under comparison appear to be little affected by the choice of subject population, labeling protocol, and type of overlap measure. This is important because it suggests that the findings are generalizable to new subject populations that are labeled or evaluated using different labeling protocols. Furthermore, we ranked the 14 methods according to three completely independent analyses (permutation tests, one-way ANOVA tests, and indifference-zone ranking) and derived three almost identical top rankings of the methods. ART, SyN, IRTK, and SPM's DARTEL Toolbox gave the best results according to overlap and distance measures, with ART and SyN delivering the most consistently high accuracy across subjects and label sets. Updates will be published on the http://www.mindboggle.info/papers/ website. ?? 2009.},
+author = {Klein, Arno and Andersson, Jesper and Ardekani, Babak A. and Ashburner, John and Avants, Brian and Chiang, Ming Chang and Christensen, Gary E. and Collins, D. Louis and Gee, James and Hellier, Pierre and Song, Joo Hyun and Jenkinson, Mark and Lepage, Claude and Rueckert, Daniel and Thompson, Paul and Vercauteren, Tom and Woods, Roger P. and Mann, J. John and Parsey, Ramin V.},
+doi = {10.1016/j.neuroimage.2008.12.037},
+isbn = {1095-9572 (Electronic) 1053-8119 (Linking)},
+issn = {10538119},
+journal = {NeuroImage},
+number = {3},
+pages = {786--802},
+pmid = {19195496},
+title = {{Evaluation of 14 nonlinear deformation algorithms applied to human brain MRI registration}},
+volume = {46},
+year = {2009}
+}
+
+@BOOK{ Scherrer2008,
+AUTHOR    = {Scherrer, B.}, 
+TITLE     = {Segmentation des tissus et structures sur les IRM cérébrales : agents markoviens locaux coopératifs et formulation bayésienne},
+PUBLISHER = {Phd Thesis, Institut National Polytechnique de Grenoble},
+YEAR      = {2008}
+}
+
+
+@article{Ashburner2005,
+abstract = {A probabilistic framework is presented that enables image registration, tissue classification, and bias correction to be combined within the same generative model. A derivation of a log-likelihood objective function for the unified model is provided. The model is based on a mixture of Gaussians and is extended to incorporate a smooth intensity variation and nonlinear registration with tissue probability maps. A strategy for optimising the model parameters is described, along with the requisite partial derivatives of the objective function. ?? 2005 Elsevier Inc. All rights reserved.},
+author = {Ashburner, John and Friston, Karl J.},
+doi = {10.1016/j.neuroimage.2005.02.018},
+isbn = {1053-8119 (Print) 1053-8119 (Linking)},
+issn = {10538119},
+journal = {NeuroImage},
+keywords = {Bias correction,Image registration,Mixture of Gaussians,Tissue classification,Tissue probability maps},
+number = {3},
+pages = {839--851},
+pmid = {15955494},
+title = {{Unified segmentation}},
+volume = {26},
+year = {2005}
+}
+
+@article{Malone2015,
+author = { Malone,I. B. and  Leung, K. K. and Clegg, S. and  Barnes,V and  Whitwell,V and  Ashburner, J. and  Fox, N. C. and  Ridgway,G. R.},
+journal = {NeuroImage},
+pages = {366-372},
+title = {{Accurate automatic estimation of total intracranial volume: A nuisance variable with less nuisance}},
+volume = {104},
+year = {2015}
+}
+
+
+@article{Kwan1999,
+abstract = {With the increased interest in computer-aided image analysis methods, there is a greater need for objective methods of algorithm evaluation. Validation of in vivo MRI studies is complicated by a lack of reference data and the difficulty of constructing anatomically realistic physical phantoms. We present here an extensible MRI simulator that efficiently generates realistic three-dimensional (3-D) brain images using a hybrid Bloch equation and tissue template simulation that accounts for image contrast, partial volume, and noise. This allows image analysis methods to be evaluated with controlled degradations of image data.},
+author = {Kwan, Remi K S and Evans, Alan C. and Pike, Bruce},
+doi = {10.1109/42.816072},
+isbn = {0278-0062},
+issn = {02780062},
+journal = {IEEE Transactions on Medical Imaging},
+number = {11},
+pages = {1085--1097},
+pmid = {10661326},
+title = {{MRI simulation-based evaluation of image-processing and classification methods}},
+volume = {18},
+year = {1999}
+}
 
 
 

@@ -1,0 +1,142 @@
+\begin{thebibliography}{16}
+\ProvideTextCommand{\guillemotleft}{OT1}{%
+  \leavevmode\raise .27ex\hbox{$\scriptscriptstyle\ll$}}
+\ProvideTextCommand{\guillemotright}{OT1}{%
+  \leavevmode\raise .27ex\hbox{$\scriptscriptstyle\gg$}}
+\newcommand{\enquote}[1]{\guillemotleft#1\guillemotright}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\urlprefix}{URL }
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi:\discretionary{}{}{}#1}\else
+  \providecommand{\doi}{doi:\discretionary{}{}{}\begingroup
+  \urlstyle{rm}\Url}\fi
+\providecommand{\selectlanguage}[1]{\relax}
+\input{francaisbst.tex}
+\newcommand{\Capitalize}[1]{\uppercase{#1}}
+\newcommand{\capitalize}[1]{\expandafter\Capitalize#1}
+
+\bibitem[{\textsc{Ashburner}(2007)}]{Ashburner2007}
+\textsc{Ashburner, J.} 2007, \enquote{{A fast diffeomorphic image registration
+  algorithm}}, \emph{NeuroImage}, \bblvol{}~38, \bblno{}~1,
+  \doi{10.1016/j.neuroimage.2007.07.007}, \bblpp{} 95--113, ISSN 10538119.
+
+\bibitem[{\textsc{Ashburner} \bbland{} \textsc{Friston}(1997)}]{Ashburner1997}
+\textsc{Ashburner, J.} \bbland{} \textsc{K.~Friston}. 1997,
+  \enquote{{Multimodal image coregistration and partitioning--a unified
+  framework.}}, \emph{NeuroImage}, \bblvol{}~6, \bblno{}~3,
+  \doi{10.1006/nimg.1997.0290}, \bblpp{} 209--217, ISSN 1053-8119.
+
+\bibitem[{\textsc{Ashburner} \bbland{} \textsc{Friston}(2003)}]{Ashburner2003}
+\textsc{Ashburner, J.} \bbland{} \textsc{K.~Friston}. 2003, \enquote{{Spatial
+  Normalisation Using Basis Functions}}, \bblin{} \emph{Human Brain Function:
+  Second Edition}, ISBN 9780122648410, \bblpp{} 655--672,
+  \doi{10.1016/B978-012264841-0/50035-4}.
+
+\bibitem[{\textsc{Ashburner} \bbland{} \textsc{Friston}(2005)}]{Ashburner2005}
+\textsc{Ashburner, J.} \bbland{} \textsc{K.~J. Friston}. 2005,
+  \enquote{{Unified segmentation}}, \emph{NeuroImage}, \bblvol{}~26,
+  \bblno{}~3, \doi{10.1016/j.neuroimage.2005.02.018}, \bblpp{} 839--851, ISSN
+  10538119.
+
+\bibitem[{\textsc{Buckner} \bbletal{}(2004)\textsc{Buckner}, \textsc{Head},
+  \textsc{Parker} \bbland{} \textsc{Fotenos\ldots}}]{Buckner2004}
+\textsc{Buckner, R.~L.}, \textsc{D.~Head}, \textsc{J.~Parker} \bbland{}
+  \textsc{A.~F. Fotenos\ldots}. 2004, \enquote{\ldots for morphometric and
+  functional data analysis in young, old, and demented adults using automated
+  atlas-based head size normalization: reliability and validation \ldots},
+  \emph{Neuroimage}, ISSN 10538119.
+  \urlprefix\url{http://www.sciencedirect.com/science/article/pii/S1053811904003271$\backslash$npapers://84ad8ee7-04da-4f17-be04-5ac17122ed48/Paper/p19288}.
+
+\bibitem[{\textsc{Collignon} \bbletal{}(1995)\textsc{Collignon}, \textsc{Maes},
+  \textsc{Delaere}, \textsc{Vandermeulen}, \textsc{Suetens} \bbland{}
+  \textsc{Marchal}}]{Collignon1995}
+\textsc{Collignon, A.}, \textsc{F.~Maes}, \textsc{D.~Delaere},
+  \textsc{D.~Vandermeulen}, \textsc{P.~Suetens} \bbland{} \textsc{G.~Marchal}.
+  1995, \enquote{{Automated multi-modality image registration based on
+  information theory}}, \emph{Information processing in medical imaging},
+  \bblvol{}~3, \bblno{}~6, \doi{10.1007/11784012\_16}, \bblpp{} 263--274.
+  \urlprefix\url{https://mirc.uzleuven.be/download/public/MIC/publications/929/paper.pdf}.
+
+\bibitem[{\textsc{Collins} \bbletal{}(1995)\textsc{Collins}, \textsc{Holmes},
+  \textsc{Peters} \bbland{} \textsc{Evans}}]{Collins1995}
+\textsc{Collins, D.}, \textsc{C.~Holmes}, \textsc{T.~Peters} \bbland{}
+  \textsc{a.~Evans}. 1995, \enquote{{Automatic 3-D model-based neuroanatomical
+  segmentation}}, \emph{Hum. Brain Mapp.}, \bblvol{} 208, \bblno{} 1995,
+  \doi{10.1002/hbm.460030304}, \bblpp{} 190--208, ISSN 10659471.
+  \urlprefix\url{http://cat.inist.fr/?aModele=afficheN\&cpsidt=3010117}.
+
+\bibitem[{\textsc{Klein} \bbletal{}(2009)\textsc{Klein}, \textsc{Andersson},
+  \textsc{Ardekani}, \textsc{Ashburner}, \textsc{Avants}, \textsc{Chiang},
+  \textsc{Christensen}, \textsc{Collins}, \textsc{Gee}, \textsc{Hellier},
+  \textsc{Song}, \textsc{Jenkinson}, \textsc{Lepage}, \textsc{Rueckert},
+  \textsc{Thompson}, \textsc{Vercauteren}, \textsc{Woods}, \textsc{Mann}
+  \bbland{} \textsc{Parsey}}]{Klein2009}
+\textsc{Klein, A.}, \textsc{J.~Andersson}, \textsc{B.~A. Ardekani},
+  \textsc{J.~Ashburner}, \textsc{B.~Avants}, \textsc{M.~C. Chiang},
+  \textsc{G.~E. Christensen}, \textsc{D.~L. Collins}, \textsc{J.~Gee},
+  \textsc{P.~Hellier}, \textsc{J.~H. Song}, \textsc{M.~Jenkinson},
+  \textsc{C.~Lepage}, \textsc{D.~Rueckert}, \textsc{P.~Thompson},
+  \textsc{T.~Vercauteren}, \textsc{R.~P. Woods}, \textsc{J.~J. Mann} \bbland{}
+  \textsc{R.~V. Parsey}. 2009, \enquote{{Evaluation of 14 nonlinear deformation
+  algorithms applied to human brain MRI registration}}, \emph{NeuroImage},
+  \bblvol{}~46, \bblno{}~3, \doi{10.1016/j.neuroimage.2008.12.037}, \bblpp{}
+  786--802, ISSN 10538119.
+
+\bibitem[{\textsc{Kwan} \bbletal{}(1999)\textsc{Kwan}, \textsc{Evans} \bbland{}
+  \textsc{Pike}}]{Kwan1999}
+\textsc{Kwan, R. K.~S.}, \textsc{A.~C. Evans} \bbland{} \textsc{B.~Pike}. 1999,
+  \enquote{{MRI simulation-based evaluation of image-processing and
+  classification methods}}, \emph{IEEE Transactions on Medical Imaging},
+  \bblvol{}~18, \bblno{}~11, \doi{10.1109/42.816072}, \bblpp{} 1085--1097, ISSN
+  02780062.
+
+\bibitem[{\textsc{Malone} \bbletal{}(2015)\textsc{Malone}, \textsc{Leung},
+  \textsc{Clegg}, \textsc{Barnes}, \textsc{Whitwell}, \textsc{Ashburner},
+  \textsc{Fox} \bbland{} \textsc{Ridgway}}]{Malone2015}
+\textsc{Malone, I.~B.}, \textsc{K.~K. Leung}, \textsc{S.~Clegg},
+  \textsc{V.~Barnes}, \textsc{V.~Whitwell}, \textsc{J.~Ashburner},
+  \textsc{N.~C. Fox} \bbland{} \textsc{G.~R. Ridgway}. 2015, \enquote{{Accurate
+  automatic estimation of total intracranial volume: A nuisance variable with
+  less nuisance}}, \emph{NeuroImage}, \bblvol{} 104, \bblpp{} 366--372.
+
+\bibitem[{\textsc{Mechelli} \bbletal{}(2005)\textsc{Mechelli}, \textsc{Price},
+  \textsc{Friston} \bbland{} \textsc{Ashburner}}]{Mechelli2005}
+\textsc{Mechelli, A.}, \textsc{C.~J. Price}, \textsc{K.~J. Friston} \bbland{}
+  \textsc{J.~Ashburner}. 2005, \enquote{{Voxel-Based Morphometry of the Human
+  Brain: Methods and Applications}}, \doi{10.2174/1573405054038726}.
+
+\bibitem[{\textsc{Scherrer}(2008)}]{Scherrer2008}
+\textsc{Scherrer, B.} 2008, \enquote{{Segmentation des tissus et structures sur
+  les IRM cérébrales : agents markoviens locaux coopératifs et formulation
+  bayésienne}}.
+
+\bibitem[{\textsc{Smith}(2002)}]{Smith2002}
+\textsc{Smith, S.~M.} 2002, \enquote{{Fast robust automated brain extraction}},
+  \emph{Human Brain Mapping}, \bblvol{}~17, \bblno{}~3,
+  \doi{10.1002/hbm.10062}, \bblpp{} 143--155, ISSN 10659471.
+
+\bibitem[{\textsc{Talairach} \bbland{} \textsc{Tournoux}(1988)}]{Talairach1988}
+\textsc{Talairach, J.} \bbland{} \textsc{P.~Tournoux}. 1988, \emph{{Co-planar
+  stereotaxic atlas of the human brain: 3-dimensional proportional system: an
+  approach to cerebral imaging}}, \bblvol{}~39, ISBN 0865772932, 145 \bblpp{},
+  \doi{10.1111/mono.12083}.
+
+\bibitem[{\textsc{Wang}(2012)}]{Wang2012}
+\textsc{Wang, Z.} 2012, \enquote{{Improving cerebral blood flow quantification
+  for arterial spin labeled perfusion MRI by removing residual motion artifacts
+  and global signal fluctuations}}, \emph{Magnetic Resonance Imaging},
+  \bblvol{}~30, \bblno{}~10, \doi{10.1016/j.mri.2012.05.004}, \bblpp{}
+  1409--1415, ISSN 0730725X.
+
+\bibitem[{\textsc{Wang} \bbletal{}(2008)\textsc{Wang}, \textsc{Aguirre},
+  \textsc{Rao}, \textsc{Wang}, \textsc{Fern\'{a}ndez-Seara}, \textsc{Childress}
+  \bbland{} \textsc{Detre}}]{Wang2008}
+\textsc{Wang, Z.}, \textsc{G.~K. Aguirre}, \textsc{H.~Rao}, \textsc{J.~Wang},
+  \textsc{M.~A. Fern\'{a}ndez-Seara}, \textsc{A.~R. Childress} \bbland{}
+  \textsc{J.~A. Detre}. 2008, \enquote{{Empirical optimization of ASL data
+  analysis using an ASL data processing toolbox: ASLtbx}}, \emph{Magnetic
+  Resonance Imaging}, \bblvol{}~26, \bblno{}~2,
+  \doi{10.1016/j.mri.2007.07.003}, \bblpp{} 261--269, ISSN 0730725X.
+
+\end{thebibliography}
