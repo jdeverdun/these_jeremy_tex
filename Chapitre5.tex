@@ -652,6 +652,22 @@ réelles, les données semblent cohérentes. Il est néanmoins à observer que l
 présente dans le modèle un débit 20\% plus important que dans la réalité. Ce décalage devrait être
 corrigé dans une version en cours de développement du modèle où les flux serviront de conditions
 limites.\\
+%%%
+\begin{figure}[!t]
+\centering
+\includegraphics[width=13cm]{4_26_effet_ajout_artere_sur_cbf}
+\caption{Impact de l'ajout d'une artère terminale pour un territoire. A) débit moyen par territoire mesuré en ASL, B) débit estimé par le modèle initial et C) débit estimé après ajout d'une artère parallèle. Les flèches blanches illustrent le territoire concerné. L'ajout de l'artère permet de nous rapprocher de la réalité mesurée en ASL.}
+\label{fig:4_26_effet_ajout_artere_sur_cbf}	
+\end{figure}
+%%%
+%%%
+\begin{figure}[!t]
+\centering
+\includegraphics[width=13cm]{4_27_segmentation}
+\caption{Segmentation des artères dans un territoire où l'écart entre l'ASL et le modèle est important. En rouge est représenté la segmentation. La flèche orange indique l'artère correspondante au territoire d'intérêt, les flèches blanches mettent en évidence deux autres branches associées à cette artère qui n'ont pas été segmentées.}
+\label{fig:4_27_segmentation}	
+\end{figure}
+%%%
 La Figure~\ref{fig:4_17_decours_debit} met en évidence les cinétiques observées dans les différents compartiments ; on
 peut observer le décalage des cinétiques au cours de l’évolution à travers les compartiments. Le délai
 artério-veineux (« phase-lag ») identifié dans le modèle est de 18 \% du cycle cardiaque, ce qui est plus
@@ -663,8 +679,8 @@ exactement comparables de l’arborescence. Les moyennes effectuées sur les vei
 proportionnellement moins de petits vaisseaux que la moyenne sur les artères. L’analyse du débit
 moyen dans les capillaires (Figure~\ref{fig:4_13_perf_ASL} deuxième colonne) met en évidence des différences relatives
 entre les territoires en grande partie similaires aux résultats obtenus en ASL (Figure~\ref{fig:4_13_perf_ASL} troisième
-colonne). Néanmoins de fortes différences existent pour certaines régions pouvant être liées à des
-mauvaises associations artères – veines dans la définition structurelle du modèle.\\
+colonne). Néanmoins de fortes différences existent pour certaines régions pouvant être liées à une mauvaise détection de certains vaisseaux ou à de
+mauvaises associations artères – veines dans la définition structurelle du modèle. L'outi BraVa (\textcolor{green}{mettre ref vers BraVa et partie structurelle}) vu précédement, met en évidence pour notre modèle, un taux d'identification des artères de l'ordre de 55\% (voir Tableau \textcolor{red}{ref tableau BraVa zagzoule}). Il est probable alors que pour ces territoires, la segmentation n'ait pas permis d'obtenir le bon nombre de branches. Afin de tester cette hypothèse nous avons sélectionné un territoire pour lequel l'écart entre l'ASL et le modèle est le plus important pour simuler la présence d'un autre ensemble artère - artériole  - capillaire - veinule - veine parallèle à celui d'origine et de mêmes caractéristiques. Nous avons avons alors deux artères pour le même territoire. La Figure~\ref{fig:4_26_effet_ajout_artere_sur_cbf} illustre les résultats obtenus. L'ajout d'une branche parallèle permet d'assurer un apport supplémentaire dans le territoire concerné et ainsi de se rapprocher des données ASL. L'observation des résultats de segmentation dans cette zone (Figure~\ref{fig:4_27_segmentation}) mettent en évidence deux branches supplémentaires n'ayant pas été segmentées (flèches blanche). Cela confirme donc que l'une des sources du décalage entre le modèle et la réalité est la qualité de la segmentation.\\
 %%%
 \begin{figure}[!t]
 \centering
