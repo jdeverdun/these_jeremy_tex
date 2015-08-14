@@ -30,9 +30,8 @@ Plusieurs groupes ont proposé des modélisations globales des écoulements intr
 un formalisme de compartiments (veines, capillaires, artérioles, artères), dont les caractéristiques géométriques (volume, rayon moyen, longueur moyenne entre deux branchements) sont calculées sur la 
 base des données d'imagerie, ou déduites du modèle lui-même. Au sein de ces compartiments, des variables dynamiques couplées (pression, flux) peuvent être calculées, pour des conditions aux limites 
 données.\\
-Les échelles spatiales et temporelles de description auxquelles se placent ces modèles en font de très bons candidats pour les applications cliniques et la comparaison détaillée aux données d'imagerie. 
-De plus, la relative facilité de mise en oeuvre de ces modèles basés sur des équations différentielles\\
-ordinaires devrait rendre possible un aller-retour rapide entre données d'imagerie et simulations afin de converger vers les paramètres significatifs que nous recherchons.
+Les échelles spatiales et temporelles de description auxquelles se placent ces modèles en font de très bons candidats pour les applications cliniques et la comparaison détaillée aux données d'imagerie. De plus, leur relative rapidité de calcul - caractéristique des systèmes d'équations différentielles
+ordinaires - devrait rendre possible un aller-retour rapide entre données d'imagerie et simulations afin de converger vers les paramètres significatifs que nous recherchons.
 Nous nous sommes donc proposé dans ce travail de tenter l'intégration la plus complète possible compte tenu de l'état de l'art des informations concernant la rhéologie intracrânienne au sein 
 d'un modèle biophysique réaliste des écoulements. Nous nous sommes fixés comme but de construire ce modèle de façon sujet-spécifique, afin de rendre compte de la variabilité des structures 
 impliquées.\\
@@ -56,11 +55,10 @@ rappels sur les flux vasculaires et ventriculaires, seront brièvement présent�
 Sur la base de ces données nous pouvons établir un modèle de la circulation intracrânienne. Pour ce faire nous décrirons dans un quatrième chapitre brièvement les modèles à compartiments existants, 
 les essais d’intégration des données structurales, et enfin notre modèle, avec les équations qui le composent et les résultats qu’il fournit. Nous tenterons dans ce cadre de les comparer à des travaux 
 antérieurs d’autres équipes.\\
-Parmi les séquences utilisées deux d’entre elles sont encore en pleine évolution car relativement récentes. La technique de marquage des protons artériels du sang (Arterial Spin Labeling) et l’imagerie 
-quantitative de susceptibilité magnétique (QSM). Ces deux techniques sont plus compliquées à mettre en place et ont nécessité une attention toute particulière en vue d’obtenir des résultats de qualité. 
-Il semble important de détailler dans des chapitres indépendants notre travail de développement et de validation de ces deux méthodes. Nous commencerons ainsi par l’Arterial Spin Labeling en décrivant 
-les séquences existantes, les méthodes de quantifications de la perfusion cérébrale, les limitations, et une application sur un protocole de recherche. Nous continuerons ensuite par l’imagerie de 
-susceptibilité magnétique (QSM) avec des bases théoriques, l’implémentation que nous avons réalisé et la validation de la mesure.
+Parmi les séquences utilisées deux d’entre elles sont encore en pleine évolution car relativement récentes. La technique de marquage des protons artériels du sang (Arterial Spin Labeling - ASl) et l’imagerie 
+quantitative de susceptibilité magnétique (Quantitative Susceptibility Mapping - QSM). Ces deux techniques sont plus compliquées à mettre en place et ont nécessité une attention toute particulière en vue d’obtenir des résultats de qualité. 
+Il semble important de détailler dans des chapitres indépendants notre travail de développement et de validation de ces deux méthodes. Nous commencerons ainsi par l’ASL en décrivant 
+les séquences existantes, les méthodes de quantifications de la perfusion cérébrale, les limitations, et une application sur un protocole de recherche. Nous continuerons ensuite par la QSM avec des bases théoriques, l’implémentation que nous avons réalisée et la validation de la mesure.
 Nous terminerons par les perspectives d’optimisation du modèle et ses applications.\\
 
 		

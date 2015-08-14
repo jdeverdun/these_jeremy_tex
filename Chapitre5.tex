@@ -388,8 +388,8 @@ terme $a=\frac{8\pi \mu l}{A^2}$ est un terme de résistance à l’écoulement 
 compartiment du fait des forces visqueuses ; il dépend de la viscosité dynamique du fluide, $\mu$, de la
 longueur hydraulique du compartiment, $l$, et inversement du carré de l’aire de la section du compartiment. Pour un
 vaisseau plus étroit la résistance augmente et une chute de pression plus importante sera nécessaire
-afin de maintenir le même flux. Cette approche est similaire à l’Équation~\ref{eq:poiseuille}. Dans notre modèle, a
-peut être calculé directement depuis les données morphologiques recueillies (voir chapitre 0) pour
+afin de maintenir le même flux. Cette approche est similaire à l’Équation~\ref{eq:poiseuille}. Dans notre modèle, $a$
+peut être calculé directement depuis les données morphologiques recueillies (voir chapitre~\ref{chap:imageriemorpho}) pour
 certains compartiments mais doit être estimé sur la base de la littérature pour les artérioles, les
 capillaires et les veinules. Comme vu dans la partie~\ref{sec:finalisation} nous avons contraint le système pour n’avoir
 que des jointures en Y entre les tubes (deux tubes vers un ou l’inverse).\\
@@ -397,8 +397,7 @@ Dans ces situations la formule doit légèrement s’adapter :
 \begin{equation}
 \frac{a_{in_1}}{2}\,(P\,-\,P_{in_2})\,+\,\frac{a_{in_2}}{2}\,(P\,-\,P_{in_1})\,=\,\biggl(\frac{a_{in_1}}{2}\,\frac{a_{in_2}}{2}+\frac{a_{in_1}}{2}\,\frac{a}{2}+\frac{a_{in_2}}{2}\,\frac{a}{2}\biggr)\,f_{in},
 \end{equation}
-avec $a_{in_1}$ , $a_{in_2}$ , $P_{in_1}$ et $P_{in_2}$ les paramètres des deux parents du tube courant (voir Figure~\ref{fig:4_8_param_tubes} et Annexe
-1.1\textcolor{red}{refaire cette ref}).\\
+avec $a_{in_1}$ , $a_{in_2}$ , $P_{in_1}$ et $P_{in_2}$ les paramètres des deux parents du tube courant (voir Figure~\ref{fig:4_8_param_tubes} et Annexe~\ref{sec:deriveq}).\\
 %%
 \begin{figure}[!t]
 \centering
@@ -452,10 +451,18 @@ V_{CervHem}\,=\,V_{exfCerv}^{L,R}\,+\,V_{solidCerv}^{L,R}\,=\,A_{exfCerv}^{L,R} 
 \end{equation}
 et {\em exfCerv} correspond au fluide extracellulaire dans les deux hémisphères, {\em solidCerv} à la matrice
 cellulaire solide, $V$ la somme des volumes pour chaque compartiment.\\
-\begin{tabular}{ | l | l | l | l | l | l | l | l | l | }
-%\caption{Comparaison des différents modèles en terme de compartiments.}
-
+\afterpage{%
+    \clearpage% Flush earlier floats (otherwise order might not be correct)
+    \thispagestyle{empty}
+	\begin{landscape}
+	\begin {table}
+	\captionof{table}{Tableau résumant les données utilisées dans les différents modèles de type compartiments de la littérature.} 
+	\label{tab:modeles} 
+	\centering
+	\begin{tabularx}{\linewidth}{  |X | l | l |X | X | X | X | X | X | }
+\hline
 	 & Ursino et al. & Sorek et al. & Cebral et al. & Kim et al. & Moore et al. & Zagzoule et al. & Linninger et al. & Notre modèle \\
+\hline
 	Parenchyme & Oui & Oui & Non & Non & Non & Oui  & Oui & Oui  \\ 
 	Artères & Oui & Oui & Oui & Oui & Oui & Oui & Oui & Oui \\ 
 	Artérioles & Non & Non & Non & Non & Non & Oui  & Oui  & Oui  \\ 
@@ -464,12 +471,17 @@ cellulaire solide, $V$ la somme des volumes pour chaque compartiment.\\
 	Veines & Oui & Oui & Non & Non & Non & Oui  & Oui  & Oui  \\ 
 	Sinus & Oui & Oui & Non & Non & Non & Oui  & Oui  & Oui \\ 
 	LCS & Non & Oui & Non & Non & Non & Non  & Oui  & Oui  \\ 
-	Données structurales & Théoriques & Théoriques & Mesurées & Mesurées & Mesurées & Théoriques & Théoriques + Pression en entrée mesurées & Mesurées et estimées \\ 
-	Particularité & - & - & Architecture détaillée du polygone de Willis & Extensibilité des parois & Se termine par un bloc poreux & Intègre le polygone de Willis & Intègre le LCS et sépare le système en deux hémisphères & Se base sur les données structurales \\ 
-\label{table:tab_bilans_modeles}	
-\end{tabular}
-
-Le résumé des différents modèles est illustré dans le Tableau~\ref{table:tab_bilans_modeles}. Chaque modèle dispose de ces caractéristiques et prend en compte plus ou moins de compartiment. Nous tentons à travers notre modèle, de fournir la description la plus complète possible au vue des données d'imagerie IRM.
+\hline
+	Données structurales & Théoriques & Théoriques & Mesurées & Mesurées & Mesurées & Mesurées et Théoriques & Mesurées et Théoriques + Pression en entrée mesurées & Mesurées et estimées \\ 
+\hline
+	Particularité& - & - & Architecture détaillée du polygone de Willis & Extensibilité des parois&  Se termine par un bloc poreux &  Intègre le polygone de Willis & Intègre le LCS et sépare le système en deux hémisphères& Se base sur les données structurales \\ 
+\hline
+	\end{tabularx}
+	\end{table}
+	\end{landscape}
+\clearpage% Flush page
+}
+Le résumé des différents modèles est illustré dans le Tableau~\ref{tab:modeles}. Chaque modèle dispose de ces caractéristiques et prend en compte plus ou moins de compartiment. Nous tentons à travers notre modèle, de fournir la description la plus complète possible au vue des données d'imagerie IRM.
 
 
 
@@ -487,16 +499,7 @@ final. L’interface doit charger le graphe, proposer à l’utilisateur la poss
 tube par tube, rajouter ou supprimer des tubes. Une fois ces choix fait, on pourra générer le système
 d’équations différentielles ordinaires à résoudre, au format MATLAB, et lancer la simulation, avant de
 rapatrier les résultats (Figure~\ref{fig:4_9_implem}) et de les visualiser toujours dans la même interface.\\
-%%%
-\begin{figure}[!t]
-\centering
-\includegraphics[width=12cm]{4_9_implem}
-\caption{Diagramme de séquence général de la chaine de traitement du modèle. Dans une première partie les données
-morphologiques permettent de générer le graphe sous MATLAB, ce graphe est sauvegardé en vue d’être chargé par
-l’utilisateur dans un logiciel Java qui permettra de générer le système d’équations correspondant, lancer le terminal MATLAB
-et le modèle pour enfin récupérer les résultats.}
-\label{fig:4_9_implem}	
-\end{figure}
+
 Lors de la segmentation, le code MATLAB permettant de générer le graphe a produit un fichier texte
 de format fixe contenant la définition de toutes les structures et les liens existants entre elles. Le fichier
 prend une forme générique. Une première section définit les tubes, leur type (artère, veines etc.) et
@@ -521,6 +524,16 @@ essionID\_ID:valeur}}
 {\tt [R\_T0\_20]--> [R\_T0\_3]}
 
 \vspace{0.4cm}
+%%%
+\begin{figure}[!b]
+\centering
+\includegraphics[width=12cm]{4_9_implem}
+\caption{Diagramme de séquence général de la chaine de traitement du modèle. Dans une première partie les données
+morphologiques permettent de générer le graphe sous MATLAB, ce graphe est sauvegardé en vue d’être chargé par
+l’utilisateur dans un logiciel Java qui permettra de générer le système d’équations correspondant, lancer le terminal MATLAB
+et le modèle pour enfin récupérer les résultats.}
+\label{fig:4_9_implem}	
+\end{figure}
 Ce fichier est celui qui sera chargé dans l’interface Java de façon à générer une représentation
 graphique sous forme de blocs modulaires et modifiables. Cet outil peut être aussi utilisé pour définir
 des architectures complètement arbitraires (Figure~\ref{fig:4_10_interface_java}). La structure de liens et les caractéristiques des
@@ -550,13 +563,13 @@ Sur un sujet donné (âge = 29 ans, non-fumeur) nous avons réalisé le protocol
 choisissant la séquence pCASL 3D (\cite{Wu2007}) comme décrit précédemment (voir~\ref{sec:protocole}), le sujet étant sain et
 jeune.\\
 L’architecture observée chez ce sujet à partir des imageries anatomiques est illustrée dans la
-Figure 47. Le polygone de Willis est composé de l’artère communicante antérieure et postérieure
+Figure~\ref{fig:4_11_structure_sujet}. Le polygone de Willis est composé de l’artère communicante antérieure et postérieure
 gauche. On compte ainsi un total de 376 segments dans le modèle toutes structures confondues. C’est
 donc un système à 1504 équations qu’il faut résoudre !
 %%%
 \begin{figure}[!t]
 \centering
-\includegraphics[width=12cm]{4_11_structure_sujet}
+\includegraphics[width=9cm]{4_11_structure_sujet}
 \caption{Architecture de référence utilisée pour évaluer la viabilité du modèle. A) L'arbre artériel, où chaque couleur
 représente un segment, B) l'arbre veineux, chaque couleur représente là aussi un segment, C) la combinaison des deux, en
 dégradé bleu les veines, et en rouge les artères. A noter que seuls les segments utilisés dans la simulation sont illustrés, le
@@ -572,7 +585,7 @@ convertit cette cinétique en pression en plaçant le premier coefficient à une
 plus grandes. On obtient ainsi des pressions moyennes en entrée proches de 100 mmHg. Chaque
 entrée disposant d’une cinétique propre avec des pressions relatives concordantes avec les débits.\\
 %%%
-\begin{figure}[!t]
+\begin{figure}[!b]
 \centering
 \includegraphics[width=15cm]{4_12_fourier}
 \caption{Courbe ajustée des vitesses au cours du temps pour la carotide interne gauche. Ajustement par des séries de
@@ -589,25 +602,44 @@ différences relatives entre les régions, les valeurs des résistances des art�
 dans chaque territoire sont ajustées (Tableau~\ref{fig:4_13_perf_ASL}). Pour les autres compartiments, les résistances sont
 directement estimées à partir des informations morphologiques disponibles pour chaque segment. Les
 valeurs d’élastances utilisées sont décrites dans la littérature (\cite{Zagzoule1986},~\cite{Linninger2009},~\cite{Smillie2004}) et rapportées dans le
-Tableau~\ref{fig:4_13_perf_ASL}. Les flux constants $S^{const}_{Cp\rightarrow cerv}$ et $S{const}_{cerv\rightarrow Lv}$ sont fixés à 0.0005 ml/s tandis que la
+Tableau~\ref{tab:elastances}. Les flux constants $S^{const}_{Cp\rightarrow cerv}$ et $S{const}_{cerv\rightarrow Lv}$ sont fixés à 0.0005 ml/s tandis que la
 production de LCS $S_{Al\rightarrow Lv}$ est de 0.003 ml/s (\cite{Linninger2009}). Enfin la résistance utilisée pour traduire la résorptiondu LCS par le sinus veineux est de 7 $\frac{mmHg}{ ml/min}$ (valeur moyenne normale identifiée dans la littérature) (\cite{Ekstedt1978}). La viscosité du sang est établie à $\mu_{sang}$ = 0.004 $\frac{kg}{ m}$ par sec (\cite{Pedley1980}).\\
 %%%
 \begin{figure}[!t]
 \centering
-\includegraphics[width=15cm]{4_13_perf_ASL}
+\includegraphics[width=12cm]{4_13_perf_ASL}
 \caption{Perfusion cérébrale en ASL, valeurs brutes et rapportées aux différents territoires. La première colonne illustre la
 carte de débit brute, la deuxième colonne la valeur relative du débit estimé par le modèle pour chaque région, et la troisième
 la valeur moyenne sur la base des données ASL.}
 \label{fig:4_13_perf_ASL}	
 \end{figure}
-%%%
-\begin{figure}[!t]
-\centering
-\includegraphics[width=15cm]{4_14_elastances_resistances}
-\caption{Détails des élastances et résistances utilisées dans le modèle. Les résistances renseignées par un « * » sont
-ajustées au vu des données ASL.}
-\label{fig:4_14_elastances_resistances}	
-\end{figure}
+
+\begin {table}
+	\caption{Détails des élastances et résistances utilisées dans le modèle. Les résistances renseignées par un « * » sont
+ajustées au vu des données ASL.} 
+	\label{tab:elastances} 
+	\centering
+	\begin{tabularx}{\linewidth}{  X | X | X }
+
+	{\bf Compartiment}  & { \bf \'Elastance (Pa)} & {\bf Résistance (mmHg.s.mL$^{-1}$)} \\
+\hline
+	{\bf Artères} & 27.3 10$^4$ (\cite{Zagzoule1986}) & {\em estimée}\\
+{\bf Artérioles} & 40.0 10$^4$ (\cite{Zagzoule1986}) & 3.08$\ast$ (\cite{Linninger2009}) \\
+{\bf Capillaires} & 44.0 10$^4$ (\cite{Zagzoule1986}) & 0.92$\ast$ \\
+{\bf Veinuels} & 117.0 10$^4$ (\cite{Zagzoule1986}) & 0.23$\ast$ \\
+{\bf Veines} & 5 10$^4$ (\cite{Zagzoule1986}) & {\em estimée}\\
+{\bf Sinus} & 2.6 10$^4$ (\cite{Zagzoule1986}) & {\em estimée}\\
+{\bf Ventricules} & 8.0 10$^4$ (\cite{Smillie2004}) & 1$\ast$ (\cite{Linninger2009}) \\
+{\bf Espace sous arachno\"i dien} & 1.0 10$^4$ (\cite{Zagzoule1986}) & 1$\ast$ (\cite{Linninger2009}) \\
+{\bf Moelle épinière} & 1.0 10$^6$ (\cite{Smillie2004}) & 0.1$\ast$ (\cite{Linninger2009}) \\
+{\bf Parenchyme cérébral} & 1.0 10$^3$ (\cite{Smillie2004}) & 500-8152.42 $\ast$ (\cite{Linninger2009}) \\
+	\end{tabularx}
+\end{table}
+
+
+
+
+
 Le système peut ainsi être simulé. Pour des raisons évidentes de clarté il est difficile de
 représenter les résultats pour l’ensemble des compartiments sur une même figure. Nous décrirons
 donc les valeurs moyennes dans chaque type de compartiments, sauf dans quelques cas précis où nous

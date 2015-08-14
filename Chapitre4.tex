@@ -179,16 +179,16 @@ des vitesses attendues dans le vaisseau exploré. Afin d’éviter ce problème,
 Il faut donc connaître l’ordre de grandeur de la vitesse maximale à mesurer et pour cela, une
 présélection d’une échelle des vitesses permet d’optimiser le rapport signal sur bruit (RSB) et
 d’améliorer la sensibilité de la technique. Le principe de cette présélection consiste à définir le
-déphasage engendré par unité de vitesse. Ainsi, on définit la vitesse maximale codée Venc qui va
+déphasage engendré par unité de vitesse. Ainsi, on définit la vitesse maximale codée $V_{enc}$ qui va
 permettre de limiter ces artéfacts tout en conservant une bonne dynamique de la mesure. En effet,
-placer Venc à une valeur trop grande en rapport des vitesses dans le vaisseau induirait un déphasage
+placer $V_{enc}$ à une valeur trop grande en rapport des vitesses dans le vaisseau induirait un déphasage
 très faible et donc une perte de la dynamique.\\
 Si malgré tout quelques artefacts subsistent, il reste possible de les corriger simplement en
 utilisant les algorithmes de dépliement au cours du temps (Figure~\ref{fig:3_3_depliement_phase}).
 %%%
 \begin{figure}[!t]
 \centering
-\includegraphics[width=14cm]{3_3_depliement_phase}
+\includegraphics[width=9cm]{3_3_depliement_phase}
 \caption{Exemple de dépliement de phase. En bleu la cinétique initiale du signal avec la présence d'un saut de
 phase. En rouge la nouvelle cinétique après dépliement. Source : http://fr.mathworks.com}
 \label{fig:3_3_depliement_phase}	
@@ -236,7 +236,7 @@ est séparée de la suivante par un intervalle de temps régulier qui est $\frac
 cardiaque, et $nb$ le nombre d’images de la séquence. On utilise alors une transformée de Fourier
 discrète. 
 %%%
-\begin{figure}[!t]
+\begin{figure}[!b]
 \centering
 \includegraphics[width=14cm]{3_5_TF_sang_bruit}
 \caption{Amplitude de la transformée de Fourier d’un signal au cours du temps pour un voxel de sang, et un voxel de bruit.
@@ -273,7 +273,7 @@ cours du temps est conforme à ce qui est attendu.
 %%%
 \subsection{Perfusion : imagerie par marquage des protons du sang artériel (ASL)}
 Les techniques de mesure de la perfusion cérébrale impliquent pour la plupart l’injection d’un
-produit de contraste (Dynamic contrast-enhanced, Dynamic Susceptibility Contrast)[68][69],
+produit de contraste (Dynamic contrast-enhanced, Dynamic Susceptibility Contrast,~\cite{Calamante2010},~\cite{OConnor2011})),
 déconseillée pour certaines populations à risques (femmes enceintes, personnes âgés). Les techniques
 de marquage des protons artériels du sang ou « Arterial Spin Labeling » (ASL) au contraire, permettent
 une exploration non invasive de la perfusion cérébrale en utilisant un traceur endogène : les protons
@@ -314,9 +314,9 @@ ensuite l’application d’un modèle.\\
 Plusieurs méthodes d’acquisitions existent selon le mode de marquage des protons. Nous
 distinguerons ainsi les séquences pulsées (PASL) et les séquences pseudo-continues (pCASL). La
 séquence pulsée telle qu’elle est implémentée à l’heure actuelle offre des temps d’acquisition court
-autorisant l’utilisation de multi-TI (temps d’inversion) dans le but d’affiner l’estimation du débit. La
+autorisant l’utilisation de multi-$T_I$ (temps d’inversion) dans le but d’affiner l’estimation du débit. La
 séquence pseudo-continue, elle, fournit un meilleur rapport signal sur bruit mais en un temps pouvant
-être plus long. Le détail de ces acquisitions sera développé dans un chapitre dédié à l’ASL (Chapitre 0)\textcolor{red}{ref a revoir}.
+être plus long. Le détail de ces acquisitions sera développé dans un chapitre dédié à l’ASL (Chapitre~\ref{chap:asl}).
 %%%
 %%%
 %%%
@@ -332,15 +332,15 @@ taille de voxel = 0.31 x 0.31 x 3.1 mm, vitesse d’encodage 80 cm/s (artères) 
 (veines).
 \item une imagerie ASL permettant de quantifier la perfusion. Ces séquences évoluant
 rapidement il conviendra à l’utilisateur de choisir celle qui fournit les meilleurs résultats.
-Nous proposons d’utiliser une ASL pulsée 3D FAIR-Q2TIPS [70] multi-TI lorsque le sujet
+Nous proposons d’utiliser une ASL pulsée 3D FAIR-Q2TIPS (\cite{Gunther2005}) multi-$T_I$ lorsque le sujet
 présente une pathologie pouvant affecter fortement le temps de transit (incertitude sur le
 temps d’inversion optimal), 16 temps d’inversion de 480 à 4080 ms, durée du bolus 700
 ms, champ de vue = 13.4 x 13.4 cm, temps d’écho = 14.94 ms, temps de répétition = 3500
-ms, taille du voxel = 3 x 3 x 3 mm; ou une ASL pseudo-continue 3D simple TI [71] lorsque
+ms, taille du voxel = 3 x 3 x 3 mm; ou une ASL pseudo-continue 3D simple TI (\cite{Wu2007}) lorsque
 le sujet est bien caractérisé : temps d’inversion = 3000 ms, durée du bolus = 1500 ms,
 champ de vue = 12.6 x 12.8 cm, temps d’écho = 15.62 ms, temps de répétition = 4600 ms,
 taille du voxel = 1.5 x 1.5 x 3 mm, 42 coupes. Le détail de ces techniques est décrit dans le
-chapitre 0\textcolor{red}{ref a revoir}.
+chapitre~\ref{chap:asl}.
 \end{itemize}
 L’ensemble constitue un protocole de 45 minutes.
 
