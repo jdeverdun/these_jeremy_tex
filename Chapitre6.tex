@@ -38,11 +38,11 @@ Afin d’améliorer la qualité des images, des séquences 3D ont été dévelop
 %%%
 \begin{figure}[!t]
 \centering
-\includegraphics[width=5cm]{5_3_exemple_asl}
+\includegraphics[width=10cm]{5_3_exemple_asl}
 \caption{Exemple d'images de perfusion d’ASL 2D (PICORE-Q2TIPS) à 1.5T (A) et 3T (B) et d’ASL 3D à 3T (C).}
 \label{fig:5_3_exemple_asl}	
 \end{figure}
-Il est bon pour finir de noter aussi l’importance de l’intensité du champ magnétique, dont l’augmentation permet d’améliorer significativement la qualité de l’ASL (\cite{Golay2006}) (Figure~\ref{fig:5_3_exemple_asl}). En effet, le rapport signal sur bruit augmente et le T1 des tissus et donc le temps de marquage des protons également.
+Il est bon pour finir de noter aussi l’importance de l’intensité du champ magnétique, dont l’augmentation permet d’améliorer significativement la qualité de l’ASL (\cite{Golay2006}) (Figure~\ref{fig:5_3_exemple_asl}). En effet, le rapport signal sur bruit augmente et le $T_1$ des tissus et donc le temps de marquage des protons également.
 %%%
 %%%
 %%%
@@ -90,7 +90,7 @@ fait la méthode recommandée (\cite{Cavusoglu2009}).
 %%%
 \begin{figure}[!t]
 \centering
-\includegraphics[width=5cm]{5_4_modeles_compartiments}
+\includegraphics[width=10cm]{5_4_modeles_compartiments}
 \caption{Modèle à un et deux compartiments. A) Modèle à un compartiment. Le sang marqué entre dans le voxel de tissu
 avec une magnétisation $m_a$ et une perfusion $f$, et repart avec une magnétisation $m_z$. Le voxel dispose d’une magnétisation
 $M$ et d’un temps de relaxation $T_1$. B) Modèle à deux compartiments avec une perméabilité restreinte. L’eau marquée est
@@ -128,7 +128,7 @@ reste néanmoins à la charge de l’utilisateur de sélectionner un temps d’i
 suffisamment long pour permette au bolus d’arriver dans la zone à imager, mais suffisamment court
 pour éviter une perte du signal. Ce problème devient majeur avec des cohortes de plus d’une centaine
 de patients lorsque le protocole contraint à n’utiliser qu’un seul et même temps d’inversion pour tous
-les sujets (\cite{Deverdun2015}). Le développement des séquences multi-TI permet d’éviter ces problèmes en balayant
+les sujets (\cite{Deverdun2015}). Le développement des séquences multi-$T_I$ permet d’éviter ces problèmes en balayant
 plusieurs temps d’inversion, ce qui autorise par ailleurs l’utilisation de modèles dédiés. Ceux-ci
 permettant d’estimer plus précisément le débit tout en générant une cartographie des temps
 d’arrivées du bolus (BAT) (\cite{Chappell2009}).
@@ -235,7 +235,7 @@ Les données IRM ont été collectées sur une IRM à 3T (Skyra, Siemens, German
 antenne 32 éléments. Une série anatomique 3DT$_1$ a été acquise avec les paramètres suivants : champ
 de vue = 25 x 25 cm, T$_E$ = 2.5 ms, T$_R$ = 1690 ms, angle de bascule = 9°, taille du voxel = 0.98 x 0.98 x 1
 mm, 176 coupes. Une acquisition en inversion récupération atténuée du flux (FLAIR) a été réalisé afin
-d’évaluer les lésions de la matière blanche avec les paramètres : champ de vue = 22 x 22 cm, TE = 111
+d’évaluer les lésions de la matière blanche avec les paramètres : champ de vue = 22 x 22 cm, $T_E$ = 111
 ms, T$_R$ = 7000 ms, angle de bascule = 150 °, taille du voxel = 0.86 x 0.86 x 3, 39 coupes. Enfin les mesures
 de débit ont été obtenues via une séquence ASL 2D pulsée, PICORE-Q2TIPS (\cite{Luh1999}), T$_{I1}$/T$_{I2}$/T$_{R}$/T$_{E}$=
 700/2000/3000/20 ms, 52 répétitions, 16 coupes (1.5 mm de gap), taille du voxel = 3.44 x 3.44 x 6 mm.\\
@@ -277,7 +277,7 @@ défini comme inexploitable.
 \end{itemize}
 \begin{figure}[!t]
 \centering
-\includegraphics[width=10cm]{5_6_qualite_asl}
+\includegraphics[width=8cm]{5_6_qualite_asl}
 \caption{Impact du temps d'inversion sur le nombre de répétitions retirées. Dans la figure A, le nombre de répétitions
 retirées sur la base de notre critère est affiché pour un sujet donné et selon différents temps d’inversion. Les points noirs
 correspondent aux vraies valeurs, la courbe bleue à un ajustement polynomial de second degré, la flèche rouge indique le
@@ -297,7 +297,7 @@ paramétrage du temps d’inversion. Pour ce faire, nous avons réalisé des acq
 sur 6 sujets sains (âge = 24.5 ± 2 ans) avec un protocole identique mais répétant l’ASL 2D en variant le
 temps d’inversion (1300, 1400, 1500, 1600, 1700, 1800, 1900, et 2000 ms). Nous avons par ailleurs
 rajouté une séquence obtenue récemment au sein du service : l’ASL pulsée 3D-GRASE (\cite{Gunther2005}) autorisant
-le multi-T$_I$ avec les paramètres : durée du bolus = 700 ms, TR = 3000 ms, TE = 20 ms, GRAPPA 2, 24
+le multi-T$_I$ avec les paramètres : durée du bolus = 700 ms, $T_R$ = 3000 ms, $T_E$ = 20 ms, GRAPPA 2, 24
 coupes, taille du voxel = 3.4 x 3.4 x 4 mm, 16 temps d’inversion (480 à 4000 ms). Cette séquence
 autorise le calcul en ligne de cartes d’arrivée du bolus ce qui permet d’évaluer le T$_I$ optimal pour le
 sujet. De plus, grâce à la séquence ASL 2D on pourra évaluer le nombre de répétitions définies comme

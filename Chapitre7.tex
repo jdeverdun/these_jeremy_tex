@@ -67,7 +67,7 @@ champ, et l’inversion finale aboutissant à la cartographie de susceptibilité
 %%%
 \begin{figure}[!t]
 \centering
-\includegraphics[width=10cm]{6_1_carte_susceptibilite}
+\includegraphics[width=12cm]{6_1_carte_susceptibilite}
 \caption{Exemple de carte de susceptibilité magnétique. De gauche à droite, l'image de phase, la carte de perturbation
 de champ intérieur, et la carte de susceptibilité magnétique reconstruite.}
 \label{fig:6_1_carte_susceptibilite}	
@@ -100,7 +100,7 @@ partie de sa signification physique.\\
 %%%
 \begin{figure}[!t]
 \centering
-\includegraphics[width=10cm]{6_2_depliement}
+\includegraphics[width=7cm]{6_2_depliement}
 \caption{Illustration du dépliement de phase. Sur l’image A, le déphasage observé est de 1.5 $\pi$, donc dans la gamme de valeurs
 de l’échelle. Sur l’image B, le déphasage est de 2.25 $\pi$ donc plus grand que les $2\pi$ autorisés, ainsi la valeur récupérée sur
 l’image sera de 0.25 $\pi$. La figure C illustre le principe de dépliement de phase, avec en bleu un profil d’une image de phase à
@@ -136,7 +136,7 @@ Ainsi, la fréquence maximale autorisée sera plus grande dans une séquence mul
 par moins de repliements de phase et limite les problèmes mentionnés plus haut sans diminution du
 rapport signal sur bruit.\\
 Les études récentes ont montrés que les cartes de susceptibilités reconstruites via les
-approches simple et multi-échos ne différaient que peu (\cite{Bilgic2012},~\ref{Schweser2012}) au vue des outils de dépliements
+approches simple et multi-échos ne différaient que peu (\cite{Bilgic2012},~\cite{Schweser2012}) au vue des outils de dépliements
 de phase maintenant disponibles.\\
 %%%
 %%%
@@ -398,16 +398,16 @@ séquences multi-T$_E$.
 \includegraphics[width=10cm]{6_8_comparaisons}
 \caption{Comparaison de différentes méthodes de reconstruction de la susceptibilité. De gauche à droite et de haut en
 bas : TSVD, TKD, iSWIM, CSC, COSMOS, MEDI, HEIDI, TVSB et cartographie R2. COSMOS étant la référence. Bien que souvent
-similaires, on observe la présence plus ou moins importante d’artéfacts selon la méthode utilisée. Figure issue de \cite{Wang2015}.}
+similaires, on observe la présence plus ou moins importante d’artéfacts selon la méthode utilisée. Figure issue de \cite{Wang_Liu_2014}.}
 \label{fig:6_8_comparaisons}	
 \end{figure}
 Enfin il existe une approche simple brutale pour estimer la susceptibilité, dite TKD
 (Thresholded K-space Division) (\cite{Shmueli2009}), dans laquelle on remplace dans le kernel ${\cal D}$ les valeurs inférieures
 à une valeur donnée $\beta$ par $\beta^{-1}$. Cette méthode plébiscitée pour son faible coût en temps est néanmoins
 sujette à de nombreux problèmes comme le choix du $\beta$ optimal, et la sous-estimation systématique de
-la susceptibilité. La Figure~\ref{fig:6_8_comparaisons} présente un bilan de toutes les reconstructions (\cite{Wang2015}).\\
+la susceptibilité. La Figure~\ref{fig:6_8_comparaisons} présente un bilan de toutes les reconstructions (\cite{Wang_Liu_2014}).\\
 En 2014, Bilgic et al. ont proposé une amélioration significative de la vitesse de calcul des QSM
-via une optimisation de la méthode TVSB (\cite{Bilgic2014}), ouvrant la voie vers la reconstruction automatique des
+via une optimisation de la méthode TVSB (\cite{Bilgic2013}), ouvrant la voie vers la reconstruction automatique des
 cartographies de susceptibilité magnétique en ligne directement sur l’IRM en vue d’un usage clinique.
 Cette méthode repose sur le fait que l’Équation~\ref{eq:min_gradient} lorsque la minimisation est formulée en norme ${\cal L}_2$
 dispose d’une solution analytique :
@@ -427,7 +427,7 @@ Il devient possible de représenter la solution analytique sous la forme :
 \end{equation}
 Le calcul de $\chi$ ne coûte plus alors que deux transformées de Fourier et la multiplication de matrices
 diagonales. Cela réduit le temps de calcul d’un facteur 1000 en rapport de l’approche itérative avec
-des résultats comparables (\cite{Bilgic2014}).
+des résultats comparables (\cite{Bilgic2013}).
 %%%
 %%%
 %%%
@@ -524,9 +524,9 @@ traitement réalisant le calcul des cartographies de perfusion et de temps d’a
 Comme on peut le voir, les functors se représentent sous forme de blocs reliés entre eux prenant en
 entrée une ou des images, et en sortie des images traitées.\\
 %%%
-\begin{figure}[!t]
+\begin{figure}[!b]
 \centering
-\includegraphics[width=10cm]{6_11_chaine_raw}
+\includegraphics[width=13cm]{6_11_chaine_raw}
 \caption{Principe de la chaîne de traitement permettant à partir des raw data d’aboutir à une image de phase correcte sur
 un protocole SWI.}
 \label{fig:6_11_chaine_raw}	
@@ -555,7 +555,7 @@ sagittale, position coronale, position transverse.\\
 %%%
 \begin{figure}[!t]
 \centering
-\includegraphics[width=10cm]{6_12_functors}
+\includegraphics[width=12cm]{6_12_functors}
 \caption{Positionnement des functors permettant la récupération des images issue du prescan (rectangle rouge).}
 \label{fig:6_12_functors}	
 \end{figure}
@@ -567,7 +567,7 @@ de l’image la plus brute dans l’espace direct avant tout post-traitement.\\
 %%%
 \begin{figure}[!t]
 \centering
-\includegraphics[width=10cm]{6_13_recuperation}
+\includegraphics[width=12cm]{6_13_recuperation}
 \caption{Positionnement du functors permettant la récupération des images issue de l’acquisition SWI (rectangle rouge).}
 \label{fig:6_13_recuperation}	
 \end{figure}
@@ -578,9 +578,9 @@ canaux d’antenne selon la méthode de Ros et al. (\cite{Ros2009}) comme décri
 sensibilité des différents canaux d’antenne est ainsi calculée (Figure~\ref{fig:6_14_carte_sensibilite}) et utilisée pour reconstruire
 la phase et la magnitude qui seront ensuite sauvegardées au format nifti.\\
 %%%
-\begin{figure}[!t]
+\begin{figure}[!b]
 \centering
-\includegraphics[width=10cm]{6_14_carte_sensibilite}
+\includegraphics[width=13cm]{6_14_carte_sensibilite}
 \caption{Illustration de la génération de la carte de sensibilité pour un canal d’antenne}
 \label{fig:6_14_carte_sensibilite}	
 \end{figure}
@@ -680,7 +680,7 @@ que de l’eau, l’ensemble étant maintenu par une mousse polystyrène (Figure
 %%%
 \begin{figure}[!t]
 \centering
-\includegraphics[width=13cm]{6_16_fantome}
+\includegraphics[width=9cm]{6_16_fantome}
 \caption{Fantôme au Ferumoxytol utilisé par Tan et al. (\cite{tan2014}).}
 \label{fig:6_16_fantome}	
 \end{figure}
@@ -735,7 +735,7 @@ présence d’artéfacts dans la direction de $B_0$ (Figure~\ref{fig:6_18_artefa
 %%%
 \begin{figure}[!t]
 \centering
-\includegraphics[width=13cm]{6_18_artefacts}
+\includegraphics[width=10cm]{6_18_artefacts}
 \caption{Illustration des angles d'acquisitions selon $B_0$ et susceptibilité reconstruite par norme ${\cal L}_1$ avec lambda
 identique. INCL correspond à l’inclinaison. Les flèches rouges indiquent la présence d’artéfacts de reconstruction.}
 \label{fig:6_18_artefacts}	
@@ -748,6 +748,27 @@ L’effet des paramètres de régularisation sur la mesure de susceptibilité en
 ensuite testés. Afin d’éviter les effets de volume partiels et de limiter l’impact des artéfacts les valeurs
 moyennes de susceptibilité dans les tubes sont extraites par tracage de régions d’intérêt au centre des
 tubes.\\
+
+Les premiers résultats sur la norme ${\cal L}_1$ mettent en évidence de bonnes corrélations entre
+susceptibilité estimée et susceptibilité réelle (Figure~\ref{fig:6_19_effet_lambda}), quelle que soit la valeur du paramètre $\lambda$ la
+corrélation reste très bonne. Cependant la pente de cette corrélation ne se rapproche de 1 que pour
+un $\lambda$ optimal. Lorsque l’on s’en éloigne les valeurs de susceptibilité tendent à être sous estimées
+(parfois même fortement). En observant l’évolution du coefficient de corrélation en fonction du $\lambda$ pour
+la norme ${\cal L}_1$ (Figure~\ref{fig:6_19_effet_lambda}), on peut mettre en évidence la valeur optimale (Figure~\ref{fig:6_19_effet_lambda} ligne en pointillé
+rouge). 
+
+
+Le même type de résultat est observé avec la norme ${\cal L}_2$ (résultats non présentées ici).
+Cependant, pour cette norme même pour le $\beta$ optimal, il existe une sous estimation de la susceptibilité
+(pente distante de 1). La comparaison des valeurs obtenues par norme ${\cal L}_1$ et ${\cal L}_2$ après sélection du
+paramètre adapté met en évidence une sous-estimation en norme ${\cal L}_2$ des concentrations estimées en
+rapport des vrais valeurs (p=0.015, Wilcoxon unilatéral pairé), tandis qu’en norme ${\cal L}_1$ les valeurs ne
+sont pas significativement différentes de la concentration réelle (p>0.05, Wilcoxon unilatéral pairé). La
+norme ${\cal L}_1$ semble donc à privilégier pour l’extraction de valeurs quantitatives, même si, en terme de
+corrélation, la norme ${\cal L}_2$ reste correcte (p<<0.01, rho=0.99, corrélation de Pearson). Cet essai permet
+d’apporter une validation de la mesure de susceptibilité sur l’IRM à notre disposition dans des
+conditions standards d’acquisition.\\
+
 %%%
 \begin{figure}[!t]
 \centering
@@ -758,24 +779,10 @@ ajustées linéairement. A droite, le coefficient de corrélation (Pearson) est 
 plus important est indiqué par le trait rouge (0.0114).}
 \label{fig:6_19_effet_lambda}	
 \end{figure}
-Les premiers résultats sur la norme ${\cal L}_1$ mettent en évidence de bonnes corrélations entre
-susceptibilité estimée et susceptibilité réelle (Figure~\ref{fig:6_19_effet_lambda}), quelle que soit la valeur du paramètre $\lambda$ la
-corrélation reste très bonne. Cependant la pente de cette corrélation ne se rapproche de 1 que pour
-un $\lambda$ optimal. Lorsque l’on s’en éloigne les valeurs de susceptibilité tendent à être sous estimées
-(parfois même fortement). En observant l’évolution du coefficient de corrélation en fonction du $\lambda$ pour
-la norme ${\cal L}_1$ (Figure~\ref{fig:6_19_effet_lambda}), on peut mettre en évidence la valeur optimale (Figure~\ref{fig:6_19_effet_lambda} ligne en pointillé
-rouge). Le même type de résultat est observé avec la norme ${\cal L}_2$ (résultats non présentées ici).
-Cependant, pour cette norme même pour le $\beta$ optimal, il existe une sous estimation de la susceptibilité
-(pente distante de 1). La comparaison des valeurs obtenues par norme ${\cal L}_1$ et ${\cal L}_2$ après sélection du
-paramètre adapté met en évidence une sous-estimation en norme ${\cal L}_2$ des concentrations estimées en
-rapport des vrais valeurs (p=0.015, Wilcoxon unilatéral pairé), tandis qu’en norme ${\cal L}_1$ les valeurs ne
-sont pas significativement différentes de la concentration réelle (p>0.05, Wilcoxon unilatéral pairé). La
-norme ${\cal L}_1$ semble donc à privilégier pour l’extraction de valeurs quantitatives, même si, en terme de
-corrélation, la norme ${\cal L}_2$ reste correcte (p<<0.01, rho=0.99, corrélation de Pearson). Cet essai permet
-d’apporter une validation de la mesure de susceptibilité sur l’IRM à notre disposition dans des
-conditions standards d’acquisition.\\
+
+
 %%%
-\begin{figure}[!t]
+\begin{figure}[!b]
 \centering
 \includegraphics[width=13cm]{6_20_orientation}
 \caption{Influence de l'orientation sur la mesure de susceptibilité. A gauche, les courbes de concentration réelle versus
@@ -843,6 +850,13 @@ lors de l’estimation de la carte de perturbation du champ intérieur lorsque l
 L’échelle utilisée est la même pour toutes les images.}
 \label{fig:6_21_multi_simple_te}	
 \end{figure}
+\begin{figure}[!b]
+\centering
+\includegraphics[width=7cm]{6_21b_ill_roi}
+\caption{Illustration de quelques ROI sélectionnées. Ici matière blanche, putamen, pallidum et noyau caudé
+superposées sur la norme ${\cal L}_1$, $T_E$= 16 ms.}
+\label{fig:6_21b_ill_roi}	
+\end{figure}
 Nous pouvons donc dans ce protocole évaluer qualitativement le mode multi-T$_E$ versus simple-
 T$_E$, mais aussi l’impact du temps d’écho et de la norme sur l’estimation de la susceptibilité et la visibilité
 des différentes structures en simple-T$_E$. La Figure~\ref{fig:6_21_multi_simple_te} illustre la reconstruction de la carte de
@@ -858,8 +872,7 @@ détecte visuellement une susceptibilité moyenne plus faible en norme ${\cal L}
 via le fantôme) en comparaison de la norme ${\cal L}_1$.\\
 Pour comparer enfin les informations quantitatives, nous avons choisi de définir différentes
 régions d’intérêt au niveau des noyaux gris : pallidum, putamen, noyaux caudés, noyaux dentelés dans
-les deux hémisphères, ainsi que deux sphères (5 mm de rayon) dans la matière blanche frontale (Figure
-89) pour servir de référence à la valeur de susceptibilité (\cite{Schweser2011}). Nous avons donc au total 10 ROI plus
+les deux hémisphères, ainsi que deux sphères (5 mm de rayon) dans la matière blanche frontale (Figure~\ref{fig:6_21b_ill_roi}) pour servir de référence à la valeur de susceptibilité (\cite{Schweser2011}). Nous avons donc au total 10 ROI plus
 une de référence.\\
 Cette analyse a été réalisée sur la base d’un même jeu de données (une même acquisition à 8
 temps d’échos) et pour une même information extraite, la susceptibilité. Il est donc compliqué
@@ -868,7 +881,7 @@ Altman ont été réalisés. La susceptibilité rapportée est recentrée sur la
 blanche frontale.\\
 Pour clarifier les résultats nous ne nous intéresserons qu’à la norme ${\cal L}_1$ en simple T$_E$ (T$_E$ court)
 et la norme ${\cal L}_2$ via l’algorithme MEDI en multi-T$_E$ car ces deux approches sont les plus citées dans la
-littérature récente (\cite{Wang2015}).
+littérature récente (\cite{Wang_Liu_2014}).
 \begin {table}
 \caption{Mesures de la susceptibilité pour différents noyaux gris selon différents modes de reconstruction. Les valeurs
 sont exprimées en ppm, et la matière blanche sert de référence.} 
@@ -1029,7 +1042,7 @@ visualisation des veines est rendue possible par le fait que le sang qu’elles 
 Le sang artériel est en effet riche en oxygène, et contient donc avec une concentration importante
 d’oxyhémoglobine. La combinaison du Fer (Fe$^{2+}$) et de l’oxygène donne un composé diamagnétique.
 Une fois désoxygénée, l’hémoglobine (devenue déoxyhémoglobine), devient paramagnétique et
-apparait donc hyperintense en QSM (\cite{Wang2015}). Le décalage de susceptibilité entre le sang veineux et l’eau
+apparait donc hyperintense en QSM (\cite{Wang_Liu_2014}). Le décalage de susceptibilité entre le sang veineux et l’eau
 ($\Delta_{\chi vein-water}$ ) est donc dominé par la concentration oxygène-dépendante de la déoxyhémoglobine
 paramagnétique dans le sang. Cette différence de susceptibilité est reliée à la saturation en oxygène
 (SvO$_2$) dans le vaisseau selon la formule (\cite{Weisskoff1992}) :
