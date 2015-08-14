@@ -191,31 +191,31 @@ avec $V_a$ et $V_c$ les solutions de~\ref{eq:volumesac}, et les volumes de réf�
 De même la longueur totale entre artères et veines est subdivisée en trois longueurs (artérioles, capillaires, veinules) sur la base des proportions fournit par la littérature (\cite{Zagzoule1986}). En l’état, faute d’informations structurales complémentaires, nous n’utilisons pas de facteurs géométriques correctifs supplémentaires (de type dimensions fractales), pour tenir compte du caractère ramifié de cette partie de la structure. \\
 A partir des volumes et des longueurs de chaque compartiment, les rayons sont déterminés simplement (Équation~\ref{eq:rayons}). \\
 Les rayons moyens des différents compartiments peuvent être visualisés (Figure~\ref{fig:2_13_profil_rayons}) et leur différences relatives mis en comparaisons aux données de la littérature (par exemple dans le chapitre suivant figure~\ref{fig:4_3_zagzoule}). Par ailleurs, les données quantitative illustrées dans le Tableau~\ref{tab:tab_profil_rayons} montrent des longueurs du même ordre de grandeur (bien que souvent plus élevés dans le modèle de Zagzoule et al.). On voit ainsi que des artères aux veines, les proportions des caractéristiques des différents tubes sont comparables. En revanche l'écart est important en terme de nombres d'artères et de veines est important, ce qui s'explique par d'une part : le niveau de détails de notre segmentation et d'autres part le fait les données de Zagzoule et al. ne sont pas issues directement de données terrain, mais des estimations.\\
-BraVa, pour {\em The Brain Vasculature}, fournit une base donnée de l'architecture artérielle dans le cerveau (\cite{Wright2013}). Pour construire cette base, 61 patients (âge 31.16 $\pm$10.03) ont subit une imagerie IRM par temps de vol (résolution 0.6 x 0.6 x 0.6mm$^3$) . Pour chaque sujet, une identification manuelle des artères a été réalisée via ImageJ et le plugin Neuron\_Morpho (\cite{neuronmorpho}). Ainsi une identification fine du nombre de segments et de leurs caractéristiques (longueur, tortuosité etc.) est disponible et mis à disposition en ligne. La comparaison de nos mesures aux données de BraVa permet d'évaluer l'écart de notre modèle à des données similaires. Le résultat met en évidence un nombre inférieur de moitié en terme de branches de notre méthode en rapport de BraVa. Au vue de l'approche manuelle privilégié par ce dernier ce résultat est cohérent. La longueur moyenne des segments en revanche est cohérente, bien que des écarts peuvent exister du fait de l'écart précédement décrit. On notera par ailleurs que les longueurs sont plus faibles que celles initialement utilisées par Zagzoule et al.. Les informations sur les calibres des vaisseaux ne sont cependant pas disponibles. \\
+ La comparaison de nos mesures aux données de BraVa (voir Chapitre~\ref{sec:anat_art}) permet d'évaluer l'écart de notre modèle à des données similaires. Le résultat met en évidence un nombre inférieur de moitié en terme de branches de notre méthode en rapport de BraVa. Au vue de l'approche manuelle privilégié par ce dernier ce résultat est cohérent. La longueur moyenne des segments en revanche est cohérente, bien que des écarts peuvent exister du fait de l'écart précédement décrit. On notera par ailleurs que les longueurs sont plus faibles que celles initialement utilisées par Zagzoule et al.. Les informations sur les calibres des vaisseaux ne sont cependant pas disponibles. \\
 
 %%%
 \begin{table}
 \caption{Caractéristiques de l'architecture selon différents modèles. Les aires doivent certainement être multipliées par le nombre de vaisseaux pour correspondre aux données de zagzoule. Le nombre d'artérioles, capillaires et veinules de notre modèle regroupe un ensemble de vaisseaux d'un territoire.}
 \label{tab:tab_profil_rayons}
-\begin{tabular}[!t]{l|lll}
+\begin{tabular}[!t]{l|ll}
 \centering
       & Zagzoule & BraVa & Notre modèle  \\
 \hline
-   Artères : aire (mm²) & 3.41(cm²!) (5.6 \%)& NA  & 5.43  (0.8 \%)\\
-   Artères : longueur (mm) & 83 & 27 - 43 (34.18) & 29 \\
-   Artères : nombre & 3950 & 208.56 & 115 \\
-   Artérioles : aire (mm²) & 4.74 (cm²)  (7.7 \%)& NA & 60.5  (8.7 \%)\\
-   Artérioles : longueur (mm) & 35 & NA & 23.4 \\
-   Artérioles : nombre & 35000 & NA & 45 \\
-   Capillaires : aire (mm²) & 38 (cm²)  (62.3 \%)& NA & 484  (69.9 \%)\\
-   Capillaires : longueur (mm) & 5.236 & NA & 3.34 \\
-   Capillaires : nombre & 202000 & NA & 45 \\
-   Veinules : aire (mm²) & 9.49 (cm²)  (15.5 \%)& NA & 121  (17.5 \%)\\
-   Veinules : longueur (mm) & 35 & NA & 23 \\
-   Veinules : nombre & 72000 & NA & 45 \\
-   Veines : aire (mm²) & 5.34 (cm²)  (8.76 \%)& NA & 21.6  (3.12 \%)\\
-   Veines : longueur (mm) & 78.5 & NA & 26.5 \\
-   Veines : nombre & 3896 & NA & 24 \\
+   Artères : aire (mm²) & 3.41(cm²!) (5.6 \%)&  5.43  (0.8 \%)\\
+   Artères : longueur (mm) & 83 &  29 \\
+   Artères : nombre & 3950 &  115 \\
+   Artérioles : aire (mm²) & 4.74 (cm²)  (7.7 \%)&  60.5  (8.7 \%)\\
+   Artérioles : longueur (mm) & 35 &  23.4 \\
+   Artérioles : nombre & 35000 &  45 \\
+   Capillaires : aire (mm²) & 38 (cm²)  (62.3 \%)&  484  (69.9 \%)\\
+   Capillaires : longueur (mm) & 5.236 &  3.34 \\
+   Capillaires : nombre & 202000 &  45 \\
+   Veinules : aire (mm²) & 9.49 (cm²)  (15.5 \%)& 121  (17.5 \%)\\
+   Veinules : longueur (mm) & 35 &  23 \\
+   Veinules : nombre & 72000 &  45 \\
+   Veines : aire (mm²) & 5.34 (cm²)  (8.76 \%)& 21.6  (3.12 \%)\\
+   Veines : longueur (mm) & 78.5 &  26.5 \\
+   Veines : nombre & 3896 &  24 \\
 \hline
 
 \end{tabular}
