@@ -82,7 +82,7 @@ développement à court terme de ce modèle.
 Le principe de tous les modèles à compartiments est simple. L'ensemble du système des fluides
 intracrâniens est décomposé en compartiments, chacun caractérisé par une seule valeur de la
 pression. Des équations de transfert entre compartiments et des équations bilans des entrées/sorties
-dans chaque compartiment complètent la dynamique.\\
+dans chaque compartiment complètent la dynamique, qui s'écrit sous forme d'un ensemble d'{\em équations différentielles ordinaires}. Ces modèles s'oposent aux modèle {\em hydrodynamiques}, qui décrivent le fluide sanguin comme un {\em milieu continu} sous forme d'{\em équations aux dérivées partielles}\\
 Les articles fondateurs de Monro  (\cite{Monro2010}) et Kellie (\cite{Kellie1824}) sont les exemples historiques les plus
 simples, considérant le cerveau comme respectivement bi-compartimental (sang et fluide cérébral) et
 tri-compartimental (artères, veines, fluides cérébraux). Les principales évolutions sont récentes et ont
@@ -106,16 +106,16 @@ pression par des résistances hydrodynamiques :
 F\,=\,R\,\Delta P.
 \end{equation}
 où $F$ est le flux en ml/min, $R$ la résistance en mmHg min/ml et $\Delta P$ la différence de pression en mmHg.
-Les résistances elles-mêmes sont des paramètres du modèle, sans qu'une hypothèse de type poiseuille
+Les résistances elles-mêmes sont des paramètres du modèle, sans qu'une hypothèse de type loi de Poiseuille
 par exemple les associe à des caractéristiques structurales des vaisseaux. De plus le caractère flexible
 des parois, pouvant conduire à une accumulation de liquide dans un compartiment, est représenté par
 une capacité C (en cm\^3/mmHg), elle non plus non reliée pour l'instant à un paramètre structural mesurable. Le volume
 de chaque compartiment varie à la fois du fait du bilan des entrées et sorties de fluide, mais dépend
-aussi des différences de pression entre sa pression intérieure et la pression intracrânienne
+aussi des différences de pression entre sa pression intérieure et la pression intracrânienne via une compliance $C$:
 \begin{equation}
 V\,=\,C\,(P-P_{inc }).
 \end{equation}
-On aboutit à un ensemble clôt d'équation différentielles soluble. Les paramètres sont alors estimés à
+On aboutit à un ensemble clos d'équation différentielles soluble. Les paramètres sont alors estimés à
 partir de valeurs moyennes venues de mesures disponibles dans la littérature, et en reproduisant des
 données dynamiques typiques, telles qu'un flux hémodynamique moyen de 12.5 ml/s.\\
 Le modèle de Sorek et al. (\cite{Sorek1988}) est plus complet: 7 compartiments (jugulaires et LCS en plus),
@@ -133,13 +133,7 @@ de données de pression d'entrée en fonction du temps. Ils ne sont comme préc�
 des caractéristiques structurales.\\
 Le modèle de Zagzoule et Marc-Vergnes (\cite{Zagzoule1986}) constitue la première approche basée sur des
 données structurales mesurées (ou estimées), et de surcroît n'est plus linéaire. 
-%%%
-\begin{figure}[!t]
-\centering
-\includegraphics[width=12cm]{4_3_zagzoule}
-\caption{Schéma du modèle de Zagzoule et Marc-Vergnes (\cite{Zagzoule1986}).}
-\label{fig:4_3_zagzoule}	
-\end{figure}
+
 Le modèle n'est pas
 stricto sensu compartimental, mais est présenté ici comme base du modèle de Linninger et al(\cite{Linninger2009}) , qui
 reprend les mêmes idées dans une logique compartimentale. L'ensemble de la circulation
@@ -148,7 +142,9 @@ schéma inspiré de la physiologie moyenne des artères, des veines, et des nive
 intermédiaire. Le liquide cérébro-spinal et le parenchyme sont absents du modèle, si bien que rien ne
 vient imposer la constance du volume intracrânien. Chaque compartiment est représenté par un tube,
 et les paramètres du modèle sont les sections et les vitesses moyennes calculées en des points
-discrétisés le long de chaque tube, la longueur du tube étant prise comme constante. Les équations de l'hydrodynamique sont transformées en ces points en équations aux différences finies (voir figure~\ref{fig:4_3_zagzoule}). Le système
+discrétisés le long de chaque tube, la longueur du tube étant prise comme constante. Les équations de l'hydrodynamique sont transformées en ces points en équations aux différences finies (voir figure~\ref{fig:4_3_zagzoule}). 
+
+Le système
 d'équation est
 \begin{eqnarray}
  \mbox{Continuité\hspace{1cm}}&&\frac{\partial A}{\partial t}\,+\,\frac{\partial A U}{\partial x}\,=\,0,\\
@@ -156,7 +152,17 @@ d'équation est
 \mbox{\'Elasticité  des tubes\hspace{1cm}}&&E_L\biggl(\frac{A}{A_0}\,-\,1\biggr)\,=\,P,
 \end{eqnarray}
 où $U$ est la vitesse moyenne du flux sur l'aire $A$, $P$ la pression transmurale, $\rho$ la densité du fluide, $F$ le terme de friction, $E_L=\frac{E}{2}\frac{h}{R_0}$ avec $E$ le module Young, $h$ l'épaisseur de la paroie, $R_0$ et $A_0$ l'aire respectivement le rayon de la paroie et l'aire à une pression transmurale nulle.
- Ceci constitue un système hyperbolique du premier ordre complet. Une équation constitutive
+ Ceci constitue un système hyperbolique du premier ordre complet. 
+%%%
+\begin{figure}[!t]
+\centering
+\includegraphics[width=14cm]{4_3_zagzoule}
+\caption{Schéma du modèle de Zagzoule et Marc-Vergnes (\cite{Zagzoule1986}).}
+\label{fig:4_3_zagzoule}	
+\end{figure}
+
+
+Une équation constitutive
 supplémentaire relie la friction et les vitesses, selon une loi de Poiseuille :
 \begin{equation}
 \label{eq:poiseuille}
@@ -176,13 +182,7 @@ une latéralisation de la description du système sanguin, afin d'associer chaqu
 propre système artériolaire (lieu de la production du LCS). Enfin, il incorpore un comportement
 parenchymateux également latéral. Le tout est englobé dans un compartiment sous-arachnoïdien
 commun, qui se déverse dans le canal de la moelle épinière (voir Figure~\ref{fig:4_4_linninger}). 
-%%%
-\begin{figure}[!t]
-\centering
-\includegraphics[width=12cm]{4_4_linninger}
-\caption{Schéma du modèle de Linninger (\cite{Linninger2009}).}
-\label{fig:4_4_linninger}	
-\end{figure}
+
 Dans la description de
 chaque compartiment, il reprend les variables géométriques du modèle précédent : aire et flux
 entrants et sortants, mais sans discrétiser le long des tubes une équation aux dérivées partielles, ce
@@ -201,6 +201,13 @@ données fournies au modèle pour l'intégrer sont le décours temporel de la pr
 carotide) et en sortie (veine jugulaire). Le modèle permet alors de calculer tous les flux et les pressions
 au cours du temps dans tous les compartiments. Il reproduit de façon assez détaillée des données
 pathologique dynamiques sur l'hydrocéphalie.\\
+%%%
+\begin{figure}[!t]
+\centering
+\includegraphics[width=12cm]{4_4_linninger}
+\caption{Schéma du modèle de Linninger (\cite{Linninger2009}).}
+\label{fig:4_4_linninger}	
+\end{figure}
 Ce modèle constitue un intéressant compromis entre d'une part la logique de compartiments,
 et d'autre part l'introduction de paramètres structuraux et physiologiques mesurables
 indépendamment du modèle. Néanmoins, malgré la relative complexité du modèle (86 équations
@@ -273,7 +280,7 @@ logique de simplification, leur modèle ne considère qu’une entrée, fusion d
 internes et de l’artère basilaire, puis un système de tubes simples allant des artères aux veines (1 par
 type et par hémisphère), enfin une sortie pour le sang, fusion des veines jugulaires, et une voie de
 sortie pour le liquide céphalo rachidien, la moelle épinière.\\
-Lors du chapitre 3 nous avons mis au point une chaine de traitement qui aboutit à une
+Dans le chapitre 3 nous avons mis au point une chaine de traitement qui aboutit à une
 architecture complète partant des carotides internes et de l’artère basilaire, et allant jusqu’aux veines
 jugulaires. Comme tous les travaux de modélisation antérieurs, nous n’avons pas accès aux
 compartiments artériolaires, capillaires et veinulaires ; nous avons donc des « super tubes »
@@ -305,7 +312,7 @@ Cette structure est à mettre en relation avec le modèle de Linninger (Figure~\
 cependant ici représenté que le système sanguin, le système céphalo-rachidien étant identique aux
 travaux de ce dernier (Figure~\ref{fig:4_4_linninger}) à la subtilité près que les interactions LCS – Parenchyme – Sang sont
 réparties sur un ensemble de tubes (plusieurs artérioles et capillaires).\\
-e sang est modélisé comme un fluide visqueux et incompressible évoluant des artères aux veines
+Le sang est modélisé comme un fluide visqueux et incompressible évoluant des artères aux veines
 (Figure~\ref{fig:4_5_schema_modele}). Le système céphalo-rachidien intègre les ventricules latéraux, les troisième et quatrième
 ventricules et l’espace sous arachnoïdien (cérébral et de la moelle), le tout étant interconnecté (Figure~\ref{fig:4_6_LCR_modele}). A partir de l’espace sous arachnoïdien cérébral, on admet que le LCS est réabsorbé dans le sinus
 veineux par l’intermédiaire des villosités arachnoïdiennes (\cite{Segal2001}). Le parenchyme est considéré comme
@@ -712,7 +719,7 @@ proportionnellement moins de petits vaisseaux que la moyenne sur les artères. L
 moyen dans les capillaires (Figure~\ref{fig:4_13_perf_ASL} deuxième colonne) met en évidence des différences relatives
 entre les territoires en grande partie similaires aux résultats obtenus en ASL (Figure~\ref{fig:4_13_perf_ASL} troisième
 colonne). Néanmoins de fortes différences existent pour certaines régions pouvant être liées à une mauvaise détection de certains vaisseaux ou à de
-mauvaises associations artères – veines dans la définition structurelle du modèle. L'outi BraVa (\textcolor{green}{mettre ref vers BraVa et partie structurelle}) vu précédement, met en évidence pour notre modèle, un taux d'identification des artères de l'ordre de 55\% (voir Tableau \textcolor{red}{ref tableau BraVa zagzoule}). Il est probable alors que pour ces territoires, la segmentation n'ait pas permis d'obtenir le bon nombre de branches. Afin de tester cette hypothèse nous avons sélectionné un territoire pour lequel l'écart entre l'ASL et le modèle est le plus important pour simuler la présence d'un autre ensemble artère - artériole  - capillaire - veinule - veine parallèle à celui d'origine et de mêmes caractéristiques. Nous avons avons alors deux artères pour le même territoire. La Figure~\ref{fig:4_26_effet_ajout_artere_sur_cbf} illustre les résultats obtenus. L'ajout d'une branche parallèle permet d'assurer un apport supplémentaire dans le territoire concerné et ainsi de se rapprocher des données ASL. L'observation des résultats de segmentation dans cette zone (Figure~\ref{fig:4_27_segmentation}) mettent en évidence deux branches supplémentaires n'ayant pas été segmentées (flèches blanche). Cela confirme donc que l'une des sources du décalage entre le modèle et la réalité est la qualité de la segmentation.\\
+mauvaises associations artères – veines dans la définition structurelle du modèle. L'outi BraVa (\cite{Wright2013}, voir~\ref{sec:tubesestimates}) vu précédement, met en évidence pour notre modèle, un taux d'identification des artères de l'ordre de 55\% (voir Tableau~\ref{tab:tab_profil_rayons}). Il est probable alors que pour ces territoires, la segmentation n'ait pas permis d'obtenir le bon nombre de branches. Afin de tester cette hypothèse nous avons sélectionné un territoire pour lequel l'écart entre l'ASL et le modèle est le plus important pour simuler la présence d'un autre ensemble artère - artériole  - capillaire - veinule - veine parallèle à celui d'origine et de mêmes caractéristiques. Nous avons avons alors deux artères pour le même territoire. La Figure~\ref{fig:4_26_effet_ajout_artere_sur_cbf} illustre les résultats obtenus. L'ajout d'une branche parallèle permet d'assurer un apport supplémentaire dans le territoire concerné et ainsi de se rapprocher des données ASL. L'observation des résultats de segmentation dans cette zone (Figure~\ref{fig:4_27_segmentation}) mettent en évidence deux branches supplémentaires n'ayant pas été segmentées (flèches blanche). Cela confirme donc que l'une des sources du décalage entre le modèle et la réalité est la qualité de la segmentation.\\
 %%%
 \begin{figure}[!t]
 \centering

@@ -165,6 +165,7 @@ En l’état de l’imagerie nous avons sélectionné une approche simple consis
 %%%
 %%%
 \subsection{Estimation des paramètres des tubes}
+\label{sec:tubesestimates}
 La distance euclidienne entre artère et veine permet de proposer une longueur totale approchée, qui correspondra à la somme des artérioles, capillaires et veinules.  Nous n’avons aucun moyen d’accéder directement aux informations morphologiques de ces compartiments. Pour limiter le nombre d’hypothèses à réaliser sur le nombre de vaisseaux, il semble plus logique de ne considérer pour chaque couple artère-veine qu’une « super-artériole », qu’un « super-capillaire », et qu’une « super-veinule » regroupant un ensemble N de vaisseaux. Bien que ces compartiments soient difficilement accessible (voir~\ref{sect:microcirculation}), la littérature nous fournit quelques informations sur les rapports de ces différents compartiments via des volumes moyens (\cite{Zagzoule1986}), \cite{Linninger2009}). Parmi celles-ci on retrouve des rapports de longueurs et de volumes. Par ailleurs~\cite{Moody2004} ont estimé la fraction de volume que représentent les artérioles et les capillaires dans la matière grise et blanche par marquage à la phosphatase alcaline. A partir de ces informations et des données issues de la segmentation, il devient possible d’estimer des volumes plausibles pour nos compartiments.\\	
 %%%
 \begin{figure}[!b]
@@ -175,7 +176,7 @@ La distance euclidienne entre artère et veine permet de proposer une longueur t
 \end{figure}	
 %%%
 %%%
-Dans une première étape, nous réalisons une segmentation sur la base de l’imagerie T1 (voir Appendice 1.2.4) \textcolor{red}{revoir cette ref} . Les volumes matière grise et blanche sont ainsi extraits et un masque de ces tissus créé (probabilité matière grise + blanche > 0.9). En associant à chaque voxel de ce masque le label correspondant au couple artère-veine le plus proche (voir fin du paragraphe~\ref{sect:graph_creation}), on reconstruit les territoires (Figure~\ref{fig:2_13_territoire_arteres_veines}). \\
+Dans une première étape, nous réalisons une segmentation sur la base de l’imagerie $T_1$ (voir Appendice~\ref{sec:pretrait}) \textcolor{red}{revoir cette ref} . Les volumes matière grise et blanche sont ainsi extraits et un masque de ces tissus créé (probabilité matière grise + blanche > 0.9). En associant à chaque voxel de ce masque le label correspondant au couple artère-veine le plus proche (voir fin du paragraphe~\ref{sect:graph_creation}), on reconstruit les territoires (Figure~\ref{fig:2_13_territoire_arteres_veines}). \\
 Les volumes de ces territoires permettent grâces aux rapports issues de littérature d’estimer les volumes des compartiments : 
 \begin{equation}
 \label{eq:volumesac}
