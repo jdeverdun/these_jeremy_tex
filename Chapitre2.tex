@@ -65,27 +65,27 @@ Les artères se caractérisent par une média épaisse. Les artérioles, elles, 
 %%%
 \subsubsection{Données quantitatives}
 Les données quantitatives relatives à la {\em longueur} et au {\em diamètre} sont sujettes à de fortes variabilités individuelles, comme on l'a vu précédemment pour la structure du polygone de Willis. Dans notre travail, nous nous fixerons comme objectif de les reconstruire pour chaque sujet. Cependant, à titre de référence, le projet {\em BraVa}, pour {\em The Brain Vasculature}, fournit une base de données relatives à l'architecture artérielle dans le cerveau (\cite{Wright2013}). Pour construire cette base, 61 patients (âge 31.16 $\pm$10.03) ont subit une imagerie IRM par temps de vol (résolution 0.6 x 0.6 x 0.6mm$^3$) . Pour chaque sujet, une identification manuelle des artères a été réalisée via ImageJ et le plugin Neuron\_Morpho (\cite{neuronmorpho}). Ainsi une identification fine du nombre de segments et de leurs caractéristiques (longueur, tortuosité etc.) est disponible et mis à disposition en ligne. Cette base nous renseigne entre autre sur le nombre de branches du système artériel et les longueurs moyennes. Ainsi le système artériel tel qu'identifié par BraVa consiste en moyenne chez les sujets en 208.56 branches pour des longueurs allant de 27 à 43 mm avec une valeur moyenne à 34.18 mm.\\
-Le tableau~\ref{tab:databrava} récapitule les données issues de ce travail de morphologie quantitative pertinentes pour nous. Les longueurs des {\em artères cérébrales antérieures}, {\em artères cérébrales moyennes} et {\em artères cérébrales postérieures} sont disponibles (branches {\em droites} et {\em gauches}) pour chacun des 61 sujets. L'ampleur de la variabilité individuelle en termes de longueurs de ces artères renforce clairement la volonté de construire une modélisation sujet-spécifique. Ces données permettent tout de même de disposer d'{\em ordres de grandeur} permettant de vérifier la pertinence de nos segmentations.
+Le tableau~\ref{tab:databrava} récapitule les données issues de ce travail de morphologie quantitative pertinentes pour nous. Les longueurs des {\em artères cérébrales antérieures}, {\em artères cérébrales moyennes} et {\em artères cérébrales postérieures} sont disponibles (branches {\em droites} et {\em gauches}) pour chacun des 61 sujets. L'ampleur de la variabilité individuelle en termes de longueurs de ces artères renforce clairement la volonté de construire une modélisation sujet-spécifique. Ces données permettent tout de même de disposer d'{\em ordres de grandeur} permettant de vérifier la pertinence de nos segmentations. Nous observons ainsi après comparaison avec une segmentation manuelle réalisée sur nos données de couverture anatomique similaire à BraVa, des résultats concordants.
 %%%
 \begin{table}
-\caption{Longueur des {\em artères cérébrales antérieures}, {\em artères cérébrales moyennes} et {\em artères cérébrales postérieures} telles que mesurées dans le projet BraVa pour 61 sujets (données extraites de la base BraVa en ligne \textcolor{red}{\tt cng.gmu.edu/brava/}).}
+\caption{Longueur des {\em artères cérébrales antérieures}, {\em artères cérébrales moyennes} et {\em artères cérébrales postérieures} telles que mesurées dans le projet BraVa pour 61 sujets (données extraites de la base BraVa en ligne \textcolor{red}{\tt cng.gmu.edu/brava/}).}. Des mesures extraites d'une segmentation manuelle (\textcolor{red}{renvoi vers figure des comparaisons de segmentation} sur un TOF de couverture anatomique similaire à BraVa sont données à titre de comparaison.
 \label{tab:databrava}
-\begin{tabularx}{\linewidth}{|X|X X X X|}
+\begin{tabularx}{\linewidth}{|X| X X X X X|}
 \hline
 \centering
-      & Longueur Moyenne (mm) & Déviation Standard (mm) & Minimum (mm) & Maximum  (mm)\\
+      & Longueur mesurée (mm) &  Longueur Moyenne BraVa (mm) &  Déviation Standard (mm) & Minimum (mm) & Maximum  (mm)\\
  \hline
-   {\small Artère Cérébrale Antérieure gauche} & {\bf 865.02}	&194.74	&318.14	&1295.80 \\
+   {\small Artère Cérébrale Antérieure gauche} & 525 &  {\bf 865.02}	&194.74	&318.14	&1295.80 \\
 \hline
-    {\small Artère Cérébrale Antérieure droite} & {\bf  889.70}	& 205.38	&233.96	&1344.20 \\
+    {\small Artère Cérébrale Antérieure droite} & 525 & {\bf  889.70}	& 205.38	&233.96	&1344.20 \\
 \hline
-    {\small Artère Cérébrale Postérieure gauche}  &  {\bf 492.96}	&118.13	&227.87	&747.71 \\
+    {\small Artère Cérébrale Postérieure gauche} & 309 &  {\bf 492.96}	&118.13	&227.87	&747.71 \\
 \hline
-   {\small Artère Cérébrale Postérieure droite } &  {\bf 508.69}	&128.30	&245.07	&770.19\\
+   {\small Artère Cérébrale Postérieure droite } & 344 & {\bf 508.69}	&128.30	&245.07	&770.19\\
 \hline
-   {\small Artère Cérébrale Moyenne gauche} & {\bf  1899.90}	&294.24	&1271.74	&2635.63 \\
+   {\small Artère Cérébrale Moyenne gauche} &   1862	&{\bf  1899.90}	&294.24	&1271.74	&2635.63 \\
 \hline
-   {\small Artère Cérébrale Moyenne  droite} &  {\bf 1856.52}	&296.41	&966.78	&2507.67 \\
+   {\small Artère Cérébrale Moyenne  droite} &  1662 &{\bf 1856.52}	&296.41	&966.78	&2507.67 \\
    
 \hline
 
