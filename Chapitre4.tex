@@ -267,8 +267,9 @@ de 5 images est ensuite décalée pour obtenir la segmentation à T+1. Sur la ba
 très difficile de discriminer deux classes dans l’approche « clustering ». En revanche, le critère de la
 méthode de transformée de Fourier se révèle suffisamment robuste pour discriminer facilement le
 bruit du signal d’intérêt sur la base de ce petit nombre d’images. Le résultat de cette méthode est
-donné dans la Figure~\ref{fig:3_6_segmentation_TF} C et D où l’on montre que l’estimation de l’évolution de l’aire du vaisseau au
-cours du temps est conforme à ce qui est attendu.
+donné dans la Figure~\ref{fig:3_6_segmentation_TF} C et D où l’on montre que l’estimation de l’évolution de l’aire du vaisseau au cours du temps est conforme à ce qui est attendu.\\
+
+Notre méthode a été comparé avec une approche standard de type Chan-Vese (\textcolor{red}{Chan and Vese, “Active Contours without Edges.”}) en collaboration avec le docteur Eker Omer. Cette approche est de type contour actif, elle consiste à partir d'un masque initial à trouver une segmentation en développant les contours de l'objet. Dans nos essais, 8 patients ou volontaires ont réalisés des acquisitions IRM en contraste de phase. Au total 182 mesures de vitesses et débits ont été réalisés. La comparaison des deux méthodes sur la mesure de la vitesse a été réalisée via un Bland-Altman (\textcolor{red}{FIGURE}). Les résultats montrent une très bonne concordance des deux méthodes avec un nuage de points se situant sur la ligne à 45°.
 %%%
 %%%
 \subsection{Perfusion : imagerie par marquage des protons du sang artériel (ASL)}

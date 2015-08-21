@@ -721,6 +721,7 @@ moyen dans les capillaires (Figure~\ref{fig:4_13_perf_ASL} deuxième colonne) me
 entre les territoires en grande partie similaires aux résultats obtenus en ASL (Figure~\ref{fig:4_13_perf_ASL} troisième
 colonne). Néanmoins de fortes différences existent pour certaines régions pouvant être liées à une mauvaise détection de certains vaisseaux ou à de
 mauvaises associations artères – veines dans la définition structurelle du modèle. L'outil BraVa (\cite{Wright2013}, voir~\ref{sec:tubesestimates}) vu précédement, met en évidence pour notre modèle, un taux d'identification des artères de l'ordre de 55\% (voir Tableau~\ref{tab:tab_profil_rayons}). Il est probable alors que pour ces territoires, la segmentation n'ait pas permis d'obtenir le bon nombre de branches. Afin de tester cette hypothèse nous avons sélectionné un territoire pour lequel l'écart entre l'ASL et le modèle est le plus important pour simuler la présence d'un autre ensemble artère - artériole  - capillaire - veinule - veine parallèle à celui d'origine et de mêmes caractéristiques. Nous avons avons alors deux artères pour le même territoire. La Figure~\ref{fig:4_26_effet_ajout_artere_sur_cbf} illustre les résultats obtenus. L'ajout d'une branche parallèle permet d'assurer un apport supplémentaire dans le territoire concerné et ainsi de se rapprocher des données ASL. L'observation des résultats de segmentation dans cette zone (Figure~\ref{fig:4_27_segmentation}) mettent en évidence deux branches supplémentaires n'ayant pas été segmentées (flèches blanche). Cela confirme donc que l'une des sources du décalage entre le modèle et la réalité est la qualité de la segmentation.\\
+
 %%%
 \begin{figure}[!t]
 \centering
@@ -729,6 +730,30 @@ mauvaises associations artères – veines dans la définition structurelle du m
 renseigné le délai artério-veineux $\phi$.}
 \label{fig:4_17_decours_debit}	
 \end{figure}
+
+Les résultats de la segmentation mettent en évidence que seuls 50 \% de la vascularisation artérielle est identifiée. Les branches telles qu’elles sont identifiées sont donc en réalité « amputées » d’une partie de leur longueur. En vue d’évaluer l’impact d’une variation de longueur des branches terminales, nous avons réalisé des simulations en l’augmentant artificiellement de 40 \% pour les artères terminales. Par ailleurs nous simulons de la même façon une augmentation des premières veines. \\
+
+%%%
+\begin{figure}[!t]
+\centering
+\includegraphics[width=11cm]{augmentation_veine}
+\caption{Impact d’une augmentation de la longueur des premières veines sur les pressions et débits du système. A) Pressions moyennes dans les différents types de vaisseaux, B) Pressions moyennes dans les compartiments ventriculaires, C) Débits moyens dans les différents types de vaisseaux. Les courbes en pointillées correspondent aux nouvelles mesures, et les lignes continues les résultats de références. Les pressions augmentent légèrement tandis que les débits diminuent.}
+\label{fig:augmentation_veine}	
+\end{figure}
+
+Le rallongement des veines terminales semble avoir un effet minime sur les résultats du modèle (Figure~\ref{fig:augmentation_veine}). Au niveau des pressions dans les vaisseaux, on remarque seulement de légères augmentations de 0.6, 1.8, et 2.5 \% pour respectivement les artérioles, capillaires, et veinules.  Par ailleurs, les compartiments ventriculaires présentent une légère hausse de la pression (moins de 1 \%). Enfin on note une légère diminution du débit dans les différents compartiments (1 \%).\\
+
+%%%
+\begin{figure}[!t]
+\centering
+\includegraphics[width=11cm]{augmentation_arteres}
+\caption{Impact d’une augmentation de la longueur des artères terminales sur les pressions et débits du système. A) Pressions moyennes dans les différents types de vaisseaux, B) Pressions moyennes dans les compartiments ventriculaires, C) Débits moyens dans les différents types de vaisseaux. Les courbes en pointillées correspondent aux nouvelles mesures, et les lignes continues les résultats de références. Les pressions et les débits diminuent.}
+\label{fig:augmentation_arteres}	
+\end{figure}
+L’augmentation de la longueur des artères présente en revanche des effets plus importants (Figure~\ref{fig:augmentation_arteres}). A partir des artérioles la pression chute de 4 à 5 \%. On observe la même diminution en termes de débits dans les différents compartiments. Enfin la pression dans les ventricules diminue de l’ordre de 1 \%. Ces résultats s’expliquent du fait que l’augmentation de la longueur engendre une augmentation de la résistance et ainsi une diminution des débits entrants dans les artérioles. Cette chute de débit est naturellement associée à une chute de pression dans les différents compartiments. Le rallongement des veines entraine une augmentation de la pression dans les compartiments en amont du fait là aussi de l’augmentation de la résistance mais cette fois ci non pas avant la microcirculation, mais après.\\
+Il est à noter que la longueur moyenne des branches terminales des artères est significativement plus grande que celle identifiée pour les veines (d’un facteur 2). Néanmoins l’augmentation du facteur multiplicatif pour les veines (à 80 \%) n’induit qu’une augmentation de 4 et 5 \% dans les compartiments veinulaires et capillaires. \\
+En l’état, l’importance de la longueur des branches terminales du compartiment artériel sur l’ensemble du système incite à porter une attention particulière au développement de la segmentation du versant artériel. Il est malgré tout bon de rappeler que la détection d’une nouvelle branche, comme nous l’avons vu précédemment, va avoir un impact encore plus important sur le système et sur sa cohérence avec la réalité.  \\
+
 Les débits dans les compartiments ventriculaires sont illustrés dans la Figure~\ref{fig:4_19_debit_ventriculaire}. Les mesures
 réalisées en contraste de phase au niveau de l’aqueduc estiment le débit à 0.011 mL/sec avec une
 amplitude de 0.32 mL/sec. Notre modèle prévoit dans cette zone un débit moyen de 0.009 mL/sec
