@@ -41,7 +41,7 @@ A l’issue du prétraitement, les principaux algorithmes de segmentation utilis
 \begin{figure}[!t]
 \centering
 \includegraphics[width=15cm]{2_comparaisons_segmentations}
-\caption{Comparaison de différents algorithmes de segmentation sur 3 images par temps de vol de couverture anatomique différentes. Une segmentation manuelle a été réalisée et validé par un neuroradiologue afin de servir de référence. Trois méthodes de segmentations sont ici comparées : seuillage sur l'intensité, croissance de régions et filtre de Frangi. Pour chaque méthode les paramètres ont été ajustés automatiquement. En vert est indiqué le pourcentage de recouvrement de la segmentation donnée en rapport de la référence et en blanc l'écart de volume en pourcent avec la référence. Notons que pour chaque segmentation, seul les plus grosses structures sont retenues.}
+\caption{Comparaison de différents algorithmes de segmentation sur 3 images par temps de vol de couverture anatomique différentes. Une segmentation manuelle a été réalisée et validé par un neuroradiologue afin de servir de référence. Trois méthodes de segmentations sont ici comparées : seuillage sur l'intensité, croissance de régions et filtre de Frangi. Pour chaque méthode les paramètres ont été ajustés automatiquement. En première ligne est affichée une vue sagittale du volume. En vert est indiqué le pourcentage de recouvrement de la segmentation donnée en rapport de la référence et en blanc l'écart de volume en pourcent avec la référence. Notons que pour chaque segmentation, seul les plus grosses structures sont retenues.}
 \label{fig:2_comparaisons_segmentations}	
 \end{figure}
 %%
@@ -90,7 +90,9 @@ Les volumes 3D obtenus (Figure \ref{fig:2_4_segemtation_cont_phase_tof}) reflèt
 \subsection{Extraction du squelette}	
 \label{ss:skel}
 La segmentation permet d’aboutir à un volume 3D représentant notre arbre vasculaire. Cependant en l’état il ne renseigne pas sur la structure du réseau. Pour identifier les différents segments et points de jonction, et réduire la quantité de données, il est indispensable d’extraire le squelette du masque et de le représenter sous forme de graphe. \\
+
 Le squelette est une représentation très utilisée car il contient et résume les propriétés topologiques de la forme qu’il représente. Il permet  de décrire les objets par un ensemble de lignes fines réduisant sensiblement le volume d’informations à manipuler. Le squelette est généralement défini comme étant l’ensemble des lignes médianes, c’est-à-dire l’ensemble des points équidistants de deux points de la frontière. Notons que sa construction est très sensible à la qualité de la segmentation, en particulier au bruit.  \\
+
 Il existe une grande variété de méthodes permettant de construire des squelettes à partir de formes données. La plus commune est la méthode dite d’extraction de la carte des distances, qui consiste à calculer en chaque point interne à l’objet, la distance à son contour le plus proche. Une fois cela réalisé, les maximums locaux de cette carte sont récupérés et forment le squelette de l’objet (Figure~\ref{fig:2_6_squelettisation}). 
 %%%
 \begin{figure}[!b]
@@ -101,7 +103,9 @@ Il existe une grande variété de méthodes permettant de construire des squelet
 \end{figure}	
 
 De façon similaire à la méthode des cartes de distances, la méthode des potentiels généralisés génère un champ à l’intérieur de l’objet. Ce champ n’est plus une simple distance mais un potentiel de type Newtonien, déterminé comme la somme des potentiels gravitationnels générés par des masses placées sur les limites de l’objet. Ce type de méthode peut trouver un grand nombre de variantes en changeant la définition du champ scalaire calculé pour les points intérieur du masque et dont on cherche l’extremum. \\
+
 Enfin, la méthode dite d’amincissement itératif consiste à retirer au fur et à mesure les points du contour de la forme par érosion (\cite{Palagyi2002}), tout en préservant ses caractéristiques topologique. Dans cette approche l’axe médian de l’objet est identifié. Les voxels sont itérativement éliminés de la surface du volume si leur suppression n’affecte pas la connectivité de leur voisinage de 3 x 3 x 3, et si ils ont plus d’un voisin dans ce voisinage. Sinon ils sont définis comme des points terminaux. L’érosion doit être réalisée de façon symétrique afin de garantir la position médiane des lignes du squelette.\\
+
 Il existe deux approches majeures dans les méthodes d’amincissement itératif : les filtres et  les arbres de décisions. Les filtres appliquent un élément structurant à l’image et peuvent généralement être étendus à des dimensions supérieures à 3D  (\cite{Jonker2000}). Les méthodes basées sur des arbres de décision sont limitées à des données 2D et 3D, mais sont plus rapides que les filtres morphologiques. \\
 Un algorithme de ce type (\cite{Lee1994}) repose sur un processus itératif dans lequel chaque pixel est testé afin de savoir s’il peut être érodé de l’objet. Le pixel peut être supprimé : 
 \begin{itemize}
@@ -111,6 +115,7 @@ Un algorithme de ce type (\cite{Lee1994}) repose sur un processus itératif dans
 \item Si le point est un point simple, c’est-à-dire qu’il que sa suppression ne change pas le nombre d’objets connectés.
 \end{itemize}
 Ce processus est réalisé en parallèle pour chaque pixel de l’image, et répété jusqu’à ce qu’il n’y ait plus de changements. Lee et al. (~\cite{Lee1994}) ont démontré dans leurs travaux, que leur solution basée sur un arbre de décision est capable de trouver correctement l’ensemble des points supprimables à chaque itération. Leur algorithme d’érosion est très rapide.\\
+
 Les résultats obtenus via les différentes approches sont visible sur la Figure~\ref{fig:2_7_skeleton_matlab_toolbox}. 
 %%%
 \begin{figure}[!t]
@@ -120,6 +125,7 @@ Les résultats obtenus via les différentes approches sont visible sur la Figure
 \label{fig:2_7_skeleton_matlab_toolbox}	
 \end{figure}	
 Comme on le voit ces différentes approches fournissent différents niveaux de détails sur la structure d’intérêt. Il est donc nécessaire d’évaluer au vu de l’objectif quel niveau de détails nous souhaitons atteindre. Dans notre travail, nous devons extraire le squelette de vaisseaux de diamètres extrêmement variables, et parfois très tortueux. Après quelques tests nous avons décidé d’utiliser la méthode d’amincissement itératif décrit par Lee (\cite{Lee1994} voir Figure~\ref{fig:2_7_skeleton_matlab_toolbox} B) via l’implémentation Matlab fournit par Kerschnitzki et associés (\cite{Kerschnitzki2013}).\\
+
 L’utilisation de cet algorithme sur notre segmentation aboutit à une structure reflétant relativement bien notre topologie initiale (Figure~\ref{fig:2_8_structure_extraite}).
 %%%
 \begin{figure}[!t]
@@ -141,7 +147,8 @@ L’arbre vasculaire contient de nombreux vaisseaux qui se subdivisent ou se rej
 \label{fig:2_9_branches_noeuds}	
 \end{figure}	
 
-Le passage d’un squelette à une structure de graphe peut être réalisé simplement. On définit comme nœud les groupes de voxels disposants de plus de deux voisins chacun. Les groupes de voxels possédants exactement deux voisins appartiennent à des liens ou à des branches (si ils ne se connectent qu’à un nœud \cite{Kerschnitzki2013})]. Cette conversion est standard : nous avons utilisé l’implémentation de Kollmannsberger(\cite{Kerschnitzki2013}). \\
+Le passage d’un squelette à une structure de graphe peut être réalisé simplement. On définit comme nœud les groupes de voxels disposants de plus de deux voisins chacun. Les groupes de voxels possédants exactement deux voisins appartiennent à des liens ou à des branches si ils ne se connectent qu’à un nœud (\cite{Kerschnitzki2013}). Cette conversion est standard : nous avons utilisé l’implémentation de Kollmannsberger(\cite{Kerschnitzki2013}). \\
+
 Le passage de la segmentation brute au squelette puis au graphe conduit à l’apparition d’erreurs telles que la création de faux liens de faibles longueurs ou de fausses anastomoses (Figure~\ref{fig:2_10_boucles}). Il convient donc de les détecter et de les retirer. C’est ce que nous avons mis en place.
 %%%
 \begin{figure}[!b]
@@ -159,9 +166,11 @@ On repère tout d’abord les nœuds ayant un double lien direct avec un autre n
 \label{fig:2_11_nettoyage_graphe}	
 \end{figure}	
 
-Cette méthodologie assure une cohérence à la description topologique fournit par le graphe final (Figure~\ref{fig:2_11_nettoyage_graphe}). Notons malgré tout qu’une étape manuelle est indispensable. Au niveau artériel, on demande à l’opérateur 1) de cliquer sur les liens qui lui paraissent complètement incohérents et 2) d’indiquer si la séparation entre les deux artères cérébrales antérieures n’est pas bonne, de manière à dupliquer les segments (un par hémisphère), la segmentation ayant souvent du mal à les séparer.\\
+Cette méthodologie assure une cohérence à la description topologique fournie par le graphe final (Figure~\ref{fig:2_11_nettoyage_graphe}). Notons malgré tout qu’une étape manuelle est indispensable. Au niveau artériel, on demande à l’opérateur 1) de cliquer sur les liens qui lui paraissent complètement incohérents et 2) d’indiquer si la séparation entre les deux artères cérébrales antérieures n’est pas bonne, de manière à dupliquer les segments (un par hémisphère), la segmentation ayant souvent du mal à les séparer.\\
+
 Par ailleurs la construction automatique ultérieure des équations du modèle demandera de re-parcourir ce graphe en disposant d’informations supplémentaires que l’opérateur doit également fournir à ce stade. Au niveau artériel l’utilisateur doit 1) cliquer sur les artères communicantes, s’il y en a, pour les identifier, et 2) indiquer au niveau des principales intersections, les hémisphères (cette information sera propagée dans le reste de l’architecture de proche en proche). Au niveau veineux on demande à l’utilisateur l’identification de l’hémisphère pour les veines latérales.\\
-Pour chaque segment il est enfin nécessaire d’extraire les caractéristiques géométriques : volumes, diamètres et longueurs afin de les caractériser et les décrire. Pour ce faire, nous employons une approche simple qui associe à chaque voxel de la segmentation un label qui l’associe au segment le plus proche du squelette en termes e distance euclidienne. On aboutit ainsi à une labélisation en segments du masque des vaisseaux, on récupère ensuite le volume de chaque segment auquel on associe également une longueur identifiée par le nombre de voxels du segment correspondant du squelette. On peut ensuite extraire le rayon en considérant la structure curviligne comme étant de section constante via
+
+Pour chaque segment il est enfin nécessaire d’extraire les caractéristiques géométriques : volumes, diamètres et longueurs afin de les caractériser et les décrire. Pour ce faire, nous employons une approche simple qui associe à chaque voxel de la segmentation un label qui le lie au segment le plus proche du squelette en termes de distance euclidienne. On aboutit ainsi à une labélisation en segments du masque des vaisseaux, on récupère ensuite le volume de chaque segment auquel on associe également une longueur identifiée par le nombre de voxels du segment correspondant du squelette. On peut ensuite extraire le rayon en considérant la structure curviligne comme étant de section constante via
 \begin{equation}
 \label{eq:rayons}
 Rayon\,=\,\frac{Volume}{Longueur\,\pi},
@@ -175,7 +184,8 @@ Les informations artérielles et veineuses peuvent être récupérées par IRM. 
 %%%
 %%%
 \subsection{Quelle artère avec quelle veine ? }
-Dans une première étape nous devons associer une artère et une veine comme cela se produit physiologiquement, l’ensemble constitue un territoire artério-veineux. Il existe une très forte variabilité de ces territoires du côté veineux en particulier (\cite{Reiner2013}). L’information que l’on pourrait souhaiter utiliser serait un atlas des territoires veineux mais cette variabilité rend impossible d’associer ainsi de façon fine une artère à une veine.\\
+Dans une première étape nous devons associer une artère et une veine comme cela se produit physiologiquement, l’ensemble constitue un territoire artério-veineux. Il existe une très forte variabilité de ces territoires du côté veineux en particulier (\cite{Reiner2013}). L’information que l’on pourrait souhaiter utiliser serait un atlas des territoires veineux mais cette variabilité rend impossible l'association fine d'une artère à une veine.\\
+
 En l’état de l’imagerie nous avons sélectionné une approche simple consistant à trouver la veine la plus proche de l’extrémité de chaque branche du système artériel, en utilisant une distance euclidienne. Si ensuite une veine n’est toujours pas reliée à une artère, l’artère la plus proche est réciproquement recherchée et associée à cette veine (Figure~\ref{fig:2_12_liens_arteres_veines}).
 %%%
 \begin{figure}[!t]
@@ -188,7 +198,7 @@ En l’état de l’imagerie nous avons sélectionné une approche simple consis
 %%%
 \subsection{Estimation des paramètres des tubes}
 \label{sec:tubesestimates}
-La distance euclidienne entre artère et veine permet de proposer une longueur totale approchée, qui correspondra à la somme des artérioles, capillaires et veinules.  Nous n’avons aucun moyen d’accéder directement aux informations morphologiques de ces compartiments. Pour limiter le nombre d’hypothèses à réaliser sur le nombre de vaisseaux, il semble plus logique de ne considérer pour chaque couple artère-veine qu’une « super-artériole », qu’un « super-capillaire », et qu’une « super-veinule » regroupant un ensemble N de vaisseaux. Bien que ces compartiments soient difficilement accessible (voir~\ref{sect:microcirculation}), la littérature nous fournit quelques informations sur les rapports de ces différents compartiments via des volumes moyens (\cite{Zagzoule1986}), \cite{Linninger2009}). Parmi celles-ci on retrouve des rapports de longueurs et de volumes. Par ailleurs~\cite{Moody2004} ont estimé la fraction de volume que représentent les artérioles et les capillaires dans la matière grise et blanche par marquage à la phosphatase alcaline. A partir de ces informations et des données issues de la segmentation, il devient possible d’estimer des volumes plausibles pour nos compartiments.\\	
+La distance euclidienne entre artère et veine permet de proposer une longueur totale approchée, qui correspondra à la somme des artérioles, capillaires et veinules.  Nous n’avons aucun moyen d’accéder directement aux informations morphologiques de ces compartiments. Pour limiter le nombre d’hypothèses à réaliser sur le nombre de vaisseaux, il semble plus logique de ne considérer pour chaque couple artère-veine qu’une « super-artériole », qu’un « super-capillaire », et qu’une « super-veinule » regroupant un ensemble N de vaisseaux. Bien que ces compartiments soient difficilement accessible (voir~\ref{sect:microcirculation}), la littérature nous fournit quelques informations sur les rapports de ces différents compartiments via des volumes moyens (\cite{Zagzoule1986}, \cite{Linninger2009}). Parmi celles-ci on retrouve des rapports de longueurs et de volumes. Par ailleurs~\cite{Moody2004} ont estimé la fraction de volume que représentent les artérioles et les capillaires dans la matière grise et blanche par marquage à la phosphatase alcaline. A partir de ces informations et des données issues de la segmentation, il devient possible d’estimer des volumes plausibles pour nos compartiments.\\	
 %%%
 \begin{figure}[!b]
 \centering
@@ -204,8 +214,8 @@ Les volumes de ces territoires permettent grâces aux rapports issues de littér
 \label{eq:volumesac}
 V_{c}\,=\,\bigl(V_{s}\, *\,d_{c-a}\bigr)\, *\,\frac{V_{Ref_{c}}}{V_{Ref_{c}}*V_{Ref_{a}}},
 \end{equation}
-avec $V_c$ et $V_a$  les volumes des capillaires et des artérioles, $V_s$ le volume segmenté, $d_{c-a}$ la densité estimée d'artérioles e tde capillaires dans un volume (selon~\cite{Moody2004}), et les $V_{ref}$ associés étant les volumes moyens des compartiments issus de la littérature.\\
-Pour les veinules, nous n’avons pas l’information de densité. Le volume est donc estimé sur la base des volumes capillaires et artérioles précédemment trouvé en résolvant : 
+avec $V_c$ et $V_a$  les volumes des capillaires et des artérioles, $V_s$ le volume segmenté, $d_{c-a}$ la densité estimée d'artérioles et de capillaires dans un volume (selon~\cite{Moody2004}), et les $V_{ref}$ associés étant les volumes moyens des compartiments issus de la littérature.\\
+Pour les veinules, nous n’avons pas l’information de densité. Le volume est donc estimé sur la base des volumes capillaires et artériolaires précédemment trouvés en résolvant : 
 \begin{equation}
 \frac{V_{v}}{V_v\,+\,V_a\,+\,V_c}\,=\,\frac{V_{ref_{v}}}{V_{ref_{v}}\,+\,V_{ref_{a}}\,+\,V_{ref_{c}}},
 \end{equation}
