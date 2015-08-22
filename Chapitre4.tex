@@ -269,7 +269,23 @@ méthode de transformée de Fourier se révèle suffisamment robuste pour discri
 bruit du signal d’intérêt sur la base de ce petit nombre d’images. Le résultat de cette méthode est
 donné dans la Figure~\ref{fig:3_6_segmentation_TF} C et D où l’on montre que l’estimation de l’évolution de l’aire du vaisseau au cours du temps est conforme à ce qui est attendu.\\
 
-Notre méthode a été comparé avec une approche standard de type Chan-Vese (\textcolor{red}{Chan and Vese, “Active Contours without Edges.”}) en collaboration avec le docteur Eker Omer. Cette approche est de type contour actif, elle consiste à partir d'un masque initial à trouver une segmentation en développant les contours de l'objet. Dans nos essais, 8 patients ou volontaires ont réalisés des acquisitions IRM en contraste de phase. Au total 182 mesures de vitesses et débits ont été réalisés. La comparaison des deux méthodes sur la mesure de la vitesse a été réalisée via un Bland-Altman (\textcolor{red}{FIGURE}). Les résultats montrent une très bonne concordance des deux méthodes avec un nuage de points se situant sur la ligne à 45°.
+%%%
+\begin{figure}[!t]
+\centering
+\includegraphics[width=14cm]{PCMRi_TF_CHANVESE}
+\caption{Graphiques de Bland-Altman comparant les vitesses mesurées via une segmentation Chan-Vese et par transformée de fourier (TF). L'histogramme représente la répartition de la différence entre les deux méthodes.}
+\label{fig:PCMRi_TF_CHANVESE}	
+\end{figure}
+
+%%%
+\begin{figure}[!t]
+\centering
+\includegraphics[width=10cm]{PCMRi_TF_CHANVESE_concordance}
+\caption{Analyse de concordance entre les vitesses mesurées via une segmentation Chan-Vese et par transformée de fourier (TF).}
+\label{fig:PCMRi_TF_CHANVESE_concordance}	
+\end{figure}
+
+Notre méthode a été comparé avec une approche standard de type Chan-Vese (\textcolor{red}{Chan and Vese, “Active Contours without Edges.”}) en collaboration avec le docteur Eker Omer. Cette approche est de type contour actif, elle consiste à partir d'un masque initial à trouver une segmentation en développant les contours de l'objet. Dans nos essais, 8 patients ou volontaires ont réalisés des acquisitions IRM en contraste de phase. Au total 182 mesures de vitesses et débits ont été réalisés. La comparaison des deux méthodes sur la mesure de la vitesse a été réalisée via un Bland-Altman (Figure~\ref{fig:PCMRi_TF_CHANVESE}\textcolor{red}). On remarque que notre méthode a tendance à fournir des vitesses légèrement plus élevées que l'approche de Chan-Vese. Ceci s'explique par l'approche différente de segmentation. En effet, l'algorithme de Chan-Vese fonctionne sur les images de magnitudes et se sert ainsi du contraste structurel. Notre approche en revanche se base uniquement sur la cinétique du signal. Notre approche aura ainsi tendance à segmenter de façon plus nette le sang uniquement, tandis que le Chan-Vese aura tendance à prendre une surface légèrement plus importante. Les résultats de la Figure~\ref{PCMRi_TF_CHANVESE_concordance} montrent une très bonne concordance des deux méthodes avec un nuage de points se situant sur la ligne à 45°. Il semble ainsi que notre méthode permettent de mesurer correctement les vitesses.
 %%%
 %%%
 \subsection{Perfusion : imagerie par marquage des protons du sang artériel (ASL)}
