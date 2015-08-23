@@ -19,6 +19,7 @@ L’un des critères importants à prendre en compte lors de la sélection de la
 %%%
 %%%
 \subsection{Segmentation}
+\label{sec:segmentation}
 Que ce soit en imagerie par temps de vol ou en contraste de phase, les vaisseaux (artères et veines) apparaissent avec une intensité plus élevée que les autres tissus. L’approche la plus simple est donc de seuiller l’image afin d’en extraire les hypersignaux, et donc les vaisseaux. Cette approche permet de récupérer rapidement une segmentation mais le résultat reste très sensible aux inhomogénéités du signal et au bruit, qui peuvent en diminuer la qualité (Figure~\ref{fig:2_1_segmentation_arteres}).\\
 \begin{figure}[!t]
 \centering
@@ -40,7 +41,7 @@ A l’issue du prétraitement, les principaux algorithmes de segmentation utilis
 %%%
 \begin{figure}[!t]
 \centering
-\includegraphics[width=15cm]{2_comparaisons_segmentations}
+\includegraphics[width=14cm]{2_comparaisons_segmentations}
 \caption{Comparaison de différents algorithmes de segmentation sur 3 images par temps de vol de couverture anatomique différentes. Une segmentation manuelle a été réalisée et validé par un neuroradiologue afin de servir de référence. Trois méthodes de segmentations sont ici comparées : seuillage sur l'intensité, croissance de régions et filtre de Frangi. Pour chaque méthode les paramètres ont été ajustés automatiquement. En première ligne est affichée une vue sagittale du volume. En vert est indiqué le pourcentage de recouvrement de la segmentation donnée en rapport de la référence et en blanc l'écart de volume en pourcent avec la référence. Notons que pour chaque segmentation, seul les plus grosses structures sont retenues.}
 \label{fig:2_comparaisons_segmentations}	
 \end{figure}
