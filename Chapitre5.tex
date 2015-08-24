@@ -116,7 +116,7 @@ où $F$ est le flux en ml/min, $R$ la résistance en mmHg min/ml et $\Delta P$ l
 Les résistances elles-mêmes sont des paramètres du modèle, sans qu'une hypothèse de type loi de Poiseuille
 par exemple les associe à des caractéristiques structurales des vaisseaux. De plus le caractère flexible
 des parois, pouvant conduire à une accumulation de liquide dans un compartiment, est représenté par
-une capacité C (en cm\^3/mmHg), elle non plus non reliée pour l'instant à un paramètre structural mesurable. Le volume
+une capacité C (en cm$^3$/mmHg), elle non plus non reliée pour l'instant à un paramètre structural mesurable. Le volume
 de chaque compartiment varie à la fois du fait du bilan des entrées et sorties de fluide, mais dépend
 aussi des différences de pression entre sa pression intérieure et la pression intracrânienne via une compliance $C$:
 \begin{equation}
@@ -144,7 +144,7 @@ Le modèle de Zagzoule et Marc-Vergnes (\cite{Zagzoule1986}) constitue la premi�
 données structurales mesurées (ou estimées), et de surcroît n'est plus linéaire. 
 
 Le modèle n'est pas
-stricto sensu compartimental, mais est présenté ici comme base du modèle de Linninger et al(\cite{Linninger2009}) , qui
+stricto sensu compartimental, mais est présenté ici comme base du modèle de Linninger et al. (\cite{Linninger2009}), qui
 reprend les mêmes idées dans une logique compartimentale. L'ensemble de la circulation
 intracrânienne est représentée par une série de compartiments en parallèle et en série, selon un
 schéma inspiré de la physiologie moyenne des artères, des veines, et des niveaux de microcirculation
@@ -296,7 +296,7 @@ internes et de l’artère basilaire, puis un système de tubes simples allant d
 type et par hémisphère), enfin une sortie pour le sang, fusion des veines jugulaires, et une voie de
 sortie pour le liquide céphalo rachidien, la moelle épinière.
 
-Dans le chapitre 3 nous avons mis au point une chaine de traitement qui aboutit à une
+Dans le chapitre \ref{chap:morpho} nous avons mis au point une chaine de traitement qui aboutit à une
 architecture complète partant des carotides internes et de l’artère basilaire, et allant jusqu’aux veines
 jugulaires. Comme tous les travaux de modélisation antérieurs, nous n’avons pas accès aux
 compartiments artériolaires, capillaires et veinulaires ; nous avons donc des « super tubes »
@@ -360,7 +360,7 @@ Le flux sanguin et cérébro-spinal est décrit dans ce modèle par les équatio
 de l’hydrodynamique : conservation de la masse, conservation de la quantité de mouvement. Pour
 tenir compte de l’adaptation du diamètre des vaisseaux aux pressions on introduit pour chaque
 compartiment un paramètre d’élasticité de la paroi et une équation correspondante. Le modèle
-contient trois type de variables pour chaque compartiment : la pression au centre $p$, le flux entrant fin
+contient trois type de variables pour chaque compartiment : la pression au centre $p$, le flux entrant $f_{in}$ 
 et sortant $f_{out}$ et l’aire du tube $A$. Le principe est d’avoir un système d’équations générique pour un
 tube que l’on peut ensuite reproduire pour un nombre indéfini de tubes, à condition de s’assurer de
 règles de continuité adéquate entre compartiments.
@@ -460,7 +460,7 @@ phénomènes d’autorégulation (\cite{Paulson1990}) :
 \begin{equation}
 P_{lumen}\,-\,P_{cerv}\,=\,E\,\biggl(\frac{A}{A_0}\,-\,1\biggr).
 \end{equation}
-L’écart à la section de repos du vaisseau $A-A_0 $est gouverné par l’élastance du vaisseau $E$ et la
+L’écart à la section de repos du vaisseau $A-A_0 $ est gouverné par l’élastance du vaisseau $E$ et la
 différence de pression entre la lumière du vaisseau et le parenchyme $P_{lumen}\,-\,P_{cerv}$ . $A_0$
 représente l’aire de la section à une pression transmurale nulle. Ainsi, plus la pression transmurale
 sera grande, plus le vaisseaux se contractera ou se dilatera. De même, lorsque la pression sanguine
@@ -540,7 +540,7 @@ Lors de la segmentation, le code MATLAB permettant de générer le graphe a prod
 de format fixe contenant la définition de toutes les structures et les liens existants entre elles. Le fichier
 prend une forme générique. Une première section définit les tubes, leur type (artère, veines etc.) et
 leur caractéristiques morphologiques (aire, longueur etc.), tandis qu’une seconde informe sur la
-structure de liens existants entre ces tubes. Ci-dessous un exemple de structur de fichier généré après la reconstruction du graphe. Notons que pour les débits, pressions et aire elles
+structure de liens existants entre ces tubes. Ci-dessous un exemple de structurE de fichier généré après la reconstruction du graphe. Notons que pour les débits, pressions et aire elles
 servent de valeurs initiales.
 
 \vspace{0.4cm}
@@ -690,7 +690,7 @@ gamme des valeurs normales chez le sujet sain (\cite{Steiner2006},~\cite{Pattins
 à la valeur réelle. La cascade de chute de pression des entrées aux sorties est un bon élément pour
 évaluer la consistance du modèle. La pression moyenne dans les artères est de 82 mmHg, puis 49
 mmHg dans les artérioles, 28 mmHg dans les capillaires et 22 et 18 mmHg respectivement dans les
-veinules et veines. La comparaison de nos résultats avec les travaux précédents (Figure~\ref{fig:4_15_evolution_pression}), met en évidence une bonne similitude entres les données de Zagzoule et Marc-Vergnes (\cite{Zagzoule1986}) à et de Linninger
+veinules et veines. La comparaison de nos résultats avec les travaux précédents (Figure~\ref{fig:4_15_evolution_pression}), met en évidence une bonne similitude entres les données de Zagzoule et Marc-Vergnes (\cite{Zagzoule1986}) et de Linninger
 et al. (\cite{Linninger2009}) . La différence majeure apparait au niveau des artérioles où notre modèle présente une chute
 plus importante de la pression.
 
@@ -730,10 +730,12 @@ limites.
 %%%
 \begin{figure}[!t]
 \centering
-\includegraphics[width=13cm]{4_26_effet_ajout_artere_sur_cbf}
-\caption{Impact de l'ajout d'une artère terminale pour un territoire. A) débit moyen par territoire mesuré en ASL, B) débit estimé par le modèle initial et C) débit estimé après ajout d'une artère parallèle. Les flèches blanches illustrent le territoire concerné. L'ajout de l'artère permet de nous rapprocher de la réalité mesurée en ASL.}
-\label{fig:4_26_effet_ajout_artere_sur_cbf}	
+\includegraphics[width=15cm]{4_17_decours_debit}
+\caption{Evolution des débits moyens dans les compartiments vasculaires. Sur l’image de droite, en pointillés noir, est
+renseigné le délai artério-veineux $\phi$.}
+\label{fig:4_17_decours_debit}	
 \end{figure}
+
 %%%
 %%%
 \begin{figure}[!b]
@@ -759,10 +761,9 @@ mauvaises associations artères – veines dans la définition structurelle du m
 %%%
 \begin{figure}[!t]
 \centering
-\includegraphics[width=15cm]{4_17_decours_debit}
-\caption{Evolution des débits moyens dans les compartiments vasculaires. Sur l’image de droite, en pointillés noir, est
-renseigné le délai artério-veineux $\phi$.}
-\label{fig:4_17_decours_debit}	
+\includegraphics[width=13cm]{4_26_effet_ajout_artere_sur_cbf}
+\caption{Impact de l'ajout d'une artère terminale pour un territoire. A) débit moyen par territoire mesuré en ASL, B) débit estimé par le modèle initial et C) débit estimé après ajout d'une artère parallèle. Les flèches blanches illustrent le territoire concerné. L'ajout de l'artère permet de nous rapprocher de la réalité mesurée en ASL.}
+\label{fig:4_26_effet_ajout_artere_sur_cbf}	
 \end{figure}
 
 Les résultats de la segmentation mettent en évidence que seuls 50 \% de la vascularisation artérielle est identifiée. Les branches telles qu’elles sont identifiées sont donc en réalité « amputées » d’une partie de leur longueur. En vue d’évaluer l’impact d’une variation de longueur des branches terminales, nous avons réalisé des simulations en l’augmentant artificiellement de 40 \% pour les artères terminales. Par ailleurs nous simulons de la même façon une augmentation des premières veines. 
@@ -784,7 +785,8 @@ Le rallongement des veines terminales semble avoir un effet minime sur les résu
 \caption{Impact d’une augmentation de la longueur des artères terminales sur les pressions et débits du système. A) Pressions moyennes dans les différents types de vaisseaux, B) Pressions moyennes dans les compartiments ventriculaires, C) Débits moyens dans les différents types de vaisseaux. Les courbes en pointillées correspondent aux nouvelles mesures, et les lignes continues les résultats de références. Les pressions et les débits diminuent.}
 \label{fig:augmentation_arteres}	
 \end{figure}
-L’augmentation de la longueur des artères présente en revanche des effets plus importants (Figure~\ref{fig:augmentation_arteres}). A partir des artérioles la pression chute de 4 à 5 \%. On observe la même diminution en termes de débits dans les différents compartiments. Enfin la pression dans les ventricules diminue de l’ordre de 1 \%. Ces résultats s’expliquent du fait que l’augmentation de la longueur engendre une augmentation de la résistance et ainsi une diminution des débits entrants dans les artérioles. Cette chute de débit est naturellement associée à une chute de pression dans les différents compartiments. Le rallongement des veines entraine une augmentation de la pression dans les compartiments en amont du fait là aussi de l’augmentation de la résistance mais cette fois ci non pas avant la microcirculation, mais après.\\
+L’augmentation de la longueur des artères présente en revanche des effets plus importants (Figure~\ref{fig:augmentation_arteres}). A partir des artérioles la pression chute de 4 à 5 \%. On observe la même diminution en termes de débits dans les différents compartiments. Enfin la pression dans les ventricules diminue de l’ordre de 1 \%. Ces résultats s’expliquent du fait que l’augmentation de la longueur engendre une augmentation de la résistance et ainsi une diminution des débits entrants dans les artérioles. Cette chute de débit est naturellement associée à une chute de pression dans les différents compartiments. Le rallongement des veines entraine une augmentation de la pression dans les compartiments en amont du fait là aussi de l’augmentation de la résistance mais cette fois ci non pas avant la microcirculation, mais après.
+
 Il est à noter que la longueur moyenne des branches terminales des artères est significativement plus grande que celle identifiée pour les veines (d’un facteur 2). Néanmoins l’augmentation du facteur multiplicatif pour les veines (à 80 \%) n’induit qu’une augmentation de 4 et 5 \% dans les compartiments veinulaires et capillaires. 
 
 En l’état, l’importance de la longueur des branches terminales du compartiment artériel sur l’ensemble du système incite à porter une attention particulière au développement de la segmentation du versant artériel. Il est malgré tout bon de rappeler que la détection d’une nouvelle branche, comme nous l’avons vu précédemment, va avoir un impact encore plus important sur le système et sur sa cohérence avec la réalité. 
@@ -797,7 +799,7 @@ Enfin l’évolution de l’aire est elle aussi gérée par le modèle et est co
 pressions (Figure~\ref{fig:4_20_aire_artere}), quoi que plus difficile à valider expérimentalement compte tenu de la résolution.
 
 %%%
-\begin{figure}[!b]
+\begin{figure}[!t]
 \centering
 \includegraphics[width=10cm]{4_19_debit_ventriculaire}
 \caption{Estimation par le modèle des débits dans les compartiments ventriculaires.}
@@ -829,7 +831,7 @@ de couleur logarithmique est utilisée.}
 \label{fig:4_21_debit_moyen}	
 \end{figure}
 Si l’on augmente alors fortement la résistance d’un tube (début de l’artère cérébrale
-antérieure) de manière à simuler une occlusion (Figure\ref{fig:4_21_debit_moyen} flèche rouge), on peut observer l’utilisation
+antérieure) de manière à simuler une occlusion (Figure~\ref{fig:4_21_debit_moyen} flèche rouge), on peut observer l’utilisation
 de la voie de compensation que représente l’artère communicante antérieure (ACoA) (flèche verte).
 Le détail de cette compensation est illustré en Figure~\ref{fig:4_22_flux_ACA} A. Comme on peut le voir, chez ce sujet l’ACoA
 est efficace puisqu’elle permet d’assurer un apport quasi-normal en sang dans l’ACA même lorsque sa
@@ -863,7 +865,7 @@ capacité de compensation de l’ACoA sur le flux dans ces conditions nous avons
 de façon similaire aux travaux de Cassot et al. (\cite{Cassot1995}). La compensation de l’ACoA est analysée en faisant
 le rapport entre le débit dans le segment en aval de l’ACoA après occlusion et avant l’occlusion,
 donnant un indice en pourcentage. Les résultats illustrés en Figures~\ref{fig:4_23_compensation_ACoA},~\ref{fig:4_24_occlusion_ventricule}, et~\ref{fig:4_25_impact_occlusion} montrent aux vue de l’intervalle
-de variation de la sigmoïde1, une évolution importante de la compensation dans la gamme de diamètre
+de variation de la sigmoïde, une évolution importante de la compensation dans la gamme de diamètre
 allant de 0.37 à 1.17 mm. Les valeurs inférieures ne permettent pas une compensation efficace, et les
 valeurs plus élevées permettent d’assurer près de 90\% du débit de l’artère occluse. La limite supérieure
 de cette zone est plus faible que celle rapportée précédemment (0.4 à 1.6 mm,~\cite{Cassot1995}). Néanmoins, il est
