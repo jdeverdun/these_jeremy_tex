@@ -226,7 +226,7 @@ ainsi à une image artificiellement mieux résolue et plus fine que la normalisa
 l’image (Figure~\ref{fig:5_5_exemple_asllani}) avec un lissage « intra-tissu ».
 %%%
 %%%
-\section{Application CRESCENDO}
+\section{Application: CRESCENDO}
 Les séquences ASL évoluent rapidement. Durant la plus grande partie de cette thèse, nous
 n’avons eu accès qu’à la séquence 2D d’ASL Pulsée PICORE-Q2TIPS. Cette séquence est couramment
 utilisée dans la littérature (\cite{Bastos-Leite2008},~\cite{Haller2013}) et permet d’aboutir à des résultats cohérents. Au cours de
@@ -253,10 +253,10 @@ moyenne est calculée, ainsi que les évolutions des différentes variables.
 Les données IRM ont été collectées sur une IRM à 3T (Skyra, Siemens, Germany) avec une
 antenne 32 éléments. Une série anatomique 3DT$_1$ a été acquise avec les paramètres suivants : champ
 de vue = 25 x 25 cm, T$_E$ = 2.5 ms, T$_R$ = 1690 ms, angle de bascule = 9°, taille du voxel = 0.98 x 0.98 x 1
-mm, 176 coupes. Une acquisition en inversion récupération atténuée du flux (FLAIR) a été réalisé afin
+mm$^3$, 176 coupes. Une acquisition en inversion récupération atténuée du flux (FLAIR) a été réalisé afin
 d’évaluer les lésions de la matière blanche avec les paramètres : champ de vue = 22 x 22 cm, $T_E$ = 111
 ms, T$_R$ = 7000 ms, angle de bascule = 150 °, taille du voxel = 0.86 x 0.86 x 3, 39 coupes. Enfin les mesures
-de débit ont été obtenues via une séquence ASL 2D pulsée, PICORE-Q2TIPS (\cite{Luh1999}), T$_{I1}$/T$_{I2}$/T$_{R}$/T$_{E}$=
+de débits ont été obtenues via une séquence ASL 2D pulsée, PICORE-Q2TIPS (\cite{Luh1999}), T$_{I1}$/T$_{I2}$/T$_{R}$/T$_{E}$=
 700/2000/3000/20 ms, 52 répétitions, 16 coupes (1.5 mm de gap), taille du voxel = 3.44 x 3.44 x 6 mm$^3$.
 
 L’ensemble du traitement a été réalisé sous MATLAB (MathWorks, Natick, MA) et en utilisant
@@ -269,8 +269,7 @@ semblait donc important de les prendre en compte. La boite à outils SPM « Lesi
 (\cite{Schmidt2012}) a donc été utilisé afin, à partir du T$_1$ et du FLAIR, d’identifier les hyper signaux de la substance
 blanche et de les remplacer dans l’image T$_1$ par une valeur moyenne de la substance blanche. Cela
 permet ensuite de réaliser une segmentation standard de SPM (comme décrit précédemment) sur la
-base de ce T$_1$ modifié et d’obtenir les cartes de matière grise, matière blanche et liquide cérébro-
-spinal. Les données d’ASL ont été réalignées sur l’image M$_0$ de la magnétisation à l’équilibre, les sujets
+base de ce T$_1$ modifié et d’obtenir les cartes de matière grise, matière blanche et liquide cérébro-spinal. Les données d’ASL ont été réalignées sur l’image M$_0$ de la magnétisation à l’équilibre, les sujets
 présentant des mouvements trop important étant éliminés. Les images marquées sont soustraites aux
 images contrôle via une « surround subtraction » (Control2- (Label1+Label2)/2) afin de produire les
 cartes pondérées en perfusion (\cite{Wang2008}). Enfin, les différences sont moyennées pour n’obtenir qu’une
@@ -286,7 +285,7 @@ répétitions pour les patients présentant ces artéfacts. Après vérification
 pas être dû aux mouvements (les patients présentant des mouvements trop importants ayant été
 retirés, n = 17). L’hypothèse la plus probable sur cette cohorte semble être le choix du temps
 d’inversion. En effet, la valeur optimale de ce paramètre dépend du temps de transit du sang lui-même
-dépendant de l’âge du sujet et de son histoire vasculaire. Or chez des sujets très âges cette histoire
+dépendant de l’âge du sujet et de son histoire vasculaire. Or chez des sujets très âgés cette histoire
 peut fortement varier, il est donc possible que le temps choisi (temps d’inversion moyen observé dans
 la littérature pour des âges similaire : 2000 ms) ne soit pas adapté à l’ensemble des sujets.
 
@@ -300,7 +299,7 @@ défini comme inexploitable.
 \end{itemize}
 \begin{figure}[!t]
 \centering
-\includegraphics[width=8cm]{5_6_qualite_asl}
+\includegraphics[width=13cm]{5_6_qualite_asl}
 \caption{Impact du temps d'inversion sur le nombre de répétitions retirées. Dans la figure A, le nombre de répétitions
 retirées sur la base de notre critère est affiché pour un sujet donné et selon différents temps d’inversion. Les points noirs
 correspondent aux vraies valeurs, la courbe bleue à un ajustement polynomial de second degré, la flèche rouge indique le
@@ -441,7 +440,7 @@ uniquement les résultats obtenus après sélection des sujets.
 \begin {table}
 \caption{Résultats de l’analyse statistique des corrélations du DSC et de différents facteurs. Les résultats sur l’âge ont été
 obtenus par une corrélation de Pearson, un test T a été utilisé pour le sexe, et une régression linéaire multivariée avec
-austement sur l’âge et le sexe pour les autres variables. La significativité est indiquée par la p-value, la valeur du R$^2$ ajustée
+ajustement sur l’âge et le sexe pour les autres variables. La significativité est indiquée par la p-value, la valeur du R$^2$ ajustée
 est rapporté lorsque disponible. Les valeurs de p en gras traduisent une valeur inférieure à 0.05. Un astérix indique les valeurs
 significatives après correction de Bonferroni. Les résultats sont présentés sur l’ensemble de la cohorte (sans utilisation du
 critère qualité) et sur l’échantillon retenu.} 
@@ -498,12 +497,12 @@ chaque sujet. Cela montre l’importance de ce critère.
 Les débits perfusionnels mesurés correspondent aux résultats attendus (\cite{Chen2011},~\cite{Brumm2010}). Nos
 résultats montrent que parmi les facteurs de risques cardiovasculaires, l’évolution de la pression
 artérielle moyenne est fortement associée au DSC, ce qui n’avait jamais été décrit. Or ni l’hypertension
-ni la pression artérielle au moment de l’IRM n’est associé au DSC. Afin de maintenir un débit constant
+ni la pression artérielle au moment de l’IRM ne sont associées au DSC. Afin de maintenir un débit constant
 malgré les variations de MAP, le cerveau adapte sa vascularisation via divers mécanismes connues sous
 le nom d’autorégulation cérébrale (\cite{Paulson1990}). L’absence d’association entre CBF et MAP tend à montrer que
 ce mécanisme est préservé chez les sujets âgés sains, ce qui a été évoqué chez des cohortes plus jeunes
 (\cite{Vanbeek2008}). Plutôt que la MAP au moment de l’IRM, il semble que ce soit son évolution sur 12 ans ($\Delta$ MAP)
-qui a le plus d’effet sur le DSC.
+qui ait le plus d’effet sur le DSC.
 
 La courbe d’autorégulation cérébrale est capable de se décaler de façon réversible vers la
 droite en cas d’hypertension chronique (\cite{Traon2002}, voir figure~\ref{fig:5_8_autoregulation}). Nos résultats suggèrent l’existence d’un
@@ -513,7 +512,8 @@ l’âge. Nous avons trouvé qu’une diminution de la MAP est corrélée à un 
 compatibles avec le fait que lorsque la MAP est restaurée à des valeurs plus faible, le DSC revient à des
 valeurs proches de celui de personnes plus jeunes. Inversement, l’augmentation de la MAP semble
 être relié à un décalage vers le bas de la courbe d’autorégulation, et donc à une réduction du débit
-sanguin.\\
+sanguin.
+
 %%%
 \begin{figure}[!t]
 \centering
@@ -531,7 +531,7 @@ des sujets âgés avec des traitements intensifs de réduction de la pression sa
 indiquent que les observations obtenues à partir de traitements intensifs se produisent aussi en
 conditions standard mais avec des délais plus longs. Il est important de noter que l’évolution de la MAP
 peut être un effet des traitements anti-hypertensif. Cependant, dans notre cohorte moins d’un tiers
-de nos sujets ont commencé un traitement durant l’étude, et aucun des patients traité n’a arrêté son
+de nos sujets ont commencé un traitement durant l’étude, et aucun des patients traités n’a arrêté son
 traitement. Nous avons testé les différences d’évolution entre les sujets « stables » (sur la base du
 traitement) et les nouveaux traités mais nous n’avons pas été en mesure de mettre en évidence une
 quelconque différence d’évolution (t-test, p = 0.72).
@@ -550,7 +550,7 @@ l’homogénéité en âge dans la cohorte empêchant l’observation de cette a
 
 Le diabète réduit la réactivité cérébrovasculaire (\cite{Dandona1978},~\cite{Fulesdi1997}). L’absence d’association entre les
 diabètes de type 2 et le DSC peut être un problème de puissance avec seulement 13 cas de diabètes
-de ce type. Les niveaux de glycémie et leurs évolutions, bien que non significatif après correction de
+de ce type. Les niveaux de glycémie et leurs évolutions, bien que non significatifs après correction de
 Bonferroni, montrent une tendance négative avec le DSC. Cette observation est en adéquation avec
 les données de la littérature dans lesquelles une augmentation de la rigidité artérielle a été observée
 dans les cas d’hyperglycémies (\cite{Rubin2012}).

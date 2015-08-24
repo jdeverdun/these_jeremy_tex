@@ -14,7 +14,8 @@ d’évaluer quantitativement la susceptibilité des structures dans le cerveau.
 en développement, il existe de nombreux algorithmes différents permettant de résoudre les différents
 problèmes rencontrés lors de la reconstruction d’une QSM. Il est donc indispensable de sélectionner
 ceux offrant le meilleur résultat au vue du matériel utilisé. Dans le cadre de cette thèse, l’ensemble
-des acquisitions ont été réalisées sur une IRM Siemens Skyra à 3T (Skyra, Siemens, Allemagne).\\
+des acquisitions ont été réalisées sur une IRM Siemens Skyra à 3T (Skyra, Siemens, Allemagne).
+
 Nous aborderons tout d’abord les méthodes permettant de mettre en place la chaîne de
 reconstruction et les implémentations réalisées permettant d’aboutir à une mesure correcte de la
 susceptibilité. Par la suite nous décrirons les méthodes de validation de cette mesure de susceptibilité.
@@ -28,7 +29,8 @@ un contrôle qualité permettant de valider la mesure.
 %%%
 \subsection{Principe}
 Pour comprendre le principe de construction d’une carte de susceptibilité, il est nécessaire de
-revenir sur quelques équations importantes permettant de remonter de la phase à la susceptibilité.\\
+revenir sur quelques équations importantes permettant de remonter de la phase à la susceptibilité.
+
 La première étape est d’obtenir la cartographie de perturbation du champ à partir de l’image
 de phase. Une relation directe existe entre cette cartographie et la phase via l’équation suivante (\cite{Bilgic2012}):
 \begin{equation}
@@ -59,7 +61,8 @@ La définition de D, et la singularité de son inverse lorsque
 \begin{equation}
 \biggl(\frac{1}{3}-\frac{k_z^2}{k_x^2+k_y^2+k_z^2}\biggr)\,=\,0
 \end{equation}
-met en évidence le caractère mal posé du problème.\\
+met en évidence le caractère mal posé du problème.
+
 Ces notions de bases en susceptbilité magnétique permettent d’appréhender le passage de
 l’image de phase à une image quantitative de susceptibilité magnétique. On distingue donc différentes
 étapes : l’acquisition, l’obtention d’une phase cohérente, le passage à la carte de perturbation du
@@ -78,11 +81,14 @@ L’acquisition est réalisée via une séquence en écho de gradient standard, 
 dédiée avec compensation de flux dans les 3 directions ({\cite{Deistung2009}). En fonction des objectifs et du temps
 machine disponible selon l’étude pour réaliser l’acquisition, deux approches ont été développées.
 L’une au cours de laquelle plusieurs échos sont acquis à différents moments après l’impulsion
-radiofréquence (approche multi-T$_E$), et l’autre ou un seul temps d’écho est utilisé (simple-T$_E$).\\
-Quels sont les avantages d’une acquisition à un ou plusieurs temps d’échos ?\\
+radiofréquence (approche multi-T$_E$), et l’autre ou un seul temps d’écho est utilisé (simple-T$_E$).
+
+Quels sont les avantages d’une acquisition à un ou plusieurs temps d’échos ?
+
 L’avantage principal de l’acquisiton simple-T$_E$ est la brieveté de la séquence correspondance (4
 minutes) au lieu de 8 minutes environ pour des séquences multi-T$_E$ (8 TE). Néanmoins en terme de
-qualité de la reconstruction la séquence multi-T$_E$ présente d’importants avantages.\\
+qualité de la reconstruction la séquence multi-T$_E$ présente d’importants avantages.
+
 En effet, l’image de phase est codée entre $-\pi$ et $+\pi$. Lorsque le déphasage est supérieur à $2\pi$,
 un artefact du signal de phase apparait, appelé saut de phase ou repliement de phase. En effet,
 considérons l’échelle de codage des intensités comme un cercle dont $0$ est le minimum et $2\pi$ le
@@ -96,7 +102,8 @@ l’objet. L’algorithme de dépliement doit alors identifier la topologie de f
 cohérent. Notons au passage que dans les méthodes les plus simples de type SWI, ce problème n’est
 pas résolu : on se contente de filtrer l’image de phase par un simple filtre passe haut avant de multiplier
 cette image filtrée par l’image de magnitude. L’information quantitative de la phase perd une grande
-partie de sa signification physique.\\
+partie de sa signification physique.
+
 %%%
 \begin{figure}[!t]
 \centering
@@ -124,20 +131,24 @@ grandes valeurs de la phase en certains points de l’image, source de problème
 du champ intérieur. Mais on sait par ailleurs que le temps d’écho le plus court accessible est limité par
 la force du gradient, la résolution et le champ de vue de l’image acquise. Enfin un temps d’écho plus
 long est préférable pour améliorer le rapport signal sur bruit. Il faut donc en simple-T$_E$ choisir entre
-qualité du signal et facilité du dépliement de phase.\\
+qualité du signal et facilité du dépliement de phase.
+
 Dans l’approche multi-T$_E$, pour estimer la carte de perturbation du champ, la phase de chaque
 voxel le long des temps d’échos est dépliée. Les phases sont ensuites ajustées par méthode des
-moindres carrés, et la pente de la courbe est utilisée comme phase de référence (\cite{Kressler2010}). \\
+moindres carrés, et la pente de la courbe est utilisée comme phase de référence (\cite{Kressler2010}). 
+
 Or dans cette approche c’est l’écart inter-écho qui va déterminer la fréquence maximale :
 \begin{equation}
 \omega_{max}\,=\,\frac{\pi}{\Delta T_E}.
 \end{equation}
 Ainsi, la fréquence maximale autorisée sera plus grande dans une séquence multi-T$_E$, ce qui se traduit
 par moins de repliements de phase et limite les problèmes mentionnés plus haut sans diminution du
-rapport signal sur bruit.\\
+rapport signal sur bruit.
+
 Les études récentes ont montrés que les cartes de susceptibilités reconstruites via les
 approches simple et multi-échos ne différaient que peu (\cite{Bilgic2012},~\cite{Schweser2012}) au vue des outils de dépliements
-de phase maintenant disponibles.\\
+de phase maintenant disponibles.
+
 %%%
 %%%
 \subsection{Reconstruction de la phase}
@@ -173,7 +184,8 @@ du canal d’antenne :
 I_i \,=\,C_i\,\rho,
 \end{equation}
 où $C$ est la sensibilité par élément d’antenne, $\rho$ le signal « vrai », $i$ le numéro du canal et $I$ la valeur
-d’intensité complexe par élément d’antenne.\\
+d’intensité complexe par élément d’antenne.
+
 Disposant d’autant d’équations par voxel qu’il y a de canaux d’antenne, le signal « vrai » peut être
 récupéré via une simple inversion matricielle (méthode de Ros et al. -(\cite{Ros2009}):
 \begin{equation}
@@ -181,7 +193,8 @@ récupéré via une simple inversion matricielle (méthode de Ros et al. -(\cite
 \end{equation}
 A partir du signal complexe récupéré, il devient possible d’extraire une magnitude et d’une phase
 dépourvue d’artéfacts (Figure~\ref{fig:6_4_ros}). Les sauts de phases sont cohérents, et les artéfacts de discontinuités
-au milieu du cerveau disparaissent.\\
+au milieu du cerveau disparaissent.
+
 %%%
 \begin{figure}[!t]
 \centering
@@ -204,7 +217,7 @@ soit selon un principe de croissance de région d’intérêt avec identificatio
 (\cite{Witoszynskyj2009}), soit selon une approche de fusion de régions (FSL PRELUDE) (\cite{Jenkinson2003}), ou encore de sélection du
 meilleur chemin (\cite{Abdul-Rahman2007}) Dans ces approches spatiales, le temps de calcul est un élément clef du fait de
 la perspective de l’intégration de ces algorithmes dans les outils de reconstruction en ligne. Bien que
-certains algorithmes visent à les réduire, ces temps restent non négligeables.\\
+certains algorithmes visent à les réduire, ces temps restent non négligeables.
 Il existe néanmoins une solution mathématique proposée par Schofield et Zhu en 2003 (\cite{Schofield2003}), qui
 présente plusieurs avantages. Il s’agît d’abord d’une solution directe (Équation~\ref{eq:methlaplacien}) rapidement
 calculable (avantage en temps de calcul) :
@@ -212,7 +225,8 @@ calculable (avantage en temps de calcul) :
 \label{eq:methlaplacien}
 \theta(k)\,=\,\frac{{\cal F}\{cos\theta {\cal F}^{-1} [k^2{\cal F}(sin\theta)]-sin\theta{\cal F}^{-1}[k^2{\cal F}(cos\theta)]\}}{k^2},
 \end{equation}
-Où $\theta$ la phase, et $k$ le kernel laplacien.\\
+Où $\theta$ la phase, et $k$ le kernel laplacien.
+
 La méthode est aussi plus performante au niveau de la sensibilité aux artéfacts de phases
 (Figure~\ref{fig:6_5_exemples_depliement}) qui malgré les corrections des méthodes de combinaison des canaux d’antennes,
 pourraient subvenir. Du fait de sa rapidité et sa fiabilité, cette méthode devient la plus utilisée dans le
@@ -265,12 +279,15 @@ Une fois $\chi_{out}$ déterminé, le champ interne $B_{in}$ issu des tissus est
 B_{in}\,=\,B\,-\,{\cal F}^{-1}{\cal D}{\cal F}\,\tilde{M}\chi_{out},
 \end{equation}
 où $B$ est évidement obtenu à partir de la phase par l’Équation~\ref{eq:champ_phase}. $B_{in}$ représente la carte de
-perturbation du champ intérieur dû aux tissus et $B$ le champ total.\\
+perturbation du champ intérieur dû aux tissus et $B$ le champ total.
+
 L’approche est implémentée de façon itérative et, bien que très efficace, peut s’avérer couteuse en
-temps.\\
+temps.
+
 Dans une perspective d’efficacité pour l’implémentation temps réel, Schweser et al. (\cite{Schweser2011}) ont
 développé en parallèle une approche d’élimination des contributions extérieurs rapide et peu
-couteuse, appelée SHARP pour Sophisticated Harmonic Artifact Reduction for Phase data.\\
+couteuse, appelée SHARP pour Sophisticated Harmonic Artifact Reduction for Phase data.
+
 Comme vu précédemment le champ total mesuré est la somme des perturbations du champ induite
 par les tissu ($B_{in}$) et par les interfaces ($B_{ext}$ ) :
 \begin{equation}
@@ -311,9 +328,11 @@ important lors de la déconvolution de ne prendre en compte que les voxels où l
 l'information est garantie, c'est à dire les voxels dont la convolution n'a pas été influencée par une
 source de bruit. A cette fin, on utilise un algorithme de régularisation : la décomposition en valeurs
 singulières tronquées (TSVD \cite{Bertero2006}). Schweser et al. (\cite{Schweser2011}) ont montré que cet algorithme permettait d'obtenir
-des images contenant moins d'artefacts.\\
+des images contenant moins d'artefacts.
+
 Nous avons pu confirmer sur nos données que les approches « effective dipole fitting » et
-SHARP fournissent des résultats similaires (Figure~\ref{fig:6_6_champ_interieur}) (\cite{Schweser2011}).\\
+SHARP fournissent des résultats similaires (Figure~\ref{fig:6_6_champ_interieur}) (\cite{Schweser2011}).
+
 Plus récemment une optimisation supplémentaire de la méthode SHARP a été réalisée via
 l’utilisation d’une régularisation de Tikhonov à l’étape de déconvolution (RESHARP), réduisant les
 erreurs dans la cartographie (\cite{Sun2014}). L’ensemble du calcul du champ intérieur et de régularisation par
@@ -327,7 +346,8 @@ Avec $M$ le masque du cerveau érodé, ${\cal F}$ la transformée de fourrier, $
 régularisation. Dans cette formule, $argmin_{B_{in}}$ dénote les valeurs de $B_{in}$ qui minimisent la fonction ; $\parallel\,\,\parallel_2^2$la somme des carrés ; à la différence de la minimisation effectuée dans le cadre de la méthode « effective dipole fitting », la minimisation du premier terme vise à garantir l’aspect harmonique du
 champ $B_{in}-B_{tot}$ , ce qui est la base de la méthode SHARP; le second correspond à la régularisation
 de Tikhonov et contrôle l’amplitude du champ $B_{in}$ ; $\lambda$ est un paramètre de régularisation dont la valeur
-est fixée par la qualité de la reconstruction.\\
+est fixée par la qualité de la reconstruction.
+
 La méthode SHARP et ses dérivées impliquent par ailleurs, d’appliquer au masque du cerveau
 une érosion dépendante de la taille du noyau utilisé. Cela se traduit par une perte d’information en
 périphérie de l’objet. De ce fait on souhaiterait utiliser un noyau de petit diamètre, or cela engendrerait
@@ -359,7 +379,8 @@ surface conique (le long de l’angle magique, Figure~\ref{fig:6_7_cone}) dans l
 $k$, qui sous échantillonne la transformée de Fourier de $\chi$ et met ainsi en
 évidence le problème mal posé de l’estimation de la susceptibilité à partir
 de l’image de phase. Afin d’éviter ce problème, il conviendrait de modifier
-l’orientation de l’objet selon $B_0$ , ce qui a été réalisé par la méthodologie COSMOS (\cite{Liu2009b}) mais celle-ci s’avère compliquée à mettre en place et donc rarement possible.\\
+l’orientation de l’objet selon $B_0$ , ce qui a été réalisé par la méthodologie COSMOS (\cite{Liu2009b}) mais celle-ci s’avère compliquée à mettre en place et donc rarement possible.
+
 D’autres part, la susceptiblité aura par nature une valeur relative. En effet, le kernel n’est pas
 défini en son centre (division de 0 par 0), obligeant numériquement à faire un choix sur cette valeur.
 Il existe plusieurs choix, la valeur 0 en ce point induit une carte de susceptibilité reconstruite disposant
@@ -372,7 +393,8 @@ différents sujets, sur l’établissement d’une référence servant à défin
 Deistung et al. (\cite{Deistung2013}) ont réalisé une étude à très haut champ qui leur a permis en particulier d’idenfier
 la région optimale à utiliser comme référence. Leurs résultats montrent que la matière blanche
 frontale profonde est la région la plus stable et devrait en conséquence être utilisée comme référence
-pour la mesure de susceptibilité.\\
+pour la mesure de susceptibilité.
+
 Les difficultés liées à l’inversion du kernel ${\cal D}$ conduisent naturellement à envisager des
 stratégies de régularisation qui reposent sur des connaissances supplémentaires relatives à la carte de
 susceptibilité à reconstruire. En simple-T$_E$, la méthode TVSB (Total Variation Using Split Bregman) a
@@ -405,7 +427,8 @@ Enfin il existe une approche simple brutale pour estimer la susceptibilité, dit
 (Thresholded K-space Division) (\cite{Shmueli2009}), dans laquelle on remplace dans le kernel ${\cal D}$ les valeurs inférieures
 à une valeur donnée $\beta$ par $\beta^{-1}$. Cette méthode plébiscitée pour son faible coût en temps est néanmoins
 sujette à de nombreux problèmes comme le choix du $\beta$ optimal, et la sous-estimation systématique de
-la susceptibilité. La Figure~\ref{fig:6_8_comparaisons} présente un bilan de toutes les reconstructions (\cite{Wang_Liu_2014}).\\
+la susceptibilité. La Figure~\ref{fig:6_8_comparaisons} présente un bilan de toutes les reconstructions (\cite{Wang_Liu_2014}).
+
 En 2014, Bilgic et al. ont proposé une amélioration significative de la vitesse de calcul des QSM
 via une optimisation de la méthode TVSB (\cite{Bilgic2013}), ouvrant la voie vers la reconstruction automatique des
 cartographies de susceptibilité magnétique en ligne directement sur l’IRM en vue d’un usage clinique.
@@ -443,7 +466,8 @@ temps d’acquisition du fait de son intégration à un protocole clinique plus 
 types d’imageries. Nous avons choisi d’utiliser une séquence avec 2 temps d’échos, autorisant
 l’approche décrite par Schweser et al. (\cite{Schweser2011} détaillé plus loin) permettant de détecter et retirer du
 calcul les voxels aberrants par estimation de la phase initiale. Cela permet de limiter les artéfacts tout
-en limitant le temps d’acquisition.\\
+en limitant le temps d’acquisition.
+
 %%%
 \subsection{Reconstruction de la phase}
 %%%
@@ -458,24 +482,30 @@ en limitant le temps d’acquisition.\\
 Les méthodes de combinaison des différents canaux d’antennes sont adaptées à l’imagerie de
 magnitude. Nous l’avons vu précédemment, des solutions existent pour recombiner correctement les
 canaux et aboutir à une phase cohérente, c’est-à-dire disposant de sauts de phases cohérents (Figure~\ref{fig:6_4_ros}). Nous avons choisi d’implémenter la méthode décrite par Ros et al. (\cite{Ros2009}) via l’outil de
-reconstruction ICE (Image Calculation Environment) proposé par Siemens.\\
+reconstruction ICE (Image Calculation Environment) proposé par Siemens.
+
 Le fonctionnement d’un pipeline complet d’acquisition et de reconstruction d’image produit
-par Siemens est résumé dans la figure~\ref{fig:6_9_reconstruction}.\\
+par Siemens est résumé dans la figure~\ref{fig:6_9_reconstruction}.
+
 Le système complet de reconstruction d’image est constitué de 4 éléments clés : la console
-IRM, le MPCU (« Measurement and Physiological Control Unit »), l’IRM, et le reconstructeur (MRIR).\\
+IRM, le MPCU (« Measurement and Physiological Control Unit »), l’IRM, et le reconstructeur (MRIR).
+
 La console IRM fait l’interface entre l’IRM et l’utilisateur. Elle permet d’enregistrer les données
 relatives au patient, de définir les séquences utilisées, d’ajuster les paramètres de ces séquences, et
 de lancer l’acquisition. Par ailleurs, elle contient une base de données interne permettant de stocker
-(temporairement) les images acquises.\\
+(temporairement) les images acquises.
+
 La console communique avec le MPCU qui contrôle les différents périphériques de l’IRM. Il va
-assurer le lancement de la séquence avec les paramètres donnés par la console.\\
+assurer le lancement de la séquence avec les paramètres donnés par la console.
+
 L’IRM réalise les acquisitions, et stocke les résultats dans des fichiers bruts dit « Raw Data »
 contenant des informations sur le protocole, les conditions d’acquisition (antenne etc.), les
 ajustements réalisés (ajustement du bruit etc.), et surtout les données dans le plan de fourrier pour
 chaque canal d’antenne. Ces données n’ont subi aucun filtrage ou traitement, elles contiennent
 l’information la plus brute. En contrepartie leur taille est bien plus grande (images non recombinées
 etc.) et peut atteindre une vingtaine de giga-octets avec une antenne 32 éléments. Ces fichiers sont
-ainsi directement envoyés vers le reconstructeur (MRIR).\\
+ainsi directement envoyés vers le reconstructeur (MRIR).
+
 Le reconstructeur est une machine disposant à la fois d’une grande quantité de mémoire vive
 et d’une forte capacité de calcul afin de gérer les grands ensembles de données des raw data, ainsi que
 de capacités de parallélisation importante via l’usage des ressources des cartes graphiques Nvidia
@@ -497,14 +527,16 @@ préalable à basse résolution (dite prescan), en utilisant l’antenne corps e
 dicom, elles sont directement utilisées pour corriger les différences de sensibilité des différents canaux
 d’antenne lorsque l’option « Prescan Normalize » est sélectionnée. Pour les récupérer il est donc
 indispensable de travailler au niveau du reconstructeur afin d’intercepter les données qui nous
-intéressent.\\
+intéressent.
+
 La reconstruction suit un protocole préétabli définit par la séquence utilisée. Elle se déroule
 par blocs appelées « pipe ». Un pipe définit un type de traitement tel que : combinaison des canaux
 d’antennes, post-traitement etc. Cette structure permet de définir des traitements à réaliser en
 parallèle par le reconstructeur. La combinaison des canaux d’antenne par exemple est contenue dans
 un pipe s’exécutant sur 4 threads en parallèle, chacun gérant un niveau de coupe, ce qui permet de
 reconstruire le volume 3D plus rapidement. Une reconstruction complète intègre plusieurs séries de
-pipe permettant de passer d’un plan de Fourier partiel à une image au format dicom.\\
+pipe permettant de passer d’un plan de Fourier partiel à une image au format dicom.
+
 %%%
 \begin{figure}[!t]
 \centering
@@ -522,7 +554,8 @@ image (ou des lignes du plan de Fourier selon son positionnement dans la chaine 
 renvoyer en sortie une autre image. Sur la Figure~\ref{fig:6_10_grase}, on montre un exemple de pipe de post-
 traitement réalisant le calcul des cartographies de perfusion et de temps d’arrivé sur des données ASL.
 Comme on peut le voir, les functors se représentent sous forme de blocs reliés entre eux prenant en
-entrée une ou des images, et en sortie des images traitées.\\
+entrée une ou des images, et en sortie des images traitées.
+
 %%%
 \begin{figure}[!b]
 \centering
@@ -539,10 +572,12 @@ brutes possible. Nous avons choisi de sauvegarder les raw data (via l’interfac
 modifier le protocole de reconstruction (contenu dans les raw data) en y ajoutant des functors
 permettant d’intercepter les images qui nous intéressent en vue de les traiter sous MATLAB. Cette
 reconstruction est faite sur un simulateur afin de ne pas ralentir les acquisitions IRM. La Figure~\ref{fig:6_11_chaine_raw}
-décrit les différentes étapes réalisés pour, à partir des raw data, aboutir à une phase cohérente.\\
+décrit les différentes étapes réalisés pour, à partir des raw data, aboutir à une phase cohérente.
+
 Trois functors ont été implémentés en C++ qui ont pour objectif de sauvegarder dans un format
 adapté les images de chacun des canaux (IceSaveFPArray) et de l’antenne corps (IceSaveFPBody) issue
-du prescan, et les images complexes des différents canaux issue de l’acquisition SWI (IceSaveFP).\\
+du prescan, et les images complexes des différents canaux issue de l’acquisition SWI (IceSaveFP).
+
 Les données issues du prescan correspondent à une couverture du crâne bien plus importante
 que celle issue de l’acquisition SWI. Il est indispensable de connaitre les informations d’orientation et
 de positionnement des coupes pour faire la liaison entre le prescan et l’acquisition d’intérêt. Ces
@@ -551,7 +586,8 @@ d’informations dépendantes du niveau de coupe décrivant la localisation phys
 image. Les functors que nous avons implémentés génèrent un ensemble de deux fichier par image, le
 premier d’extension « binHeader » contient les informations décrivant l’image : nombre de lignes,
 nombre de colonnes, épaisseur de coupe, espacement des lignes, espacement des colonnes, position
-sagittale, position coronale, position transverse.\\
+sagittale, position coronale, position transverse.
+
 %%%
 \begin{figure}[!t]
 \centering
@@ -560,10 +596,12 @@ sagittale, position coronale, position transverse.\\
 \label{fig:6_12_functors}	
 \end{figure}
 Le second fichier, d’extension « .dat » contient les valeurs des pixels de l’image (partie réelle et
-imaginaire). La combinaison de ces deux types de fichiers permettra de reconstituer le volume 3D.\\
+imaginaire). La combinaison de ces deux types de fichiers permettra de reconstituer le volume 3D.
+
 Afin de disposer d’images les plus brutes possible, ces functors ont été positionnés juste après
 que les données aient subis la dernière transformée de Fourier (Figure~\ref{fig:6_12_functors} et Figure~\ref{fig:6_13_recuperation}). Il s’agit donc
-de l’image la plus brute dans l’espace direct avant tout post-traitement.\\
+de l’image la plus brute dans l’espace direct avant tout post-traitement.
+
 %%%
 \begin{figure}[!t]
 \centering
@@ -576,7 +614,8 @@ de l’image la plus brute dans l’espace direct avant tout post-traitement.\\
 Les images générées sont par la suite traitées sous MATLAB afin de réaliser la combinaison des
 canaux d’antenne selon la méthode de Ros et al. (\cite{Ros2009}) comme décrit dans la partie~\ref{sec:reconstruction}. La carte de
 sensibilité des différents canaux d’antenne est ainsi calculée (Figure~\ref{fig:6_14_carte_sensibilite}) et utilisée pour reconstruire
-la phase et la magnitude qui seront ensuite sauvegardées au format nifti.\\
+la phase et la magnitude qui seront ensuite sauvegardées au format nifti.
+
 %%%
 \begin{figure}[!b]
 \centering
@@ -592,7 +631,8 @@ Comme il a été montré dans les chapitres précédents (voir~\ref{sec:champsus
 algorithmes permettant d’aboutir à une carte de susceptibilité quantitative. Le choix d’une approche spécifique se fait sur le temps de reconstruction, la présence d’artefacts, et la difficulté
 d’implémentation. Une fois la méthode choisit une optimisation doit être faite sur les paramètres de
 cette méthode en terme de dépliement de la phase, de calcul de la carte de perturbation de champ
-intérieur et de l’estimation de la susceptibilité (inversion).\\
+intérieur et de l’estimation de la susceptibilité (inversion).
+
 Nous avons choisi d’utiliser l’approche de dépliement de phase laplacien (\cite{Schofield2003}) pour sa rapidité
 et sa faible sensibilité aux artéfacts de phase. Les sources d’erreurs des données de la phase peuvent
 inclure des artéfacts de flux non laminaires, du bruit, ou des effets de volume partiel (voir~\ref{sec:volpar}). La
@@ -614,7 +654,8 @@ plus, la phase initiale ne contient aucune évolution temporelle reliée au déc
 résonnance du proton. Concrètement, un ajustement d’une fonction polynomiale de degrés 4 est
 effectué en 2D (tranche par tranche) puis soustrait à l’image de phase initiale $\phi^0$ . L’image résultante
 est alors filtrée (filtre 3D gaussien FWHM=2.35 mm) pour réduire le bruit. Les voxels disposant d’une
-valeur plus important qu’un seuil établi empiriquement ($\pi/8$ voir \cite{Schweser2011}) sont définis comme incohérents.\\
+valeur plus important qu’un seuil établi empiriquement ($\pi/8$ voir \cite{Schweser2011}) sont définis comme incohérents.
+
 La susceptibilité doit nous permettre d’accéder entre autre au compartiment veineux, que ce
 soit à des fins morphologiques ou physiologiques, comme la saturation veineuse en oxygène. On a vu
 que les deux principales approches d’extraction de la carte de perturbation du champ intérieur était
@@ -629,7 +670,8 @@ périphériques. L’effective dipole fitting permet d’assurer l’intégrité
 ne nécessite pas d’érosion. En contrepartie du fait de son approche complètement itérative, le temps
 de calcul est plus long. Dans le cadre d’un processus de post-traitement hors ligne, la contrainte de
 temps de calcul est secondaire par rapport à la qualité de la reconstruction : nous avons donc privilégié
-l’effective dipole fitting.\\
+l’effective dipole fitting.
+
 Dans toutes ces approches, nous avons besoin d’un masque du cerveau ne contenant que le
 parenchyme. La segmentation des tissus que l’on peut obtenir via des outils tels que SPM permet, par
 addition des différentes cartographies de matière grise, de matière blanche et de liquide cérébro-
@@ -641,7 +683,8 @@ adaptatives. L’image initiale est seuillée sur la base de son histogramme d�
 un masque binaire permettant d’évaluer le centre de gravité et le rayon de la sphère équivalente. Sur
 cette base une surface en mosaïque est initialisée et par algorithme itératif, adaptée pour recouvrir
 tout le cerveau. C’est un outil rapide et fiable qui permet d’extraire directement l’information qui nous
-intéresse, nous l’utilisons donc comme base.\\
+intéresse, nous l’utilisons donc comme base.
+
 %%%
 \begin{figure}[!t]
 \centering
@@ -655,7 +698,8 @@ en un temps court une reconstruction de la susceptibilité en norme ${\cal L}_1$
 conformément à la littérature qu’elle était plus adaptée aux petites structures. L’approche consiste à
 calculer la susceptibilité via la solution analytique de la forme ${\cal L}_2$ (Équation~\ref{eq:bilgicanal}) et de se servir de ce
 résultat comme base pour calculer par itération la carte par norme ${\cal L}_1$. Le nombre total d’itérations est
-ainsi réduit de façon importante, tout en conservant la qualité du résultat.\\
+ainsi réduit de façon importante, tout en conservant la qualité du résultat.
+
 Nous obtenons ainsi une chaine complète de génération de cartographies de susceptibilité via
 une séquence à deux temps d’échos. La structure des différentes opérations de post-traitement
 conduisant à la carte de susceptibilité est résumée dans la Figure~\ref{fig:6_15_pipe_susceptibilite}.
@@ -668,7 +712,8 @@ conduisant à la carte de susceptibilité est résumée dans la Figure~\ref{fig:
 \subsection{Mise en place d’un fantôme IRM}
 La QSM est une méthode relativement récente, il est donc indispensable de contrôler la qualité
 et la validité des mesures réalisées. La validation est généralement faite par utilisation d’un fantôme
-IRM dont l’ensemble des propriétés sont connues et contrôlées.\\
+IRM dont l’ensemble des propriétés sont connues et contrôlées.
+
 La susceptibilité mesure la capacité d’un matériau à s’aimanter sous l’action d’un champ
 magnétique. Un fantôme de susceptibilité peut donc être réalisé via l’utilisation d’une substance
 paramagnétique de composition et de concentration connues. L’équipe de Tan avec laquelle nous
@@ -676,7 +721,8 @@ avons pu échanger sur la mesure de susceptibilité dans le cadre de protocoles 
 caractérisation des cavernomes, a mis au point un fantôme de susceptibilité (\cite{tan2014}). Ce fantôme se
 compose d’un sceau remplit d’eau dans lequel on plonge des tubes de type Eppendorf contenant des
 concentrations variables de ferumoxytol (0 à 70 $\mu$g Fe/mL) ainsi qu’un tube de référence ne contenant
-que de l’eau, l’ensemble étant maintenu par une mousse polystyrène (Figure~\ref{fig:6_16_fantome}).\\
+que de l’eau, l’ensemble étant maintenu par une mousse polystyrène (Figure~\ref{fig:6_16_fantome}).
+
 %%%
 \begin{figure}[!t]
 \centering
@@ -721,12 +767,14 @@ densité de magnétisation dans le milieu. En remplaçant $H$ dans l’Équation
 La magnétisation du venofer à 300°K est estimée à 6.8224 Am2/kg (\cite{Gutierrez2005}), on peut donc calculer la
 susceptibilité volumique du Venofer : 2.857 ppm m$^3$/kg. Cette valeur nous permettra ainsi de comparer
 la concentration en fer réelle présente dans les tubes avec une concentration estimée sur la base de
-la carte de susceptibilité magnétique.\\
+la carte de susceptibilité magnétique.
+
 Afin d’évaluer l’effet de l’orientation de l’objet dans le champ sur la reconstruction et les
 différents paramètres de régularisation, nous réalisons 4 acquisitions, une en position standard à plat,
 et 3 avec des inclinaisons allant jusqu’à un angle de 90°. Deux temps d’échos sont utilisés à 20 et 40
 ms, la reconstruction suit ensuite le traitement décrit précédemment avec variation du $\lambda$ en norme ${\cal L}_1$
-et du $\beta$ en norme ${\cal L}_2$ de l’approche TVSB.\\
+et du $\beta$ en norme ${\cal L}_2$ de l’approche TVSB.
+
 %%%
 %%%
 \subsection{Validation de la méthode sur le fantôme}
@@ -743,11 +791,12 @@ identique. INCL correspond à l’inclinaison. Les flèches rouges indiquent la 
 Ces artéfacts vont modifier la
 valeur de la susceptibiliité dans le tube. Il est donc important de choisir les paramètres de
 régularisation qui limitent au mieu ces artéfacts, et d’extraire les valeurs dans des régions d’intérêt
-situées à distance des interfaces.\\
+situées à distance des interfaces.
+
 L’effet des paramètres de régularisation sur la mesure de susceptibilité en norme ${\cal L}_1$ et ${\cal L}_2$ sont
 ensuite testés. Afin d’éviter les effets de volume partiels et de limiter l’impact des artéfacts les valeurs
 moyennes de susceptibilité dans les tubes sont extraites par tracage de régions d’intérêt au centre des
-tubes.\\
+tubes.
 
 Les premiers résultats sur la norme ${\cal L}_1$ mettent en évidence de bonnes corrélations entre
 susceptibilité estimée et susceptibilité réelle (Figure~\ref{fig:6_19_effet_lambda}), quelle que soit la valeur du paramètre $\lambda$ la
@@ -756,7 +805,6 @@ un $\lambda$ optimal. Lorsque l’on s’en éloigne les valeurs de susceptibili
 (parfois même fortement). En observant l’évolution du coefficient de corrélation en fonction du $\lambda$ pour
 la norme ${\cal L}_1$ (Figure~\ref{fig:6_19_effet_lambda}), on peut mettre en évidence la valeur optimale (Figure~\ref{fig:6_19_effet_lambda} ligne en pointillé
 rouge). 
-
 
 Le même type de résultat est observé avec la norme ${\cal L}_2$ (résultats non présentées ici).
 Cependant, pour cette norme même pour le $\beta$ optimal, il existe une sous estimation de la susceptibilité
@@ -767,7 +815,7 @@ sont pas significativement différentes de la concentration réelle (p>0.05, Wil
 norme ${\cal L}_1$ semble donc à privilégier pour l’extraction de valeurs quantitatives, même si, en terme de
 corrélation, la norme ${\cal L}_2$ reste correcte (p<<0.01, rho=0.99, corrélation de Pearson). Cet essai permet
 d’apporter une validation de la mesure de susceptibilité sur l’IRM à notre disposition dans des
-conditions standards d’acquisition.\\
+conditions standards d’acquisition.
 
 %%%
 \begin{figure}[!t]
@@ -796,7 +844,8 @@ cartographie finale. La Figure~\ref{fig:6_20_orientation} illustre l’impact de
 Comme on peut le voir, l’orientation par rapport au champ modifie significativement la susceptibilité
 (p<0.05, Kruskal Wallis). Il existe une correlation entre l’inclinaison et la différence entre concentration
 réelle concentration estimée (p<0.05, rho=0.97, correlation de Pearson). Lorsque le tube est parallèle
-au champ (INCL3), l’erreur de reconstruction entraîne une diminution sensible de la valeur mesurée.\\
+au champ (INCL3), l’erreur de reconstruction entraîne une diminution sensible de la valeur mesurée.
+
 La prise en compte de ce type de résultat est importante lors de l’utilisation de la méthodologie
 QSM, et reste trop peu généralisée. Il est particulièrement important de connaitre l’orientation des
 structures dont on souhaite estimer la susceptibilité, afin de maitriser la fiabilité de la mesure. Par
@@ -812,14 +861,16 @@ contrôlé, nous pouvons maintenant tester cette reconstruction sur des données
 Comme nous l’avons mentionné, l’acquisition de plusieurs temps d’échos (typiquement 8) permet de
 limiter la présence d’un certain nombre d’artéfacts. Nous avons donc voulu nous assurer que
 l’utilisation d’une approche limitée à un temps d’écho permettait d’obtenir des résultats similaires
-dans le cadre de notre chaine de traitement.\\
+dans le cadre de notre chaine de traitement.
+
 Une acquisition à 8 temps d’échos (6 à 63 ms linéairement répartis) avec un T$_R$ de 70 ms a été
 réalisée pour tester la reconstruction multi-TE associée à l’approche couramment utilisée dans ce cas :
 l’algorithme dédié « MEDI » (Morphology Enabled Dipole Inversion) (\cite{Liu2011b}). Ce type d’acquisition génère
 des données de très grosse taille. Du fait de notre mode de reconstruction et du matériel disponible,
 nous sommes limités à une taille maximale de 8 Go par raw data. Il a donc été nécessaire d’utiliser une
 imagerie parallèle GRAPPA correspondant à un sous échantillonnage d’un facteur 3 de l’espace
-réciproque.\\
+réciproque.
+
 Pour comparer les différents modes de reconstruction, nous avons testé plusieurs approches :
 \begin{itemize}
 	\item En multi-TE : Les valeurs de la phase le long des temps d’échos sont ajustées pour en extraire
@@ -840,7 +891,8 @@ Pour comparer les différents modes de reconstruction, nous avons testé plusieu
 	\end{itemize}
 \end{itemize}
 Dans tous les cas, le calcul de la carte de perturbation du champ intérieur est réalisé via la
-méthode RESHARP.\\
+méthode RESHARP.
+
 %%%
 \begin{figure}[!t]
 \centering
@@ -869,16 +921,19 @@ T$_E$ ne présente pas ces artéfacts. Concernant les structures telles que les 
 l’approche simple-T$_E$ en norme ${\cal L}_1$ permette de les mettre en évidence plus clairement. La norme ${\cal L}_2$
 semble en revanche « lisser » la cartographie finale, limitant la visibilité de ces structures. Enfin, on
 détecte visuellement une susceptibilité moyenne plus faible en norme ${\cal L}_2$ (comme cela a été montré
-via le fantôme) en comparaison de la norme ${\cal L}_1$.\\
+via le fantôme) en comparaison de la norme ${\cal L}_1$.
+
 Pour comparer enfin les informations quantitatives, nous avons choisi de définir différentes
 régions d’intérêt au niveau des noyaux gris : pallidum, putamen, noyaux caudés, noyaux dentelés dans
 les deux hémisphères, ainsi que deux sphères (5 mm de rayon) dans la matière blanche frontale (Figure~\ref{fig:6_21b_ill_roi}) pour servir de référence à la valeur de susceptibilité (\cite{Schweser2011}). Nous avons donc au total 10 ROI plus
-une de référence.\\
+une de référence.
+
 Cette analyse a été réalisée sur la base d’un même jeu de données (une même acquisition à 8
 temps d’échos) et pour une même information extraite, la susceptibilité. Il est donc compliqué
 d’utiliser des tests statistiques standards pour évaluer directement les différences quantitatives entre les modes de reconstruction. Pour apprécier la concordance des mesures, des graphiques de Bland-
 Altman ont été réalisés. La susceptibilité rapportée est recentrée sur la valeur moyenne de la substance
-blanche frontale.\\
+blanche frontale.
+
 Pour clarifier les résultats nous ne nous intéresserons qu’à la norme ${\cal L}_1$ en simple T$_E$ (T$_E$ court)
 et la norme ${\cal L}_2$ via l’algorithme MEDI en multi-T$_E$ car ces deux approches sont les plus citées dans la
 littérature récente (\cite{Wang_Liu_2014}).
@@ -927,7 +982,8 @@ par ailleurs calculé le coefficient de concordance de Lin (\cite{Lin1989}) afin
 inter-méthode. L’analyse montre une bonne concordance des deux méthodes (coefficient de
 corrélation de concordance = 0.92 ; Pearson $\rho$ = 0.92 ; Facteur de correction du biais Cb = 0.99) au vu
 des seuils rapportés dans la littérature (\cite{Mcbride2005}). Il semble donc que les deux méthodes fournissent dans
-notre configuration des résultats similaires.\\
+notre configuration des résultats similaires.
+
 %%%
 \begin{figure}[!t]
 \centering
@@ -948,16 +1004,19 @@ traitement et la conformité des résultats avec les approches courantes de la l
 et surtout faciliter l’accès à la cartographie de susceptibilité magnétique, nous avons intégré le calcul
 de la QSM à SPM via la création d’une boite à outils (toolbox) nommée « ELLIS ». Cet outil permet de
 réaliser le traitement depuis l’extraction du cerveau, en passant par le dépliement de la phase et le
-calcul du champ intérieur pour enfin aboutir à la susceptibilité (Figure~\ref{fig:6_15_pipe_susceptibilite}).\\
+calcul du champ intérieur pour enfin aboutir à la susceptibilité (Figure~\ref{fig:6_15_pipe_susceptibilite}).
+
 La création d’une boite à outils intégrée à SPM nécessite 4 fichiers principaux assurant la
 définition de l’environnement, la définition des paramètres rentrés par l’utilisateur, le calcul et enfin
-l’affichage de l’aide.\\
+l’affichage de l’aide.
+
 Le premier fichier « spm\_ELLIS.m » sert d’entrée et définit le nom de la boite à outils, les
 répertoires contenant les fonctions d’intérêt, le chemin vers le fichier d’aide. Le second « ELLIS.man »
 représente l’aide de la boite à outils, affichée au démarrage de l’outil. Le troisième «tbx\_cfg\_ELLIS.m »
 contient la définition des différents champs qui devront être renseignés ou sélectionnés par
 l’utilisateur, pour être ensuite donnés en argument à la fonction de calcul de la susceptibilité. La
-création d’un champ est réalisée comme suit :\\ 
+création d’un champ est réalisée comme suit :
+
 {\tt
 \begin{tabbing}
 \hspace{1cm}\=\hspace{1cm}\\
@@ -977,7 +1036,8 @@ Par ailleurs on y définit la fonction qui va recevoir en argument les données 
 Cette fonction appelée « ps\_qsmmapping\_run.m » dans notre cas réalise l’ensemble du traitement et
 se charge d’afficher les images intermédiaires dans la fenêtre de visualisation de SPM. La fonction
 reçoit en entrée une variable « job » regroupant l’ensemble des champs présents dans l’interface et
-définis dans le fichier « tbx\_cfg\_ELLIS.m ». Les données peuvent donc être récupérées facilement :\\ 
+définis dans le fichier « tbx\_cfg\_ELLIS.m ». Les données peuvent donc être récupérées facilement :
+ 
 {\tt
 \begin{tabbing}
 \hspace{1cm}\=\hspace{1cm}\\
@@ -1018,13 +1078,15 @@ traitement. Son intégration à SPM permet de l’associer à d’autres types d
 « batchs » plus généraux. En effet, le système batch de SPM permet de mettre en série différents
 traitements très simplement, il devient par exemple aisé de calculer la QSM puis de normaliser la
 cartographie en rajoutant un bloc « normalize » qui récupère l’image du précédent bloc pour s’en
-servir comme base.\\
+servir comme base.
+
 Cet outil a permis, après validation via le fantôme, de réaliser des études annexes. Une
 première associe tenseur de diffusion et susceptibilité magnétique dans le cadre de la caractérisation
 des différentes formes de pathologies parkinsoniennes (\cite{Dunet2015}). Une seconde étudie les différents types
 de cavernomes (familiaux et sporadiques) à travers leur évolution en susceptibilité (\cite{Balasse2015}). Et une
 dernière met en évidence des effets jusqu’alors non décrit dans littérature dans le cadre des
-leucoencéphalopathie multifocale progressive (\cite{Carra2015}).\\
+leucoencéphalopathie multifocale progressive (\cite{Carra2015}).
+
 %%%
 \begin{figure}[!t]
 \centering
