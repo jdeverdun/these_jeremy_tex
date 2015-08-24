@@ -19,7 +19,8 @@ signalisation sur des cellules musculaires lisses par exemple. Le cerveau repré
 significatif pour l'approche intégrée de type « biologie des systèmes » aujourd'hui en pleine expansion,
 et qui a pour ambition de réaliser in silico de grandes reconstructions multi-échelle d'organes ou
 d'organismes. En l'état, toute modélisation de la dynamique des fluides dans le cerveau propose une
-simplification radicale de la situation physiologique.\\
+simplification radicale de la situation physiologique.
+
 En dépit de ces difficultés, l'intérêt de disposer de simulations dynamiques reproduisant même
 une partie de ces phénomènes est grand, et une tradition importante de modélisation s'est
 développée. Du point de vue clinique, il existe en effet nombreuses conditions pathologiques
@@ -27,7 +28,8 @@ directement reliées à la dynamique des fluides intracrâniens, telles que l'hy
 formes de vascularite, les hémorragies sous-arachnoïdiennes, ou les anomalies de la pression
 intracrânienne. Par ailleurs, le lien entre activité neuronale et circulation sanguine est à la base de la
 technique même de l'IRM fonctionnelle. Il est donc important de comprendre les phénomènes
-dynamiques propres à la circulation, pour ensuite éclaircir leur implication neurologique.\\
+dynamiques propres à la circulation, pour ensuite éclaircir leur implication neurologique.
+
 Comme dans toute modélisation d'un système complexe, il existe dans toutes les approches
 disponibles un arbitrage entre exactitude et simplicité. Cette dernière est nécessaire pour rendre les
 modèles utilisables, en particulier pour les recherches visant un contexte clinique. Si par exemple une
@@ -40,12 +42,14 @@ description choisir ? L'exemple de la variabilité structurale est éclairant : 
 compte dans un modèle demande en contrepartie de disposer de données qui quantifient de façon
 fiable le détail des structures à l'échelle ou cette variabilité se manifeste. Comme dans d'autres
 domaines de la biophysique, il semble superflu de modéliser avec une précision plus grande que celle des données quantitatives disponibles, structurales ou dynamiques, et ce sont ces dernières qui
-fournissent sans doute la « bonne échelle » de complexité des modèles.\\
+fournissent sans doute la « bonne échelle » de complexité des modèles.
+
 En conséquence de ces deux observations concernant le temps de calcul et les données
 quantitatives pertinentes, la complexité des modèles de la mécanique intracrânienne s'est développée
 au rythme de l'évolution d' outils d'imagerie et de calcul permettant (1) de fournir aux modèles des
 données quantitatives de plus en plus détaillées (2) de rendre l'exécution de la simulation assez rapide
-pour un potentiel usage clinique.\\
+pour un potentiel usage clinique.
+
 Dans ce cadre, la perspective de notre travail de modélisation est la suivante. Nous ne nous
 sommes pas donnés la contrainte de temps de calcul liée à d'un usage clinique de type interventionnel,
 mais nous nous sommes proposé la construction d'un outil qui permette d'intégrer les informations
@@ -66,7 +70,8 @@ présentés au chapitre~\ref{chap:morpho}. Enfin, en l'état, les dynamiques de 
 importante des travaux antérieurs de modélisation seront ici passées sous silence : nous nous
 intéressons dans la cadre de ce travail à la construction préliminaire d'un modèle « passif » de la
 circulation, modèle auquel des mécanismes de rétrocontrôle régulateurs pourront ensuite être
-rajoutés, comme nous l'esquisserons dans les perspectives.\\
+rajoutés, comme nous l'esquisserons dans les perspectives.
+
 Nous allons d'abord passer en revue les principaux modèles à compartiments de la littérature,
 avant d'évoquer les travaux qui utilisent les données d'imagerie pour informer une modélisation plus
 détaillée et spécifique à un patient. Comme dit précédemment, on se contentera ici d'exposer la partie
@@ -82,13 +87,15 @@ développement à court terme de ce modèle.
 Le principe de tous les modèles à compartiments est simple. L'ensemble du système des fluides
 intracrâniens est décomposé en compartiments, chacun caractérisé par une seule valeur de la
 pression. Des équations de transfert entre compartiments et des équations bilans des entrées/sorties
-dans chaque compartiment complètent la dynamique, qui s'écrit sous forme d'un ensemble d'{\em équations différentielles ordinaires}. Ces modèles s'oposent aux modèle {\em hydrodynamiques}, qui décrivent le fluide sanguin comme un {\em milieu continu} sous forme d'{\em équations aux dérivées partielles}\\
+dans chaque compartiment complètent la dynamique, qui s'écrit sous forme d'un ensemble d'{\em équations différentielles ordinaires}. Ces modèles s'oposent aux modèle {\em hydrodynamiques}, qui décrivent le fluide sanguin comme un {\em milieu continu} sous forme d'{\em équations aux dérivées partielles}.
+
 Les articles fondateurs de Monro  (\cite{Monro2010}) et Kellie (\cite{Kellie1824}) sont les exemples historiques les plus
 simples, considérant le cerveau comme respectivement bi-compartimental (sang et fluide cérébral) et
 tri-compartimental (artères, veines, fluides cérébraux). Les principales évolutions sont récentes et ont
 constitué surtout dans la subdivision plus fine des compartiments circulants (artères, capillaires,
 veines, liquide céphalo rachidien), et dans certains cas l'introduction de propriétés mécaniques
-viscoélastiques pour le parenchyme cérébral (\cite{Sorek1988}).\\
+viscoélastiques pour le parenchyme cérébral (\cite{Sorek1988}).
+
 Le modèle de Ursino et al. (\cite{Ursino1988},~\cite{Ursino1991}), dans sa version simplifiée (\cite{Ursino1997}), est le plus minimal. Il est
 basé sur cinq compartiments (parenchyme, artères, capillaires, veines, sinus veineux), et schématisé
 en Figure~\ref{fig:4_1_ursino}. 
@@ -117,7 +124,8 @@ V\,=\,C\,(P-P_{inc }).
 \end{equation}
 On aboutit à un ensemble clos d'équation différentielles soluble. Les paramètres sont alors estimés à
 partir de valeurs moyennes venues de mesures disponibles dans la littérature, et en reproduisant des
-données dynamiques typiques, telles qu'un flux hémodynamique moyen de 12.5 ml/s.\\
+données dynamiques typiques, telles qu'un flux hémodynamique moyen de 12.5 ml/s.
+
 Le modèle de Sorek et al. (\cite{Sorek1988}) est plus complet: 7 compartiments (jugulaires et LCS en plus),
 mais basé sur les mêmes hypothèses linéaires, et des équations semblables (figure ~\ref{fig:4_2_sorek}). 
 %%%
@@ -130,7 +138,8 @@ mais basé sur les mêmes hypothèses linéaires, et des équations semblables (
 Les paramètres de
 résistance et de compliance sont estimés à l'aide d'une procédure d'inversion linéaire à partir d'un jeu
 de données de pression d'entrée en fonction du temps. Ils ne sont comme précédemment pas reliés à
-des caractéristiques structurales.\\
+des caractéristiques structurales.
+
 Le modèle de Zagzoule et Marc-Vergnes (\cite{Zagzoule1986}) constitue la première approche basée sur des
 données structurales mesurées (ou estimées), et de surcroît n'est plus linéaire. 
 
@@ -173,7 +182,8 @@ de la littérature, soit estimés. Par exemple, les paramètres de diamètre et 
 dans la partie microcirculatoire sont estimés sur la base d'une progression géométrique en l'absence
 de données. L'ensemble fournit des valeurs de pression et de flux dans le système circulant
 comparables aux valeurs mesurées, et précède une étude simplifiée de mécanismes possibles
-d'autorégulation.\\
+d'autorégulation.
+
 Présentons pour finir le modèle de Linninger et al. (\cite{Linninger2009}), qui est le plus proche dans l'esprit du
 nôtre. L'objectif clinique de ce modèle est la modélisation de pathologies du liquide cérébro-spinal,
 telles que l'hydrocéphalie. Dans ce but, il propose une description plus détaillée de la circulation du
@@ -183,8 +193,7 @@ propre système artériolaire (lieu de la production du LCS). Enfin, il incorpor
 parenchymateux également latéral. Le tout est englobé dans un compartiment sous-arachnoïdien
 commun, qui se déverse dans le canal de la moelle épinière (voir Figure~\ref{fig:4_4_linninger}). 
 
-Dans la description de
-chaque compartiment, il reprend les variables géométriques du modèle précédent : aire et flux
+Dans la description de chaque compartiment, il reprend les variables géométriques du modèle précédent : aire et flux
 entrants et sortants, mais sans discrétiser le long des tubes une équation aux dérivées partielles, ce
 qui n'aurait guère de sens pour les compartiments du LCS, pour lesquels cette géométrie est peu
 physiologique de toute façon. On revient à des équations bilan pour la quantité de mouvement et la
@@ -200,7 +209,8 @@ l'autre. La contrainte de Monro-Kellie est implémentée, contrairement au modè
 données fournies au modèle pour l'intégrer sont le décours temporel de la pression en entrée (artère
 carotide) et en sortie (veine jugulaire). Le modèle permet alors de calculer tous les flux et les pressions
 au cours du temps dans tous les compartiments. Il reproduit de façon assez détaillée des données
-pathologique dynamiques sur l'hydrocéphalie.\\
+pathologique dynamiques sur l'hydrocéphalie.
+
 %%%
 \begin{figure}[!t]
 \centering
@@ -213,7 +223,8 @@ et d'autre part l'introduction de paramètres structuraux et physiologiques mesu
 indépendamment du modèle. Néanmoins, malgré la relative complexité du modèle (86 équations
 algébro-différentielles non-linéaires couplées pour 22 compartiments), il correspond encore à une
 modélisation « moyenne » des écoulements, et ne s'adapte pas à des données obtenues sur un
-individu particulier.\\
+individu particulier.
+
 Notre démarche a été donc de s'inspirer de l'approche de Zagzoule et Linninger, mais en allant
 beaucoup plus loin dans l'introduction de paramètres anatomiques issus de l'imagerie d'un patient
 donné. En effet, indépendamment de l'approche en compartiments développée dans cette partie,
@@ -227,7 +238,8 @@ La variabilité de la structure vasculaire cérébrale, en particulier des anast
 veineuses, l'importance pathologique de cette variabilité, ont conduit à la nécessité de proposer des
 approches de modélisation permettant de comprendre la portée physiologique de ces variantes
 structurales. C'est la structure artérielle, en particulier le polygone de Willis, qui a fait l'objet des
-recherches les plus nombreuses. On suivra ici le bilan de ces travaux donné dans (\cite{David2008}).\\
+recherches les plus nombreuses. On suivra ici le bilan de ces travaux donné dans (\cite{David2008}).
+
 L'article de Cebral et al. (\cite{Cebral2003}) utilise des données d'imagerie par temps de vol du cercle de Willis
 et des principales artères pour générer une structure 3D détaillée, considérée comme un système de
 parois rigides, et maillée spatialement. Les données dynamiques d'entrée sont fournies par une
@@ -235,14 +247,16 @@ mesure des flux en contraste de phase. Une résistance effective à la sortie du
 par différentes techniques de modélisation de la perfusion aval, permettant de calculer une pression
 de sortie, et de rendre ainsi le modèle soluble en 3D plus temps. La solution met en évidence des
 écoulements non stationnaires, et se concentre en particulier sur le problème du rôle régulateur du
-cercle de Willis lors de l'occlusion d'une carotide.\\
+cercle de Willis lors de l'occlusion d'une carotide.
+
 Le travail de Kim et al. (\cite{Kim2006}) ajoute à cette approche l'extensibilité des parois du système
 artériel, et se base sur le même type de données structurales issues de l'imagerie par temps de vol.
 Les conditions aux limites en entrée sont ici les pressions afférentes et non les flux. Les pressions en
 sortie sont à nouveau calculées sur la base de modèles de résistances idéalisées du réseau perfusant
 en aval. Noter qu'un modèle simple d'autorégulation est proposé. Le modèle se concentre sur la
 prédiction de la réponse des anastomoses du cercle de Willis lors d'un épisode de réduction abrupte
-de la pression dans une artère d'entrée.\\
+de la pression dans une artère d'entrée.
+
 Enfin Moore et al. (\cite{Moore2006}) ont suivi pour l'essentiel les mêmes stratégies, se distinguant par une
 modélisation différente du réseau aval. Il est à noter en effet que la description simplifiée de
 l'architecture aval constitue la partie la moins solide de ces modélisations, en contraste avec la vision
@@ -261,25 +275,27 @@ du modèle avec celle des données, pour l'ensemble de la circulation cérébral
 L’anatomie vasculaire du cerveau est complexe. Un grand nombre de vaisseaux assurent
 l’apport du sang dans les différentes régions cérébrales. Il est difficile d’accéder aux caractéristiques de l’ensemble du système, et de le modéliser directement. Beaucoup de travaux se focalisent alors sur
 des structures locales précises comme le polygone de Willis ou tentent de simplifier le problème en
-regroupant les vaisseaux par type afin de travailler avec moins de compartiments (voir~\ref{sec:modeles_compartiments}). Jusqu’à
-présent, la plupart des modèles vasculaires intégrant des données d’imagerie se contentaient du
+regroupant les vaisseaux par type afin de travailler avec moins de compartiments (voir~\ref{sec:modeles_compartiments}). Jusqu’à présent, la plupart des modèles vasculaires intégrant des données d’imagerie se contentaient du
 versant artériel de la circulation en des données de contraste de phase et/ou d’une imagerie par temps
 de vol. L’avancée des séquences IRM permet à présent d’accéder à un grand nombre d’informations
 sur les flux intracrâniens, tant au niveau anatomique, que dynamique et physiologique. En parallèle,
 les outils informatiques autorisent la simulation de problèmes complexes intégrant de nombreux
-compartiments.\\
+compartiments.
+
 Dans ce contexte la modélisation d’un système complet des flux dans le cerveau avec
 architecture réaliste et adaptée au sujet devient envisageable. Notre objectif, comme nous l’avons
 déjà dit, est de développer une méthodologie permettant pour un sujet donné, d’extraire son
 arborescence vasculaire ainsi qu’un maximum d’informations permettant de caractériser les flux
-intracrânien afin de nourrir le modèle. C’est ce qui a été réalisé dans les chapitres précédents.\\
+intracrânien afin de nourrir le modèle. C’est ce qui a été réalisé dans les chapitres précédents.
+
 Le modèle tel que nous le proposons maintenant se base sur les mêmes principes que les
 travaux de Zagzoule et Marc-Vergnes (\cite{Zagzoule1986}) , puis de Linninger et al. (\cite{Linninger2005},~\cite{Linninger2007},~\cite{Linninger2009}) qui intègrent comme
 nous l’avons vu les compartiments vasculaires et céphalo-rachidien sous forme de tubes. Dans une
 logique de simplification, leur modèle ne considère qu’une entrée, fusion des différentes carotides
 internes et de l’artère basilaire, puis un système de tubes simples allant des artères aux veines (1 par
 type et par hémisphère), enfin une sortie pour le sang, fusion des veines jugulaires, et une voie de
-sortie pour le liquide céphalo rachidien, la moelle épinière.\\
+sortie pour le liquide céphalo rachidien, la moelle épinière.
+
 Dans le chapitre 3 nous avons mis au point une chaine de traitement qui aboutit à une
 architecture complète partant des carotides internes et de l’artère basilaire, et allant jusqu’aux veines
 jugulaires. Comme tous les travaux de modélisation antérieurs, nous n’avons pas accès aux
@@ -287,7 +303,8 @@ compartiments artériolaires, capillaires et veinulaires ; nous avons donc des �
 regroupant en réalité un grand nombre de vaisseaux. La différence de notre travail avec celui par
 exemple de Linninger, réside dans le nombre de de ces structures. Pour chaque artère terminale que
 nous pouvons identifier, nous retrouverons un ensemble artériole, capillaire, veinule définissant un
-territoire.\\
+territoire.
+
 Du côté de la sortie, le système veineux se termine par les sinus puis les veines jugulaires.
 Quelques simplifications sont également possibles à ce niveau. L’une des caractéristiques distinguant
 certains sinus est en effet leur capacité à réabsorber une partie du liquide céphalo rachidien via les
@@ -311,7 +328,8 @@ graphe.
 Cette structure est à mettre en relation avec le modèle de Linninger (Figure~\ref{fig:4_4_linninger}). Nous n’avons
 cependant ici représenté que le système sanguin, le système céphalo-rachidien étant identique aux
 travaux de ce dernier (Figure~\ref{fig:4_4_linninger}) à la subtilité près que les interactions LCS – Parenchyme – Sang sont
-réparties sur un ensemble de tubes (plusieurs artérioles et capillaires).\\
+réparties sur un ensemble de tubes (plusieurs artérioles et capillaires).
+
 Le sang est modélisé comme un fluide visqueux et incompressible évoluant des artères aux veines
 (Figure~\ref{fig:4_5_schema_modele}). Le système céphalo-rachidien intègre les ventricules latéraux, les troisième et quatrième
 ventricules et l’espace sous arachnoïdien (cérébral et de la moelle), le tout étant interconnecté (Figure~\ref{fig:4_6_LCR_modele}). A partir de l’espace sous arachnoïdien cérébral, on admet que le LCS est réabsorbé dans le sinus
@@ -321,7 +339,8 @@ fluide extracellulaire (30\% du parenchyme, similaire au liquide cérébro-spina
 solide (70\% du parenchyme) représentant les neurones, les cellules gliales et les fibres axonales. De
 tous les compartiments, seule la moelle épinière n’est pas contenue dans le crâne. Enfin, il existe des
 entrées additionnelles au modèle, autre que les trois artères principales, à savoir : la production constante de liquide cérébro-spinal depuis les artérioles vers les ventricules latéraux par les plexus
-choroïdes et la production diffuse des capillaires vers le parenchyme cérébral puis les ventricules.\\
+choroïdes et la production diffuse des capillaires vers le parenchyme cérébral puis les ventricules.
+
 %%%
 \begin{figure}[!t]
 \centering
@@ -335,7 +354,8 @@ illustre l’évolution du liquide cérébro-spinal (ligne en pointillé), les p
 \end{figure}
 La doctrine de Monroe-Kellie est rigoureusement implémentée dans le modèle. Cependant le
 liquide cérébro-spinal peut s’écouler dans l’espace sous arachnoïdien de la moelle qui n’est pas confiné
-dans crâne.\\
+dans crâne.
+
 Le flux sanguin et cérébro-spinal est décrit dans ce modèle par les équations bilans fondamentales
 de l’hydrodynamique : conservation de la masse, conservation de la quantité de mouvement. Pour
 tenir compte de l’adaptation du diamètre des vaisseaux aux pressions on introduit pour chaque
@@ -343,9 +363,11 @@ compartiment un paramètre d’élasticité de la paroi et une équation corresp
 contient trois type de variables pour chaque compartiment : la pression au centre $p$, le flux entrant fin
 et sortant $f_{out}$ et l’aire du tube $A$. Le principe est d’avoir un système d’équations générique pour un
 tube que l’on peut ensuite reproduire pour un nombre indéfini de tubes, à condition de s’assurer de
-règles de continuité adéquate entre compartiments.\\
+règles de continuité adéquate entre compartiments.
+
 Notons que, contrairement à Linninger, nous représentons les pressions au centre du tube et non
-en fin de tube (Figure~\ref{fig:4_7_milieu_tubes}).\\
+en fin de tube (Figure~\ref{fig:4_7_milieu_tubes}).
+
 %%%
 \begin{figure}[!t]
 \centering
@@ -399,13 +421,15 @@ afin de maintenir le même flux. Cette approche est similaire à l’Équation~\
 peut être calculé directement depuis les données morphologiques recueillies (voir chapitre~\ref{chap:imageriemorpho}) pour
 certains compartiments mais doit être estimé sur la base de la littérature pour les artérioles, les
 capillaires et les veinules. Comme vu dans la partie~\ref{sec:finalisation} nous avons contraint le système pour n’avoir
-que des jointures en Y entre les tubes (deux tubes vers un ou l’inverse).\\
+que des jointures en Y entre les tubes (deux tubes vers un ou l’inverse).
+
 Dans ces situations la formule doit légèrement s’adapter :
 \begin{equation}
 \label{eq:ley}
 \frac{a_{in_1}}{2}\,(P\,-\,P_{in_2})\,+\,\frac{a_{in_2}}{2}\,(P\,-\,P_{in_1})\,=\,\biggl(\frac{a_{in_1}}{2}\,\frac{a_{in_2}}{2}+\frac{a_{in_1}}{2}\,\frac{a}{2}+\frac{a_{in_2}}{2}\,\frac{a}{2}\biggr)\,f_{in},
 \end{equation}
-avec $a_{in_1}$ , $a_{in_2}$ , $P_{in_1}$ et $P_{in_2}$ les paramètres des deux parents du tube courant (voir Figure~\ref{fig:4_8_param_tubes} et Annexe~\ref{sec:deriveq}).\\
+avec $a_{in_1}$ , $a_{in_2}$ , $P_{in_1}$ et $P_{in_2}$ les paramètres des deux parents du tube courant (voir Figure~\ref{fig:4_8_param_tubes} et Annexe~\ref{sec:deriveq}).
+
 %%
 \begin{figure}[!t]
 \centering
@@ -424,7 +448,8 @@ tube. Dans le cas d’une connexion en Y, l’équation devient :
 \frac{a_{next_1}}{2}\,(P\,-\,P_{next_2})\,+\,\frac{a_{next_2}}{2}\,(P\,-\,P_{next_1})\,=\,\biggl(\frac{a_{next_1}}{2}\,\frac{a_{next_2}}{2}+\frac{a_{next_1}}{2}\,\frac{a}{2}+\frac{a_{next_2}}{2}\,\frac{a}{2}\biggr)\,f_{out}.
 \end{equation}
 On garantit implicitement grâce à cette équation et l’Équation~\ref{eq:flux}, que le fluide n’est jamais perdu
-entre la sortie d’un vaisseau et l’entrée du vaisseau suivant ($f_{out}^{parent}\, = \, f_{in}^{fils}$ ).\\
+entre la sortie d’un vaisseau et l’entrée du vaisseau suivant ($f_{out}^{parent}\, = \, f_{in}^{fils}$ ).
+
 Comme on l’a dit on doit par ailleurs décrire l’élasticité de chaque compartiment par une
 équation associée. Les compartiments ont en effet différents degrés d’élasticité. Les artères qui
 entourent le cerveau sont moins rigides que les vaisseaux profondément intégrés dans le tissu
@@ -441,9 +466,11 @@ représente l’aire de la section à une pression transmurale nulle. Ainsi, plu
 sera grande, plus le vaisseaux se contractera ou se dilatera. De même, lorsque la pression sanguine
 dépasse la pression intracrânienne du tissu cérébral environnant, le vaisseau se dilate, et inversement
 lorsque la pression est plus faible. Cette approche permet de coupler les équations de flux sanguines
-et cérébro-spinales avec la pression du parenchyme en prenant en compte l’élasticité du vaisseau.\\
+et cérébro-spinales avec la pression du parenchyme en prenant en compte l’élasticité du vaisseau.
+
 Un système de 4 équations génériques pour le système sanguin et cérébro-spinal est donc
-défini et pourra être généré automatiquement pour l’ensemble de l’architecture.\\
+défini et pourra être généré automatiquement pour l’ensemble de l’architecture.
+
 Afin de garantir la constance du volume de la doctrine de Monro-Kellie une équation doit être
 rajoutée pour laquelle nous suivons Linninger (\cite{Linninger2009}):
 \begin{equation}
@@ -458,7 +485,8 @@ où on a :
 V_{CervHem}\,=\,V_{exfCerv}^{L,R}\,+\,V_{solidCerv}^{L,R}\,=\,A_{exfCerv}^{L,R} l_{exfCerv}^{L,R}\,+\,A_{solidCerv}^{L,R} l_{solidCerv}^{L,R},
 \end{equation}
 et {\em exfCerv} correspond au fluide extracellulaire dans les deux hémisphères, {\em solidCerv} à la matrice
-cellulaire solide, $V$ la somme des volumes pour chaque compartiment.\\
+cellulaire solide, $V$ la somme des volumes pour chaque compartiment.
+
 \afterpage{%
     \clearpage% Flush earlier floats (otherwise order might not be correct)
     %\thispagestyle{empty}
@@ -506,7 +534,7 @@ et de proposer une interface graphique qui permet une meilleure fluidité et sim
 final. L’interface doit charger le graphe, proposer à l’utilisateur la possibilité d’ajuster les paramètres
 tube par tube, rajouter ou supprimer des tubes. Une fois ces choix fait, on pourra générer le système
 d’équations différentielles ordinaires à résoudre, au format MATLAB, et lancer la simulation, avant de
-rapatrier les résultats (Figure~\ref{fig:4_9_implem}) et de les visualiser toujours dans la même interface.\\
+rapatrier les résultats (Figure~\ref{fig:4_9_implem}) et de les visualiser toujours dans la même interface.
 
 Lors de la segmentation, le code MATLAB permettant de générer le graphe a produit un fichier texte
 de format fixe contenant la définition de toutes les structures et les liens existants entre elles. Le fichier
@@ -545,7 +573,8 @@ et le modèle pour enfin récupérer les résultats.}
 Ce fichier est celui qui sera chargé dans l’interface Java de façon à générer une représentation
 graphique sous forme de blocs modulaires et modifiables. Cet outil peut être aussi utilisé pour définir
 des architectures complètement arbitraires (Figure~\ref{fig:4_10_interface_java}). La structure de liens et les caractéristiques des
-tubes peuvent à ce stade être modifiées par l’utilisateur.\\
+tubes peuvent à ce stade être modifiées par l’utilisateur.
+
 %%%
 \begin{figure}[!t]
 \centering
@@ -563,13 +592,15 @@ résoudre sous une forme discrétisées par une méthode d’Euler explicite. Le
 terminal MATLAB dans lequel s’exécute le code principal. L’interaction en cours d’exécution avec Java
 s’effectue par l’intermédiaire d’un Socket pour évaluer l’avancement de la simulation et récupérer le
 résultat. A la fin de l’exécution, les courbes des paramètres de chaque tube sont visualisables dans
-l’interface Java en sélectionnant le compartiment correspondant.\\
+l’interface Java en sélectionnant le compartiment correspondant.
+
 %%%
 %%%
 \subsection{Résultats}
 Sur un sujet donné (âge = 29 ans, non-fumeur) nous avons réalisé le protocole complet en
 choisissant la séquence pCASL 3D (\cite{Wu2007}) comme décrit précédemment (voir~\ref{sec:protocole}), le sujet étant sain et
-jeune.\\
+jeune.
+
 L’architecture observée chez ce sujet à partir des imageries anatomiques est illustrée dans la
 Figure~\ref{fig:4_11_structure_sujet}. Le polygone de Willis est composé de l’artère communicante antérieure et postérieure
 gauche. On compte ainsi un total de 376 segments dans le modèle toutes structures confondues. C’est
@@ -591,7 +622,8 @@ et les carotides internes. Ces données sont ajustées par une combinaison de fo
 convertit cette cinétique en pression en plaçant le premier coefficient à une valeur de 100. Cette valeur
 étant ajustée au vue des débits afin de faire correspondre les débits les plus élevés aux pressions les
 plus grandes. On obtient ainsi des pressions moyennes en entrée proches de 100 mmHg. Chaque
-entrée disposant d’une cinétique propre avec des pressions relatives concordantes avec les débits.\\
+entrée disposant d’une cinétique propre avec des pressions relatives concordantes avec les débits.
+
 %%%
 \begin{figure}[!b]
 \centering
@@ -651,16 +683,17 @@ ajustées au vu des données ASL.}
 Le système peut ainsi être simulé. Pour des raisons évidentes de clarté il est difficile de
 représenter les résultats pour l’ensemble des compartiments sur une même figure. Nous décrirons
 donc les valeurs moyennes dans chaque type de compartiments, sauf dans quelques cas précis où nous
-exposerons la cinétique dans un tube particulier.\\
+exposerons la cinétique dans un tube particulier.
+
 La pression intracrânienne identifiée par le modèle est de 9 mmHg, ce qui se situe dans la
 gamme des valeurs normales chez le sujet sain (\cite{Steiner2006},~\cite{Pattinson2005}). Nous n’avons cependant pas pu la comparer
 à la valeur réelle. La cascade de chute de pression des entrées aux sorties est un bon élément pour
 évaluer la consistance du modèle. La pression moyenne dans les artères est de 82 mmHg, puis 49
 mmHg dans les artérioles, 28 mmHg dans les capillaires et 22 et 18 mmHg respectivement dans les
-veinules et veines. La comparaison de nos résultats avec les travaux précédents (Figure~\ref{fig:4_15_evolution_pression}), met en
-évidence une bonne similitude entres les données de Zagzoule et Marc-Vergnes (\cite{Zagzoule1986}) à et de Linninger
+veinules et veines. La comparaison de nos résultats avec les travaux précédents (Figure~\ref{fig:4_15_evolution_pression}), met en évidence une bonne similitude entres les données de Zagzoule et Marc-Vergnes (\cite{Zagzoule1986}) à et de Linninger
 et al. (\cite{Linninger2009}) . La différence majeure apparait au niveau des artérioles où notre modèle présente une chute
-plus importante de la pression.\\
+plus importante de la pression.
+
 %%%
 \begin{figure}[!t]
 \centering
@@ -674,7 +707,8 @@ met en évidence la chute de pression moyenne, avec atténuation de l’amplitud
 que l’on avance dans le réseau vasculaire ou ventriculaire. Les pressions moyennes dans les ventricules
 évoluent elles aussi dans les gammes attendues de 7 à 10.5 mmHg (\cite{Agamanolis2011}) (Figure~\ref{fig:4_16_decours_pression} droite) avec des
 cinétiques cohérentes. Le modèle prédit une pression pulsatile de 3.5 mmHg en accord avec les
-données connues (3 – 5 mmHg) (\cite{Czosnyka2005}).\\
+données connues (3 – 5 mmHg) (\cite{Czosnyka2005}).
+
 %%%
 \begin{figure}[!b]
 \centering
@@ -691,7 +725,8 @@ droite pour un total de 11.69 mL/sec. Malgré de faibles écarts entre les valeu
 réelles, les données semblent cohérentes. Il est néanmoins à observer que la carotide interne gauche
 présente dans le modèle un débit 20\% plus important que dans la réalité. Ce décalage devrait être
 corrigé dans une version en cours de développement du modèle où les flux serviront de conditions
-limites.\\
+limites.
+
 %%%
 \begin{figure}[!t]
 \centering
@@ -711,8 +746,7 @@ limites.\\
 La Figure~\ref{fig:4_17_decours_debit} met en évidence les cinétiques observées dans les différents compartiments ; on
 peut observer le décalage des cinétiques au cours de l’évolution à travers les compartiments. Le délai
 artério-veineux (« phase-lag ») identifié dans le modèle est de 18 \% du cycle cardiaque, ce qui est plus
-élevé que les valeurs trouvées dans la littérature (13 \%) (\cite{Linninger2009},~\cite{Kim2007}). Cette différence peut s’expliquer par
-le fait que nous ne disposons pas, malgré tous nos efforts, du même niveau de détails pour les artères
+élevé que les valeurs trouvées dans la littérature (13 \%) (\cite{Linninger2009},~\cite{Kim2007}). Cette différence peut s’expliquer par le fait que nous ne disposons pas, malgré tous nos efforts, du même niveau de détails pour les artères
 et pour les veines. Les débits moyens que nous récupérons dans les compartiments artériels et veineux
 reflètent en partie cette différence puisque les moyennes ne sont pas effectuées sur des niveaux
 exactement comparables de l’arborescence. Les moyennes effectuées sur les veines incorporent
@@ -720,7 +754,7 @@ proportionnellement moins de petits vaisseaux que la moyenne sur les artères. L
 moyen dans les capillaires (Figure~\ref{fig:4_13_perf_ASL} deuxième colonne) met en évidence des différences relatives
 entre les territoires en grande partie similaires aux résultats obtenus en ASL (Figure~\ref{fig:4_13_perf_ASL} troisième
 colonne). Néanmoins de fortes différences existent pour certaines régions pouvant être liées à une mauvaise détection de certains vaisseaux ou à de
-mauvaises associations artères – veines dans la définition structurelle du modèle. L'outil BraVa (\cite{Wright2013}, voir~\ref{sec:tubesestimates}) vu précédement, met en évidence pour notre modèle, un taux d'identification des artères de l'ordre de 55\% (voir Tableau~\ref{tab:tab_profil_rayons}). Il est probable alors que pour ces territoires, la segmentation n'ait pas permis d'obtenir le bon nombre de branches. Afin de tester cette hypothèse nous avons sélectionné un territoire pour lequel l'écart entre l'ASL et le modèle est le plus important pour simuler la présence d'un autre ensemble artère - artériole  - capillaire - veinule - veine parallèle à celui d'origine et de mêmes caractéristiques. Nous avons avons alors deux artères pour le même territoire. La Figure~\ref{fig:4_26_effet_ajout_artere_sur_cbf} illustre les résultats obtenus. L'ajout d'une branche parallèle permet d'assurer un apport supplémentaire dans le territoire concerné et ainsi de se rapprocher des données ASL. L'observation des résultats de segmentation dans cette zone (Figure~\ref{fig:4_27_segmentation}) mettent en évidence deux branches supplémentaires n'ayant pas été segmentées (flèches blanche). Cela confirme donc que l'une des sources du décalage entre le modèle et la réalité est la qualité de la segmentation.\\
+mauvaises associations artères – veines dans la définition structurelle du modèle. L'outil BraVa (\cite{Wright2013}, voir~\ref{sec:tubesestimates}) vu précédement, met en évidence pour notre modèle, un taux d'identification des artères de l'ordre de 55\% (voir Tableau~\ref{tab:tab_profil_rayons}). Il est probable alors que pour ces territoires, la segmentation n'ait pas permis d'obtenir le bon nombre de branches. Afin de tester cette hypothèse nous avons sélectionné un territoire pour lequel l'écart entre l'ASL et le modèle est le plus important pour simuler la présence d'un autre ensemble artère - artériole  - capillaire - veinule - veine parallèle à celui d'origine et de mêmes caractéristiques. Nous avons avons alors deux artères pour le même territoire. La Figure~\ref{fig:4_26_effet_ajout_artere_sur_cbf} illustre les résultats obtenus. L'ajout d'une branche parallèle permet d'assurer un apport supplémentaire dans le territoire concerné et ainsi de se rapprocher des données ASL. L'observation des résultats de segmentation dans cette zone (Figure~\ref{fig:4_27_segmentation}) mettent en évidence deux branches supplémentaires n'ayant pas été segmentées (flèches blanche). Cela confirme donc que l'une des sources du décalage entre le modèle et la réalité est la qualité de la segmentation.
 
 %%%
 \begin{figure}[!t]
@@ -731,7 +765,7 @@ renseigné le délai artério-veineux $\phi$.}
 \label{fig:4_17_decours_debit}	
 \end{figure}
 
-Les résultats de la segmentation mettent en évidence que seuls 50 \% de la vascularisation artérielle est identifiée. Les branches telles qu’elles sont identifiées sont donc en réalité « amputées » d’une partie de leur longueur. En vue d’évaluer l’impact d’une variation de longueur des branches terminales, nous avons réalisé des simulations en l’augmentant artificiellement de 40 \% pour les artères terminales. Par ailleurs nous simulons de la même façon une augmentation des premières veines. \\
+Les résultats de la segmentation mettent en évidence que seuls 50 \% de la vascularisation artérielle est identifiée. Les branches telles qu’elles sont identifiées sont donc en réalité « amputées » d’une partie de leur longueur. En vue d’évaluer l’impact d’une variation de longueur des branches terminales, nous avons réalisé des simulations en l’augmentant artificiellement de 40 \% pour les artères terminales. Par ailleurs nous simulons de la même façon une augmentation des premières veines. 
 
 %%%
 \begin{figure}[!t]
@@ -741,7 +775,7 @@ Les résultats de la segmentation mettent en évidence que seuls 50 \% de la vas
 \label{fig:augmentation_veine}	
 \end{figure}
 
-Le rallongement des veines terminales semble avoir un effet minime sur les résultats du modèle (Figure~\ref{fig:augmentation_veine}). Au niveau des pressions dans les vaisseaux, on remarque seulement de légères augmentations de 0.6, 1.8, et 2.5 \% pour respectivement les artérioles, capillaires, et veinules.  Par ailleurs, les compartiments ventriculaires présentent une légère hausse de la pression (moins de 1 \%). Enfin on note une légère diminution du débit dans les différents compartiments (1 \%).\\
+Le rallongement des veines terminales semble avoir un effet minime sur les résultats du modèle (Figure~\ref{fig:augmentation_veine}). Au niveau des pressions dans les vaisseaux, on remarque seulement de légères augmentations de 0.6, 1.8, et 2.5 \% pour respectivement les artérioles, capillaires, et veinules.  Par ailleurs, les compartiments ventriculaires présentent une légère hausse de la pression (moins de 1 \%). Enfin on note une légère diminution du débit dans les différents compartiments (1 \%).
 
 %%%
 \begin{figure}[!t]
@@ -751,15 +785,17 @@ Le rallongement des veines terminales semble avoir un effet minime sur les résu
 \label{fig:augmentation_arteres}	
 \end{figure}
 L’augmentation de la longueur des artères présente en revanche des effets plus importants (Figure~\ref{fig:augmentation_arteres}). A partir des artérioles la pression chute de 4 à 5 \%. On observe la même diminution en termes de débits dans les différents compartiments. Enfin la pression dans les ventricules diminue de l’ordre de 1 \%. Ces résultats s’expliquent du fait que l’augmentation de la longueur engendre une augmentation de la résistance et ainsi une diminution des débits entrants dans les artérioles. Cette chute de débit est naturellement associée à une chute de pression dans les différents compartiments. Le rallongement des veines entraine une augmentation de la pression dans les compartiments en amont du fait là aussi de l’augmentation de la résistance mais cette fois ci non pas avant la microcirculation, mais après.\\
-Il est à noter que la longueur moyenne des branches terminales des artères est significativement plus grande que celle identifiée pour les veines (d’un facteur 2). Néanmoins l’augmentation du facteur multiplicatif pour les veines (à 80 \%) n’induit qu’une augmentation de 4 et 5 \% dans les compartiments veinulaires et capillaires. \\
-En l’état, l’importance de la longueur des branches terminales du compartiment artériel sur l’ensemble du système incite à porter une attention particulière au développement de la segmentation du versant artériel. Il est malgré tout bon de rappeler que la détection d’une nouvelle branche, comme nous l’avons vu précédemment, va avoir un impact encore plus important sur le système et sur sa cohérence avec la réalité.  \\
+Il est à noter que la longueur moyenne des branches terminales des artères est significativement plus grande que celle identifiée pour les veines (d’un facteur 2). Néanmoins l’augmentation du facteur multiplicatif pour les veines (à 80 \%) n’induit qu’une augmentation de 4 et 5 \% dans les compartiments veinulaires et capillaires. 
+
+En l’état, l’importance de la longueur des branches terminales du compartiment artériel sur l’ensemble du système incite à porter une attention particulière au développement de la segmentation du versant artériel. Il est malgré tout bon de rappeler que la détection d’une nouvelle branche, comme nous l’avons vu précédemment, va avoir un impact encore plus important sur le système et sur sa cohérence avec la réalité. 
 
 Les débits dans les compartiments ventriculaires sont illustrés dans la Figure~\ref{fig:4_19_debit_ventriculaire}. Les mesures
 réalisées en contraste de phase au niveau de l’aqueduc estiment le débit à 0.011 mL/sec avec une
 amplitude de 0.32 mL/sec. Notre modèle prévoit dans cette zone un débit moyen de 0.009 mL/sec
 avec une amplitude de 0.33 mL/sec. Le modèle est donc en bon accord avec les données disponibles.
 Enfin l’évolution de l’aire est elle aussi gérée par le modèle et est cohérente avec l’évolution des
-pressions (Figure~\ref{fig:4_20_aire_artere}), quoi que plus difficile à valider expérimentalement compte tenu de la résolution.\\
+pressions (Figure~\ref{fig:4_20_aire_artere}), quoi que plus difficile à valider expérimentalement compte tenu de la résolution.
+
 %%%
 \begin{figure}[!b]
 \centering
@@ -780,7 +816,8 @@ dans les artères en aval et d’observer ainsi la compensation offerte par les 
 l’absence de cette occlusion, notre modèle prédit logiquement des débits plus importants au niveau
 des entrées puis une chute jusqu’aux capillaires. Les veines récupèrent ensuite le sang et l’acheminent
 vers le sinus veineux ce qui se traduit par une augmentation du débit. Les artères communicantes
-(postérieure gauche et antérieure) présentent des débits très faible (violet foncé) (Figure\ref{fig:4_21_debit_moyen}).\\
+(postérieure gauche et antérieure) présentent des débits très faible (violet foncé) (Figure\ref{fig:4_21_debit_moyen}).
+
 %%%
 \begin{figure}[!b]
 \centering
@@ -808,7 +845,8 @@ carotide interne n’est pas bouchée, c’est le premier segment de l’ACA qui
 à l’ACoA. Si nous simulons des conditions similaires à celles de Cassot et al. nous mettons en évidence
 une augmentation de 65 \% avec 43 \% dédiée à l’ACoA, les résultats semblent donc concordants malgré
 une augmentation plus faible du débit pouvant être expliquée par l’absence (chez notre sujet) d’artère
-communicante postérieure droite.\\
+communicante postérieure droite.
+
 %%%
 \begin{figure}[!t]
 \centering
@@ -830,7 +868,8 @@ allant de 0.37 à 1.17 mm. Les valeurs inférieures ne permettent pas une compen
 valeurs plus élevées permettent d’assurer près de 90\% du débit de l’artère occluse. La limite supérieure
 de cette zone est plus faible que celle rapportée précédemment (0.4 à 1.6 mm,~\cite{Cassot1995}). Néanmoins, il est
 important de rappeler que notre modèle est spécifiquement adapté à un sujet donné ce qui peut
-expliquer les écarts de ce type.\\
+expliquer les écarts de ce type.
+
 %%%
 \begin{figure}[!t]
 \centering
@@ -851,7 +890,8 @@ du système. Du côté ipsilatéral, la diminution est plus marquée du fait de 
 sanguin dans certains territoires et donc des flux capillaires/parenchyme puis parenchyme/ventricules.
 De la même façon l’aire augmente de façon plus importante du côté ipsilatéral sans doute par réaction
 mécanique. Notons que malgré des évolutions faibles (moins de 2 \%), le modèle est suffisamment
-sensible pour les mettre en évidence.\\
+sensible pour les mettre en évidence.
+
 %%%
 \begin{figure}[!t]
 \centering
@@ -869,7 +909,8 @@ Par ailleurs, le modèle offre l’opportunité de localiser les effets au nivea
 territoires définis (Figure~\ref{fig:4_13_perf_ASL} et Figure~\ref{fig:4_25_impact_occlusion}). En plus d’une chute globale relativement faible du débit
 dans l’ensemble des territoires, on observe à partir d’un diamètre de l’ACoA divisé par deux une chute
 marquée du débit dans les territoires de l’ACA, avec la présence d’inhomogénéités dans cette zone
-traduisant des effets différents selon la région.\\
+traduisant des effets différents selon la région.
+
 %%%
 \begin{figure}[!t]
 \centering
