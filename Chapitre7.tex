@@ -158,9 +158,9 @@ phase cohérente. Les nouvelles antennes en réseau phasés permettent d’obten
 très bonne en un temps réduit. Cependant, l’utilisation d’un tel matériel génère autant d’images qu’il
 y a de canaux (20 à 32 en général). Ces images doivent donc être combinées afin d’aboutir à l’image
 finale. Il existe deux approches « standard » permettant de faire cela, la méthode SoS pour « Sum Of
-Square », et mode « adaptatif » (\cite{Walsh2000}). Or le problème de ces méthodes est qu’elles sont adaptées à
+Square », et le mode « adaptatif » (\cite{Walsh2000}). Or le problème de ces méthodes est qu’elles sont adaptées à
 l’image de magnitude et pas à l’image de phase. Cela engendre l’apparition d’artefacts (Figure~\ref{fig:6_3_artefact_phase}). En
-effet, la phase est sujette aux repliements de phase de $2\pi$dont nous avons parlés, mais qui sont ici
+effet, la phase est sujette aux repliements de phase de $2\pi$ dont nous avons parlés, mais qui sont ici
 incohérents (discontinuité des sauts). Afin de palier à ce problème, différentes approches ont été
 développées. Certaines utilisent les cartes de sensibilité des différents canaux (\cite{Robinson2011}). L’une d’entre elles
 utilise une approche de sensibilité unifiée qui incorpore les profils de sensibilités issue d’une
@@ -187,7 +187,7 @@ où $C$ est la sensibilité par élément d’antenne, $\rho$ le signal « vrai 
 d’intensité complexe par élément d’antenne.
 
 Disposant d’autant d’équations par voxel qu’il y a de canaux d’antenne, le signal « vrai » peut être
-récupéré via une simple inversion matricielle (méthode de Ros et al. -(\cite{Ros2009}):
+récupéré via une simple inversion matricielle (méthode de Ros et al. - \cite{Ros2009}):
 \begin{equation}
 \rho\,=\,\bigl(C^H\,\cdot\, C\bigr)\,\cdot\,C^H\,\cdot\,I.
 \end{equation}
@@ -209,13 +209,13 @@ Avant de convertir la phase en carte de perturbation du champ, il est comme on l
 indispensable de la déplier afin de corriger les sauts de $2\pi$. La méthode consiste à prendre un point
 de référence et d’utiliser la propriété de continuité spatiotemporelle de la phase, de façon à "recoller"
 les valeurs négatives à la valeur positive la plus proche. On a ainsi une phase qui varie de façon continue
-plutôt que par paliers. Les approches initiales ne consistait pas en un « vrai » dépliement, mais comme
+plutôt que par paliers. Les approches initiales ne consistaient pas en un « vrai » dépliement, mais comme
 pour le SWI en un simple filtre passe haut (\cite{Reichenbach2001}). Ceci avait pour effet de retirer les repliements, mais
 aussi des fréquences locales importantes pour certains grands faisceaux de fibres de la matière
 blanche. De « vrais » algorithmes de dépliement de la phase sont maintenant disponibles, fonctionnant
 soit selon un principe de croissance de région d’intérêt avec identification automatique du point initial
 (\cite{Witoszynskyj2009}), soit selon une approche de fusion de régions (FSL PRELUDE) (\cite{Jenkinson2003}), ou encore de sélection du
-meilleur chemin (\cite{Abdul-Rahman2007}) Dans ces approches spatiales, le temps de calcul est un élément clef du fait de
+meilleur chemin (\cite{Abdul-Rahman2007}). Dans ces approches spatiales, le temps de calcul est un élément clef du fait de
 la perspective de l’intégration de ces algorithmes dans les outils de reconstruction en ligne. Bien que
 certains algorithmes visent à les réduire, ces temps restent non négligeables.
 Il existe néanmoins une solution mathématique proposée par Schofield et Zhu en 2003 (\cite{Schofield2003}), qui
@@ -343,7 +343,7 @@ fonction :
 argmin_{B_{int}}\,\parallel M{\cal F}^{-1}{\cal C}{\cal F}(B_{in}-B_{tot})\parallel_2^2\,+\,\lambda\parallel B_{in}\parallel_2^2,
 \end{equation}
 Avec $M$ le masque du cerveau érodé, ${\cal F}$ la transformée de fourrier, ${\cal C} = {\cal F}(\delta-\rho)$, $\lambda$ le paramètre de
-régularisation. Dans cette formule, $argmin_{B_{in}}$ dénote les valeurs de $B_{in}$ qui minimisent la fonction ; $\parallel\,\,\parallel_2^2$la somme des carrés ; à la différence de la minimisation effectuée dans le cadre de la méthode « effective dipole fitting », la minimisation du premier terme vise à garantir l’aspect harmonique du
+régularisation. Dans cette formule, $argmin_{B_{in}}$ dénote les valeurs de $B_{in}$ qui minimisent la fonction ; $\parallel\,\,\parallel_2^2$ la somme des carrés ; à la différence de la minimisation effectuée dans le cadre de la méthode « effective dipole fitting », la minimisation du premier terme vise à garantir l’aspect harmonique du
 champ $B_{in}-B_{tot}$ , ce qui est la base de la méthode SHARP; le second correspond à la régularisation
 de Tikhonov et contrôle l’amplitude du champ $B_{in}$ ; $\lambda$ est un paramètre de régularisation dont la valeur
 est fixée par la qualité de la reconstruction.
@@ -407,7 +407,7 @@ minimum de gradient (\cite{Bilgic2012}):
 \label{eq:min_gradient}
 \chi_{in}\,=\,argmin_{\chi}\,\parallel B_{in}\,-\,{\cal F}^{-1}{\cal D}^{-1}{\cal F}\chi\parallel_2^2\,+\,\lambda\parallel\nabla\chi\parallel_1,
 \end{equation}
-Où $parallel\nabla\chi\parallel_1$ est la norme ${\cal L}_1$ des gradients de l'image dans toutes les directions de l'espace. $\lambda$ est un
+Où $\parallel\nabla\chi\parallel_1$ est la norme ${\cal L}_1$ des gradients de l'image dans toutes les directions de l'espace. $\lambda$ est un
 paramètre de régularisation qui permet un compromis entre les données de gradients et la continuité
 spatiale de l'information. Une version alternative utilise la norme ${\cal L}_2$. Les paramètres de régularisation
 sont alors déterminés sur la base de la meilleure reconstruction (\cite{Bilgic2012}). Des approches similaires telle
@@ -464,7 +464,7 @@ de limiter la présence de certains artéfacts tout en réduisant les erreurs d�
 augmente le temps d’acquisition. Dans le cadre de notre protocole, il est avantageux de limiter le
 temps d’acquisition du fait de son intégration à un protocole clinique plus global contenant d’autres
 types d’imageries. Nous avons choisi d’utiliser une séquence avec 2 temps d’échos, autorisant
-l’approche décrite par Schweser et al. (\cite{Schweser2011} détaillé plus loin) permettant de détecter et retirer du
+l’approche décrite par Schweser et al. (\cite{Schweser2011} détaillée plus loin) permettant de détecter et retirer du
 calcul les voxels aberrants par estimation de la phase initiale. Cela permet de limiter les artéfacts tout
 en limitant le temps d’acquisition.
 
@@ -514,7 +514,7 @@ du bon déroulement de la séquence, puis stocke les fichiers dans un espace « 
 contenir une vingtaine d’acquisitions. Une fois les données copiées, la reconstruction commence.
 Celle-ci va être effectuée à partir des plans de Fourier bruts, les données subissant une série de
 traitements aboutissant à l’image finale au format dicom codée sur 12 bits (format dicom standard, [0
-4096]). Ces images sont ensuite transférées vers la console puis archivé sur le PACS (Picture Archiving
+4096]). Ces images sont ensuite transférées vers la console puis archivées sur le PACS (Picture Archiving
 and Communication System), tandis que les données brutes resteront, pour un temps limité sur le
 reconstructeur. Elles peuvent néanmoins être récupérées manuellement par l’utilisateur via une
 interface appelée TWIX.
@@ -556,14 +556,6 @@ traitement réalisant le calcul des cartographies de perfusion et de temps d’a
 Comme on peut le voir, les functors se représentent sous forme de blocs reliés entre eux prenant en
 entrée une ou des images, et en sortie des images traitées.
 
-%%%
-\begin{figure}[!b]
-\centering
-\includegraphics[width=13cm]{6_11_chaine_raw}
-\caption{Principe de la chaîne de traitement permettant à partir des raw data d’aboutir à une image de phase correcte sur
-un protocole SWI.}
-\label{fig:6_11_chaine_raw}	
-\end{figure}
 Il est possible de créer son propre functor et de l’intégrer au milieu de la reconstruction afin
 de réaliser des traitements supplémentaires en ligne, ou à postériori hors ligne via un simulateur. Dans
 notre cas nous souhaitons implémenter une nouvelle approche de combinaison des canaux d’antennes
@@ -583,10 +575,10 @@ que celle issue de l’acquisition SWI. Il est indispensable de connaitre les in
 de positionnement des coupes pour faire la liaison entre le prescan et l’acquisition d’intérêt. Ces
 informations sont stockées dans le ICE SODA (Slice Orientation data) qui contient un ensemble
 d’informations dépendantes du niveau de coupe décrivant la localisation physique des pixels d’une
-image. Les functors que nous avons implémentés génèrent un ensemble de deux fichier par image, le
+image. Les functors que nous avons implémentés génèrent un ensemble de deux fichiers par image, le
 premier d’extension « binHeader » contient les informations décrivant l’image : nombre de lignes,
 nombre de colonnes, épaisseur de coupe, espacement des lignes, espacement des colonnes, position
-sagittale, position coronale, position transverse.
+sagittale, position coronale, position transverse. Le second fichier, d’extension « .dat » contient les valeurs des pixels de l’image (partie réelle et imaginaire). La combinaison de ces deux types de fichiers permettra de reconstituer le volume 3D.
 
 %%%
 \begin{figure}[!t]
@@ -595,13 +587,6 @@ sagittale, position coronale, position transverse.
 \caption{Positionnement des functors permettant la récupération des images issue du prescan (rectangle rouge).}
 \label{fig:6_12_functors}	
 \end{figure}
-Le second fichier, d’extension « .dat » contient les valeurs des pixels de l’image (partie réelle et
-imaginaire). La combinaison de ces deux types de fichiers permettra de reconstituer le volume 3D.
-
-Afin de disposer d’images les plus brutes possible, ces functors ont été positionnés juste après
-que les données aient subis la dernière transformée de Fourier (Figure~\ref{fig:6_12_functors} et Figure~\ref{fig:6_13_recuperation}). Il s’agit donc
-de l’image la plus brute dans l’espace direct avant tout post-traitement.
-
 %%%
 \begin{figure}[!t]
 \centering
@@ -610,6 +595,21 @@ de l’image la plus brute dans l’espace direct avant tout post-traitement.
 \label{fig:6_13_recuperation}	
 \end{figure}
 %%%
+
+Afin de disposer d’images les plus brutes possible, ces functors ont été positionnés juste après
+que les données aient subis la dernière transformée de Fourier (Figure~\ref{fig:6_12_functors} et Figure~\ref{fig:6_13_recuperation}). Il s’agit donc
+de l’image la plus brute dans l’espace direct avant tout post-traitement.
+
+
+%%%
+\begin{figure}[!b]
+\centering
+\includegraphics[width=13cm]{6_11_chaine_raw}
+\caption{Principe de la chaîne de traitement permettant à partir des raw data d’aboutir à une image de phase correcte sur
+un protocole SWI.}
+\label{fig:6_11_chaine_raw}	
+\end{figure}
+
 \subsubsection{Sauvegarde de la phase}
 Les images générées sont par la suite traitées sous MATLAB afin de réaliser la combinaison des
 canaux d’antenne selon la méthode de Ros et al. (\cite{Ros2009}) comme décrit dans la partie~\ref{sec:reconstruction}. La carte de
@@ -654,11 +654,11 @@ plus, la phase initiale ne contient aucune évolution temporelle reliée au déc
 résonnance du proton. Concrètement, un ajustement d’une fonction polynomiale de degrés 4 est
 effectué en 2D (tranche par tranche) puis soustrait à l’image de phase initiale $\phi^0$ . L’image résultante
 est alors filtrée (filtre 3D gaussien FWHM=2.35 mm) pour réduire le bruit. Les voxels disposant d’une
-valeur plus important qu’un seuil établi empiriquement ($\pi/8$ voir \cite{Schweser2011}) sont définis comme incohérents.
+valeur plus importante qu’un seuil établi empiriquement ($\pi/8$ voir \cite{Schweser2011}) sont définis comme incohérents.
 
 La susceptibilité doit nous permettre d’accéder entre autre au compartiment veineux, que ce
 soit à des fins morphologiques ou physiologiques, comme la saturation veineuse en oxygène. On a vu
-que les deux principales approches d’extraction de la carte de perturbation du champ intérieur était
+que les deux principales approches d’extraction de la carte de perturbation du champ intérieur étaient
 les algorithmes RESHARP et « effective dipole fitting ». Conformément à la littérature, nous avons pu
 démontrer qu’elles permettent d’aboutir à un résultat très similaire (voir~\ref{sec:cartephasechamp}). L’algorithme RESHARP
 propose une estimation rapide et précise de la carte de perturbation du champ intérieur, mais implique
@@ -674,8 +674,7 @@ l’effective dipole fitting.
 
 Dans toutes ces approches, nous avons besoin d’un masque du cerveau ne contenant que le
 parenchyme. La segmentation des tissus que l’on peut obtenir via des outils tels que SPM permet, par
-addition des différentes cartographies de matière grise, de matière blanche et de liquide cérébro-
-spinal, d’obtenir une représentation assez bonne du cerveau. Cependant le temps de calcul
+addition des différentes cartographies de matière grise, de matière blanche et de liquide cérébro-spinal, d’obtenir une représentation assez bonne du cerveau. Cependant le temps de calcul
 relativement long. FSL (FMRIB Software Library: www.fmrib.ox.ac.uk/fsl) propose une méthode dédiée
 appelé BET (Brain Extraction Tool) (\cite{Smith2002}). Cette méthode utilise un modèle déformable qui évolue afin
 de correspondre à la surface du cerveau par application d’un ensemble de forces locales effectives
@@ -764,7 +763,7 @@ densité de magnétisation dans le milieu. En remplaçant $H$ dans l’Équation
 \begin{equation}
 \chi_{\nu}\,=\,\frac{M\,\mu_0}{B_0}.
 \end{equation}
-La magnétisation du venofer à 300°K est estimée à 6.8224 Am2/kg (\cite{Gutierrez2005}), on peut donc calculer la
+La magnétisation du venofer à 300°K est estimée à 6.8224 Am$^2$/kg (\cite{Gutierrez2005}), on peut donc calculer la
 susceptibilité volumique du Venofer : 2.857 ppm m$^3$/kg. Cette valeur nous permettra ainsi de comparer
 la concentration en fer réelle présente dans les tubes avec une concentration estimée sur la base de
 la carte de susceptibilité magnétique.
@@ -793,7 +792,7 @@ valeur de la susceptibiliité dans le tube. Il est donc important de choisir les
 régularisation qui limitent au mieu ces artéfacts, et d’extraire les valeurs dans des régions d’intérêt
 situées à distance des interfaces.
 
-L’effet des paramètres de régularisation sur la mesure de susceptibilité en norme ${\cal L}_1$ et ${\cal L}_2$ sont
+Les effets des paramètres de régularisation sur la mesure de susceptibilité en norme ${\cal L}_1$ et ${\cal L}_2$ sont
 ensuite testés. Afin d’éviter les effets de volume partiels et de limiter l’impact des artéfacts les valeurs
 moyennes de susceptibilité dans les tubes sont extraites par tracage de régions d’intérêt au centre des
 tubes.
@@ -1071,7 +1070,7 @@ La création de ces différents fichiers permet de faire apparaitre la boite à 
 Dans l’interface créée (Figure~\ref{fig:6_23_toolbox}), l’utilisateur renseigne les chemins vers deux images de phases et
 une image de magnitude, ainsi que les paramètres clefs de l’acquisition (champ, temps d’échos,
 résolution). Il lui est ensuite proposé de sélectionner la taille du kernel si l’algorithme RESHARP est
-utilisée, et le type de calcul de la susceptibilité : norme ${\cal L}_1$ ou ${\cal L}_2$ avec détection automatique des
+utilisé, et le type de calcul de la susceptibilité : norme ${\cal L}_1$ ou ${\cal L}_2$ avec détection automatique des
 paramètres optimaux (\cite{Bilgic2014}) ou non, et pondération par la magnitude ou non. Les images de phase brutes
 et dépliées, ainsi que le champ intérieur et la carte finale de susceptibilité, sont affichées au cours du
 traitement. Son intégration à SPM permet de l’associer à d’autres types de traitements dans des

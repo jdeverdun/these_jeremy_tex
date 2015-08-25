@@ -18,9 +18,10 @@ ajustement des résistances pour certains compartiments (capillaires etc.) et pe
 écarts entre le modèle et la réalité. Cependant la QSM fournit en plus une information sur la saturation
 veineuse en oxygène dans les veines, reflétant directement la consommation dans le lit capillaire, on
 associe ainsi un territoire capillaire à sa saturation en oxygène. Ce n’est pas une donnée directement
-intégré dans la simulation, elle apporte cependant une information supplémentaire caractérisant les
+intégrée dans la simulation, elle apporte cependant une information supplémentaire caractérisant les
 compartiments. Associée à l’imagerie ASL via un protocole particulier, il devient possible d’estimer la
-consommation moyenne en oxygène (CMRO2) (\cite{Zhang2014}).\\
+consommation moyenne en oxygène (CMRO2) (\cite{Zhang2014}).
+
 Le développement de nouvelles séquences IRM permet d’atteindre des résolutions beaucoup
 plus fines avec de meilleurs contrastes. Le modèle, tel qu’il est généré s’adapte à cet apport
 supplémentaire d’information ce qui le rend plus détaillé. Cependant, les plus petits vaisseaux restent
@@ -37,7 +38,8 @@ temps à un arbre initial, chaque temps introduisant une bifurcation optimale. L
 comme étant dirigé par l’hypothèse d’égalité des flux entrants ou sortants de chaque nœud terminal.
 De plus, aux bifurcations, les rayons sont équilibrés de telle façon à ce que la résistance selon la loi de
 Hagen-Poiseuille soit égale dans les deux sous-arbres. Il en résulte des pressions égales aux sorties des
-nœuds terminaux.\\
+nœuds terminaux.
+
 %%%
 \begin{figure}[!t]
 \centering
@@ -50,7 +52,8 @@ d’images de scanner.}
 L’intérêt de ce genre d’approche est qu’elles peuvent être guidées par des cartographies annexes en
 vue d’optimiser la structure vasculaire. Il est donc tout à fait envisageable à partir de notre protocole
 de se servir des données de débit issue de l’ASL pour guider ce genre d’algorithme et aboutir à une
-représentation plausible d’une partie importante de la vascularisation.\\
+représentation plausible d’une partie importante de la vascularisation.
+
 Les prochains développements du modèle devront donc l’enrichir de données morphologiques
 plus précises grâce aux évolutions des séquences, mais aussi aux CCO. Une meilleure intégration des
 données physiologiques assurera par ailleurs une fidélité importante du modèle à la réalité. Il est enfin

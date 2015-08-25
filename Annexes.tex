@@ -43,7 +43,8 @@ Les acquisitions réalisées au sein de notre protocole tel que défini précéd
 à des images de résolutions et parfois d’orientations différentes. Il nous sera donc indispensable de
 trouver les transformations permettant de superposer une image à une autre, c’est-à-dire de les
 ramener dans un espace commun. Les procédures classiques en traitement d’image IRM qui
-permettent ces transformations sont le réalignement, la coregistration et la normalisation.\\
+permettent ces transformations sont le réalignement, la coregistration et la normalisation.
+
 Dans le cadre de la thèse, l’ensemble des traitements d’image ont été réalisés en utilisant
 MATLAB (MathWorks, Natick, MA) et SPM8 (Statistical Parametric Mapping; the Wellcome Trust
 Center for Neuroimaging, UK). En effet, SPM8 constitue la bibliothèque de programmation sous
@@ -58,12 +59,13 @@ sujet dont le contraste est identique. Un sujet bouge toujours (même très faib
 les acquisitions répétées telles que l’ASL, durant lesquelles des couples d’images contrôles et
 marquées sont récupérés au cours du temps, tout mouvement engendrera des erreurs pouvant
 impacter le résultat lors du calcul de la différence. Il est donc indispensable de s’assurer que le sujet
-n’a pas bougé, ou le cas échéant, de corriger ce mouvement.\\
+n’a pas bougé, ou le cas échéant, de corriger ce mouvement.
+
 %%%
 \begin{figure}[!t]
 \centering
 \includegraphics[width=10cm]{A_2_realignement}
-\caption{Illustration des transformations possibles dans un réalignement.3 translations, 3 rotations.}
+\caption{Illustration des transformations possibles dans un réalignement. 3 translations, 3 rotations.}
 \label{fig:A_2_realignement}	
 \end{figure}
 Pour réaliser un réalignement, on commence par sélectionner une image dite de référence
@@ -75,7 +77,8 @@ rotations (selon X, Y et Z) nous permettant de rendre superposable nos volumes (
 l’alignement (« registration »), qui va déterminer les 6 paramètres qui décrivent la transformation
 rigide entre l’image source et la référence. La seconde étape est constituée d’un ré-échantillonnage
 de l’image visant à aligner le maillage des voxels avec celui de l’image de référence, les rendant
-superposables : c’est l’étape dite de redécoupage ou « reslicing ».\\
+superposables : c’est l’étape dite de redécoupage ou « reslicing ».
+
 L’algorithme est itératif, constitué d’une succession de petits déplacements de l’image. A
 chaque étape, une mesure de l’écart entre l’image à réaligner et la référence est calculée. On utilise
 en général la somme des différences au carré des voxels (\cite{Ashburner1997}). Trouver le meilleur alignement consiste
@@ -83,7 +86,8 @@ en général la somme des différences au carré des voxels (\cite{Ashburner1997
 d’optimisation. La convergence vers la solution est assurée par une méthode de Gauss-newton. Dans
 cette approche, le minimum est estimé en réalisant un ajustement quadratique à chaque itération
 (Figure~\ref{fig:A_3_gaussnewton}). La correction du mouvement est effectuée à chaque étape à une résolution plus fine que
-celle des deux images. \\
+celle des deux images. 
+
 %%%
 \begin{figure}[!t]
 \centering
@@ -98,13 +102,15 @@ pour estimer l’intensité d’un nouveau voxel sur la base des anciens. Diffé
 d’interpolations sont disponibles, toutes des variantes d’une simple interpolation linéaire. On
 distinguera entre autre l’interpolation par les plus proches voisins, qui est la méthode la plus rapide,
 et qui assure une conservation de la valeur des voxels ; et l’interpolation trilinéaire, la plus utilisée en
-IRM et l’une des plus efficace mais qui est plus longue à calculer.\\
+IRM et l’une des plus efficace mais qui est plus longue à calculer.
+
 Notons que dans la problématique spécifique du réalignement ASL, une nouvelle difficulté
 apparait liée aux différences de signal inhérentes à la méthode entre les images contrôles et les images
-marquées. Dans ce cas, le réalignement peut générer des déplacements artéfactuels dis « zig-zag »
+marquées. Dans ce cas, le réalignement peut générer des déplacements artéfactuels dits « zig-zag »
 entre les deux images. Il devient donc important de réaligner indépendamment les images contrôles
 et les images marquées puis de refaire le lien entre les deux groupes à postériori (\cite{Wang2008}). Des
-optimisations du réalignement de SPM ont été réalisées pour l’ASL (\cite{Wang2012}).\\
+optimisations du réalignement de SPM ont été réalisées pour l’ASL (\cite{Wang2012}).
+
 %%%
 %%%
 \subsection{Co-registration}
@@ -117,12 +123,13 @@ l’autre, et de les superposer. Cependant, du fait des différences d’intensi
 minimisation des scores de différences entre les images, tel qu’elle est faite dans un simple
 réalignement, ne permet pas d’aboutir à un résultat satisfaisant. Il faut donc trouver une
 transformation de corps rigide (6 paramètres) qui relie les deux images sans passer par la minimisation
-simple de la différence des intensités.\\
+simple de la différence des intensités.
+
 Comme pour le réalignement, le processus de co-registration est ramené au problème de
 l’optimisation d’une fonction de coût. Une première approche pour calculer cette fonction de coût
 consiste à extraire indépendamment des deux images une même information générique, par exemple
 la segmentation des différents tissus. On minimise ensuite la moyenne des différences au carré de ces
-informations génériques (\cite{Ashburner1997}. Une autre approche consiste à calculer l’information mutuelle. Il s’agit
+informations génériques (\cite{Ashburner1997}). Une autre approche consiste à calculer l’information mutuelle. Il s’agit
 d’un concept issu de la théorie de l’information. Pour deux images données, l’information mutuelle
 permet de quantifier leur ressemblance. Son calcul est basé sur la densité conjointe de probabilité des
 niveaux de gris des deux images. Pour cela on calcule un histogramme conjoint des niveaux de gris. Les axes de l’histogramme représentent l’intensité des voxels sur chaque image ; chaque point (a,b) du
@@ -140,7 +147,8 @@ attribue à chaque point un niveau de gris, en fonction du nombre total de voxel
 sur la première image et une intensité b sur la deuxième (Figure~\ref{fig:A_4_hist_conj}). Lorsque les images sont alignées,
 certains points de l’histogramme ont un niveau de gris élevé et les autres proche de 0, puisque tous
 les voxels coïncident (Figure~\ref{fig:A_5_ex_hist}). En revanche, lorsque les images ne sont pas bien alignées, le nombre
-de coïncidences diminue et le niveau de gris se disperse sur l’histogramme.\\
+de coïncidences diminue et le niveau de gris se disperse sur l’histogramme.
+
 %%%
 \begin{figure}[!t]
 \centering
@@ -157,7 +165,8 @@ avec $i$ et $j$ les coordonnées sur l'histogramme conjoint, $p_{ij}$ la probabi
 l’image soit la combinaison du niveau de gris $i$ sur l’image 1 et $j$ sur l’image 2, $p_i$ la probabilité pour un
 $i$ donné que l’on trouve un point de niveau de gris $i$ sur l’image 1, $p_j$ la probabilité pour un $j$ donné que
 l’on trouve un point de niveau de gris $j$ sur l’image 2. C’est cette information mutuelle que l’on
-cherchera à maximiser.\\
+cherchera à maximiser.
+
 %%%
 %%%
 \subsection{Normalisation}
@@ -172,7 +181,8 @@ certain nombre de marqueurs tel que les commissures antérieure et postérieure 
 l’angle de la boite autour de l’axe $X$, le plan sagittal défini la séparation gauche droite (\cite{Talairach1988}). Dans le cadre de notre étude, en dépit du fait qu’il n’y a pas à priori de comparaisons de groupe, cette étape
 est rendue indispensable du fait de son intégration nécessaire dans le processus de segmentation des
 tissus (voir après). Ce processus repose en effet sur la comparaison avec des cartes de densité de
-probabilité dans un espace normalisé.\\
+probabilité dans un espace normalisé.
+
 Pour effectuer ce traitement, il n’est plus possible d’utiliser les simples approches
 d’alignement de corps rigides puisque l’image à normaliser n’a aucune raison d’être de la même forme
 que l’image de référence (ici appelée template). En plus des transformations de rotations et
@@ -180,7 +190,8 @@ translations, on doit intégrer la mise à l’échelle selon les trois axes sé
 déformations cisaillements. On aboutit à une transformation affine 3D à 12 paramètres. De plus, une
 seconde étape de transformation non linéaire permet de gérer les différences d’échelle plus faible
 dans l’anatomie du cerveau. Le modèle de cette seconde étape utilise des déformations qui consistent
-en une combinaison linéaire de fonctions de bases périodique basse fréquence.\\
+en une combinaison linéaire de fonctions de bases périodique basse fréquence.
+
 %%%
 \begin{figure}[!t]
 \centering
@@ -195,14 +206,15 @@ contrairement à d’autres outils tels que FreeSurfer qui utilisent une approch
 l’espace MNI (Montreal Neurological Institute) (Figure~\ref{fig:A_6_normalisation}). Cet espace a été pour la première fois
 défini à partir de 241 IRM de sujets sains. Sur ces images différents marqueurs ont été identifiés puis
 les images ont été mises à l’échelle et réchantillonnées afin de faire correspondre ces marqueurs à
-ceux de l’atlas de Talairach (\cite{Collins1995}).\\
+ceux de l’atlas de Talairach (\cite{Collins1995}).
+
 SPM propose maintenant une nouvelle approche appelé DARTEL, pour Diffeomorphic
 Anatomical Registration Through Exponentiated Lie Algebra. Cette nouvelle méthode permet entre
 autres la création d’un template adapté à une cohorte donnée, et la normalisation des images sur ce
 template. Les informations de déformations sont stockées dans un seul fichier « flow field » (champ de vecteurs) considéré constant dans le temps (\cite{Ashburner2007}). Cela permet une normalisation annoncée comme
 plus fine, cependant les données se retrouvent dans un espace qui est propre à leur cohorte (du fait
 de la création du template), qui est légèrement différent de l’espace couramment utilisé : l’espace
-MNI. Une étape additionnelle de recalage vers cet espace est donc requise. Cet outils se positionne de
+MNI. Une étape additionnelle de recalage vers cet espace est donc requise. Cet outil se positionne de
 plus en plus comme la référence en terme de normalisation (\cite{Klein2009}).
 %%%
 %%%
@@ -210,7 +222,8 @@ plus en plus comme la référence en terme de normalisation (\cite{Klein2009}).
 Au niveau cérébral, on distingue principalement trois tissus : la matière grise, la matière
 blanche et le liquide cérébro-spinal. La segmentation vise le plus souvent à identifier ces tissus dans
 l’image IRM. En effet, en pondération T$_1$, ces tissus disposent d’un contraste différent. Une fois ces
-tissus identifiés il sera possible de réaliser l’extraction du cerveau pour éliminer le crâne.\\
+tissus identifiés il sera possible de réaliser l’extraction du cerveau pour éliminer le crâne.
+
 Deux grandes approches de segmentation existent (Figure~\ref{fig:A_7_segmentations}). Les approches orientées
 contours, qui comme leur nom l’indique se focalisent sur la recherche des limites des régions sur la
 base de modèles déformables (snakes, level-sets) ou de morphologie mathématique (gradient morphologique, ligne de partage des eaux) (\cite{Scherrer2008}). Et les approches orientées régions, plutôt basées
@@ -225,7 +238,7 @@ approches les plus robustes à l’heure actuelle (\cite{Malone2015}).
 %%%
 \begin{figure}[!t]
 \centering
-\includegraphics[width=10cm]{A_7_segmentations}
+\includegraphics[width=11cm]{A_7_segmentations}
 \caption{Présentation des différents algorithmes de segmentation disponibles. Adapté de \cite{Scherrer2008}}
 \label{fig:A_7_segmentations}	
 \end{figure}
@@ -237,7 +250,8 @@ normalisées par l’histogramme total afin d’obtenir les probabilités d’ap
 une segmentation « brute ». Cette étape est cependant très sensible aux inhomogénéités de signal
 dans l’image, qui résultent de la non uniformité de $B_0$, de la bobine RF, d’artéfacts etc. (\cite{Kwan1999}). SPM
 intègre donc une étape préalable d’estimation et de correction de ces biais permettant de limiter leur
-impact.\\
+impact.
+
 Une fois cette première segmentation obtenue, elle est comparée aux cartes de probabilités
 apriori disponibles (TPM) en utilisant une approche bayésienne. L’image en niveau de gris et la
 segmentation (« étiquettes ») seront considérée comme les réalisations de deux champs aléatoires $Y
@@ -246,12 +260,14 @@ segmentation (« étiquettes ») seront considérée comme les réalisations de 
 p(Z\mid Y,\phi)\,=\,\frac{p(Y\mid Z,\phi_Y) p(Z\mid \phi_Z)}{p(y)},
 \end{equation}
 avec $p(Y\mid Z,\phi_Y)$ estimé par les modèles gaussiens avec prise en compte ou non du voisinage ; $p(Z\mid \phi_Z)$
-l’information apriori sur les étiquettes. L’idée est ensuite de maximiser $p(Z\mid Y,\phi)$.\\
+l’information apriori sur les étiquettes. L’idée est ensuite de maximiser $p(Z\mid Y,\phi)$.
+
 Les TPM étant des cartes de probabilités d’appartenance de chaque voxel à un tissu, elles
 doivent être adaptées aux populations de sujets. En pédiatrie par exemple, la répartition des différents
 tissus est très différente de l’adulte. Des TPM spécifiques créées sur la base de sujets jeunes existent
 alors pour réaliser la segmentation. SPM intègre les TPM pour 6 tissus : la matière grise, la matière
-blanche, le liquide cérébro-spinal et même l’os, la graisse, et l’air.\\
+blanche, le liquide cérébro-spinal et même l’os, la graisse, et l’air.
+
 Comme précisé plus haut, cette deuxième étape requiert une normalisation. Les cartographies
 sont situées dans l’espace MNI. Une normalisation DARTEL est donc réalisée pour réaligner les TPM et
 les segmentations brutes issues de la première étape. En résumé, le biais de l’image est corrigé, une
