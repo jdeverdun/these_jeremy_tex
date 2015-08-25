@@ -24,6 +24,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \documentclass[a4paper, 12pt, twoside]{report}
+\usepackage{pdfpages}
+
+
 \input{Preambule}		% Liste des packages et de leurs options
 \input{CommandesPerso}	% Commandes et environnements perso
 
@@ -33,7 +36,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\includeonly{Abstract,Remerciements,abreviations,Chapitre1,Chapitre2,Chapitre3,Chapitre4,Chapitre5,Chapitre6,Chapitre7,Chapitre8,Annexes}
  
-
 
 % Infos de la page de garde
 \author{Jeremy \scshape{Deverdun}}
@@ -63,8 +65,10 @@
 
 
 \begin{document}
+\includepdf[pages={1}]{pagedegarde.pdf}
+
 % Préambule
-	\pagedegarde
+	%\pagedegarde
 	\dominitoc						% Génération des mini-toc
 	\pagenumbering{roman}
 		% Table des matières
