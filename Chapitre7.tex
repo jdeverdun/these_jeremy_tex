@@ -271,7 +271,7 @@ variations de phases interne ne peut pas être rigoureusement précisé. Une mé
 élimine ensuite cette contribution pour récupérer la phase intérieure (liée aux tissus). Cela est réalisé
 en résolvant un problème des moindres carrés :
 \begin{equation}
-\chi_{out}\,=\,argmin_{\chi}\,\parallel M\bigl(B-{\cal F}^{-1}{\cal D}{\cal F}\bigr)\tilde{M}\chi\parallel_2^2,
+\chi_{out}\,=\,argmin_{\chi}\,\parallel M\bigl(B-{\cal F}^{-1}{\cal D}{\cal F}\bigr\tilde{M}\chi)\parallel_2^2,
 \end{equation}
 formule dans laquelle on minimise l’écart entre le champ et les effets des susceptibilités extérieures recherchées. $M$ est ici le masque du cerveau et $\tilde{M}$ son complément.\\
 Une fois $\chi_{out}$ déterminé, le champ interne $B_{in}$ issu des tissus est obtenu via la formule :
@@ -446,7 +446,7 @@ E_x(i,j)\,=\,1\,-\,e^{\frac{2\pi\sqrt{-1}k_x(i,j)}{N_x}}
 \end{eqnarray}
 Il devient possible de représenter la solution analytique sous la forme :
 \begin{equation}
-\chi\,=\,{\cal F}^{-1}{\cal D}({\cal D}^2\,+\,\lambda(E_x^2+E_y^2+E_z^2)]^{-1}{\cal F}B_{in}.
+\chi\,=\,{\cal F}^{-1}{\cal D}[{\cal D}^2\,+\,\lambda(E_x^2+E_y^2+E_z^2)]^{-1}{\cal F}B_{in}.
 \end{equation}
 Le calcul de $\chi$ ne coûte plus alors que deux transformées de Fourier et la multiplication de matrices
 diagonales. Cela réduit le temps de calcul d’un facteur 1000 en rapport de l’approche itérative avec
