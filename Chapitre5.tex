@@ -76,8 +76,7 @@ Nous allons d'abord passer en revue les principaux modèles à compartiments de 
 avant d'évoquer les travaux qui utilisent les données d'imagerie pour informer une modélisation plus
 détaillée et spécifique à un patient. Comme dit précédemment, on se contentera ici d'exposer la partie
 « physique » hydrodynamique de ces modèles, sans rendre compte des mécanismes de rétrocontrôle
-qu'ils proposent pour comprendre l'autorégulation du système. Enfin, nous présenterons en détail notre propre modèle dynamique, qui intègre les deux approches « compartiment » et « modélisation
-spécifique », et exposerons ses résultats provisoires, avant de parler des perspectives de
+qu'ils proposent pour comprendre l'autorégulation du système. Enfin, nous présenterons en détail notre propre modèle dynamique, qui intègre les deux approches « compartiment » et « modélisation spécifique », et exposerons ses résultats provisoires, avant de parler des perspectives de
 développement à court terme de ce modèle.
 %%%
 %%%
@@ -103,7 +102,7 @@ en Figure~\ref{fig:4_1_ursino}.
 \begin{figure}[!t]
 \centering
 \includegraphics[width=12cm]{4_1_ursino}
-\caption{Schéma du modèle d'Ursino (\cite{Ursino1997}).}
+\caption{Schéma du modèle d'Ursino (\cite{Ursino1997}). La figure A représente un point de vue électrique, la B un point de vue mécanique. $q$ représente le débit sanguin cérébral, $P$ les pression, $R$ les résistances, $C$ les capacités et $I$ le taux d'injection fictif de LCS.}
 \label{fig:4_1_ursino}	
 \end{figure}
 Ce modèle permet de bien voir l'analogie électrique sur laquelle se base la partie linéaire de la
@@ -132,7 +131,7 @@ mais basé sur les mêmes hypothèses linéaires, et des équations semblables (
 \begin{figure}[!t]
 \centering
 \includegraphics[width=12cm]{4_2_sorek}
-\caption{Schéma du modèle de Sorek (\cite{Sorek1988}).}
+\caption{Schéma du modèle de Sorek (\cite{Sorek1988}). $R$ représente les résitances, $C$ les compliances, $[ ]$ les pressions (en mmHg), $( )$ les flux (en ml/min) et $< >$ le volume (en ml).}
 \label{fig:4_2_sorek}	
 \end{figure}
 Les paramètres de
@@ -177,7 +176,7 @@ supplémentaire relie la friction et les vitesses, selon une loi de Poiseuille :
 \label{eq:poiseuille}
 F\,=\,N\biggl(\frac{8\,\pi\,\mu}{\rho}\frac{U}{S}\biggr).
 \end{equation}
-où $\mu$ est le coefficient de viscosité dynamique, $S$ l'aire totale ($S = NA$, $N$ étant le nombre de vaisseaux). Cette loi de Poiseuille permet d'associer au modèle les paramètres structuraux des vaisseaux, soit tirés
+où $\mu$ est le coefficient de viscosité dynamique (en Pa . s), $S$ l'aire totale ($S = NA$, $N$ étant le nombre de vaisseaux). Notons qu'ici F désigne la friction et non le flux. Cette loi de Poiseuille permet d'associer au modèle les paramètres structuraux des vaisseaux, soit tirés
 de la littérature, soit estimés. Par exemple, les paramètres de diamètre et de nombre des capillaires
 dans la partie microcirculatoire sont estimés sur la base d'une progression géométrique en l'absence
 de données. L'ensemble fournit des valeurs de pression et de flux dans le système circulant
@@ -215,7 +214,7 @@ pathologique dynamiques sur l'hydrocéphalie.
 \begin{figure}[!t]
 \centering
 \includegraphics[width=12cm]{4_4_linninger}
-\caption{Schéma du modèle de Linninger (\cite{Linninger2009}).}
+\caption{Schéma du modèle de Linninger (\cite{Linninger2009}). Avec cAr la carotide interne, Ar les artères, Al les artérioles, Cp les capillaires, Vl les veinules, V les veines, Lv les ventricules latéraux, 3V le troisième ventricule, 4V le quatrième ventricule, SAS l'espace sous arachnoïdien, vSinus le sinus veineux et JV les veines jugulaires.}
 \label{fig:4_4_linninger}	
 \end{figure}
 Ce modèle constitue un intéressant compromis entre d'une part la logique de compartiments,
@@ -492,7 +491,7 @@ cellulaire solide, $V$ la somme des volumes pour chaque compartiment.
     %\thispagestyle{empty}
 	\begin{landscape}
 	\begin {table}
-	\captionof{table}{Tableau résumant les données utilisées dans les différents modèles de type compartiments de la littérature.} 
+	\captionof{table}{Tableau résumant les données utilisées dans les différents modèles de type compartiments de la littérature. Données théoriques indiquent des valeurs de la littérature, des données estimées des valeurs basées sur la littérature puis ajustées, et enfin mesurées, des valeurs issues de mesures réelles (IRM etc.).} 
 	\label{tab:modeles} 
 	\centering
 	\begin{tabularx}{\linewidth}{  |X | l | l |X | X | X | X | X | X | }

@@ -38,7 +38,7 @@ les canaux calcium, baisse le calcium intracellulaire et ainsi relaxe les SMC.
 
 Une seconde autorégulation intervient en réponse aux variations de pression. En effet le débit
 sanguin cérébral est maintenu entre 50 et 60 mL/100g/min pour des pressions perfusionnelles cérébrales (CPP) de 60 à 160 mmHg. Cela traduit la présence d’un mécanisme d’autorégulation du
-débit (Figure~\ref{fig:3_1_autoregulation}). 
+débit (Figure~\ref{fig:3_1_autoregulation}). Notons qu'à partir d'ici, le terme pression évoquera uniquement les pressions artérielles ou perfusionnelles selon les compartiments.
 
 %%%
 \begin{figure}[!t]
@@ -47,7 +47,7 @@ débit (Figure~\ref{fig:3_1_autoregulation}).
 \caption{Autorégulation du débit en fonction de la pression. Illustration de ~\cite{Lang2003}.}
 \label{fig:3_1_autoregulation}	
 \end{figure}
-En dessous de pressions de l’ordre de 60 mmHg, l’autorégulation est perdue
+En dessous de pressions perfusionnelles de l’ordre de 60 mmHg, l’autorégulation est perdue
 entrainant une ischémie. Le volume intracrânien étant constant, la perfusion doit s’adapter (\cite{Cipolla2009}). Pour
 maintenir ce débit, le calibre des vaisseaux doit être ajusté. En cas de faible pression, le vaisseau est
 dilaté (par un effet contraire à la mécanique), ce qui augmente le volume sanguin cérébral et donc la
@@ -176,7 +176,7 @@ d’évoquer la perfusion.
 Nous avons vu lors des précédents paragraphes que l’imagerie de contraste de phase
 permettait d’accéder à la structure des vaisseaux (artères et veines) en utilisant le déphasage des spins
 mobiles soumis à un gradient bipolaire. Cet outil peut néanmoins permettre, et c’est son principal
-intérêt, de quantifier les vitesses et débits dans les artères, les veines et le liquide cérébro-spinal.
+intérêt, de quantifier les vitesses et débits dans les artères, les veines et le liquide cérébro-spinal avec maintenant des résolutions spatiales relativement fines (0.4 mm).
 
 Ces acquisitions sont réalisées en 2D voir en 2D multicoupes (2 ou 3). Le plan de coupe doit être
 perpendiculaire au vaisseau exploré et l’acquisition synchronisée sur le cycle cardiaque. Toutes les
@@ -303,7 +303,7 @@ donné dans la Figure~\ref{fig:3_6_segmentation_TF} C et D où l’on montre que
 \label{fig:PCMRi_TF_CHANVESE_concordance}	
 \end{figure}
 
-Notre méthode a été comparée avec une approche standard de type Chan-Vese (\cite{Chan2001}) en collaboration avec le docteur Eker Omer. Cette approche est de type contour actif, elle consiste à partir d'un masque initial à trouver une segmentation en développant les contours de l'objet. Dans nos essais, 8 patients ou volontaires ont réalisé des acquisitions IRM en contraste de phase. Au total 182 mesures de vitesses et débits ont été réalisées. La comparaison des deux méthodes sur la mesure de la vitesse a été réalisée via un Bland-Altman (Figure~\ref{fig:PCMRi_TF_CHANVESE}). On remarque que notre méthode a tendance à fournir des vitesses légèrement plus élevées que l'approche de Chan-Vese. Ceci s'explique par l'approche différente de segmentation. En effet, l'algorithme de Chan-Vese fonctionne sur les images de magnitudes et se sert ainsi du contraste structurel. Notre approche en revanche se base uniquement sur la cinétique du signal. Notre approche aura ainsi tendance à segmenter de façon plus nette le sang uniquement, tandis que le Chan-Vese aura tendance à prendre une surface légèrement plus importante. Les résultats de la Figure~\ref{PCMRi_TF_CHANVESE_concordance} montrent une très bonne concordance des deux méthodes avec un nuage de points se situant sur la ligne à 45°. Il semble ainsi que notre méthode permet de mesurer correctement les vitesses.
+Notre méthode a été comparée avec une approche standard de type Chan-Vese (\cite{Chan2001}) en collaboration avec le docteur Eker Omer. Cette approche est de type contour actif, elle consiste à partir d'un masque initial à trouver une segmentation en développant les contours de l'objet. Dans nos essais, 8 patients ou volontaires ont réalisé des acquisitions IRM en contraste de phase. Au total 182 mesures de vitesses et débits ont été réalisées. La comparaison des deux méthodes sur la mesure de la vitesse a été réalisée via un Bland-Altman (Figure~\ref{fig:PCMRi_TF_CHANVESE}). On remarque que notre méthode a tendance à fournir des vitesses légèrement plus élevées que l'approche de Chan-Vese. Ceci s'explique par l'approche différente de segmentation. En effet, l'algorithme de Chan-Vese fonctionne sur les images de magnitudes et se sert ainsi du contraste structurel. Notre approche en revanche se base uniquement sur la cinétique du signal. Notre approche aura ainsi tendance à segmenter de façon plus nette le sang uniquement, tandis que le Chan-Vese aura tendance à prendre une surface légèrement plus importante. Les résultats de la Figure~\ref{PCMRi_TF_CHANVESE_concordance} montrent une très bonne concordance des deux méthodes avec un nuage de points se situant sur la ligne à 45°. Il semble ainsi que notre méthode permet de mesurer correctement les vitesses. Gardons à l'esprit malgré tout que la mesure est moins fiable dans le cadre de pathologies ou d'anévrysmes.
 %%%
 %%%
 \subsection{Perfusion : imagerie par marquage des protons du sang artériel (ASL)}
@@ -377,7 +377,7 @@ ms, taille du voxel = 3 x 3 x 3 mm$^3$; ou une ASL pseudo-continue 3D simple $TI
 le sujet est bien caractérisé : temps d’inversion = 3000 ms, durée du bolus = 1500 ms,
 champ de vue = 12.6 x 12.8 cm, temps d’écho = 15.62 ms, temps de répétition = 4600 ms,
 taille du voxel = 1.5 x 1.5 x 3 mm$^3$, 42 coupes. Le détail de ces techniques est décrit dans le
-chapitre~\ref{chap:asl}.
+chapitre~\ref{chap:asl}. Notons que l'intégralité du traitement de cette imagerie est réalisé par des codes implémentés dans le cadre de notre travail. Parmis les traitement on évoquera la correction de mouvement, la quantification, la correction d'effets de volumes partiels etc.
 \end{itemize}
 L’ensemble constitue un protocole de 45 minutes.
 
