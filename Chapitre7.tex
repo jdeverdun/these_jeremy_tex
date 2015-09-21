@@ -256,7 +256,7 @@ extérieures (Figure~\ref{fig:6_6_champ_interieur}).
 \includegraphics[width=10cm]{6_6_champ_interieur}
 \caption{Cartographies de champ intérieur obtenues via RESHARP et effective dipole fitting (EDF) sur un patient
 présentant des cavernomes. L’image de phase est présentée, suivi de la carte de perturbation du champ total $B$, les
-contributions extérieures au champ $B_{ext}$ , le champ intérieur $B_{int}$ obtenue via l’algorithme RESHARP ou effective dipole
+contributions extérieures au champ $B_{ext}$ , le champ intérieur $B_{in}$ obtenue via l’algorithme RESHARP ou effective dipole
 fitting. Les images montrent des cartographies similaires.}
 \label{fig:6_6_champ_interieur}	
 \end{figure}
@@ -271,7 +271,7 @@ variations de phases interne ne peut pas être rigoureusement précisé. Une mé
 élimine ensuite cette contribution pour récupérer la phase intérieure (liée aux tissus). Cela est réalisé
 en résolvant un problème des moindres carrés :
 \begin{equation}
-\chi_{out}\,=\,argmin_{\chi}\,\parallel M\bigl(B-{\cal F}^{-1}{\cal D}{\cal F}\bigr\tilde{M}\chi)\parallel_2^2,
+\chi_{out}\,=\,argmin_{\chi}\,\parallel M\bigl(B-{\cal F}^{-1}{\cal D}{\cal F}\tilde{M}\chi\bigr)\parallel_2^2,
 \end{equation}
 formule dans laquelle on minimise l’écart entre le champ et les effets des susceptibilités extérieures recherchées. $M$ est ici le masque du cerveau et $\tilde{M}$ son complément.\\
 Une fois $\chi_{out}$ déterminé, le champ interne $B_{in}$ issu des tissus est obtenu via la formule :
@@ -295,7 +295,7 @@ B\,=\,B_{in}\,+\,B_{ext}.
 \end{equation}
 Or $B_{ext}$ est entièrement dû à des sources situées à l’extérieur du volume d’intérêt (VOI), il est donc
 harmonique dans tout le VOI. Cela se traduit par $\Delta B_{ext} = 0$ dans le VOI. On peut alors analytiquement
-obtenir la contribution interne de $B$, $B_{int}$ en résolvant :
+obtenir la contribution interne de $B$, $B_{in}$ en résolvant :
 \begin{equation}
 \Delta B\,=\,\Delta B_{in}.
 \end{equation}
@@ -340,7 +340,7 @@ TSVB est remplacé par une étape de minimisation conceptuellement similaire à 
 « effective dipole fitting ». Le principe est de trouver la valeur de la variable $B_{in}$ qui minimise la
 fonction :
 \begin{equation}
-argmin_{B_{int}}\,\parallel M{\cal F}^{-1}{\cal C}{\cal F}(B_{in}-B_{tot})\parallel_2^2\,+\,\lambda\parallel B_{in}\parallel_2^2,
+argmin_{B_{in}}\,\parallel M{\cal F}^{-1}{\cal C}{\cal F}(B_{in}-B_{tot})\parallel_2^2\,+\,\lambda\parallel B_{in}\parallel_2^2,
 \end{equation}
 Avec $M$ le masque du cerveau érodé, ${\cal F}$ la transformée de fourrier, ${\cal C} = {\cal F}(\delta-\rho)$, $\lambda$ le paramètre de
 régularisation. Dans cette formule, $argmin_{B_{in}}$ dénote les valeurs de $B_{in}$ qui minimisent la fonction ; $\parallel\,\,\parallel_2^2$ la somme des carrés ; à la différence de la minimisation effectuée dans le cadre de la méthode « effective dipole fitting », la minimisation du premier terme vise à garantir l’aspect harmonique du
